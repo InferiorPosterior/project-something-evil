@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://qasj3d6vyqgi"]
+
+[ext_resource type="Texture2D" uid="uid://iv7y1w0foxu0" path="res://Assets/brackeys_platformer_assets/sprites/fruit.png" id="1_nxj5y"]
+[ext_resource type="Script" uid="uid://du4alj8a1rmmk" path="res://Scripts/gun.gd" id="1_oqrbh"]
+
+[node name="Gun" type="Node2D" unique_id=1830969750]
+script = ExtResource("1_oqrbh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=163983967]
+texture_filter = 1
+rotation = -1.5707964
+texture = ExtResource("1_nxj5y")
+region_enabled = true
+region_rect = Rect2(32, 32, 16, 16)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=434699436]
+position = Vector2(8, 0)

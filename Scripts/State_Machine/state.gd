@@ -1,0 +1,19 @@
+# THIS IS THE STATE SCRIPT, MEANT TO BE THE BLUEPRINT FOR ALL STATES
+class_name State extends Node
+
+signal Transitioned(state, new_state_name)
+
+func enter_state(): # CALLED WHEN THE STATE MACHINES SWITCHES TO THIS STATE
+	pass
+
+func exit_state(): # CALLED WHEN THE STATE MACHINE SWITCHES TO A DIFFERENT STATE
+	pass
+
+func update(delta: float): # EVERYTHING IN HERE RUNS EVERY FRAME, USED TO CHECK EVERY FRAME FOR SPECIFIC EVENTS LIKE UPDATING HEALTH
+	pass
+
+func physics_update(delta: float): # EVERYTHING HERE RUNS AT FIXED FRAME RATE AND USED FOR ANYTHING INVOLVING THE PHYSICS ENGINE
+	pass
+
+func handle_input(event: InputEvent): #  REACTS TO INPUT EVENTS
+	pass
