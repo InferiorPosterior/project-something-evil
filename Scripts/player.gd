@@ -1,9 +1,16 @@
 #THIS IS PLAYER CHARACTER SCRIPT
 class_name Player extends CharacterBody2D
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var hurtbox: HurtboxComponent = $HurtboxComponent
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+
+func _ready() -> void:
+	add_to_group("player")
+	hurtbox.damage_taken.connect(func(_dmg): health_component.set_temporary_immortality(0.6))
+	health_component.health_depleted.connect(func(): get_tree().reload_current_scene.call_deferred())
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
