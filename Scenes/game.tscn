@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://yvcb3rtoocwa" path="res://Scenes/enemy_lunger.tscn" id="7_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://5ilkvk7ga1ba" path="res://Scenes/enemy_grenadier.tscn" id="8_v158k"]
 [ext_resource type="PackedScene" uid="uid://r0f1g28ne38f" path="res://Scenes/enemy_drone.tscn" id="10_ldgsr"]
+[ext_resource type="PackedScene" uid="uid://cjtpxifer0esd" path="res://Scenes/enemy.tscn" id="4_3dryh"]
+[ext_resource type="PackedScene" uid="uid://dj0s5hm5dgbqu" path="res://Scenes/pause_menu.tscn" id="5_wowpa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dryh"]
 texture = ExtResource("2_wrm1d")
@@ -249,3 +251,9 @@ position = Vector2(-214, -118)
 
 [node name="Enemy Drone3" parent="." unique_id=2094363943 instance=ExtResource("10_ldgsr")]
 position = Vector2(129, -134)
+[node name="enemy3" parent="." unique_id=1176976929 instance=ExtResource("4_3dryh")]
+position = Vector2(-36, 2)
+
+[node name="MenuLayer" type="CanvasLayer" parent="." unique_id=1861627310]
+
+[node name="PauseMenu" parent="MenuLayer" unique_id=1484971317 instance=ExtResource("5_wowpa")]
