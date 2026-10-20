@@ -1,5 +1,6 @@
 #THIS IS HITBOX COMPONENT SCRIPT
 class_name HitboxComponent extends Area2D
+signal hit_landed
 
 @export var damage: int = 10: set = set_damage, get = get_damage
 

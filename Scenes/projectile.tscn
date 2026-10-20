@@ -26,8 +26,10 @@ shape = SubResource("CircleShape2D_tl4hk")
 [node name="Timer" type="Timer" parent="." unique_id=246144866]
 
 [node name="HitboxComponent" type="Area2D" parent="." unique_id=1083842055]
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("3_tl4hk")
-damage = 25
+damage = 100
 metadata/_custom_type_script = "uid://bvtclq823uv2e"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=424559123]

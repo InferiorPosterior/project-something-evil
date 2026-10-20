@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://qasj3d6vyqgi" path="res://Scenes/gun.tscn" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="4_vgqql"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_3smsa"]
-[ext_resource type="Script" uid="uid://vhc08l7nsshm" path="res://Scripts/State_Machine/idle_state.gd" id="6_8erm5"]
+[ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="7_3smsa"]
 [ext_resource type="Script" uid="uid://v1najhost2v" path="res://Scripts/State_Machine/state.gd" id="7_f1ek2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
@@ -27,6 +27,9 @@ animations = [{
 radius = 5.0
 height = 14.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(8.375, 11)
+
 [node name="Player" type="CharacterBody2D" unique_id=1827159017]
 script = ExtResource("2_vgqql")
 
@@ -44,12 +47,23 @@ position = Vector2(6, 6)
 [node name="HealthComponent" type="Node" parent="." unique_id=433678246]
 script = ExtResource("4_vgqql")
 
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=622235919 node_paths=PackedStringArray("health")]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("7_3smsa")
+health = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://bxvhy0cwrfk4k"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=292284055]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_g4v7s")
+
 [node name="StateMachine" type="Node" parent="." unique_id=160013381]
 script = ExtResource("5_3smsa")
 metadata/_custom_type_script = "uid://cb8uqkistmuev"
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=439283605]
-script = ExtResource("6_8erm5")
+script = ExtResource("7_f1ek2")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="Move" type="Node" parent="StateMachine" unique_id=53788876]

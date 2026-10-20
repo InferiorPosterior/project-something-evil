@@ -3,6 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://du0gmlf03hrwy" path="res://Scenes/player.tscn" id="1_qxrlw"]
 [ext_resource type="Texture2D" uid="uid://10cr4tqj3ryk" path="res://Assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://mmca50erry5u" path="res://Scenes/killzone.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://dr0tnjrfrv4q0" path="res://Scenes/enemy_gunner.tscn" id="5_i6g32"]
+[ext_resource type="PackedScene" uid="uid://uo5061t85jw5" path="res://Scenes/enemy_chaser.tscn" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/enemy_projectile.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://yvcb3rtoocwa" path="res://Scenes/enemy_lunger.tscn" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://5ilkvk7ga1ba" path="res://Scenes/enemy_grenadier.tscn" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://r0f1g28ne38f" path="res://Scenes/enemy_drone.tscn" id="10_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://cjtpxifer0esd" path="res://Scenes/enemy.tscn" id="4_3dryh"]
 [ext_resource type="PackedScene" uid="uid://dj0s5hm5dgbqu" path="res://Scenes/pause_menu.tscn" id="5_wowpa"]
 
@@ -174,7 +180,7 @@ texture = ExtResource("2_wrm1d")
 3:15/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_g4v7s"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 6291457
 sources/0 = SubResource("TileSetAtlasSource_3dryh")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g4v7s"]
@@ -183,7 +189,7 @@ distance = 41.0
 [node name="Game" type="Node2D" unique_id=1327516912]
 
 [node name="Player" parent="." unique_id=1827159017 instance=ExtResource("1_qxrlw")]
-position = Vector2(0.41635513, 3.4403152)
+position = Vector2(-25, 5)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1455271406]
 zoom = Vector2(2, 2)
@@ -192,7 +198,7 @@ position_smoothing_enabled = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2062931773]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAD9/wEAAAAAAAAAAAD7////AAAAAAAAAAD6////AAAAAAAAAAD5////AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAD9/wEAAAAAAAAAAAD8/wEAAAAAAAAAAAD7/wEAAAAAAAAAAAD6/wEAAAAAAAAAAAD5/wEAAAAAAAAAAAD4/wEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAD7//7/AAAAAAAAAAD8//7/AAAAAAAAAAD9//7/AAAAAAAAAAD+//7/AAAAAAAAAAACAPr/AAAAAAAAAAADAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAAGAPr/AAAAAAAAAAAHAPr/AAAAAAAAAAAIAPr/AAAAAAAAAAAJAPr/AAAAAAAAAAD6//r/AAAAAAAAAAD5//r/AAAAAAAAAAD4//r/AAAAAAAAAAD3//r/AAAAAAAAAAD2//r/AAAAAAAAAAD3/wEAAAAAAAAAAAD2/wQAAAAAAAAAAAD1/wQAAAAAAAAAAAD0/wQAAAAAAAAAAADz/wQAAAAAAAAAAAD3/wIAAAAAAAEAAAD3/wMAAAAAAAEAAAD3/wQAAAAAAAEAAADy/wQAAAAAAAEAAADy/wMAAAAAAAEAAADy/wIAAAAAAAEAAADy/wEAAAAAAAEAAADy/wAAAAAAAAEAAADy////AAAAAAAAAADx////AAAAAAAAAADx//L/AAAAAAEAAADy//L/AAAAAAEAAADz//L/AAAAAAEAAAD0//L/AAAAAAEAAAD1//L/AAAAAAEAAAD2//L/AAAAAAEAAAD3//L/AAAAAAEAAAD4//L/AAAAAAEAAAD5//L/AAAAAAEAAAD6//L/AAAAAAEAAAD7//L/AAAAAAEAAAD8//L/AAAAAAEAAAD9//L/AAAAAAEAAAD+//L/AAAAAAEAAAD///L/AAAAAAEAAAAAAPL/AAAAAAEAAAABAPL/AAAAAAEAAAACAPL/AAAAAAEAAAADAPL/AAAAAAEAAAAEAPL/AAAAAAEAAAAFAPL/AAAAAAEAAAAGAPL/AAAAAAEAAAAHAPL/AAAAAAEAAAAIAPL/AAAAAAEAAAAJAPL/AAAAAAEAAAAKAPL/AAAAAAEAAAALAPL/AAAAAAEAAAAMAPL/AAAAAAEAAAANAPL/AAAAAAEAAAAOAPL/AAAAAAEAAAAOAPP/AAAAAAEAAAAOAPT/AAAAAAEAAAAPAPT/AAAAAAEAAAAPAPX/AAAAAAEAAAAPAPb/AAAAAAEAAAAPAPf/AAAAAAEAAAAQAPf/AAAAAAEAAAAQAP3/AAAAAAAAAAAQAP7/AAAAAAEAAAAQAP//AAAAAAEAAAAQAAAAAAAAAAEAAAAQAAEAAAAAAAEAAAAQAAIAAAAAAAEAAAAQAAMAAAAAAAEAAAAQAAQAAAAAAAEAAAAPAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAMAAQAAAAAAAEAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAMAAAAAAAEAAAAMAAIAAAAAAAEAAAAMAAEAAAAAAAAAAADw////AAAAAAAAAADv////AAAAAAEAAADv//7/AAAAAAEAAADv//3/AAAAAAEAAADv//z/AAAAAAEAAADv//v/AAAAAAAAAADv//T/AAAAAAEAAADv//P/AAAAAAEAAADv//L/AAAAAAEAAADw//L/AAAAAAEAAADu//v/AAAAAAAAAADt//v/AAAAAAAAAADr//v/AAAAAAAAAADs//v/AAAAAAAAAADq//v/AAAAAAAAAAARAP3/AAAAAAAAAAASAP3/AAAAAAAAAAATAP3/AAAAAAAAAAAUAP3/AAAAAAEAAAAUAPz/AAAAAAEAAAAUAPv/AAAAAAEAAAAUAPr/AAAAAAEAAAAUAPn/AAAAAAEAAAAUAPj/AAAAAAEAAAAUAPf/AAAAAAEAAAATAPf/AAAAAAEAAAASAPf/AAAAAAEAAAARAPf/AAAAAAEAAADp//v/AAAAAAEAAADp//r/AAAAAAEAAADp//n/AAAAAAEAAADp//j/AAAAAAEAAADp//f/AAAAAAEAAADp//b/AAAAAAEAAADp//X/AAAAAAEAAADp//T/AAAAAAEAAADq//T/AAAAAAEAAADr//T/AAAAAAEAAADs//T/AAAAAAEAAADt//T/AAAAAAEAAADu//T/AAAAAAEAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAtAAAAAAAAAAEAAAAWAAAAAAAAAAEAAAAWAP//AAAAAAEAAAAWAP7/AAAAAAEAAAAWAP3/AAAAAAEAAAAWAPz/AAAAAAEAAAAWAPv/AAAAAAEAAAAWAPr/AAAAAAEAAAAWAPn/AAAAAAEAAAAWAPj/AAAAAAEAAAAWAPf/AAAAAAEAAAAWAPb/AAAAAAEAAAAtAP//AAAAAAEAAAAtAP7/AAAAAAEAAAAtAP3/AAAAAAEAAAAtAPz/AAAAAAEAAAAtAPv/AAAAAAEAAAAtAPr/AAAAAAEAAAAtAPn/AAAAAAEAAAAtAPj/AAAAAAEAAAAtAPf/AAAAAAEAAAAtAPb/AAAAAAEAAAA=")
 tile_set = SubResource("TileSet_g4v7s")
 
 [node name="Killzone" parent="." unique_id=874115836 instance=ExtResource("3_wrm1d")]
@@ -201,12 +207,50 @@ tile_set = SubResource("TileSet_g4v7s")
 position = Vector2(4, 172)
 shape = SubResource("WorldBoundaryShape2D_g4v7s")
 
-[node name="enemy" parent="." unique_id=782089927 instance=ExtResource("4_3dryh")]
-position = Vector2(79, -34)
+[node name="Enemy Chaser" parent="." unique_id=1510669204 instance=ExtResource("5_wowpa")]
+position = Vector2(103, -36)
 
-[node name="enemy2" parent="." unique_id=1434290175 instance=ExtResource("4_3dryh")]
-position = Vector2(-96, -28)
+[node name="enemy_gunner" parent="." unique_id=1035780428 instance=ExtResource("5_i6g32")]
+position = Vector2(148, -6)
 
+[node name="enemy_projectile" parent="." unique_id=1706078183 instance=ExtResource("6_i6g32")]
+position = Vector2(88, -50)
+
+[node name="Enemy Chaser2" parent="." unique_id=782089927 instance=ExtResource("5_wowpa")]
+position = Vector2(49, -117)
+
+[node name="enemy_gunner2" parent="." unique_id=1833941546 instance=ExtResource("5_i6g32")]
+position = Vector2(-143, -117)
+
+[node name="enemy_gunner3" parent="." unique_id=1218203051 instance=ExtResource("5_i6g32")]
+position = Vector2(-234, -35)
+
+[node name="Enemy Chaser3" parent="." unique_id=1579689331 instance=ExtResource("5_wowpa")]
+position = Vector2(-191, 38)
+
+[node name="Enemy Chaser4" parent="." unique_id=125148368 instance=ExtResource("5_wowpa")]
+position = Vector2(-333, -102)
+
+[node name="Enemy Chaser5" parent="." unique_id=17333522 instance=ExtResource("5_wowpa")]
+position = Vector2(287, -76)
+
+[node name="Lunger" parent="." unique_id=946911435 instance=ExtResource("7_1l0tm")]
+position = Vector2(165, 1)
+
+[node name="Lunger2" parent="." unique_id=1832350307 instance=ExtResource("7_1l0tm")]
+position = Vector2(-291, -110)
+
+[node name="enemy_grenadier" parent="." unique_id=1599663498 instance=ExtResource("8_v158k")]
+position = Vector2(265, -56)
+
+[node name="enemy_grenadier2" parent="." unique_id=724559770 instance=ExtResource("8_v158k")]
+position = Vector2(-307, -94)
+
+[node name="Enemy Drone2" parent="." unique_id=176958397 instance=ExtResource("10_ldgsr")]
+position = Vector2(-214, -118)
+
+[node name="Enemy Drone3" parent="." unique_id=2094363943 instance=ExtResource("10_ldgsr")]
+position = Vector2(129, -134)
 [node name="enemy3" parent="." unique_id=1176976929 instance=ExtResource("4_3dryh")]
 position = Vector2(-36, 2)
 

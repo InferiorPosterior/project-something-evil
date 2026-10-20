@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://ojud4fm5r1iq"]
+
+[ext_resource type="Script" uid="uid://m00qckebn6sw" path="res://enemy_projectile.gd" id="1_ibebl"]
+[ext_resource type="Texture2D" uid="uid://cmmxkabjcfuj4" path="res://Assets/brackeys_platformer_assets/sprites/coin.png" id="2_gjudp"]
+[ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="3_gjudp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
+radius = 3.0
+
+[node name="enemy_projectile" type="Area2D" unique_id=1706078183]
+collision_layer = 0
+script = ExtResource("1_ibebl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=861592565]
+texture_filter = 1
+texture = ExtResource("2_gjudp")
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=606926]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=1658287158]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("3_gjudp")
+damage = 1000
+metadata/_custom_type_script = "uid://bvtclq823uv2e"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=352838066]
+shape = SubResource("CircleShape2D_yf5fn")
+
+[node name="Timer" type="Timer" parent="." unique_id=308559378]
