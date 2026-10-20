@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://r0f1g28ne38f"]
+
+[ext_resource type="Script" uid="uid://dg86hy3xly3kc" path="res://Scripts/Enemies (main)/enemy_drone.gd" id="1_71eii"]
+[ext_resource type="Texture2D" uid="uid://10cr4tqj3ryk" path="res://Assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_4b2bu"]
+[ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="2_71eii"]
+[ext_resource type="PackedScene" uid="uid://0mjg24r87fdm" path="res://Scenes/explosion.tscn" id="2_by8gb"]
+[ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_by8gb"]
+[ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_16t4n"]
+[ext_resource type="Script" uid="uid://b61om2141170c" path="res://Scripts/State_Machine/enemies/drone_states/drone_idle.gd" id="7_71eii"]
+[ext_resource type="Script" uid="uid://b5n0glidrlnsv" path="res://Scripts/State_Machine/enemies/drone_states/drone_chase.gd" id="7_bkx0d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_by8gb"]
+atlas = ExtResource("2_4b2bu")
+region = Rect2(64, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bkx0d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_by8gb")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_71eii"]
+radius = 5.3851647
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_by8gb"]
+radius = 7.071068
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 5.0990195
+
+[node name="Enemy Drone" type="CharacterBody2D" unique_id=408462021 node_paths=PackedStringArray("health")]
+collision_layer = 2
+script = ExtResource("1_71eii")
+health = NodePath("HealthComponent")
+explosion_scene = ExtResource("2_by8gb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=927670717]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_bkx0d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=392972939]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_71eii")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=2140040102]
+script = ExtResource("2_71eii")
+metadata/_custom_type_script = "uid://ngsma3hy4ktw"
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=1219125648 node_paths=PackedStringArray("health")]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("4_by8gb")
+health = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://bxvhy0cwrfk4k"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1865049804]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_by8gb")
+debug_color = Color(6.3051284e-06, 0.63644534, 0.40872937, 0.41960785)
+
+[node name="StateMachine" type="Node" parent="." unique_id=1540035455 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_16t4n")
+initial_state = NodePath("DroneIdle")
+metadata/_custom_type_script = "uid://cb8uqkistmuev"
+
+[node name="DroneIdle" type="Node" parent="StateMachine" unique_id=113603936]
+script = ExtResource("7_71eii")
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="DroneChase" type="Node" parent="StateMachine" unique_id=228485609]
+script = ExtResource("7_bkx0d")
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="ContactSensor" type="Area2D" parent="." unique_id=419155762]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactSensor" unique_id=609461405]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_g4v7s")
+debug_color = Color(0.9900984, 0, 0.28812593, 0.41960785)
+
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
