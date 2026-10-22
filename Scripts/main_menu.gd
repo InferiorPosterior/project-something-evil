@@ -5,6 +5,7 @@ extends Control
 func _ready():
 	# Connects each button to its corresponding function.
 	$CenterContainer/Panel/VBoxContainer/StartButton.pressed.connect(_on_start_pressed)
+	$CenterContainer/Panel/VBoxContainer/LevelSelectButton.pressed.connect(_on_level_select_pressed)
 	$CenterContainer/Panel/VBoxContainer/SettingsButton.pressed.connect(_on_settings_pressed)
 	$CenterContainer/Panel/VBoxContainer/QuitButton.pressed.connect(_on_quit_pressed)
 
@@ -14,6 +15,10 @@ func _on_start_pressed():
 	# Opens the existing game scene.
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 
+#Runs when Select Level is clicked.
+func _on_level_select_pressed():
+	# Opens the level selection scene.
+	get_tree().change_scene_to_file("res://Scenes/level_select.tscn")
 
 # Runs when Settings is clicked.
 func _on_settings_pressed():

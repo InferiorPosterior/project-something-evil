@@ -59,6 +59,10 @@ text = "RESUME
 layout_mode = 2
 text = "RESTART"
 
+[node name="LevelSelectButton" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=666338153]
+layout_mode = 2
+text = "LEVEL SELECT"
+
 [node name="MainMenuButton" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=153012988]
 layout_mode = 2
 text = "MAIN MENU"

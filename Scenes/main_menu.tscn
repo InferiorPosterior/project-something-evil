@@ -20,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.21082658, 0.19488497, 0.21082658, 1)
+color = Color(0.21176471, 0.19607843, 0.21176471, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=422646019]
 layout_mode = 1
@@ -61,11 +61,16 @@ offset_right = -4.0
 offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 54
 
 [node name="StartButton" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=1236867126]
 layout_mode = 2
 text = "START GAME"
+
+[node name="LevelSelectButton" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=2101355456]
+layout_mode = 2
+text = "LEVEL SELECT
+"
 
 [node name="SettingsButton" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=1295366362]
 layout_mode = 2

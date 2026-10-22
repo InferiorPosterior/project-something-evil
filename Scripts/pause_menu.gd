@@ -13,6 +13,7 @@ func _ready():
 	# When a button is clicked, its corresponding function will run.
 	$CenterContainer/Panel/VBoxContainer/ResumeButton.pressed.connect(_on_resume_pressed)
 	$CenterContainer/Panel/VBoxContainer/RestartButton.pressed.connect(_on_restart_pressed)
+	$CenterContainer/Panel/VBoxContainer/LevelSelectButton.pressed.connect(_on_level_select_pressed)
 	$CenterContainer/Panel/VBoxContainer/MainMenuButton.pressed.connect(_on_main_menu_pressed)
 	$CenterContainer/Panel/VBoxContainer/QuitButton.pressed.connect(_on_quit_pressed)
 
@@ -56,6 +57,16 @@ func _on_restart_pressed():
 
 	# Reloads the current scene from the beginning.
 	get_tree().reload_current_scene()
+
+
+func _on_level_select_pressed():
+	var level_select_scene = load("res://Scenes/level_select.tscn")
+	var level_select = level_select_scene.instantiate()
+
+	level_select.opened_from_pause = true
+
+	get_parent().add_child(level_select)
+	hide()
 
 
 # Runs when the Main Menu button is clicked.
