@@ -1,21 +1,21 @@
 [gd_scene format=3 uid="uid://yvcb3rtoocwa"]
 
-[ext_resource type="Script" uid="uid://cmgqsvd3geh3r" path="res://Scripts/Enemies (main)/enemy_lunger.gd" id="1_i1whi"]
-[ext_resource type="Texture2D" uid="uid://c4glaoucnu8v5" path="res://Assets/brackeys_platformer_assets/sprites/slime_purple.png" id="2_i1whi"]
-[ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_4py34"]
-[ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="4_1h2px"]
-[ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="5_3txl4"]
-[ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="6_ueqrv"]
-[ext_resource type="Script" uid="uid://de57b7ybd0ypt" path="res://Scripts/State_Machine/enemies/lunger_states/lunger_idle.gd" id="7_x8db7"]
-[ext_resource type="Script" uid="uid://54fbr05dt41e" path="res://Scripts/State_Machine/enemies/lunger_states/lunger_chase.gd" id="8_2va65"]
-[ext_resource type="Script" uid="uid://barki6070a5mm" path="res://Scripts/State_Machine/enemies/lunger_states/lunger_jump.gd" id="9_i1whi"]
-[ext_resource type="Script" uid="uid://eddu7frqs80j" path="res://Scripts/State_Machine/enemies/lunger_states/lunger_fall.gd" id="10_xvot7"]
-[ext_resource type="Script" uid="uid://cpuksw8tpv4yj" path="res://Scripts/State_Machine/enemies/lunger_states/lunger_windup.gd" id="11_75186"]
-[ext_resource type="Script" uid="uid://cxx3nq1ca04q5" path="res://Scripts/State_Machine/enemies/lunger_states/lunger_dash.gd" id="12_rug8b"]
-[ext_resource type="Script" uid="uid://bbja6m2qna0ig" path="res://Scripts/State_Machine/enemies/lunger_states/lunger_recover.gd" id="13_c0ld7"]
+[ext_resource type="Script" uid="uid://cmgqsvd3geh3r" path="res://Scripts/Enemies/enemy_lunger.gd" id="1_baq1m"]
+[ext_resource type="Texture2D" uid="uid://c4glaoucnu8v5" path="res://Assets/brackeys_platformer_assets/sprites/slime_purple.png" id="2_27mwo"]
+[ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_jbfuy"]
+[ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_dugn8"]
+[ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="5_rkj44"]
+[ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="6_4cqwc"]
+[ext_resource type="Script" uid="uid://de57b7ybd0ypt" path="res://Scripts/State_Machine/enemies/lunger_states/lunger_idle.gd" id="7_3is4y"]
+[ext_resource type="Script" uid="uid://54fbr05dt41e" path="res://Scripts/State_Machine/enemies/lunger_states/lunger_chase.gd" id="8_3cmkg"]
+[ext_resource type="Script" uid="uid://barki6070a5mm" path="res://Scripts/State_Machine/enemies/lunger_states/lunger_jump.gd" id="9_wlhy5"]
+[ext_resource type="Script" uid="uid://eddu7frqs80j" path="res://Scripts/State_Machine/enemies/lunger_states/lunger_fall.gd" id="10_qbig7"]
+[ext_resource type="Script" uid="uid://cpuksw8tpv4yj" path="res://Scripts/State_Machine/enemies/lunger_states/lunger_windup.gd" id="11_dbuxv"]
+[ext_resource type="Script" uid="uid://cxx3nq1ca04q5" path="res://Scripts/State_Machine/enemies/lunger_states/lunger_dash.gd" id="12_p0by7"]
+[ext_resource type="Script" uid="uid://bbja6m2qna0ig" path="res://Scripts/State_Machine/enemies/lunger_states/lunger_recover.gd" id="13_vg3vn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7yo60"]
-atlas = ExtResource("2_i1whi")
+atlas = ExtResource("2_27mwo")
 region = Rect2(48, 54, 24, 18)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
@@ -41,7 +41,7 @@ size = Vector2(6.15625, 9.53125)
 
 [node name="Lunger" type="CharacterBody2D" unique_id=946911435 node_paths=PackedStringArray("health")]
 collision_layer = 2
-script = ExtResource("1_i1whi")
+script = ExtResource("1_baq1m")
 dash_range = 150.0
 health = NodePath("HealthComponent")
 
@@ -54,14 +54,14 @@ sprite_frames = SubResource("SpriteFrames_g4v7s")
 shape = SubResource("CapsuleShape2D_yf5fn")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=533460309]
-script = ExtResource("3_4py34")
+script = ExtResource("3_jbfuy")
 max_health = 500
 metadata/_custom_type_script = "uid://ngsma3hy4ktw"
 
 [node name="HurtboxComponent" type="Area2D" parent="." unique_id=1424745378 node_paths=PackedStringArray("health")]
 collision_layer = 0
 collision_mask = 16
-script = ExtResource("5_3txl4")
+script = ExtResource("4_dugn8")
 health = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://bxvhy0cwrfk4k"
 
@@ -72,7 +72,7 @@ debug_color = Color(0, 0.63638926, 0.40942875, 0.41960785)
 [node name="HitboxComponent" type="Area2D" parent="." unique_id=1666567375]
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("4_1h2px")
+script = ExtResource("5_rkj44")
 damage = 100
 metadata/_custom_type_script = "uid://bvtclq823uv2e"
 
@@ -81,37 +81,37 @@ shape = SubResource("RectangleShape2D_57qmd")
 debug_color = Color(0.98830456, 0, 0.30865863, 0.41960785)
 
 [node name="StateMachine" type="Node" parent="." unique_id=1685458487 node_paths=PackedStringArray("initial_state")]
-script = ExtResource("6_ueqrv")
+script = ExtResource("6_4cqwc")
 initial_state = NodePath("LungerIdle")
 metadata/_custom_type_script = "uid://cb8uqkistmuev"
 
 [node name="LungerIdle" type="Node" parent="StateMachine" unique_id=1262216475]
-script = ExtResource("7_x8db7")
+script = ExtResource("7_3is4y")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="LungerChase" type="Node" parent="StateMachine" unique_id=1072241701]
-script = ExtResource("8_2va65")
+script = ExtResource("8_3cmkg")
 speed = 100.0
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="LungerJump" type="Node" parent="StateMachine" unique_id=1887396301]
-script = ExtResource("9_i1whi")
+script = ExtResource("9_wlhy5")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="LungerFall" type="Node" parent="StateMachine" unique_id=339906014]
-script = ExtResource("10_xvot7")
+script = ExtResource("10_qbig7")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="LungerWindup" type="Node" parent="StateMachine" unique_id=481589887]
-script = ExtResource("11_75186")
+script = ExtResource("11_dbuxv")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="LungerDash" type="Node" parent="StateMachine" unique_id=1969370070]
-script = ExtResource("12_rug8b")
+script = ExtResource("12_p0by7")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="LungerRecover" type="Node" parent="StateMachine" unique_id=1878103491]
-script = ExtResource("13_c0ld7")
+script = ExtResource("13_vg3vn")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]

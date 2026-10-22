@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://uo5061t85jw5"]
 
-[ext_resource type="Script" uid="uid://b1786qh5xpj1i" path="res://Scripts/Enemies (main)/enemy_chaser.gd" id="1_ftkdp"]
-[ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="2_cw31k"]
-[ext_resource type="Texture2D" uid="uid://dh6qsuul4h5n1" path="res://Assets/brackeys_platformer_assets/sprites/slime_green.png" id="3_t2thj"]
-[ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_ftkdp"]
-[ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_02w76"]
-[ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="5_wdc5b"]
-[ext_resource type="Script" uid="uid://cl5l0pkhbostk" path="res://Scripts/State_Machine/enemies/chaser_states/chaser_idle.gd" id="7_02w76"]
-[ext_resource type="Script" uid="uid://cvafidr1h8wqe" path="res://Scripts/State_Machine/enemies/chaser_states/chaser_chase.gd" id="8_wdc5b"]
-[ext_resource type="Script" uid="uid://dukrgb6p37w66" path="res://Scripts/State_Machine/enemies/chaser_states/chaser_jump.gd" id="9_yg6pa"]
-[ext_resource type="Script" uid="uid://8owg1l4kc4kv" path="res://Scripts/State_Machine/enemies/chaser_states/chaser_fall.gd" id="10_1af1e"]
+[ext_resource type="Script" uid="uid://b1786qh5xpj1i" path="res://Scripts/Enemies/enemy_chaser.gd" id="1_dxnqk"]
+[ext_resource type="Texture2D" uid="uid://dh6qsuul4h5n1" path="res://Assets/brackeys_platformer_assets/sprites/slime_green.png" id="2_xqekf"]
+[ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_8xxap"]
+[ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_u7ynu"]
+[ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="5_10joo"]
+[ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="6_uivkl"]
+[ext_resource type="Script" uid="uid://cl5l0pkhbostk" path="res://Scripts/State_Machine/enemies/chaser_states/chaser_idle.gd" id="7_gexx3"]
+[ext_resource type="Script" uid="uid://cvafidr1h8wqe" path="res://Scripts/State_Machine/enemies/chaser_states/chaser_chase.gd" id="8_a2512"]
+[ext_resource type="Script" uid="uid://dukrgb6p37w66" path="res://Scripts/State_Machine/enemies/chaser_states/chaser_jump.gd" id="9_fde8u"]
+[ext_resource type="Script" uid="uid://8owg1l4kc4kv" path="res://Scripts/State_Machine/enemies/chaser_states/chaser_fall.gd" id="10_roiwb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1f0kj"]
-atlas = ExtResource("3_t2thj")
+atlas = ExtResource("2_xqekf")
 region = Rect2(0, 24, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ne65n"]
@@ -38,7 +38,7 @@ size = Vector2(10.5, 10.5)
 
 [node name="Enemy Chaser" type="CharacterBody2D" unique_id=782089927 node_paths=PackedStringArray("health")]
 collision_layer = 2
-script = ExtResource("1_ftkdp")
+script = ExtResource("1_dxnqk")
 health = NodePath("HealthComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1754375138]
@@ -50,13 +50,13 @@ position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_yf5fn")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1791965054]
-script = ExtResource("2_cw31k")
+script = ExtResource("3_8xxap")
 metadata/_custom_type_script = "uid://ngsma3hy4ktw"
 
 [node name="HurtboxComponent" type="Area2D" parent="." unique_id=697506015 node_paths=PackedStringArray("health")]
 collision_layer = 0
 collision_mask = 16
-script = ExtResource("4_ftkdp")
+script = ExtResource("4_u7ynu")
 health = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=2054694500]
@@ -66,7 +66,7 @@ shape = SubResource("RectangleShape2D_g4v7s")
 [node name="HitboxComponent" type="Area2D" parent="." unique_id=247790970]
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("5_wdc5b")
+script = ExtResource("5_10joo")
 damage = 1000
 metadata/_custom_type_script = "uid://bvtclq823uv2e"
 
@@ -76,24 +76,24 @@ shape = SubResource("RectangleShape2D_yf5fn")
 debug_color = Color(0.9947129, 0, 0.22507519, 0.41960785)
 
 [node name="StateMachine" type="Node" parent="." unique_id=247798106 node_paths=PackedStringArray("initial_state")]
-script = ExtResource("5_02w76")
+script = ExtResource("6_uivkl")
 initial_state = NodePath("ChaserIdle")
 metadata/_custom_type_script = "uid://cb8uqkistmuev"
 
 [node name="ChaserIdle" type="Node" parent="StateMachine" unique_id=681828267]
-script = ExtResource("7_02w76")
+script = ExtResource("7_gexx3")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="ChaserChase" type="Node" parent="StateMachine" unique_id=1942116877]
-script = ExtResource("8_wdc5b")
+script = ExtResource("8_a2512")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="ChaserJump" type="Node" parent="StateMachine" unique_id=608332537]
-script = ExtResource("9_yg6pa")
+script = ExtResource("9_fde8u")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="ChaserFall" type="Node" parent="StateMachine" unique_id=1689923382]
-script = ExtResource("10_1af1e")
+script = ExtResource("10_roiwb")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]

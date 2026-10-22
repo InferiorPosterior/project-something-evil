@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bsaynihtnqhg6"]
 
 [ext_resource type="Texture2D" uid="uid://cmmxkabjcfuj4" path="res://Assets/brackeys_platformer_assets/sprites/coin.png" id="1_f8cdk"]
-[ext_resource type="Script" uid="uid://30olqgvq5cqm" path="res://Scripts/projectile.gd" id="1_yr2qt"]
+[ext_resource type="Script" uid="uid://30olqgvq5cqm" path="res://Scripts/Projectiles & Hazards/projectile.gd" id="1_yr2qt"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="3_tl4hk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tl4hk"]

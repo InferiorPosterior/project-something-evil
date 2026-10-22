@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Project Something Evil"
-run/main_scene="uid://brucys4yioeia"
+run/main_scene="uid://opptkxr1tbdm"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,16 @@ config/icon="res://icon.svg"
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[file_customization]
+
+folder_colors={
+"res://Scenes/Enemy NPC/": "red",
+"res://Scenes/Projectiles & Hazards/": "yellow",
+"res://Scripts/Enemies/": "red",
+"res://Scripts/Projectiles & Hazards/": "yellow",
+"res://Scripts/State_Machine/enemies/": "red"
+}
 
 [input]
 

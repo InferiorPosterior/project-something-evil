@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://eapqponxnen6"]
 
-[ext_resource type="Script" uid="uid://c338x3q1xigh5" path="res://grenade.gd" id="1_v44n1"]
-[ext_resource type="Texture2D" uid="uid://iv7y1w0foxu0" path="res://Assets/brackeys_platformer_assets/sprites/fruit.png" id="2_5rnft"]
-[ext_resource type="PackedScene" uid="uid://0mjg24r87fdm" path="res://Scenes/explosion.tscn" id="2_ft0g1"]
+[ext_resource type="Script" uid="uid://c338x3q1xigh5" path="res://Scripts/Projectiles & Hazards/grenade.gd" id="1_mnujr"]
+[ext_resource type="PackedScene" uid="uid://0mjg24r87fdm" path="res://Scenes/Projectiles & Hazards/explosion.tscn" id="2_bt3y8"]
+[ext_resource type="Texture2D" uid="uid://iv7y1w0foxu0" path="res://Assets/brackeys_platformer_assets/sprites/fruit.png" id="3_jwu0g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ft0g1"]
-atlas = ExtResource("2_5rnft")
+atlas = ExtResource("3_jwu0g")
 region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
@@ -24,8 +24,8 @@ radius = 3.0
 
 [node name="Grenade" type="RigidBody2D" unique_id=1120318695]
 collision_layer = 0
-script = ExtResource("1_v44n1")
-explosion_scene = ExtResource("2_ft0g1")
+script = ExtResource("1_mnujr")
+explosion_scene = ExtResource("2_bt3y8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=998986221]
 texture_filter = 1

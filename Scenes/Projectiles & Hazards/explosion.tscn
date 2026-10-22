@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://0mjg24r87fdm"]
 
-[ext_resource type="Script" uid="uid://0e0rgbv2ghu5" path="res://explosion.gd" id="1_aayv4"]
-[ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="3_k2xjm"]
+[ext_resource type="Script" uid="uid://0e0rgbv2ghu5" path="res://Scripts/Projectiles & Hazards/explosion.gd" id="1_l1ndb"]
+[ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="2_l6mky"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
 radius = 7.0
 
 [node name="Explosion" type="Node2D" unique_id=1567326832]
-script = ExtResource("1_aayv4")
+script = ExtResource("1_l1ndb")
 
 [node name="HitboxComponent" type="Area2D" parent="." unique_id=749721490]
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("3_k2xjm")
+script = ExtResource("2_l6mky")
 damage = 100
 metadata/_custom_type_script = "uid://bvtclq823uv2e"
 

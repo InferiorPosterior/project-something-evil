@@ -1,7 +1,7 @@
 # THIS IS THE GUN SCRIPT
 extends Node2D
 
-const PROJECTILE = preload("res://Scenes/projectile.tscn")
+const PROJECTILE = preload("res://Scenes/Projectiles & Hazards/projectile.tscn")
 
 @onready var muzzle: Marker2D = $Marker2D
 

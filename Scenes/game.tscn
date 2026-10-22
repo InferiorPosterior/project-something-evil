@@ -2,15 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://du0gmlf03hrwy" path="res://Scenes/player.tscn" id="1_qxrlw"]
 [ext_resource type="Texture2D" uid="uid://10cr4tqj3ryk" path="res://Assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://mmca50erry5u" path="res://Scenes/killzone.tscn" id="3_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://dr0tnjrfrv4q0" path="res://Scenes/enemy_gunner.tscn" id="5_i6g32"]
-[ext_resource type="PackedScene" uid="uid://uo5061t85jw5" path="res://Scenes/enemy_chaser.tscn" id="5_wowpa"]
-[ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/enemy_projectile.tscn" id="6_i6g32"]
-[ext_resource type="PackedScene" uid="uid://yvcb3rtoocwa" path="res://Scenes/enemy_lunger.tscn" id="7_1l0tm"]
-[ext_resource type="PackedScene" uid="uid://5ilkvk7ga1ba" path="res://Scenes/enemy_grenadier.tscn" id="8_v158k"]
-[ext_resource type="PackedScene" uid="uid://r0f1g28ne38f" path="res://Scenes/enemy_drone.tscn" id="10_ldgsr"]
-[ext_resource type="PackedScene" uid="uid://cjtpxifer0esd" path="res://Scenes/enemy.tscn" id="4_3dryh"]
-[ext_resource type="PackedScene" uid="uid://dj0s5hm5dgbqu" path="res://Scenes/pause_menu.tscn" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://mmca50erry5u" path="res://Scenes/Projectiles & Hazards/killzone.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://dr0tnjrfrv4q0" path="res://Scenes/Enemy NPC/enemy_gunner.tscn" id="5_i6g32"]
+[ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/Projectiles & Hazards/enemy_projectile.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://yvcb3rtoocwa" path="res://Scenes/Enemy NPC/enemy_lunger.tscn" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://uo5061t85jw5" path="res://Scenes/Enemy NPC/enemy_chaser.tscn" id="7_ldgsr"]
+[ext_resource type="PackedScene" uid="uid://5ilkvk7ga1ba" path="res://Scenes/Enemy NPC/enemy_grenadier.tscn" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://r0f1g28ne38f" path="res://Scenes/Enemy NPC/enemy_drone.tscn" id="10_ldgsr"]
+[ext_resource type="PackedScene" uid="uid://dnjby57ls370h" path="res://Scenes/Enemy NPC/enemy_turret.tscn" id="10_o5yvi"]
+[ext_resource type="PackedScene" uid="uid://m5n0v8xvcu2f" path="res://Scenes/Enemy NPC/enemy_brute.tscn" id="11_o5yvi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dryh"]
 texture = ExtResource("2_wrm1d")
@@ -189,7 +189,7 @@ distance = 41.0
 [node name="Game" type="Node2D" unique_id=1327516912]
 
 [node name="Player" parent="." unique_id=1827159017 instance=ExtResource("1_qxrlw")]
-position = Vector2(-25, 5)
+position = Vector2(-46, -47)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1455271406]
 zoom = Vector2(2, 2)
@@ -207,32 +207,17 @@ tile_set = SubResource("TileSet_g4v7s")
 position = Vector2(4, 172)
 shape = SubResource("WorldBoundaryShape2D_g4v7s")
 
-[node name="Enemy Chaser" parent="." unique_id=1510669204 instance=ExtResource("5_wowpa")]
-position = Vector2(103, -36)
-
 [node name="enemy_gunner" parent="." unique_id=1035780428 instance=ExtResource("5_i6g32")]
 position = Vector2(148, -6)
 
 [node name="enemy_projectile" parent="." unique_id=1706078183 instance=ExtResource("6_i6g32")]
 position = Vector2(88, -50)
 
-[node name="Enemy Chaser2" parent="." unique_id=782089927 instance=ExtResource("5_wowpa")]
-position = Vector2(49, -117)
-
 [node name="enemy_gunner2" parent="." unique_id=1833941546 instance=ExtResource("5_i6g32")]
 position = Vector2(-143, -117)
 
 [node name="enemy_gunner3" parent="." unique_id=1218203051 instance=ExtResource("5_i6g32")]
 position = Vector2(-234, -35)
-
-[node name="Enemy Chaser3" parent="." unique_id=1579689331 instance=ExtResource("5_wowpa")]
-position = Vector2(-191, 38)
-
-[node name="Enemy Chaser4" parent="." unique_id=125148368 instance=ExtResource("5_wowpa")]
-position = Vector2(-333, -102)
-
-[node name="Enemy Chaser5" parent="." unique_id=17333522 instance=ExtResource("5_wowpa")]
-position = Vector2(287, -76)
 
 [node name="Lunger" parent="." unique_id=946911435 instance=ExtResource("7_1l0tm")]
 position = Vector2(165, 1)
@@ -251,9 +236,27 @@ position = Vector2(-214, -118)
 
 [node name="Enemy Drone3" parent="." unique_id=2094363943 instance=ExtResource("10_ldgsr")]
 position = Vector2(129, -134)
-[node name="enemy3" parent="." unique_id=1176976929 instance=ExtResource("4_3dryh")]
-position = Vector2(-36, 2)
 
-[node name="MenuLayer" type="CanvasLayer" parent="." unique_id=1861627310]
+[node name="Enemy Chaser" parent="." unique_id=782089927 instance=ExtResource("7_ldgsr")]
+position = Vector2(-182, 47)
 
-[node name="PauseMenu" parent="MenuLayer" unique_id=1484971317 instance=ExtResource("5_wowpa")]
+[node name="Enemy Chaser2" parent="." unique_id=780939226 instance=ExtResource("7_ldgsr")]
+position = Vector2(116, -21)
+
+[node name="Enemy Chaser3" parent="." unique_id=637654625 instance=ExtResource("7_ldgsr")]
+position = Vector2(73, -117)
+
+[node name="Enemy Chaser4" parent="." unique_id=519846042 instance=ExtResource("7_ldgsr")]
+position = Vector2(-326, -103)
+
+[node name="Enemy Chaser5" parent="." unique_id=661655080 instance=ExtResource("7_ldgsr")]
+position = Vector2(285, -65)
+
+[node name="Turret" parent="." unique_id=564088818 instance=ExtResource("10_o5yvi")]
+position = Vector2(-204, -201)
+
+[node name="Turret2" parent="." unique_id=1023258102 instance=ExtResource("10_o5yvi")]
+position = Vector2(640, -118)
+
+[node name="EnemyBrute" parent="." unique_id=1882519906 instance=ExtResource("11_o5yvi")]
+position = Vector2(192, -3)
