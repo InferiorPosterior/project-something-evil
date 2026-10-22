@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://r0f1g28ne38f"]
 
-[ext_resource type="Script" uid="uid://dg86hy3xly3kc" path="res://Scripts/Enemies/enemy_drone.gd" id="1_mliai"]
+[ext_resource type="Script" uid="uid://dg86hy3xly3kc" path="res://Scripts/Enemies Scripts/enemy_drone.gd" id="1_mliai"]
 [ext_resource type="PackedScene" uid="uid://0mjg24r87fdm" path="res://Scenes/Projectiles & Hazards/explosion.tscn" id="2_mliai"]
 [ext_resource type="Texture2D" uid="uid://10cr4tqj3ryk" path="res://Assets/brackeys_platformer_assets/sprites/world_tileset.png" id="3_56cvy"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="4_avakj"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="5_rc4lj"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="6_6m58r"]
-[ext_resource type="Script" uid="uid://b61om2141170c" path="res://Scripts/State_Machine/enemies/drone_states/drone_idle.gd" id="7_wnxu5"]
-[ext_resource type="Script" uid="uid://b5n0glidrlnsv" path="res://Scripts/State_Machine/enemies/drone_states/drone_chase.gd" id="8_cukr8"]
+[ext_resource type="Script" uid="uid://b61om2141170c" path="res://Scripts/State_Machine/enemies states/drone_states/drone_idle.gd" id="7_wnxu5"]
+[ext_resource type="Script" uid="uid://b5n0glidrlnsv" path="res://Scripts/State_Machine/enemies states/drone_states/drone_chase.gd" id="8_cukr8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_by8gb"]
 atlas = ExtResource("3_56cvy")

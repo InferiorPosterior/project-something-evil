@@ -1,17 +1,20 @@
 [gd_scene format=3 uid="uid://m5n0v8xvcu2f"]
 
-[ext_resource type="Script" uid="uid://b1786qh5xpj1i" path="res://Scripts/Enemies/enemy_chaser.gd" id="1_spl3m"]
+[ext_resource type="Script" uid="uid://cmgqsvd3geh3r" path="res://Scripts/Enemies Scripts/enemy_lunger.gd" id="1_oo625"]
 [ext_resource type="Texture2D" uid="uid://10cr4tqj3ryk" path="res://Assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_ky8eb"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_wuqc8"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_m7fxu"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="5_ky8eb"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_plm84"]
-[ext_resource type="Script" uid="uid://cvafidr1h8wqe" path="res://Scripts/State_Machine/enemies/chaser_states/chaser_chase.gd" id="6_0ydaf"]
-[ext_resource type="Script" uid="uid://8owg1l4kc4kv" path="res://Scripts/State_Machine/enemies/chaser_states/chaser_fall.gd" id="7_k3500"]
-[ext_resource type="Script" uid="uid://cl5l0pkhbostk" path="res://Scripts/State_Machine/enemies/chaser_states/chaser_idle.gd" id="8_6ljl1"]
-[ext_resource type="Script" uid="uid://dukrgb6p37w66" path="res://Scripts/State_Machine/enemies/chaser_states/chaser_jump.gd" id="9_ww0h0"]
-[ext_resource type="Script" uid="uid://bco4t8p1j7xmc" path="res://Scenes/Enemy NPC/enemy_turret.gd" id="11_wuqc8"]
+[ext_resource type="Script" uid="uid://de57b7ybd0ypt" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_idle.gd" id="7_1svrq"]
+[ext_resource type="Script" uid="uid://54fbr05dt41e" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_chase.gd" id="8_cm1hv"]
+[ext_resource type="Script" uid="uid://cxx3nq1ca04q5" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_dash.gd" id="9_7dddd"]
+[ext_resource type="Script" uid="uid://eddu7frqs80j" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_fall.gd" id="10_fe3nl"]
+[ext_resource type="Script" uid="uid://barki6070a5mm" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_jump.gd" id="11_cb7mt"]
+[ext_resource type="Script" uid="uid://bbja6m2qna0ig" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_recover.gd" id="12_2520f"]
 [ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/Projectiles & Hazards/enemy_projectile.tscn" id="12_m7fxu"]
+[ext_resource type="Script" uid="uid://cpuksw8tpv4yj" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_windup.gd" id="13_hiuwt"]
+[ext_resource type="Script" uid="uid://bco4t8p1j7xmc" path="res://Scripts/Enemies Scripts/enemy_turret.gd" id="14_oo625"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hrxl"]
 atlas = ExtResource("2_ky8eb")
@@ -55,7 +58,7 @@ animations = [{
 
 [node name="EnemyBrute" type="CharacterBody2D" unique_id=946815017 node_paths=PackedStringArray("health")]
 collision_layer = 2
-script = ExtResource("1_spl3m")
+script = ExtResource("1_oo625")
 health = NodePath("HealthComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1768781975]
@@ -101,29 +104,44 @@ debug_color = Color(0.89684427, 0, 0.3093503, 0.41960785)
 
 [node name="StateMachine" type="Node" parent="." unique_id=1416348991 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_plm84")
-initial_state = NodePath("ChaserIdle")
+initial_state = NodePath("LungerIdle")
 metadata/_custom_type_script = "uid://cb8uqkistmuev"
 
-[node name="ChaserIdle" type="Node" parent="StateMachine" unique_id=779814020]
-script = ExtResource("8_6ljl1")
+[node name="LungerIdle" type="Node" parent="StateMachine" unique_id=779814020]
+script = ExtResource("7_1svrq")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
-[node name="ChaserChase" type="Node" parent="StateMachine" unique_id=140844755]
-script = ExtResource("6_0ydaf")
-speed = 25.0
+[node name="LungerChase" type="Node" parent="StateMachine" unique_id=673901272]
+script = ExtResource("8_cm1hv")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
-[node name="ChaserFall" type="Node" parent="StateMachine" unique_id=706093600]
-script = ExtResource("7_k3500")
+[node name="LungerDash" type="Node" parent="StateMachine" unique_id=103030372]
+script = ExtResource("9_7dddd")
+dash_speed = 250.0
+dash_distance = 150.0
 metadata/_custom_type_script = "uid://v1najhost2v"
 
-[node name="ChaserJump" type="Node" parent="StateMachine" unique_id=848531185]
-script = ExtResource("9_ww0h0")
+[node name="LungerFall" type="Node" parent="StateMachine" unique_id=866092842]
+script = ExtResource("10_fe3nl")
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="LungerJump" type="Node" parent="StateMachine" unique_id=1892561612]
+script = ExtResource("11_cb7mt")
+jump_velocity = -400.0
+air_speed = 20.0
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="LungerRecover" type="Node" parent="StateMachine" unique_id=353855079]
+script = ExtResource("12_2520f")
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="LungerWindup" type="Node" parent="StateMachine" unique_id=1476728159]
+script = ExtResource("13_hiuwt")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="Turret" type="Node2D" parent="." unique_id=310534396]
 position = Vector2(-9.536743e-07, -9.536743e-07)
-script = ExtResource("11_wuqc8")
+script = ExtResource("14_oo625")
 projectile_scene = ExtResource("12_m7fxu")
 burst_count = 5
 metadata/_custom_type_script = "uid://bco4t8p1j7xmc"

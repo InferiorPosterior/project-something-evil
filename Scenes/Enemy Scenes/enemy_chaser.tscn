@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://uo5061t85jw5"]
 
-[ext_resource type="Script" uid="uid://b1786qh5xpj1i" path="res://Scripts/Enemies/enemy_chaser.gd" id="1_dxnqk"]
+[ext_resource type="Script" uid="uid://b1786qh5xpj1i" path="res://Scripts/Enemies Scripts/enemy_chaser.gd" id="1_7r0yd"]
 [ext_resource type="Texture2D" uid="uid://dh6qsuul4h5n1" path="res://Assets/brackeys_platformer_assets/sprites/slime_green.png" id="2_xqekf"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_8xxap"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_u7ynu"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="5_10joo"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="6_uivkl"]
-[ext_resource type="Script" uid="uid://cl5l0pkhbostk" path="res://Scripts/State_Machine/enemies/chaser_states/chaser_idle.gd" id="7_gexx3"]
-[ext_resource type="Script" uid="uid://cvafidr1h8wqe" path="res://Scripts/State_Machine/enemies/chaser_states/chaser_chase.gd" id="8_a2512"]
-[ext_resource type="Script" uid="uid://dukrgb6p37w66" path="res://Scripts/State_Machine/enemies/chaser_states/chaser_jump.gd" id="9_fde8u"]
-[ext_resource type="Script" uid="uid://8owg1l4kc4kv" path="res://Scripts/State_Machine/enemies/chaser_states/chaser_fall.gd" id="10_roiwb"]
+[ext_resource type="Script" uid="uid://cl5l0pkhbostk" path="res://Scripts/State_Machine/enemies states/chaser_states/chaser_idle.gd" id="7_gexx3"]
+[ext_resource type="Script" uid="uid://cvafidr1h8wqe" path="res://Scripts/State_Machine/enemies states/chaser_states/chaser_chase.gd" id="8_a2512"]
+[ext_resource type="Script" uid="uid://dukrgb6p37w66" path="res://Scripts/State_Machine/enemies states/chaser_states/chaser_jump.gd" id="9_fde8u"]
+[ext_resource type="Script" uid="uid://8owg1l4kc4kv" path="res://Scripts/State_Machine/enemies states/chaser_states/chaser_fall.gd" id="10_roiwb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1f0kj"]
 atlas = ExtResource("2_xqekf")
@@ -38,7 +38,7 @@ size = Vector2(10.5, 10.5)
 
 [node name="Enemy Chaser" type="CharacterBody2D" unique_id=782089927 node_paths=PackedStringArray("health")]
 collision_layer = 2
-script = ExtResource("1_dxnqk")
+script = ExtResource("1_7r0yd")
 health = NodePath("HealthComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1754375138]

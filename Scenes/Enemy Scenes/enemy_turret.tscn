@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnjby57ls370h"]
 
-[ext_resource type="Script" uid="uid://bco4t8p1j7xmc" path="res://Scenes/Enemy NPC/enemy_turret.gd" id="1_tufdm"]
+[ext_resource type="Script" uid="uid://bco4t8p1j7xmc" path="res://Scripts/Enemies Scripts/enemy_turret.gd" id="1_tufdm"]
 [ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/Projectiles & Hazards/enemy_projectile.tscn" id="2_o5v45"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_0ukbd"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_nc2n5"]
