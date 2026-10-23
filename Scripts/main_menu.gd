@@ -4,10 +4,10 @@ extends Control
 # Runs when the main menu is ready.
 func _ready():
 	# Connects each button to its corresponding function.
-	$CenterContainer/Panel/VBoxContainer/StartButton.pressed.connect(_on_start_pressed)
-	$CenterContainer/Panel/VBoxContainer/LevelSelectButton.pressed.connect(_on_level_select_pressed)
-	$CenterContainer/Panel/VBoxContainer/SettingsButton.pressed.connect(_on_settings_pressed)
-	$CenterContainer/Panel/VBoxContainer/QuitButton.pressed.connect(_on_quit_pressed)
+	$CenterContainer/Panel/Control/StartButton.pressed.connect(_on_start_pressed)
+	$CenterContainer/Panel/Control/LevelSelectButton.pressed.connect(_on_level_select_pressed)
+	$CenterContainer/Panel/Control/SettingsButton.pressed.connect(_on_settings_pressed)
+	$CenterContainer/Panel/Control/QuitButton.pressed.connect(_on_quit_pressed)
 
 
 # Runs when Start Game is clicked.

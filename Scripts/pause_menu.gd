@@ -11,11 +11,11 @@ func _ready():
 
 	# Connects each button's pressed signal to its function.
 	# When a button is clicked, its corresponding function will run.
-	$CenterContainer/Panel/VBoxContainer/ResumeButton.pressed.connect(_on_resume_pressed)
-	$CenterContainer/Panel/VBoxContainer/RestartButton.pressed.connect(_on_restart_pressed)
-	$CenterContainer/Panel/VBoxContainer/LevelSelectButton.pressed.connect(_on_level_select_pressed)
-	$CenterContainer/Panel/VBoxContainer/MainMenuButton.pressed.connect(_on_main_menu_pressed)
-	$CenterContainer/Panel/VBoxContainer/QuitButton.pressed.connect(_on_quit_pressed)
+	$CenterContainer/Panel/Control/ResumeButton.pressed.connect(_on_resume_pressed)
+	$CenterContainer/Panel/Control/RestartButton.pressed.connect(_on_restart_pressed)
+	$CenterContainer/Panel/Control/LevelSelectButton.pressed.connect(_on_level_select_pressed)
+	$CenterContainer/Panel/Control/MainMenuButton.pressed.connect(_on_main_menu_pressed)
+	$CenterContainer/Panel/Control/QuitButton.pressed.connect(_on_quit_pressed)
 
 
 # Checks for keyboard input, such as pressing Escape.
