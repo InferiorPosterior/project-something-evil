@@ -1,4 +1,4 @@
-class_name Lunger extends Chaser
+class_name Lunger extends Enemy
 
 @export var sprite: CanvasItem                 # optional, tinted during windup
 @export var dash_range: float = 130.0          # dash starts when the player is closer than this

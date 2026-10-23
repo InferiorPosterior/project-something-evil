@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_cmo3a"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_sy457"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_erlcv"]
-[ext_resource type="Script" uid="uid://wrkc2s0mcu0m" path="res://Scripts/State_Machine/enemies states/gunner_states/gunner_idle.gd" id="6_ocs6a"]
+[ext_resource type="Script" uid="uid://cil401dbk8im1" path="res://Scripts/State_Machine/enemies states/template_states/enemy_idle.gd" id="7_4s8nx"]
 [ext_resource type="Script" uid="uid://da21m504xdct1" path="res://Scripts/State_Machine/enemies states/gunner_states/gunner_chase.gd" id="7_cmo3a"]
 [ext_resource type="Script" uid="uid://cftobmjh7y2ja" path="res://Scripts/State_Machine/enemies states/gunner_states/gunner_shoot.gd" id="8_sy457"]
-[ext_resource type="Script" uid="uid://p4tt7765gw5b" path="res://Scripts/State_Machine/enemies states/gunner_states/gunner_fall.gd" id="9_ocs6a"]
+[ext_resource type="Script" uid="uid://b2ec20sbyqpj7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_fall.gd" id="10_gdmyk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m1uqs"]
 atlas = ExtResource("2_ocs6a")
@@ -36,9 +36,9 @@ size = Vector2(12, 15)
 [node name="enemy_gunner" type="CharacterBody2D" unique_id=1035780428 node_paths=PackedStringArray("health")]
 collision_layer = 2
 script = ExtResource("1_p3jys")
-health = NodePath("HealthComponent")
 projectile_scene = ExtResource("2_cmo3a")
 shoot_exit_range = 170.0
+health = NodePath("HealthComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=630378448]
 texture_filter = 1
@@ -65,14 +65,14 @@ shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1553319908 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_erlcv")
-initial_state = NodePath("GunnerIdle")
+initial_state = NodePath("EnemyIdle")
 metadata/_custom_type_script = "uid://cb8uqkistmuev"
 
-[node name="GunnerIdle" type="Node" parent="StateMachine" unique_id=1203565556]
-script = ExtResource("6_ocs6a")
+[node name="EnemyIdle" type="Node" parent="StateMachine" unique_id=1203565556]
+script = ExtResource("7_4s8nx")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
-[node name="GunnerChase" type="Node" parent="StateMachine" unique_id=1703864335]
+[node name="EnemyChase" type="Node" parent="StateMachine" unique_id=1703864335]
 script = ExtResource("7_cmo3a")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
@@ -80,8 +80,8 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 script = ExtResource("8_sy457")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
-[node name="GunnerFall" type="Node" parent="StateMachine" unique_id=854893117]
-script = ExtResource("9_ocs6a")
+[node name="EnemyFall" type="Node" parent="StateMachine" unique_id=854893117]
+script = ExtResource("10_gdmyk")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]

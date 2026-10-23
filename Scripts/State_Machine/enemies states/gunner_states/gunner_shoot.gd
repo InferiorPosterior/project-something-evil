@@ -16,12 +16,12 @@ func physics_update(delta: float) -> void:
 	enemy.move_and_slide()
 
 	if not enemy.is_on_floor():
-		Transitioned.emit(self, "gunnerfall")
+		Transitioned.emit(self, "enemyfall")
 		return
 
 	# The key line: leave only when the player is beyond the LARGER exit range
 	if enemy.distance_to_player() > enemy.shoot_exit_range:
-		Transitioned.emit(self, "gunnerchase")
+		Transitioned.emit(self, "enemychase")
 		return
 
 	cooldown -= delta

@@ -17,4 +17,4 @@ func physics_update(delta: float) -> void:
 	if lunger.is_on_floor():            # if it ended the dash mid-air, it falls first, then the timer runs
 		timer -= delta
 		if timer <= 0.0:
-			Transitioned.emit(self, "lungerchase")
+			Transitioned.emit(self, "enemychase")

@@ -1,10 +1,5 @@
 # THIS IS ENEMY SCRIPT
-class_name Chaser extends CharacterBody2D
-
-@export var health: HealthComponent
-@export var detection_range: float = 300.0
-
-var player: Node2D
+class_name Chaser extends Enemy
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")

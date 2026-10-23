@@ -6,11 +6,11 @@
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_m7fxu"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="5_ky8eb"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_plm84"]
-[ext_resource type="Script" uid="uid://de57b7ybd0ypt" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_idle.gd" id="7_1svrq"]
+[ext_resource type="Script" uid="uid://cil401dbk8im1" path="res://Scripts/State_Machine/enemies states/template_states/enemy_idle.gd" id="7_oo625"]
 [ext_resource type="Script" uid="uid://54fbr05dt41e" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_chase.gd" id="8_cm1hv"]
+[ext_resource type="Script" uid="uid://b2ec20sbyqpj7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_fall.gd" id="9_1svrq"]
 [ext_resource type="Script" uid="uid://cxx3nq1ca04q5" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_dash.gd" id="9_7dddd"]
-[ext_resource type="Script" uid="uid://eddu7frqs80j" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_fall.gd" id="10_fe3nl"]
-[ext_resource type="Script" uid="uid://barki6070a5mm" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_jump.gd" id="11_cb7mt"]
+[ext_resource type="Script" uid="uid://4l6b3j53kxw7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_jump.gd" id="10_cm1hv"]
 [ext_resource type="Script" uid="uid://bbja6m2qna0ig" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_recover.gd" id="12_2520f"]
 [ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/Projectiles & Hazards/enemy_projectile.tscn" id="12_m7fxu"]
 [ext_resource type="Script" uid="uid://cpuksw8tpv4yj" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_windup.gd" id="13_hiuwt"]
@@ -104,31 +104,32 @@ debug_color = Color(0.89684427, 0, 0.3093503, 0.41960785)
 
 [node name="StateMachine" type="Node" parent="." unique_id=1416348991 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_plm84")
-initial_state = NodePath("LungerIdle")
+initial_state = NodePath("EnemyIdle")
 metadata/_custom_type_script = "uid://cb8uqkistmuev"
 
-[node name="LungerIdle" type="Node" parent="StateMachine" unique_id=779814020]
-script = ExtResource("7_1svrq")
+[node name="EnemyIdle" type="Node" parent="StateMachine" unique_id=779814020]
+script = ExtResource("7_oo625")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
-[node name="LungerChase" type="Node" parent="StateMachine" unique_id=673901272]
+[node name="EnemyChase" type="Node" parent="StateMachine" unique_id=673901272]
 script = ExtResource("8_cm1hv")
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="EnemyFall" type="Node" parent="StateMachine" unique_id=866092842]
+script = ExtResource("9_1svrq")
+air_speed = 40.0
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="EnemyJump" type="Node" parent="StateMachine" unique_id=1892561612]
+script = ExtResource("10_cm1hv")
+jump_velocity = -400.0
+air_speed = 20.0
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="LungerDash" type="Node" parent="StateMachine" unique_id=103030372]
 script = ExtResource("9_7dddd")
 dash_speed = 250.0
 dash_distance = 150.0
-metadata/_custom_type_script = "uid://v1najhost2v"
-
-[node name="LungerFall" type="Node" parent="StateMachine" unique_id=866092842]
-script = ExtResource("10_fe3nl")
-metadata/_custom_type_script = "uid://v1najhost2v"
-
-[node name="LungerJump" type="Node" parent="StateMachine" unique_id=1892561612]
-script = ExtResource("11_cb7mt")
-jump_velocity = -400.0
-air_speed = 20.0
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="LungerRecover" type="Node" parent="StateMachine" unique_id=353855079]

@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_u7ynu"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="5_10joo"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="6_uivkl"]
-[ext_resource type="Script" uid="uid://cl5l0pkhbostk" path="res://Scripts/State_Machine/enemies states/chaser_states/chaser_idle.gd" id="7_gexx3"]
-[ext_resource type="Script" uid="uid://cvafidr1h8wqe" path="res://Scripts/State_Machine/enemies states/chaser_states/chaser_chase.gd" id="8_a2512"]
-[ext_resource type="Script" uid="uid://dukrgb6p37w66" path="res://Scripts/State_Machine/enemies states/chaser_states/chaser_jump.gd" id="9_fde8u"]
-[ext_resource type="Script" uid="uid://8owg1l4kc4kv" path="res://Scripts/State_Machine/enemies states/chaser_states/chaser_fall.gd" id="10_roiwb"]
+[ext_resource type="Script" uid="uid://bjfb0olodnc4" path="res://Scripts/State_Machine/enemies states/template_states/enemy_chase.gd" id="7_7r0yd"]
+[ext_resource type="Script" uid="uid://b2ec20sbyqpj7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_fall.gd" id="8_53gau"]
+[ext_resource type="Script" uid="uid://cil401dbk8im1" path="res://Scripts/State_Machine/enemies states/template_states/enemy_idle.gd" id="9_yhon1"]
+[ext_resource type="Script" uid="uid://4l6b3j53kxw7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_jump.gd" id="10_ic7aa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1f0kj"]
 atlas = ExtResource("2_xqekf")
@@ -77,23 +77,25 @@ debug_color = Color(0.9947129, 0, 0.22507519, 0.41960785)
 
 [node name="StateMachine" type="Node" parent="." unique_id=247798106 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("6_uivkl")
-initial_state = NodePath("ChaserIdle")
+initial_state = NodePath("EnemyIdle")
 metadata/_custom_type_script = "uid://cb8uqkistmuev"
 
-[node name="ChaserIdle" type="Node" parent="StateMachine" unique_id=681828267]
-script = ExtResource("7_gexx3")
+[node name="EnemyIdle" type="Node" parent="StateMachine" unique_id=681828267]
+script = ExtResource("9_yhon1")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
-[node name="ChaserChase" type="Node" parent="StateMachine" unique_id=1942116877]
-script = ExtResource("8_a2512")
+[node name="EnemyChase" type="Node" parent="StateMachine" unique_id=1942116877]
+script = ExtResource("7_7r0yd")
+speed = 175.0
 metadata/_custom_type_script = "uid://v1najhost2v"
 
-[node name="ChaserJump" type="Node" parent="StateMachine" unique_id=608332537]
-script = ExtResource("9_fde8u")
+[node name="EnemyJump" type="Node" parent="StateMachine" unique_id=608332537]
+script = ExtResource("10_ic7aa")
+jump_velocity = -400.0
 metadata/_custom_type_script = "uid://v1najhost2v"
 
-[node name="ChaserFall" type="Node" parent="StateMachine" unique_id=1689923382]
-script = ExtResource("10_roiwb")
+[node name="EnemyFall" type="Node" parent="StateMachine" unique_id=1689923382]
+script = ExtResource("8_53gau")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]

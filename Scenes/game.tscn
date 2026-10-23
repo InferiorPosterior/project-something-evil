@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://r0f1g28ne38f" path="res://Scenes/Enemy Scenes/enemy_drone.tscn" id="10_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://dnjby57ls370h" path="res://Scenes/Enemy Scenes/enemy_turret.tscn" id="10_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://m5n0v8xvcu2f" path="res://Scenes/Enemy Scenes/enemy_brute.tscn" id="11_o5yvi"]
+[ext_resource type="PackedScene" uid="uid://dmnlokqsd6m4n" path="res://Scenes/Enemy Scenes/enemy_template.tscn" id="12_rku1e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dryh"]
 texture = ExtResource("2_wrm1d")
@@ -189,11 +190,12 @@ distance = 41.0
 [node name="Game" type="Node2D" unique_id=1327516912]
 
 [node name="Player" parent="." unique_id=1827159017 instance=ExtResource("1_qxrlw")]
-position = Vector2(477, -15)
+position = Vector2(433, -26)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1455271406]
 zoom = Vector2(2, 2)
-limit_bottom = 170
+limit_top = -9999999
+limit_bottom = 171
 position_smoothing_enabled = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2062931773]
@@ -229,7 +231,7 @@ position = Vector2(-291, -110)
 position = Vector2(265, -56)
 
 [node name="enemy_grenadier2" parent="." unique_id=724559770 instance=ExtResource("8_v158k")]
-position = Vector2(-307, -94)
+position = Vector2(-116, -108)
 
 [node name="Enemy Drone2" parent="." unique_id=176958397 instance=ExtResource("10_ldgsr")]
 position = Vector2(-214, -118)
@@ -255,14 +257,11 @@ position = Vector2(285, -65)
 [node name="Turret" parent="." unique_id=564088818 instance=ExtResource("10_o5yvi")]
 position = Vector2(-204, -201)
 
-[node name="Turret2" parent="." unique_id=1023258102 instance=ExtResource("10_o5yvi")]
-position = Vector2(640, -118)
-
 [node name="EnemyBrute" parent="." unique_id=1882519906 instance=ExtResource("11_o5yvi")]
 position = Vector2(192, -3)
 
-[node name="EnemyBrute2" parent="." unique_id=946815017 instance=ExtResource("11_o5yvi")]
-position = Vector2(672, 36)
+[node name="Enemy" parent="." unique_id=1675068042 instance=ExtResource("12_rku1e")]
+position = Vector2(589, -23)
 
-[node name="Enemy Chaser6" parent="." unique_id=1818291409 instance=ExtResource("7_ldgsr")]
-position = Vector2(653, 43)
+[node name="EnemyBrute2" parent="." unique_id=946815017 instance=ExtResource("11_o5yvi")]
+position = Vector2(548, -24)
