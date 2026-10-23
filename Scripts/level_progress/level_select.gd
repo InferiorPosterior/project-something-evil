@@ -8,15 +8,15 @@ func _ready():
 	#This lets the level select to work while the game is paused.
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
-	$Background/CenterContainer/Panel/VBoxContainer/Level1Button.pressed.connect(_on_level1_pressed)
-	$Background/CenterContainer/Panel/VBoxContainer/Level2Button.pressed.connect(_on_level2_pressed)
-	$Background/CenterContainer/Panel/VBoxContainer/BackButton.pressed.connect(_on_back_pressed)
+	$Background/CenterContainer/Panel/Control/Level1Button.pressed.connect(_on_level1_pressed)
+	$Background/CenterContainer/Panel/Control/Level2Button.pressed.connect(_on_level2_pressed)
+	$Background/CenterContainer/Panel/Control/BackButton.pressed.connect(_on_back_pressed)
 
 	update_level_buttons()
 
 
 func update_level_buttons():
-	var level2_button = $Background/CenterContainer/Panel/VBoxContainer/Level2Button
+	var level2_button = $Background/CenterContainer/Panel/Control/Level2Button
 
 	if GameProgress.level2_unlocked:
 		level2_button.text = "LEVEL 2 — THE OUTSKIRTS"
