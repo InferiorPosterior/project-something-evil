@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://mmpqitv0reny"]
+
+[ext_resource type="Script" uid="uid://k13jaf2ncu3e" path="res://Scripts/Enemies Scripts/APC Boss Scripts/apc_boss.gd" id="1_0fl87"]
+[ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="1_g6mq4"]
+[ext_resource type="Texture2D" uid="uid://10cr4tqj3ryk" path="res://Assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_glyfn"]
+[ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="2_otfy1"]
+[ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="3_6avjl"]
+[ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_m8pev"]
+[ext_resource type="Script" uid="uid://sgptb7btrx7u" path="res://Scripts/State_Machine/enemies states/apc_states/apc_move.gd" id="6_m8pev"]
+[ext_resource type="Script" uid="uid://cp2x0ku2oamdg" path="res://Scripts/State_Machine/enemies states/apc_states/apc_ram.gd" id="7_glyfn"]
+[ext_resource type="Script" uid="uid://bco4t8p1j7xmc" path="res://Scripts/Enemies Scripts/enemy_turret.gd" id="9_1hf45"]
+[ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/Projectiles & Hazards/enemy_projectile.tscn" id="10_fwsd2"]
+[ext_resource type="Script" uid="uid://bu318nmfhttbt" path="res://Scripts/Enemies Scripts/APC Boss Scripts/apc_turret.gd" id="11_0fl87"]
+[ext_resource type="Script" uid="uid://b1o2tdp53ap1x" path="res://Scripts/Enemies Scripts/APC Boss Scripts/autocannon.gd" id="12_hs51q"]
+[ext_resource type="Script" uid="uid://bwp4gdkvry6is" path="res://Scripts/Enemies Scripts/APC Boss Scripts/missile_pod.gd" id="13_0fl87"]
+[ext_resource type="PackedScene" uid="uid://bhq3we2aqqr4r" path="res://Scenes/Projectiles & Hazards/APC Boss Projectiles/explosive_bullet.tscn" id="13_4rn6l"]
+[ext_resource type="PackedScene" uid="uid://cbw4etvuicd2r" path="res://Scenes/Projectiles & Hazards/APC Boss Projectiles/missile.tscn" id="15_4rn6l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hf45"]
+atlas = ExtResource("2_glyfn")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1hf45"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hf45")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwsd2"]
+size = Vector2(88, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(96, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(92, 37)
+
+[node name="APC Boss" type="CharacterBody2D" unique_id=309457165 node_paths=PackedStringArray("health")]
+collision_layer = 2
+script = ExtResource("1_0fl87")
+health = NodePath("HealthComponent")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1069567222]
+texture_filter = 1
+position = Vector2(39.999996, -15.999998)
+scale = Vector2(5.9999995, 3)
+sprite_frames = SubResource("SpriteFrames_1hf45")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=728455122]
+position = Vector2(40, -16)
+shape = SubResource("RectangleShape2D_fwsd2")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=673880358]
+script = ExtResource("1_g6mq4")
+max_health = 7000
+metadata/_custom_type_script = "uid://ngsma3hy4ktw"
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=2002221397 node_paths=PackedStringArray("health")]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("2_otfy1")
+health = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://bxvhy0cwrfk4k"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1144396134]
+position = Vector2(40, -16)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0, 0.6437861, 0.2993289, 0.41960785)
+
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=965676545]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("3_6avjl")
+damage = 100
+metadata/_custom_type_script = "uid://bvtclq823uv2e"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1401890068]
+position = Vector2(40, -13)
+shape = SubResource("RectangleShape2D_yf5fn")
+debug_color = Color(0.9902335, 0, 0.2865104, 0.41960785)
+
+[node name="StateMachine" type="Node" parent="." unique_id=2064242997 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_m8pev")
+initial_state = NodePath("ApcMove")
+metadata/_custom_type_script = "uid://cb8uqkistmuev"
+
+[node name="ApcMove" type="Node" parent="StateMachine" unique_id=1894332031]
+script = ExtResource("6_m8pev")
+max_speed = 250.0
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="ApcRam" type="Node" parent="StateMachine" unique_id=1835589118]
+script = ExtResource("7_glyfn")
+ram_speed = 300.0
+cooldown = 2.0
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="Gunport" type="Node2D" parent="." unique_id=535822479]
+position = Vector2(52, -14)
+script = ExtResource("9_1hf45")
+projectile_scene = ExtResource("10_fwsd2")
+burst_count = 1
+burst_cooldown = 2.0
+
+[node name="Gunport2" type="Node2D" parent="." unique_id=98345570]
+position = Vector2(71, -14)
+script = ExtResource("9_1hf45")
+projectile_scene = ExtResource("10_fwsd2")
+burst_count = 1
+burst_cooldown = 2.0
+
+[node name="APC Turret" type="Node2D" parent="." unique_id=1270499741 node_paths=PackedStringArray("autocannon", "missile_pod")]
+position = Vector2(41, -34)
+script = ExtResource("11_0fl87")
+autocannon = NodePath("Autocannon")
+missile_pod = NodePath("MissilePod")
+
+[node name="Autocannon" type="Node2D" parent="APC Turret" unique_id=1846822682]
+script = ExtResource("12_hs51q")
+bullet_scene = ExtResource("13_4rn6l")
+bullet_speed = 500.0
+max_ammo = 10
+fire_interval = 0.3
+aim_turn_speed = 160.0
+
+[node name="MissilePod" type="Node2D" parent="APC Turret" unique_id=438773991]
+script = ExtResource("13_0fl87")
+missile_scene = ExtResource("15_4rn6l")
+launch_speed = 300.0
+max_ammo = 6
+fire_interval = 0.2
+aim_turn_speed = 300.0
+
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[connection signal="damage_taken" from="HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c458i44of23ti" path="res://Scripts/Enemies Scripts/enemy_gunner.gd" id="1_p3jys"]
 [ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/Projectiles & Hazards/enemy_projectile.tscn" id="2_cmo3a"]
-[ext_resource type="Texture2D" uid="uid://c4glaoucnu8v5" path="res://Assets/brackeys_platformer_assets/sprites/slime_purple.png" id="2_ocs6a"]
+[ext_resource type="Texture2D" uid="uid://cv0fias1itxqh" path="res://Assets/concept works.png" id="3_4s8nx"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_cmo3a"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_sy457"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_erlcv"]
@@ -11,15 +11,15 @@
 [ext_resource type="Script" uid="uid://cftobmjh7y2ja" path="res://Scripts/State_Machine/enemies states/gunner_states/gunner_shoot.gd" id="8_sy457"]
 [ext_resource type="Script" uid="uid://b2ec20sbyqpj7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_fall.gd" id="10_gdmyk"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m1uqs"]
-atlas = ExtResource("2_ocs6a")
-region = Rect2(0, 54, 24, 18)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdmyk"]
+atlas = ExtResource("3_4s8nx")
+region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m1uqs")
+"texture": SubResource("AtlasTexture_gdmyk")
 }],
 "loop": 1,
 "name": &"default",
@@ -28,10 +28,10 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
 radius = 4.0
-height = 14.0
+height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(12, 15)
+size = Vector2(10, 17.5)
 
 [node name="enemy_gunner" type="CharacterBody2D" unique_id=1035780428 node_paths=PackedStringArray("health")]
 collision_layer = 2
@@ -45,7 +45,6 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1603164321]
-position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_g4v7s")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=2064934179]
@@ -60,8 +59,9 @@ health = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://bxvhy0cwrfk4k"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1458053444]
-position = Vector2(0, 1)
+position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0, 0.6469602, 0.23176917, 0.41960785)
 
 [node name="StateMachine" type="Node" parent="." unique_id=1553319908 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_erlcv")

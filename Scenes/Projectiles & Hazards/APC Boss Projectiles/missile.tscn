@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cbw4etvuicd2r"]
+
+[ext_resource type="Script" uid="uid://c3axv0s2k0ffg" path="res://Scripts/Projectiles & Hazards/APC Boss Projectiles/missile.gd" id="1_74jc8"]
+[ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/Projectiles & Hazards/enemy_projectile.tscn" id="2_74jc8"]
+[ext_resource type="Texture2D" uid="uid://iv7y1w0foxu0" path="res://Assets/brackeys_platformer_assets/sprites/fruit.png" id="2_m3gak"]
+[ext_resource type="PackedScene" uid="uid://0mjg24r87fdm" path="res://Scenes/Projectiles & Hazards/explosion.tscn" id="3_3vvx7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74jc8"]
+atlas = ExtResource("2_m3gak")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74jc8")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 4.472136
+
+[node name="Missile" type="Area2D" unique_id=1863625204]
+script = ExtResource("1_74jc8")
+burst_scene = ExtResource("2_74jc8")
+explosion_scene = ExtResource("3_3vvx7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=509173518]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=475502961]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_g4v7s")
