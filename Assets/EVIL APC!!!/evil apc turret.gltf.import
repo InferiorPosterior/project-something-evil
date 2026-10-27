@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bko2eoaw6712"
-path="res://.godot/imported/evil_apc.gltf-f1a194825a4fd7cc680f4b895013dbfd.scn"
+uid="uid://nt1w60xs0y1m"
+path="res://.godot/imported/evil apc turret.gltf-8e700ecbad2e36814005b7ee485cf684.scn"
 
 [deps]
 
-source_file="res://Assets/evil_apc.gltf"
-dest_files=["res://.godot/imported/evil_apc.gltf-f1a194825a4fd7cc680f4b895013dbfd.scn"]
+source_file="res://Assets/EVIL APC!!!/evil apc turret.gltf"
+dest_files=["res://.godot/imported/evil apc turret.gltf-8e700ecbad2e36814005b7ee485cf684.scn"]
 
 [params]
 
