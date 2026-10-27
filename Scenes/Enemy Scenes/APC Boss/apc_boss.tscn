@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://k13jaf2ncu3e" path="res://Scripts/Enemies Scripts/APC Boss Scripts/apc_boss.gd" id="1_0fl87"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="1_g6mq4"]
-[ext_resource type="Texture2D" uid="uid://10cr4tqj3ryk" path="res://Assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_glyfn"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="2_otfy1"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="3_6avjl"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_m8pev"]
@@ -15,44 +14,25 @@
 [ext_resource type="Script" uid="uid://bwp4gdkvry6is" path="res://Scripts/Enemies Scripts/APC Boss Scripts/missile_pod.gd" id="13_0fl87"]
 [ext_resource type="PackedScene" uid="uid://bhq3we2aqqr4r" path="res://Scenes/Projectiles & Hazards/APC Boss Projectiles/explosive_bullet.tscn" id="13_4rn6l"]
 [ext_resource type="PackedScene" uid="uid://cbw4etvuicd2r" path="res://Scenes/Projectiles & Hazards/APC Boss Projectiles/missile.tscn" id="15_4rn6l"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1hf45"]
-atlas = ExtResource("2_glyfn")
-region = Rect2(80, 32, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1hf45"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1hf45")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="PackedScene" uid="uid://bko2eoaw6712" path="res://Assets/evil_apc.gltf" id="15_ph24p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwsd2"]
-size = Vector2(88, 48)
+size = Vector2(182, 57)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(96, 48)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4rn6l"]
+radius = 27.0
+height = 218.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
-size = Vector2(92, 37)
+size = Vector2(192, 37.5)
 
 [node name="APC Boss" type="CharacterBody2D" unique_id=309457165 node_paths=PackedStringArray("health")]
 collision_layer = 2
 script = ExtResource("1_0fl87")
 health = NodePath("HealthComponent")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1069567222]
-texture_filter = 1
-position = Vector2(39.999996, -15.999998)
-scale = Vector2(5.9999995, 3)
-sprite_frames = SubResource("SpriteFrames_1hf45")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=728455122]
-position = Vector2(40, -16)
+position = Vector2(2, -19.5)
 shape = SubResource("RectangleShape2D_fwsd2")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=673880358]
@@ -68,8 +48,9 @@ health = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://bxvhy0cwrfk4k"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1144396134]
-position = Vector2(40, -16)
-shape = SubResource("RectangleShape2D_g4v7s")
+position = Vector2(2, -23)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_4rn6l")
 debug_color = Color(0, 0.6437861, 0.2993289, 0.41960785)
 
 [node name="HitboxComponent" type="Area2D" parent="." unique_id=965676545]
@@ -80,7 +61,7 @@ damage = 100
 metadata/_custom_type_script = "uid://bvtclq823uv2e"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1401890068]
-position = Vector2(40, -13)
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_yf5fn")
 debug_color = Color(0.9902335, 0, 0.2865104, 0.41960785)
 
@@ -115,12 +96,13 @@ burst_count = 1
 burst_cooldown = 2.0
 
 [node name="APC Turret" type="Node2D" parent="." unique_id=1270499741 node_paths=PackedStringArray("autocannon", "missile_pod")]
-position = Vector2(41, -34)
+position = Vector2(15, -46)
 script = ExtResource("11_0fl87")
 autocannon = NodePath("Autocannon")
 missile_pod = NodePath("MissilePod")
 
 [node name="Autocannon" type="Node2D" parent="APC Turret" unique_id=1846822682]
+position = Vector2(0, -16)
 script = ExtResource("12_hs51q")
 bullet_scene = ExtResource("13_4rn6l")
 bullet_speed = 500.0
@@ -129,12 +111,51 @@ fire_interval = 0.3
 aim_turn_speed = 160.0
 
 [node name="MissilePod" type="Node2D" parent="APC Turret" unique_id=438773991]
+position = Vector2(-15, -31)
 script = ExtResource("13_0fl87")
 missile_scene = ExtResource("15_4rn6l")
 launch_speed = 300.0
 max_ammo = 6
 fire_interval = 0.2
 aim_turn_speed = 300.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1518865646]
+texture_filter = 1
+custom_minimum_size = Vector2(204, 204)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -120.0
+offset_right = 455.99994
+offset_bottom = 348.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch = true
+stretch_shrink = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1594926532]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(279, 234)
+render_target_update_mode = 4
+
+[node name="blockbench_export" parent="SubViewportContainer/SubViewport" unique_id=833386423 instance=ExtResource("15_ph24p")]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1783782207]
+transform = Transform3D(-0.17364821, 0, 0.9848078, 0, 1, 0, -0.9848078, 0, -0.17364821, 9, 2, -1.1972595)
+keep_aspect = 0
+projection = 1
+size = 11.23
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" unique_id=1349367906]
+transform = Transform3D(1, 0, 0, 0, -1, 8.940697e-08, 0, -8.940697e-08, -1, 0, 6, -4)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" unique_id=870000281]
+transform = Transform3D(0.9659258, 0, 0.25881907, -0.258819, 0, 0.9659258, 0, -1, 0, 0, 6, 5)
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
 [connection signal="damage_taken" from="HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]

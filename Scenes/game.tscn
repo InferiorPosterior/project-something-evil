@@ -190,7 +190,7 @@ distance = 41.0
 [node name="Game" type="Node2D" unique_id=1327516912]
 
 [node name="Player" parent="." unique_id=1827159017 instance=ExtResource("1_qxrlw")]
-position = Vector2(413, -35)
+position = Vector2(385, -18)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1455271406]
 zoom = Vector2(2, 2)
@@ -261,4 +261,4 @@ position = Vector2(-204, -201)
 position = Vector2(192, -3)
 
 [node name="APC Boss" parent="." unique_id=309457165 instance=ExtResource("12_rku1e")]
-position = Vector2(619, -9)
+position = Vector2(605, -16)

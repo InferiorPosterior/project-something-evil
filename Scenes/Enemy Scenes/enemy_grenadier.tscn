@@ -49,6 +49,7 @@ shape = SubResource("CapsuleShape2D_jyajp")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=423890900]
 script = ExtResource("4_o836l")
+max_health = 300
 metadata/_custom_type_script = "uid://ngsma3hy4ktw"
 
 [node name="HurtboxComponent" type="Area2D" parent="." unique_id=236454442 node_paths=PackedStringArray("health")]
