@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c458i44of23ti" path="res://Scripts/Enemies Scripts/enemy_gunner.gd" id="1_p3jys"]
 [ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/Projectiles & Hazards/enemy_projectile.tscn" id="2_cmo3a"]
-[ext_resource type="Texture2D" uid="uid://cv0fias1itxqh" path="res://Assets/concept works.png" id="3_4s8nx"]
+[ext_resource type="Texture2D" uid="uid://cv8epjl4rc86s" path="res://Assets/something_evil_assets/sprites/concept works.png" id="3_4s8nx"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_cmo3a"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_sy457"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_erlcv"]

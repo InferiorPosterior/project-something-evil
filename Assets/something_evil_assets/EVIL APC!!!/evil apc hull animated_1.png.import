@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kblfhlh7gerb"
-path.s3tc="res://.godot/imported/evil apc autocannon_0.png-9856c813d717ba7008ca0a41fb357db4.s3tc.ctex"
+uid="uid://drupmre3n7x3s"
+path.s3tc="res://.godot/imported/evil apc hull animated_1.png-26b9ffd3f9a99ff55b798890d56399ef.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "af51dad8f3473d3db0f5d4481884e0ba"
+"md5": "fa0772d6f7ef7193425c4719d9f6c0d8"
 }
 
 [deps]
 
-source_file="res://Assets/EVIL APC!!!/evil apc autocannon_0.png"
-dest_files=["res://.godot/imported/evil apc autocannon_0.png-9856c813d717ba7008ca0a41fb357db4.s3tc.ctex"]
+source_file="res://Assets/something_evil_assets/EVIL APC!!!/evil apc hull animated_1.png"
+dest_files=["res://.godot/imported/evil apc hull animated_1.png-26b9ffd3f9a99ff55b798890d56399ef.s3tc.ctex"]
 
 [params]
 

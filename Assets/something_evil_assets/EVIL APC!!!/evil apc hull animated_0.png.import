@@ -1,0 +1,44 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://by1jih1iija54"
+path.s3tc="res://.godot/imported/evil apc hull animated_0.png-b6daa8ce49358e6d64a1655d5c2e5209.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "1fd3c3065f127c2d268a890d1284ce0d"
+}
+
+[deps]
+
+source_file="res://Assets/something_evil_assets/EVIL APC!!!/evil apc hull animated_0.png"
+dest_files=["res://.godot/imported/evil apc hull animated_0.png-b6daa8ce49358e6d64a1655d5c2e5209.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

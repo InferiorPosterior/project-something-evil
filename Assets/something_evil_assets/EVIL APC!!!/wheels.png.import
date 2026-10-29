@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by1jih1iija54"
-path.s3tc="res://.godot/imported/evil apc hull animated_0.png-053d644f7503c58d6663a59e85414074.s3tc.ctex"
+uid="uid://bomnygx5paolp"
+path.s3tc="res://.godot/imported/wheels.png-340158676a15baf65ca55292c411d3f6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "1fd3c3065f127c2d268a890d1284ce0d"
-}
 
 [deps]
 
-source_file="res://Assets/EVIL APC!!!/evil apc hull animated_0.png"
-dest_files=["res://.godot/imported/evil apc hull animated_0.png-053d644f7503c58d6663a59e85414074.s3tc.ctex"]
+source_file="res://Assets/something_evil_assets/EVIL APC!!!/wheels.png"
+dest_files=["res://.godot/imported/wheels.png-340158676a15baf65ca55292c411d3f6.s3tc.ctex"]
 
 [params]
 

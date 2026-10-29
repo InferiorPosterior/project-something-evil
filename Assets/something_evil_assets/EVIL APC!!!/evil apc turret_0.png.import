@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drupmre3n7x3s"
-path.s3tc="res://.godot/imported/evil apc hull animated_1.png-69e2aee5fe5b36d9e0406525ead42897.s3tc.ctex"
+uid="uid://cyu5unx7d3vq0"
+path.s3tc="res://.godot/imported/evil apc turret_0.png-d2b85ea96373438770199cf96e7fd1f7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "fa0772d6f7ef7193425c4719d9f6c0d8"
+"md5": "82122cab7e48ad043cd922ab9951e33e"
 }
 
 [deps]
 
-source_file="res://Assets/EVIL APC!!!/evil apc hull animated_1.png"
-dest_files=["res://.godot/imported/evil apc hull animated_1.png-69e2aee5fe5b36d9e0406525ead42897.s3tc.ctex"]
+source_file="res://Assets/something_evil_assets/EVIL APC!!!/evil apc turret_0.png"
+dest_files=["res://.godot/imported/evil apc turret_0.png-d2b85ea96373438770199cf96e7fd1f7.s3tc.ctex"]
 
 [params]
 

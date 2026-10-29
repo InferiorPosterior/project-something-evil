@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://1m6qpm55mnky"
-path="res://.godot/imported/evil apc hull animated.gltf-9c2f2affd3eb6a4f54ae7bf81c8f42c7.scn"
+path="res://.godot/imported/evil apc hull animated.gltf-1c16378ce13cd1e39cb8ada047ddfd57.scn"
 
 [deps]
 
-source_file="res://Assets/EVIL APC!!!/evil apc hull animated.gltf"
-dest_files=["res://.godot/imported/evil apc hull animated.gltf-9c2f2affd3eb6a4f54ae7bf81c8f42c7.scn"]
+source_file="res://Assets/something_evil_assets/EVIL APC!!!/evil apc hull animated.gltf"
+dest_files=["res://.godot/imported/evil apc hull animated.gltf-1c16378ce13cd1e39cb8ada047ddfd57.scn"]
 
 [params]
 

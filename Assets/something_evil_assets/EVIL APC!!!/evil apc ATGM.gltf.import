@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://6o20h7desytw"
-path="res://.godot/imported/evil apc ATGM.gltf-ad51454070cd01324c3e7ad1d1e878b9.scn"
+path="res://.godot/imported/evil apc ATGM.gltf-b10d374ea691fe1e823b85781af6a2a3.scn"
 
 [deps]
 
-source_file="res://Assets/EVIL APC!!!/evil apc ATGM.gltf"
-dest_files=["res://.godot/imported/evil apc ATGM.gltf-ad51454070cd01324c3e7ad1d1e878b9.scn"]
+source_file="res://Assets/something_evil_assets/EVIL APC!!!/evil apc ATGM.gltf"
+dest_files=["res://.godot/imported/evil apc ATGM.gltf-b10d374ea691fe1e823b85781af6a2a3.scn"]
 
 [params]
 

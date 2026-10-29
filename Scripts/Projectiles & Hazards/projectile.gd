@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPEED: int = 500
+@export var speed: int = 500
 
 func _ready() -> void:
 	$HitboxComponent.hit_landed.connect(queue_free)
@@ -8,7 +8,7 @@ func _ready() -> void:
 	queue_free()
 
 func _physics_process(delta: float) -> void:
-	position += transform.x * SPEED * delta
+	position += transform.x * speed * delta
 
 func _on_body_entered(_body: Node2D) -> void:
 	queue_free()

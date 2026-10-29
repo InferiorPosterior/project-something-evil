@@ -1,8 +1,44 @@
 [gd_scene format=3 uid="uid://ojud4fm5r1iq"]
 
 [ext_resource type="Script" uid="uid://m00qckebn6sw" path="res://Scripts/Projectiles & Hazards/enemy_projectile.gd" id="1_ibebl"]
-[ext_resource type="Texture2D" uid="uid://cmmxkabjcfuj4" path="res://Assets/brackeys_platformer_assets/sprites/coin.png" id="2_gjudp"]
+[ext_resource type="Texture2D" uid="uid://dmg5skl6tsooe" path="res://Assets/projectile_spritesheet.png" id="2_r7ko4"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="3_gjudp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axcaf"]
+atlas = ExtResource("2_r7ko4")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cujuh"]
+atlas = ExtResource("2_r7ko4")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22bwp"]
+atlas = ExtResource("2_r7ko4")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vht7f"]
+atlas = ExtResource("2_r7ko4")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axcaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cujuh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22bwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vht7f")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 radius = 3.0
@@ -14,11 +50,11 @@ radius = 3.0
 collision_layer = 0
 script = ExtResource("1_ibebl")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=861592565]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=283977698]
 texture_filter = 1
-texture = ExtResource("2_gjudp")
-region_enabled = true
-region_rect = Rect2(96, 0, 16, 16)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+autoplay = "default"
+speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=606926]
 shape = SubResource("CircleShape2D_g4v7s")
@@ -27,7 +63,7 @@ shape = SubResource("CircleShape2D_g4v7s")
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("3_gjudp")
-damage = 1000
+damage = 100
 metadata/_custom_type_script = "uid://bvtclq823uv2e"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=352838066]

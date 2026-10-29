@@ -14,10 +14,10 @@
 [ext_resource type="Script" uid="uid://bwp4gdkvry6is" path="res://Scripts/Enemies Scripts/APC Boss Scripts/missile_pod.gd" id="13_0fl87"]
 [ext_resource type="PackedScene" uid="uid://bhq3we2aqqr4r" path="res://Scenes/Projectiles & Hazards/APC Boss Projectiles/explosive_bullet.tscn" id="13_4rn6l"]
 [ext_resource type="PackedScene" uid="uid://cbw4etvuicd2r" path="res://Scenes/Projectiles & Hazards/APC Boss Projectiles/missile.tscn" id="15_4rn6l"]
-[ext_resource type="PackedScene" uid="uid://btifvfwxmt2pc" path="res://Assets/EVIL APC!!!/evil apc turret.gltf" id="16_aiiie"]
+[ext_resource type="PackedScene" uid="uid://btifvfwxmt2pc" path="res://Assets/something_evil_assets/EVIL APC!!!/evil apc turret.gltf" id="16_aiiie"]
 [ext_resource type="Script" uid="uid://dtvhj4rhwrgxa" path="res://Scripts/Enemies Scripts/APC Boss Scripts/turret_yaw_3D.gd" id="16_fs8tg"]
-[ext_resource type="PackedScene" uid="uid://dcbhi70lrm6uc" path="res://Assets/EVIL APC!!!/evil apc autocannon.gltf" id="17_i5c4k"]
-[ext_resource type="PackedScene" uid="uid://6o20h7desytw" path="res://Assets/EVIL APC!!!/evil apc ATGM.gltf" id="18_fs8tg"]
+[ext_resource type="PackedScene" uid="uid://dcbhi70lrm6uc" path="res://Assets/something_evil_assets/EVIL APC!!!/evil apc autocannon.gltf" id="17_i5c4k"]
+[ext_resource type="PackedScene" uid="uid://6o20h7desytw" path="res://Assets/something_evil_assets/EVIL APC!!!/evil apc ATGM.gltf" id="18_fs8tg"]
 [ext_resource type="Script" uid="uid://cm2safve8wh2n" path="res://Scripts/Enemies Scripts/APC Boss Scripts/weapon_pitch_3D.gd" id="18_uq3bg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwsd2"]
@@ -231,14 +231,14 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 position = Vector2(52, -14)
 script = ExtResource("9_1hf45")
 projectile_scene = ExtResource("10_fwsd2")
-burst_count = 5
+burst_count = 0
 burst_cooldown = 2.0
 
 [node name="Gunport2" type="Node2D" parent="." unique_id=98345570]
 position = Vector2(71, -14)
 script = ExtResource("9_1hf45")
 projectile_scene = ExtResource("10_fwsd2")
-burst_count = 5
+burst_count = 0
 burst_cooldown = 2.0
 
 [node name="APC Turret" type="Node2D" parent="." unique_id=1270499741 node_paths=PackedStringArray("autocannon", "missile_pod")]

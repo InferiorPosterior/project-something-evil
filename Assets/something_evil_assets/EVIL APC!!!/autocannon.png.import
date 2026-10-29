@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnnp6en3s8qbc"
-path.s3tc="res://.godot/imported/hull.png-ec2676a06ca33eb3872c2aa9ed1e08a2.s3tc.ctex"
+uid="uid://cn864jiuvrmso"
+path.s3tc="res://.godot/imported/autocannon.png-c7c648e0088b3f9746b133d550551981.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/EVIL APC!!!/hull.png"
-dest_files=["res://.godot/imported/hull.png-ec2676a06ca33eb3872c2aa9ed1e08a2.s3tc.ctex"]
+source_file="res://Assets/something_evil_assets/EVIL APC!!!/autocannon.png"
+dest_files=["res://.godot/imported/autocannon.png-c7c648e0088b3f9746b133d550551981.s3tc.ctex"]
 
 [params]
 
