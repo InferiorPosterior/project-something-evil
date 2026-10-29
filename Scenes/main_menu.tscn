@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://brucys4yioeia"]
+
+[ext_resource type="Script" uid="uid://35yahkwj4c0j" path="res://Scripts/main_menu.gd" id="1_28flt"]
+[ext_resource type="FontFile" uid="uid://bt87x0wcc3fs7" path="res://Fonts/Roboto_Mono/static/RobotoMono-Bold.ttf" id="2_1ehe0"]
+[ext_resource type="FontFile" uid="uid://du3wbjmohuixm" path="res://Fonts/BebasNeue-Regular.ttf" id="3_ce3w2"]
+
+[node name="MainMenu" type="Control" unique_id=346214997]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_28flt")
+
+[node name="Background" type="ColorRect" parent="." unique_id=876826875]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.21176471, 0.19607843, 0.21176471, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=422646019]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1121363081]
+custom_minimum_size = Vector2(870, 300)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="CenterContainer/Panel" unique_id=127354044]
+anchors_preset = 0
+offset_left = -296.0
+offset_top = -164.0
+offset_right = -256.0
+offset_bottom = -124.0
+
+[node name="Subtitle" type="Label" parent="CenterContainer/Panel/Control" unique_id=833515081]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.503
+anchor_top = 1.332
+anchor_right = 0.503
+anchor_bottom = 1.332
+offset_left = 138.88
+offset_top = 514.72
+offset_right = 1282.88
+offset_bottom = 561.72
+theme_override_fonts/font = ExtResource("2_1ehe0")
+theme_override_font_sizes/font_size = 40
+text = "[ 2D RUN-AND-GUN ]"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="CenterContainer/Panel/Control" unique_id=1236867126]
+layout_mode = 0
+offset_left = 299.0
+offset_top = 177.0
+offset_right = 1163.0
+offset_bottom = 222.0
+theme_override_font_sizes/font_size = 20
+text = "START GAME"
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/Panel/Control" unique_id=1295366362]
+layout_mode = 0
+offset_left = 299.0
+offset_top = 325.0
+offset_right = 1163.0
+offset_bottom = 374.0
+theme_override_font_sizes/font_size = 20
+text = "SETTINGS"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/Panel/Control" unique_id=682811531]
+layout_mode = 0
+offset_left = 299.0
+offset_top = 401.0
+offset_right = 1163.0
+offset_bottom = 450.0
+theme_override_font_sizes/font_size = 20
+text = "QUIT"
+
+[node name="LevelSelectButton" type="Button" parent="CenterContainer/Panel/Control" unique_id=2101355456]
+layout_mode = 0
+offset_left = 299.0
+offset_top = 251.0
+offset_right = 1163.0
+offset_bottom = 300.0
+theme_override_font_sizes/font_size = 20
+text = "LEVEL SELECT
+"
+
+[node name="Title" type="Label" parent="CenterContainer/Panel/Control" unique_id=1235139603]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.51600003
+anchor_top = -0.39100003
+anchor_right = 1.5200001
+anchor_bottom = -0.128
+offset_left = 179.64
+offset_top = 97.64
+offset_right = 1243.2
+offset_bottom = 190.12
+theme_override_colors/font_color = Color(0.94509804, 0.21568628, 0.22745098, 1)
+theme_override_fonts/font = ExtResource("3_ce3w2")
+theme_override_font_sizes/font_size = 85
+text = "SOMETHING EVIL"
+horizontal_alignment = 1
+
+[node name="Title2" type="Label" parent="CenterContainer/Panel/Control" unique_id=1432522103]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.51600003
+anchor_top = -0.39100003
+anchor_right = 1.5200001
+anchor_bottom = -0.128
+offset_left = 433.64
+offset_top = 47.64
+offset_right = 485.2
+offset_bottom = 97.12
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_ce3w2")
+theme_override_font_sizes/font_size = 49
+text = "PROJECT:"
+horizontal_alignment = 2
