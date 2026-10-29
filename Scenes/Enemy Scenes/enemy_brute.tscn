@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://m5n0v8xvcu2f"]
+
+[ext_resource type="Script" uid="uid://cmgqsvd3geh3r" path="res://Scripts/Enemies Scripts/enemy_lunger.gd" id="1_oo625"]
+[ext_resource type="Texture2D" uid="uid://10cr4tqj3ryk" path="res://Assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_ky8eb"]
+[ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_wuqc8"]
+[ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_m7fxu"]
+[ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="5_ky8eb"]
+[ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_plm84"]
+[ext_resource type="Script" uid="uid://cil401dbk8im1" path="res://Scripts/State_Machine/enemies states/template_states/enemy_idle.gd" id="7_oo625"]
+[ext_resource type="Script" uid="uid://54fbr05dt41e" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_chase.gd" id="8_cm1hv"]
+[ext_resource type="Script" uid="uid://b2ec20sbyqpj7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_fall.gd" id="9_1svrq"]
+[ext_resource type="Script" uid="uid://cxx3nq1ca04q5" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_dash.gd" id="9_7dddd"]
+[ext_resource type="Script" uid="uid://4l6b3j53kxw7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_jump.gd" id="10_cm1hv"]
+[ext_resource type="Script" uid="uid://bbja6m2qna0ig" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_recover.gd" id="12_2520f"]
+[ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/Projectiles & Hazards/enemy_projectile.tscn" id="12_m7fxu"]
+[ext_resource type="Script" uid="uid://cpuksw8tpv4yj" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_windup.gd" id="13_hiuwt"]
+[ext_resource type="Script" uid="uid://bco4t8p1j7xmc" path="res://Scripts/Enemies Scripts/enemy_turret.gd" id="14_oo625"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hrxl"]
+atlas = ExtResource("2_ky8eb")
+region = Rect2(128, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hrxl")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_57qmd"]
+radius = 13.000001
+height = 30.000002
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7fxu"]
+atlas = ExtResource("2_ky8eb")
+region = Rect2(0, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7fxu")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EnemyBrute" type="CharacterBody2D" unique_id=946815017 node_paths=PackedStringArray("health")]
+collision_layer = 2
+script = ExtResource("1_oo625")
+health = NodePath("HealthComponent")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1768781975]
+texture_filter = 1
+scale = Vector2(1.9999999, 1.9999999)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=578392833]
+position = Vector2(-9.536743e-07, -9.536743e-07)
+shape = SubResource("CapsuleShape2D_57qmd")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=931881473]
+script = ExtResource("3_wuqc8")
+max_health = 1200
+metadata/_custom_type_script = "uid://ngsma3hy4ktw"
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=1813984610 node_paths=PackedStringArray("health")]
+position = Vector2(-8.000001, -8.000001)
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("4_m7fxu")
+health = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://bxvhy0cwrfk4k"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1188926905]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_yf5fn")
+debug_color = Color(0, 0.6343908, 0.4257879, 0.41960785)
+
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=1816441993]
+position = Vector2(-8.000001, -8.000001)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("5_ky8eb")
+damage = 100
+metadata/_custom_type_script = "uid://bvtclq823uv2e"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=986339326]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_57qmd")
+debug_color = Color(0.89684427, 0, 0.3093503, 0.41960785)
+
+[node name="StateMachine" type="Node" parent="." unique_id=1416348991 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_plm84")
+initial_state = NodePath("EnemyIdle")
+metadata/_custom_type_script = "uid://cb8uqkistmuev"
+
+[node name="EnemyIdle" type="Node" parent="StateMachine" unique_id=779814020]
+script = ExtResource("7_oo625")
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="EnemyChase" type="Node" parent="StateMachine" unique_id=673901272]
+script = ExtResource("8_cm1hv")
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="EnemyFall" type="Node" parent="StateMachine" unique_id=866092842]
+script = ExtResource("9_1svrq")
+air_speed = 40.0
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="EnemyJump" type="Node" parent="StateMachine" unique_id=1892561612]
+script = ExtResource("10_cm1hv")
+jump_velocity = -400.0
+air_speed = 20.0
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="LungerDash" type="Node" parent="StateMachine" unique_id=103030372]
+script = ExtResource("9_7dddd")
+dash_speed = 250.0
+dash_distance = 150.0
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="LungerRecover" type="Node" parent="StateMachine" unique_id=353855079]
+script = ExtResource("12_2520f")
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="LungerWindup" type="Node" parent="StateMachine" unique_id=1476728159]
+script = ExtResource("13_hiuwt")
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="Turret" type="Node2D" parent="." unique_id=310534396]
+position = Vector2(-9.536743e-07, -9.536743e-07)
+script = ExtResource("14_oo625")
+projectile_scene = ExtResource("12_m7fxu")
+burst_count = 5
+metadata/_custom_type_script = "uid://bco4t8p1j7xmc"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Turret" unique_id=505925636]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_yf5fn")
+
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]

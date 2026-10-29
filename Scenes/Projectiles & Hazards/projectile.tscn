@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://bsaynihtnqhg6"]
+
+[ext_resource type="Script" uid="uid://30olqgvq5cqm" path="res://Scripts/Projectiles & Hazards/projectile.gd" id="1_yr2qt"]
+[ext_resource type="Texture2D" uid="uid://dmg5skl6tsooe" path="res://Assets/projectile_spritesheet.png" id="2_5h6p2"]
+[ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="3_tl4hk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmues"]
+atlas = ExtResource("2_5h6p2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlryd"]
+atlas = ExtResource("2_5h6p2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3of31"]
+atlas = ExtResource("2_5h6p2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1lfy"]
+atlas = ExtResource("2_5h6p2")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmues")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlryd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3of31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1lfy")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tl4hk"]
+radius = 1.4142135
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_57qmd"]
+radius = 6.0
+
+[node name="Projectile" type="Area2D" unique_id=1427207849]
+collision_mask = 3
+script = ExtResource("1_yr2qt")
+speed = 600
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2132727319]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+autoplay = "default"
+speed_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1288779746]
+shape = SubResource("CircleShape2D_tl4hk")
+
+[node name="Timer" type="Timer" parent="." unique_id=246144866]
+
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=1083842055]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("3_tl4hk")
+damage = 100
+metadata/_custom_type_script = "uid://bvtclq823uv2e"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=424559123]
+shape = SubResource("CircleShape2D_57qmd")
+debug_color = Color(0.9991004, 0, 0.13663247, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

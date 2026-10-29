@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dnjby57ls370h"]
+
+[ext_resource type="Script" uid="uid://bco4t8p1j7xmc" path="res://Scripts/Enemies Scripts/enemy_turret.gd" id="1_tufdm"]
+[ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/Projectiles & Hazards/enemy_projectile.tscn" id="2_o5v45"]
+[ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_0ukbd"]
+[ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_nc2n5"]
+[ext_resource type="Texture2D" uid="uid://10cr4tqj3ryk" path="res://Assets/brackeys_platformer_assets/sprites/world_tileset.png" id="5_b7n8q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wb3h6"]
+atlas = ExtResource("5_b7n8q")
+region = Rect2(0, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wb3h6")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Turret" type="Node2D" unique_id=564088818]
+script = ExtResource("1_tufdm")
+projectile_scene = ExtResource("2_o5v45")
+burst_count = 5
+
+[node name="HealthComponent" type="Node" parent="." unique_id=601867025]
+script = ExtResource("3_0ukbd")
+max_health = 500
+metadata/_custom_type_script = "uid://ngsma3hy4ktw"
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=1551139991 node_paths=PackedStringArray("health")]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("4_nc2n5")
+health = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://bxvhy0cwrfk4k"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1620562354]
+shape = SubResource("CircleShape2D_yf5fn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=147353859]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]

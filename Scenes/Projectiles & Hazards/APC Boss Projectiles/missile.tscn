@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cbw4etvuicd2r"]
+
+[ext_resource type="Script" uid="uid://c3axv0s2k0ffg" path="res://Scripts/Projectiles & Hazards/APC Boss Projectiles/missile.gd" id="1_74jc8"]
+[ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/Projectiles & Hazards/enemy_projectile.tscn" id="2_74jc8"]
+[ext_resource type="PackedScene" uid="uid://0mjg24r87fdm" path="res://Scenes/Projectiles & Hazards/explosion.tscn" id="3_3vvx7"]
+[ext_resource type="Texture2D" uid="uid://dmg5skl6tsooe" path="res://Assets/projectile_spritesheet.png" id="4_rrdvd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxin5"]
+atlas = ExtResource("4_rrdvd")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfwc7"]
+atlas = ExtResource("4_rrdvd")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp2c3"]
+atlas = ExtResource("4_rrdvd")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eq6il"]
+atlas = ExtResource("4_rrdvd")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxin5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfwc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp2c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eq6il")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 4.0
+
+[sub_resource type="Gradient" id="Gradient_yf5fn"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4v7s"]
+gradient = SubResource("Gradient_yf5fn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+metadata/_snap_enabled = true
+
+[node name="Missile" type="Area2D" unique_id=1863625204]
+script = ExtResource("1_74jc8")
+burst_scene = ExtResource("2_74jc8")
+explosion_scene = ExtResource("3_3vvx7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=509173518]
+texture_filter = 1
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+autoplay = "default"
+speed_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=475502961]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=850059440]
+texture_filter = 1
+scale = Vector2(2, 2)
+color = Color(0.89, 0, 0, 1)
+energy = 4.0
+texture = SubResource("GradientTexture2D_g4v7s")

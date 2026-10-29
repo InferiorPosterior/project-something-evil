@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://yvcb3rtoocwa"]
+
+[ext_resource type="Script" uid="uid://cmgqsvd3geh3r" path="res://Scripts/Enemies Scripts/enemy_lunger.gd" id="1_baq1m"]
+[ext_resource type="Texture2D" uid="uid://c4glaoucnu8v5" path="res://Assets/brackeys_platformer_assets/sprites/slime_purple.png" id="2_27mwo"]
+[ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_jbfuy"]
+[ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_dugn8"]
+[ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="5_rkj44"]
+[ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="6_4cqwc"]
+[ext_resource type="Script" uid="uid://cil401dbk8im1" path="res://Scripts/State_Machine/enemies states/template_states/enemy_idle.gd" id="7_6v10p"]
+[ext_resource type="Script" uid="uid://54fbr05dt41e" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_chase.gd" id="8_3cmkg"]
+[ext_resource type="Script" uid="uid://4l6b3j53kxw7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_jump.gd" id="9_5jueb"]
+[ext_resource type="Script" uid="uid://b2ec20sbyqpj7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_fall.gd" id="10_apaxw"]
+[ext_resource type="Script" uid="uid://cpuksw8tpv4yj" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_windup.gd" id="11_dbuxv"]
+[ext_resource type="Script" uid="uid://cxx3nq1ca04q5" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_dash.gd" id="12_p0by7"]
+[ext_resource type="Script" uid="uid://bbja6m2qna0ig" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_recover.gd" id="13_vg3vn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yo60"]
+atlas = ExtResource("2_27mwo")
+region = Rect2(48, 54, 24, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yo60")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yf5fn"]
+radius = 4.0
+height = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
+size = Vector2(10.875, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(6.15625, 9.53125)
+
+[node name="Lunger" type="CharacterBody2D" unique_id=946911435 node_paths=PackedStringArray("health")]
+collision_layer = 2
+script = ExtResource("1_baq1m")
+dash_range = 150.0
+health = NodePath("HealthComponent")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1419899213]
+texture_filter = 1
+position = Vector2(1, -2)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1945430260]
+shape = SubResource("CapsuleShape2D_yf5fn")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=533460309]
+script = ExtResource("3_jbfuy")
+max_health = 500
+metadata/_custom_type_script = "uid://ngsma3hy4ktw"
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=1424745378 node_paths=PackedStringArray("health")]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("4_dugn8")
+health = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://bxvhy0cwrfk4k"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=923602455]
+shape = SubResource("RectangleShape2D_d0u6y")
+debug_color = Color(0, 0.63638926, 0.40942875, 0.41960785)
+
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=1666567375]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("5_rkj44")
+damage = 100
+metadata/_custom_type_script = "uid://bvtclq823uv2e"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=846332]
+shape = SubResource("RectangleShape2D_57qmd")
+debug_color = Color(0.98830456, 0, 0.30865863, 0.41960785)
+
+[node name="StateMachine" type="Node" parent="." unique_id=1685458487 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_4cqwc")
+initial_state = NodePath("EnemyIdle")
+metadata/_custom_type_script = "uid://cb8uqkistmuev"
+
+[node name="EnemyIdle" type="Node" parent="StateMachine" unique_id=1262216475]
+script = ExtResource("7_6v10p")
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="EnemyChase" type="Node" parent="StateMachine" unique_id=1072241701]
+script = ExtResource("8_3cmkg")
+speed = 125.0
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="EnemyJump" type="Node" parent="StateMachine" unique_id=1887396301]
+script = ExtResource("9_5jueb")
+jump_velocity = -500.0
+air_speed = 40.0
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="EnemyFall" type="Node" parent="StateMachine" unique_id=339906014]
+script = ExtResource("10_apaxw")
+air_speed = 40.0
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="LungerWindup" type="Node" parent="StateMachine" unique_id=481589887]
+script = ExtResource("11_dbuxv")
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="LungerDash" type="Node" parent="StateMachine" unique_id=1969370070]
+script = ExtResource("12_p0by7")
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="LungerRecover" type="Node" parent="StateMachine" unique_id=1878103491]
+script = ExtResource("13_vg3vn")
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
