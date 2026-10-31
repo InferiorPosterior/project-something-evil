@@ -8,5 +8,7 @@ func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-func _on_health_component_health_depleted() -> void:
-	queue_free()
+func _process(_delta: float) -> void:
+	if absf(velocity.x) > 1.0:
+		$AnimatedSprite2D.flip_h = velocity.x < 0.0
+		

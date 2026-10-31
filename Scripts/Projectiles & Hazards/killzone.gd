@@ -1,11 +1,17 @@
-# THIS IS THE KILLZONE SCRIPT
-extends Area2D
+class_name Killzone extends Area2D
 
-@onready var timer: Timer = $Timer
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
 
-func _on_body_entered(body: Node2D) -> void:
-	print("I died!")
-	timer.start()
+func _on_body_entered(body: Node) -> void:
+	var health := _find_health(body)
+	if health == null:
+		return
+	health.immortality = false   # bypass i-frames
+	health.current_health = 0    # emits health_depleted
 
-func _on_timer_timeout() -> void:
-	get_tree().reload_current_scene()
+func _find_health(node: Node) -> HealthComponent:
+	for child in node.get_children():
+		if child is HealthComponent:
+			return child
+	return null

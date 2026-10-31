@@ -20,15 +20,15 @@
 [ext_resource type="PackedScene" uid="uid://6o20h7desytw" path="res://Assets/something_evil_assets/EVIL APC!!!/evil apc ATGM.gltf" id="18_fs8tg"]
 [ext_resource type="Script" uid="uid://cm2safve8wh2n" path="res://Scripts/Enemies Scripts/APC Boss Scripts/weapon_pitch_3D.gd" id="18_uq3bg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwsd2"]
-size = Vector2(182, 57)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4rn6l"]
 radius = 27.0
 height = 218.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
 size = Vector2(201, 31.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwsd2"]
+size = Vector2(182, 57)
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_g4v7s"]
 
@@ -175,38 +175,36 @@ _data = {
 [node name="APC Boss" type="CharacterBody2D" unique_id=309457165 node_paths=PackedStringArray("health")]
 collision_layer = 2
 script = ExtResource("1_0fl87")
-health = NodePath("HealthComponent")
+health = NodePath("Components/HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=728455122]
-position = Vector2(2, -19.5)
-shape = SubResource("RectangleShape2D_fwsd2")
+[node name="Components" type="Node" parent="." unique_id=923736801]
 
-[node name="HealthComponent" type="Node" parent="." unique_id=673880358]
+[node name="HealthComponent" type="Node" parent="Components" unique_id=673880358]
 script = ExtResource("1_g6mq4")
 max_health = 7000
 metadata/_custom_type_script = "uid://ngsma3hy4ktw"
 
-[node name="HurtboxComponent" type="Area2D" parent="." unique_id=2002221397 node_paths=PackedStringArray("health")]
+[node name="HurtboxComponent" type="Area2D" parent="Components" unique_id=2002221397 node_paths=PackedStringArray("health")]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("2_otfy1")
 health = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://bxvhy0cwrfk4k"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1144396134]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtboxComponent" unique_id=1144396134]
 position = Vector2(2, -23)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_4rn6l")
 debug_color = Color(0, 0.6437861, 0.2993289, 0.41960785)
 
-[node name="HitboxComponent" type="Area2D" parent="." unique_id=965676545]
+[node name="HitboxComponent" type="Area2D" parent="Components" unique_id=965676545]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("3_6avjl")
 damage = 100
 metadata/_custom_type_script = "uid://bvtclq823uv2e"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1401890068]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HitboxComponent" unique_id=1401890068]
 position = Vector2(4.5, -10.875)
 shape = SubResource("RectangleShape2D_yf5fn")
 debug_color = Color(0.9902335, 0, 0.2865104, 0.41960785)
@@ -227,19 +225,9 @@ ram_speed = 300.0
 cooldown = 2.0
 metadata/_custom_type_script = "uid://v1najhost2v"
 
-[node name="Gunport" type="Node2D" parent="." unique_id=535822479]
-position = Vector2(52, -14)
-script = ExtResource("9_1hf45")
-projectile_scene = ExtResource("10_fwsd2")
-burst_count = 0
-burst_cooldown = 2.0
-
-[node name="Gunport2" type="Node2D" parent="." unique_id=98345570]
-position = Vector2(71, -14)
-script = ExtResource("9_1hf45")
-projectile_scene = ExtResource("10_fwsd2")
-burst_count = 0
-burst_cooldown = 2.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=728455122]
+position = Vector2(2, -19.5)
+shape = SubResource("RectangleShape2D_fwsd2")
 
 [node name="APC Turret" type="Node2D" parent="." unique_id=1270499741 node_paths=PackedStringArray("autocannon", "missile_pod")]
 position = Vector2(15, -46)
@@ -261,8 +249,8 @@ position = Vector2(-15, -31)
 script = ExtResource("13_0fl87")
 missile_scene = ExtResource("15_4rn6l")
 launch_speed = 300.0
-max_ammo = 4
-fire_interval = 0.4
+max_ammo = 3
+fire_interval = 0.8
 aim_turn_speed = 300.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1518865646]
@@ -401,5 +389,19 @@ skeleton = NodePath("..")
 libraries/ = SubResource("AnimationLibrary_b5vx5")
 autoplay = &"Move"
 
-[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
-[connection signal="damage_taken" from="HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]
+[node name="Gunports" type="Node" parent="." unique_id=1108632932]
+
+[node name="Gunport" type="Node2D" parent="." unique_id=535822479]
+position = Vector2(52, -14)
+script = ExtResource("9_1hf45")
+projectile_scene = ExtResource("10_fwsd2")
+burst_cooldown = 2.0
+
+[node name="Gunport2" type="Node2D" parent="." unique_id=98345570]
+position = Vector2(71, -14)
+script = ExtResource("9_1hf45")
+projectile_scene = ExtResource("10_fwsd2")
+burst_cooldown = 2.0
+
+[connection signal="health_depleted" from="Components/HealthComponent" to="." method="_on_health_component_health_depleted"]
+[connection signal="damage_taken" from="Components/HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]

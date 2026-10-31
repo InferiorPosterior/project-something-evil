@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b7k87ap2vbh1g" path="res://Scripts/Enemies Scripts/enemy_template.gd" id="1_dnotq"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="2_b6nry"]
+[ext_resource type="PackedScene" uid="uid://nr5osifxv4ig" path="res://Scenes/death_effect.tscn" id="2_dwjbs"]
 [ext_resource type="Script" uid="uid://cil401dbk8im1" path="res://Scripts/State_Machine/enemies states/template_states/enemy_idle.gd" id="3_xb75w"]
 [ext_resource type="Script" uid="uid://bjfb0olodnc4" path="res://Scripts/State_Machine/enemies states/template_states/enemy_chase.gd" id="4_dwjbs"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="4_xb75w"]
@@ -36,6 +37,7 @@ height = 14.0
 collision_layer = 2
 script = ExtResource("1_dnotq")
 health = NodePath("HealthComponent")
+death_effect = ExtResource("2_dwjbs")
 
 [node name="StateMachine" type="Node" parent="." unique_id=2118820785 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_b6nry")

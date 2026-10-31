@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://brucys4yioeia"]
 
-[ext_resource type="Script" uid="uid://35yahkwj4c0j" path="res://Scripts/main_menu.gd" id="1_28flt"]
+[ext_resource type="Script" uid="uid://cf06e11021bbt" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="FontFile" uid="uid://bt87x0wcc3fs7" path="res://Fonts/Roboto_Mono/static/RobotoMono-Bold.ttf" id="2_1ehe0"]
 [ext_resource type="FontFile" uid="uid://du3wbjmohuixm" path="res://Fonts/BebasNeue-Regular.ttf" id="3_ce3w2"]
 

@@ -19,7 +19,7 @@ func update_level_buttons():
 	var level2_button = $Background/CenterContainer/Panel/Control/Level2Button
 
 	if GameProgress.level2_unlocked:
-		level2_button.text = "LEVEL 2 — THE OUTSKIRTS"
+		level2_button.text = "LEVEL 2 — DELIVER US FROM EVIL"
 		level2_button.disabled = false
 	else:
 		level2_button.text = "LEVEL 2 — LOCKED"
@@ -28,7 +28,7 @@ func update_level_buttons():
 
 func _on_level1_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes/game.tscn")
+	get_tree().change_scene_to_file("res://Scenes/stage_1_prelude_to_evil.tscn")
 
 
 func _on_level2_pressed():

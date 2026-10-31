@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://yvcb3rtoocwa"]
 
 [ext_resource type="Script" uid="uid://cmgqsvd3geh3r" path="res://Scripts/Enemies Scripts/enemy_lunger.gd" id="1_baq1m"]
-[ext_resource type="Texture2D" uid="uid://c4glaoucnu8v5" path="res://Assets/brackeys_platformer_assets/sprites/slime_purple.png" id="2_27mwo"]
+[ext_resource type="PackedScene" uid="uid://nr5osifxv4ig" path="res://Scenes/death_effect.tscn" id="2_5jueb"]
+[ext_resource type="Texture2D" uid="uid://banm3hbv0kf1y" path="res://Assets/something_evil_assets/sprites/lunger.png" id="2_6v10p"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_jbfuy"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_dugn8"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="5_rkj44"]
@@ -14,41 +15,160 @@
 [ext_resource type="Script" uid="uid://cxx3nq1ca04q5" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_dash.gd" id="12_p0by7"]
 [ext_resource type="Script" uid="uid://bbja6m2qna0ig" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_recover.gd" id="13_vg3vn"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7yo60"]
-atlas = ExtResource("2_27mwo")
-region = Rect2(48, 54, 24, 18)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v10p"]
+atlas = ExtResource("2_6v10p")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vxhh"]
+atlas = ExtResource("2_6v10p")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ino8q"]
+atlas = ExtResource("2_6v10p")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08cts"]
+atlas = ExtResource("2_6v10p")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5051o"]
+atlas = ExtResource("2_6v10p")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xoi62"]
+atlas = ExtResource("2_6v10p")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dv3ox"]
+atlas = ExtResource("2_6v10p")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6giy3"]
+atlas = ExtResource("2_6v10p")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jueb"]
+atlas = ExtResource("2_6v10p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apaxw"]
+atlas = ExtResource("2_6v10p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gll6e"]
+atlas = ExtResource("2_6v10p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhdte"]
+atlas = ExtResource("2_6v10p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oyms"]
+atlas = ExtResource("2_6v10p")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0reuu"]
+atlas = ExtResource("2_6v10p")
+region = Rect2(64, 96, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7yo60")
+"texture": SubResource("AtlasTexture_6v10p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vxhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ino8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08cts")
 }],
 "loop": 1,
-"name": &"default",
+"name": &"chase",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5051o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xoi62")
+}],
+"loop": 1,
+"name": &"dash",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dv3ox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6giy3")
+}],
+"loop": 1,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jueb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apaxw")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gll6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhdte")
+}],
+"loop": 1,
+"name": &"recover",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oyms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0reuu")
+}],
+"loop": 1,
+"name": &"windup",
+"speed": 12.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yf5fn"]
 radius = 4.0
-height = 12.0
+height = 26.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
-size = Vector2(10.875, 14)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ic7aa"]
+radius = 14.035668
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
-size = Vector2(6.15625, 9.53125)
+size = Vector2(14.078125, 18)
 
 [node name="Lunger" type="CharacterBody2D" unique_id=946911435 node_paths=PackedStringArray("health")]
 collision_layer = 2
 script = ExtResource("1_baq1m")
 dash_range = 150.0
 health = NodePath("HealthComponent")
+death_effect = ExtResource("2_5jueb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1419899213]
 texture_filter = 1
 position = Vector2(1, -2)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"windup"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1945430260]
 shape = SubResource("CapsuleShape2D_yf5fn")
@@ -66,7 +186,7 @@ health = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://bxvhy0cwrfk4k"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=923602455]
-shape = SubResource("RectangleShape2D_d0u6y")
+shape = SubResource("CircleShape2D_ic7aa")
 debug_color = Color(0, 0.63638926, 0.40942875, 0.41960785)
 
 [node name="HitboxComponent" type="Area2D" parent="." unique_id=1666567375]
@@ -77,6 +197,7 @@ damage = 100
 metadata/_custom_type_script = "uid://bvtclq823uv2e"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=846332]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_57qmd")
 debug_color = Color(0.98830456, 0, 0.30865863, 0.41960785)
 
@@ -107,6 +228,7 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="LungerWindup" type="Node" parent="StateMachine" unique_id=481589887]
 script = ExtResource("11_dbuxv")
+windup_time = null
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="LungerDash" type="Node" parent="StateMachine" unique_id=1969370070]

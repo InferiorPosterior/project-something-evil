@@ -6,6 +6,7 @@ class_name LungerWindup extends State
 var timer: float = 0.0
 
 func enter_state() -> void:
+	lunger.get_node("AnimatedSprite2D").play("windup")
 	timer = windup_time
 	lunger.velocity.x = 0
 	if is_instance_valid(lunger.player):

@@ -13,7 +13,7 @@ func _ready():
 # Runs when Start Game is clicked.
 func _on_start_pressed():
 	# Opens the existing game scene.
-	get_tree().change_scene_to_file("res://Scenes/game.tscn")
+	get_tree().change_scene_to_file("res://Scenes/stage_1_prelude_to_evil.tscn")
 
 #Runs when Select Level is clicked.
 func _on_level_select_pressed():

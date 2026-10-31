@@ -110,7 +110,7 @@ offset_top = 76.0
 offset_right = 728.0
 offset_bottom = 122.0
 theme_override_font_sizes/font_size = 18
-text = "LEVEL 1 - The Beginning"
+text = "LEVEL 1 - PRELUDE TO EVIL"
 
 [node name="Level2Button" type="Button" parent="Background/CenterContainer/Panel/Control" unique_id=1816314806]
 layout_mode = 0

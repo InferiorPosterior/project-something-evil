@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv0fias1itxqh"
-path="res://.godot/imported/concept works.png-57f81358b630e3b79a1d8c708dfd9cc6.ctex"
+uid="uid://0hhs47g4ushk"
+path="res://.godot/imported/gunner.png-5cadf69ee68eb7dc72aadfa74a274140.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/concept works.png"
-dest_files=["res://.godot/imported/concept works.png-57f81358b630e3b79a1d8c708dfd9cc6.ctex"]
+source_file="res://Assets/something_evil_assets/sprites/gunner.png"
+dest_files=["res://.godot/imported/gunner.png-5cadf69ee68eb7dc72aadfa74a274140.ctex"]
 
 [params]
 

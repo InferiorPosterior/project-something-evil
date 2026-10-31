@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ojud4fm5r1iq"]
 
 [ext_resource type="Script" uid="uid://m00qckebn6sw" path="res://Scripts/Projectiles & Hazards/enemy_projectile.gd" id="1_ibebl"]
-[ext_resource type="Texture2D" uid="uid://dmg5skl6tsooe" path="res://Assets/projectile_spritesheet.png" id="2_r7ko4"]
+[ext_resource type="Texture2D" uid="uid://dmg5skl6tsooe" path="res://Assets/something_evil_assets/sprites/projectile.png" id="2_r7ko4"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="3_gjudp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_axcaf"]

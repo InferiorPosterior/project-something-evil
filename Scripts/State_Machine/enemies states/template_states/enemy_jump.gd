@@ -7,6 +7,8 @@ class_name EnemyJump extends State
 
 func enter_state() -> void:
 	enemy.velocity.y = jump_velocity
+	enemy.get_node("AnimatedSprite2D").play("fall")
+
 
 func physics_update(delta: float) -> void:
 	enemy.velocity += enemy.get_gravity() * delta

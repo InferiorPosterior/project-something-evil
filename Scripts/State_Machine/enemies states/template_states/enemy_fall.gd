@@ -4,6 +4,9 @@ class_name EnemyFall extends State
 
 @onready var enemy: Enemy = get_parent().get_parent()
 
+func enter_state():
+	enemy.get_node("AnimatedSprite2D").play("fall")
+
 func physics_update(delta: float) -> void:
 	enemy.velocity += enemy.get_gravity() * delta
 	if is_instance_valid(enemy.player):

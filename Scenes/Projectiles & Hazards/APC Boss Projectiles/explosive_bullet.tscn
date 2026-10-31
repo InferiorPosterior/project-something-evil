@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c8468g2nla5eb" path="res://Scripts/Projectiles & Hazards/APC Boss Projectiles/explosive_bullet.gd" id="1_3tfrc"]
 [ext_resource type="PackedScene" uid="uid://0mjg24r87fdm" path="res://Scenes/Projectiles & Hazards/explosion.tscn" id="2_sipjd"]
-[ext_resource type="Texture2D" uid="uid://dmg5skl6tsooe" path="res://Assets/projectile_spritesheet.png" id="3_c70t0"]
+[ext_resource type="Texture2D" uid="uid://dmg5skl6tsooe" path="res://Assets/something_evil_assets/sprites/projectile.png" id="3_c70t0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uksw1"]
 atlas = ExtResource("3_c70t0")

@@ -6,6 +6,7 @@ class_name LungerRecover extends State
 var timer: float = 0.0
 
 func enter_state() -> void:
+	lunger.get_node("AnimatedSprite2D").play("idle")
 	timer = recover_time
 	lunger.dash_cooldown_left = lunger.dash_cooldown   # cooldown starts when the dash ends
 
