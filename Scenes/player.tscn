@@ -5,8 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://qasj3d6vyqgi" path="res://Scenes/gun.tscn" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="4_vgqql"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_3smsa"]
+[ext_resource type="Script" uid="uid://b2mvrvscdhyc1" path="res://Scripts/Components/lives_component.gd" id="6_f1ek2"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="7_3smsa"]
 [ext_resource type="Script" uid="uid://v1najhost2v" path="res://Scripts/State_Machine/state.gd" id="7_f1ek2"]
+[ext_resource type="PackedScene" path="res://Scenes/game_over.tscn" id="7_tx1dd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
 atlas = ExtResource("1_v0iea")
@@ -58,6 +60,13 @@ metadata/_custom_type_script = "uid://bxvhy0cwrfk4k"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=292284055]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="LivesComponent" type="Node" parent="." unique_id=1928374650 node_paths=PackedStringArray("health")]
+script = ExtResource("6_f1ek2")
+health = NodePath("../HealthComponent")
+blink_interval = 0.2
+blink_alpha = 0.0
+game_over_scene = ExtResource("7_tx1dd")
 
 [node name="StateMachine" type="Node" parent="." unique_id=160013381]
 script = ExtResource("5_3smsa")
