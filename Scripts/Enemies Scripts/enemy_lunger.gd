@@ -12,6 +12,10 @@ func _ready() -> void:
 	if is_instance_valid(player) and player is PhysicsBody2D:
 		add_collision_exception_with(player)   # pass through the player's body; damage comes from hitbox/hurtbox only
 
+func _process(delta: float) -> void:
+	if absf(velocity.x) > 1.0:
+		$AnimatedSprite2D.flip_h = velocity.x < 0.0
+	
 func _physics_process(delta: float) -> void:
 	dash_cooldown_left = maxf(dash_cooldown_left - delta, 0.0)
 

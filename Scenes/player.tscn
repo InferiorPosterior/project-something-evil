@@ -46,6 +46,7 @@ position = Vector2(6, 6)
 
 [node name="HealthComponent" type="Node" parent="." unique_id=433678246]
 script = ExtResource("4_vgqql")
+max_health = 500
 
 [node name="HurtboxComponent" type="Area2D" parent="." unique_id=622235919 node_paths=PackedStringArray("health")]
 collision_layer = 0

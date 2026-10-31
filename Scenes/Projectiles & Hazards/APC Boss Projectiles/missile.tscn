@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c3axv0s2k0ffg" path="res://Scripts/Projectiles & Hazards/APC Boss Projectiles/missile.gd" id="1_74jc8"]
 [ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/Projectiles & Hazards/enemy_projectile.tscn" id="2_74jc8"]
 [ext_resource type="PackedScene" uid="uid://0mjg24r87fdm" path="res://Scenes/Projectiles & Hazards/explosion.tscn" id="3_3vvx7"]
-[ext_resource type="Texture2D" uid="uid://dmg5skl6tsooe" path="res://Assets/projectile_spritesheet.png" id="4_rrdvd"]
+[ext_resource type="Texture2D" uid="uid://dmg5skl6tsooe" path="res://Assets/something_evil_assets/sprites/projectile.png" id="4_rrdvd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fxin5"]
 atlas = ExtResource("4_rrdvd")

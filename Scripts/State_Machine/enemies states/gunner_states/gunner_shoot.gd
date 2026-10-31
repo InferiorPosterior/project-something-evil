@@ -9,6 +9,7 @@ var cooldown: float = 0.0
 func enter_state() -> void:
 	cooldown = windup
 	enemy.velocity.x = 0
+	enemy.get_node("AnimatedSprite2D").play("idle")
 
 func physics_update(delta: float) -> void:
 	enemy.apply_gravity(delta)

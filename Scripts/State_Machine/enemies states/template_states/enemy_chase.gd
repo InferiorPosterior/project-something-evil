@@ -13,6 +13,9 @@ class_name EnemyChase extends State
 func special_transition(_to_player: Vector2) -> String:
 	return ""
 
+func enter_state() -> void:
+	enemy.get_node("AnimatedSprite2D").play("chase")
+
 func physics_update(delta: float) -> void:
 	enemy.apply_gravity(delta)
 

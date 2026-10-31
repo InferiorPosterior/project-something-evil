@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bsaynihtnqhg6"]
 
 [ext_resource type="Script" uid="uid://30olqgvq5cqm" path="res://Scripts/Projectiles & Hazards/projectile.gd" id="1_yr2qt"]
-[ext_resource type="Texture2D" uid="uid://dmg5skl6tsooe" path="res://Assets/projectile_spritesheet.png" id="2_5h6p2"]
+[ext_resource type="Texture2D" uid="uid://dmg5skl6tsooe" path="res://Assets/something_evil_assets/sprites/projectile.png" id="2_5h6p2"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="3_tl4hk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wmues"]
@@ -55,6 +55,7 @@ speed = 600
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 autoplay = "default"
+frame_progress = 0.85655093
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1288779746]
@@ -70,6 +71,7 @@ damage = 100
 metadata/_custom_type_script = "uid://bvtclq823uv2e"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=424559123]
+position = Vector2(2, 0)
 shape = SubResource("CircleShape2D_57qmd")
 debug_color = Color(0.9991004, 0, 0.13663247, 0.41960785)
 

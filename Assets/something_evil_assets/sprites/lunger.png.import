@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmg5skl6tsooe"
-path="res://.godot/imported/projectile_spritesheet.png-76188bfba5cd95914e3b69495f8ef840.ctex"
+uid="uid://banm3hbv0kf1y"
+path="res://.godot/imported/lunger.png-e62aba08df18ed379fcc527c22582e3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/projectile_spritesheet.png"
-dest_files=["res://.godot/imported/projectile_spritesheet.png-76188bfba5cd95914e3b69495f8ef840.ctex"]
+source_file="res://Assets/something_evil_assets/sprites/lunger.png"
+dest_files=["res://.godot/imported/lunger.png-e62aba08df18ed379fcc527c22582e3e.ctex"]
 
 [params]
 
