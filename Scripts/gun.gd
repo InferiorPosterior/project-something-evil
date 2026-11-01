@@ -23,11 +23,12 @@ func _process(delta: float) -> void:
 
 	#Fire while the button is held, as long as the cooldown has finished
 	if Input.is_action_pressed("use_item") and cooldown_left <= 0.0:
+		$AudioStreamPlayer.play()
 		shoot()
 		cooldown_left = 1.0 / fire_rate
 
 func shoot() -> void:
 	var projectile_instance = PROJECTILE.instantiate()
-	get_tree().root.add_child(projectile_instance)
+	get_tree().current_scene.add_child(projectile_instance)
 	projectile_instance.global_position = muzzle.global_position
 	projectile_instance.rotation = rotation

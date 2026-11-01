@@ -12,6 +12,7 @@ var launch_speed: float = 0.0
 func enter_state() -> void:
 	lunger.get_node("AnimatedSprite2D").play("dash")
 	elapsed = 0.0
+	$LungeSFX.play()
 	# Chosen so the total distance travelled equals dash_distance:
 	# the area under speed = launch_speed * (1 - t)^power over the duration.
 	launch_speed = dash_distance * (ease_power + 1.0) / duration

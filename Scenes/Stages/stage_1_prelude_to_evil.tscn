@@ -2,12 +2,19 @@
 
 [ext_resource type="Texture2D" uid="uid://bsg18wysnjs8k" path="res://Assets/something_evil_assets/sprites/something_evil_tileset.png" id="1_7wf4l"]
 [ext_resource type="PackedScene" uid="uid://du0gmlf03hrwy" path="res://Scenes/player.tscn" id="2_du3gd"]
-[ext_resource type="PackedScene" uid="uid://uo5061t85jw5" path="res://Scenes/Enemy Scenes/enemy_chaser.tscn" id="5_1cl6i"]
-[ext_resource type="PackedScene" uid="uid://yvcb3rtoocwa" path="res://Scenes/Enemy Scenes/enemy_lunger.tscn" id="6_km4sp"]
+[ext_resource type="Script" uid="uid://v0iqx35ti2ph" path="res://Scripts/Event Systems/event_area.gd" id="6_b45r2"]
+[ext_resource type="PackedScene" uid="uid://yvcb3rtoocwa" path="res://Scenes/Enemy Scenes/Lunger/enemy_lunger.tscn" id="6_km4sp"]
 [ext_resource type="PackedScene" uid="uid://dj0s5hm5dgbqu" path="res://Scenes/pause_menu.tscn" id="7_1cl6i"]
+[ext_resource type="Script" uid="uid://dvvudlaa5sc8r" path="res://Scripts/Event Systems/spawn_entity.gd" id="7_5nqvx"]
+[ext_resource type="Script" uid="uid://8ihu87d6e0h7" path="res://Scenes/Stages/multi_action.gd" id="7_gcrey"]
 [ext_resource type="PackedScene" uid="uid://3btq8c6h6ayp" path="res://Scenes/lives_hud.tscn" id="8_bw2kh"]
-[ext_resource type="PackedScene" uid="uid://dr0tnjrfrv4q0" path="res://Scenes/Enemy Scenes/enemy_gunner.tscn" id="9_83qfv"]
-[ext_resource type="Script" uid="uid://rpk8sa4d7eyx" path="res://Scripts/Projectiles & Hazards/killzone.gd" id="12_n28ci"]
+[ext_resource type="PackedScene" uid="uid://gf0jiqmnkk54" path="res://Scenes/Effects/death_effect_big.tscn" id="9_vay0u"]
+[ext_resource type="Script" uid="uid://c87b73kgij03d" path="res://Scenes/Stages/wait_for_clear_action.gd" id="10_5nqvx"]
+[ext_resource type="Script" uid="uid://rpk8sa4d7eyx" path="res://Scenes/Projectiles & Hazards/Killzone/killzone.gd" id="12_n28ci"]
+[ext_resource type="PackedScene" uid="uid://m5n0v8xvcu2f" path="res://Scenes/Enemy Scenes/Brute/enemy_brute.tscn" id="12_vay0u"]
+[ext_resource type="PackedScene" uid="uid://dr0tnjrfrv4q0" path="res://Scenes/Enemy Scenes/Gunner/enemy_gunner.tscn" id="13_10d0o"]
+[ext_resource type="PackedScene" uid="uid://5ilkvk7ga1ba" path="res://Scenes/Enemy Scenes/Grenadier/enemy_grenadier.tscn" id="14_ejv5g"]
+[ext_resource type="PackedScene" uid="uid://dnjby57ls370h" path="res://Scenes/Enemy Scenes/Turret/enemy_turret.tscn" id="15_qi28d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ews4g"]
 texture = ExtResource("1_7wf4l")
@@ -739,6 +746,12 @@ metadata/_snap_enabled = true
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yf5fn"]
 distance = -448.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(133, 135)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gcrey"]
+load_path = "res://.godot/imported/lunger.png-e62aba08df18ed379fcc527c22582e3e.ctex"
+
 [node name="Stage 1 - PRELUDE TO EVIL" type="Node2D" unique_id=70456065]
 
 [node name="Background Layer" type="TileMapLayer" parent="." unique_id=1180819403]
@@ -772,26 +785,55 @@ script = ExtResource("12_n28ci")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=820295734]
 shape = SubResource("WorldBoundaryShape2D_yf5fn")
 
-[node name="Lunger" parent="." unique_id=946911435 instance=ExtResource("6_km4sp")]
-position = Vector2(216, -128)
-
-[node name="Enemy Chaser" parent="." unique_id=782089927 instance=ExtResource("5_1cl6i")]
-position = Vector2(112, -128)
-
-[node name="Enemy Chaser2" parent="." unique_id=409378660 instance=ExtResource("5_1cl6i")]
-position = Vector2(136, -136)
-
-[node name="Enemy Chaser3" parent="." unique_id=632333230 instance=ExtResource("5_1cl6i")]
-position = Vector2(72, -128)
-
-[node name="enemy_gunner" parent="." unique_id=1035780428 instance=ExtResource("9_83qfv")]
-position = Vector2(48, -128)
-
-[node name="enemy_gunner2" parent="." unique_id=55082310 instance=ExtResource("9_83qfv")]
-position = Vector2(48, -184)
-
 [node name="PauseMenu" type="CanvasLayer" parent="." unique_id=472184787]
+visible = false
 
 [node name="PauseMenu" parent="PauseMenu" unique_id=1484971317 instance=ExtResource("7_1cl6i")]
 
 [node name="LivesHUD" parent="." unique_id=1372217612 instance=ExtResource("8_bw2kh")]
+visible = false
+
+[node name="EventArea" type="Area2D" parent="." unique_id=619858124]
+script = ExtResource("6_b45r2")
+metadata/_custom_type_script = "uid://v0iqx35ti2ph"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EventArea" unique_id=839321356]
+position = Vector2(169, -183)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0.6691623, 0.51019174, 0, 0.41960785)
+
+[node name="MultiAction" type="Node2D" parent="EventArea" unique_id=721036586]
+script = ExtResource("7_gcrey")
+metadata/_custom_type_script = "uid://8ihu87d6e0h7"
+
+[node name="Lunger" type="Node2D" parent="EventArea/MultiAction" unique_id=1119300305]
+texture_filter = 1
+position = Vector2(199, -181)
+script = ExtResource("7_5nqvx")
+entity_scene = ExtResource("6_km4sp")
+spawn_effect = ExtResource("9_vay0u")
+metadata/_custom_type_script = "uid://di25810pxoct2"
+
+[node name="Preview" type="Sprite2D" parent="EventArea/MultiAction/Lunger" unique_id=1377608226]
+texture = SubResource("CompressedTexture2D_gcrey")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="ClearWave1" type="Node2D" parent="EventArea/MultiAction" unique_id=850450415]
+script = ExtResource("10_5nqvx")
+metadata/_custom_type_script = "uid://di25810pxoct2"
+
+[node name="EnemyBrute" parent="." unique_id=946815017 instance=ExtResource("12_vay0u")]
+position = Vector2(1, -240)
+
+[node name="enemy_gunner" parent="." unique_id=1035780428 instance=ExtResource("13_10d0o")]
+position = Vector2(66, -133)
+
+[node name="enemy_gunner2" parent="." unique_id=1479934975 instance=ExtResource("13_10d0o")]
+position = Vector2(-62, -136)
+
+[node name="Enemy Grenadier" parent="." unique_id=1599663498 instance=ExtResource("14_ejv5g")]
+position = Vector2(-92, -133)
+
+[node name="Turret" parent="." unique_id=564088818 instance=ExtResource("15_qi28d")]
+position = Vector2(-141, -221)

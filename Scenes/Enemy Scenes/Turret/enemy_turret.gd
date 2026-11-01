@@ -6,6 +6,8 @@ class_name Turret extends Node2D
 @export var shot_delay: float = 0.15           # seconds between shots in a burst
 @export var burst_cooldown: float = 2.5        # seconds between bursts
 
+@onready var firing_sfx: AudioStreamPlayer = get_node_or_null("FiringGunSFX")
+
 var player: Node2D
 var shots_left: int = 0
 var shot_timer: float = 0.0
@@ -46,6 +48,10 @@ func fire() -> void:
 		return
 	var bullet = projectile_scene.instantiate()
 	bullet.direction = (player.global_position - global_position).normalized()   # aims at the player's current position
+	
+	if firing_sfx:
+		firing_sfx.play()
+	
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = global_position
 

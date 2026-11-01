@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://cftobmjh7y2ja" path="res://Scripts/State_Machine/enemies states/gunner_states/gunner_shoot.gd" id="8_sy457"]
 [ext_resource type="Texture2D" uid="uid://0hhs47g4ushk" path="res://Assets/something_evil_assets/sprites/gunner.png" id="10_4s8nx"]
 [ext_resource type="Script" uid="uid://b2ec20sbyqpj7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_fall.gd" id="10_gdmyk"]
+[ext_resource type="AudioStream" uid="uid://ctk3el7pe6fri" path="res://Assets/brackeys_platformer_assets/sounds/explosion.wav" id="10_xb1tm"]
+[ext_resource type="Script" uid="uid://cdeesjx1jp87o" path="res://Scripts/face_player.gd" id="12_05epj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
 radius = 4.0
@@ -18,6 +20,12 @@ height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(10, 17.5)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g4v7s"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("10_xb1tm")
+stream_0/weight = 10.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4s8nx"]
 atlas = ExtResource("10_4s8nx")
@@ -107,6 +115,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xb1tm"]
+atlas = ExtResource("10_4s8nx")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xb1tm")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="enemy_gunner" type="CharacterBody2D" unique_id=1035780428 node_paths=PackedStringArray("health")]
 collision_layer = 2
 script = ExtResource("1_p3jys")
@@ -145,11 +168,17 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="EnemyChase" type="Node" parent="StateMachine" unique_id=1703864335]
 script = ExtResource("7_cmo3a")
+can_jump = false
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="GunnerShoot" type="Node" parent="StateMachine" unique_id=2032878847]
 script = ExtResource("8_sy457")
 metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="FiringGunSFX" type="AudioStreamPlayer" parent="StateMachine/GunnerShoot" unique_id=669379689]
+stream = SubResource("AudioStreamRandomizer_g4v7s")
+volume_db = -2.0
+pitch_scale = 0.7
 
 [node name="EnemyFall" type="Node" parent="StateMachine" unique_id=854893117]
 script = ExtResource("10_gdmyk")
@@ -160,5 +189,13 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 animation = &"chase"
 autoplay = "idle"
+
+[node name="Gun" type="Node2D" parent="." unique_id=603085094]
+script = ExtResource("12_05epj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gun" unique_id=681174871]
+texture_filter = 1
+position = Vector2(4, 0)
+sprite_frames = SubResource("SpriteFrames_yf5fn")
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]

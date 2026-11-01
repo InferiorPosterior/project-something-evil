@@ -46,6 +46,7 @@ func throw_grenade() -> void:
 	var grenade: Grenade = grenade_scene.instantiate()
 	get_tree().current_scene.add_child(grenade)
 	grenade.global_position = origin
+	
 	grenade.launch(vel, self)
 
 func _on_health_component_health_depleted() -> void:

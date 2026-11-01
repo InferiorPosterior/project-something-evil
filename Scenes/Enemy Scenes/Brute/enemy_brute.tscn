@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cmgqsvd3geh3r" path="res://Scenes/Enemy Scenes/Lunger/enemy_lunger.gd" id="1_oo625"]
 [ext_resource type="PackedScene" uid="uid://gf0jiqmnkk54" path="res://Scenes/Effects/death_effect_big.tscn" id="2_1svrq"]
-[ext_resource type="Texture2D" uid="uid://10cr4tqj3ryk" path="res://Assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_ky8eb"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_wuqc8"]
+[ext_resource type="Texture2D" uid="uid://b0s8wx7kld6dy" path="res://Assets/something_evil_assets/sprites/brute.png" id="3_xi0a3"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_m7fxu"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="5_ky8eb"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_plm84"]
@@ -14,48 +14,187 @@
 [ext_resource type="Script" uid="uid://4l6b3j53kxw7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_jump.gd" id="10_cm1hv"]
 [ext_resource type="Script" uid="uid://bbja6m2qna0ig" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_recover.gd" id="12_2520f"]
 [ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/Projectiles & Hazards/Enemy Projectile/enemy_projectile.tscn" id="12_m7fxu"]
+[ext_resource type="AudioStream" uid="uid://dq66jo07srlmf" path="res://Assets/something_evil_assets/sound effects/lunge.wav" id="13_2o6rj"]
 [ext_resource type="Script" uid="uid://cpuksw8tpv4yj" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_windup.gd" id="13_hiuwt"]
 [ext_resource type="Script" uid="uid://bco4t8p1j7xmc" path="res://Scenes/Enemy Scenes/Turret/enemy_turret.gd" id="14_oo625"]
+[ext_resource type="Script" uid="uid://cdeesjx1jp87o" path="res://Scripts/face_player.gd" id="18_ki8mq"]
+[ext_resource type="AudioStream" uid="uid://ctk3el7pe6fri" path="res://Assets/brackeys_platformer_assets/sounds/explosion.wav" id="19_ki8mq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0hrxl"]
-atlas = ExtResource("2_ky8eb")
-region = Rect2(128, 32, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xi0a3"]
+atlas = ExtResource("3_xi0a3")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o6rj"]
+atlas = ExtResource("3_xi0a3")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klqxq"]
+atlas = ExtResource("3_xi0a3")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt4di"]
+atlas = ExtResource("3_xi0a3")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fw34"]
+atlas = ExtResource("3_xi0a3")
+region = Rect2(0, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy637"]
+atlas = ExtResource("3_xi0a3")
+region = Rect2(48, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05sq1"]
+atlas = ExtResource("3_xi0a3")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0phsx"]
+atlas = ExtResource("3_xi0a3")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ki8mq"]
+atlas = ExtResource("3_xi0a3")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsdfh"]
+atlas = ExtResource("3_xi0a3")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urx3c"]
+atlas = ExtResource("3_xi0a3")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kylsx"]
+atlas = ExtResource("3_xi0a3")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj57s"]
+atlas = ExtResource("3_xi0a3")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8y8n"]
+atlas = ExtResource("3_xi0a3")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7nhp"]
+atlas = ExtResource("3_xi0a3")
+region = Rect2(96, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqdia"]
+atlas = ExtResource("3_xi0a3")
+region = Rect2(144, 144, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0hrxl")
+"texture": SubResource("AtlasTexture_xi0a3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2o6rj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klqxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nt4di")
 }],
 "loop": 1,
-"name": &"default",
+"name": &"chase",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fw34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fy637")
+}],
+"loop": 1,
+"name": &"dash",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05sq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0phsx")
+}],
+"loop": 1,
+"name": &"fall",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ki8mq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsdfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urx3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kylsx")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dj57s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8y8n")
+}],
+"loop": 1,
+"name": &"recover",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7nhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqdia")
+}],
+"loop": 1,
+"name": &"windup",
+"speed": 6.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_57qmd"]
-radius = 13.000001
-height = 30.000002
+height = 38.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
-size = Vector2(32, 32)
+size = Vector2(32, 36)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
-size = Vector2(28, 28)
+[sub_resource type="CircleShape2D" id="CircleShape2D_10d0o"]
+radius = 16.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m7fxu"]
-atlas = ExtResource("2_ky8eb")
-region = Rect2(0, 128, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mn4xd"]
+atlas = ExtResource("3_xi0a3")
+region = Rect2(0, 192, 48, 48)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_57qmd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m7fxu")
+"texture": SubResource("AtlasTexture_mn4xd")
 }],
 "loop": 1,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g4v7s"]
+random_pitch = 1.122462
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("19_ki8mq")
+stream_0/weight = 10.0
 
 [node name="EnemyBrute" type="CharacterBody2D" unique_id=946815017 node_paths=PackedStringArray("health")]
 collision_layer = 2
@@ -65,12 +204,14 @@ death_effect = ExtResource("2_1svrq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1768781975]
 texture_filter = 1
-scale = Vector2(1.9999999, 1.9999999)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
-metadata/_edit_group_ = true
+animation = &"chase"
+autoplay = "idle"
+frame_progress = 0.46927676
+speed_scale = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=578392833]
-position = Vector2(-9.536743e-07, -9.536743e-07)
+position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_57qmd")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=931881473]
@@ -87,7 +228,7 @@ health = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://bxvhy0cwrfk4k"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1188926905]
-position = Vector2(8, 8)
+position = Vector2(8.000001, 12.000001)
 shape = SubResource("RectangleShape2D_yf5fn")
 debug_color = Color(0, 0.6343908, 0.4257879, 0.41960785)
 
@@ -100,8 +241,8 @@ damage = 100
 metadata/_custom_type_script = "uid://bvtclq823uv2e"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=986339326]
-position = Vector2(8, 8)
-shape = SubResource("RectangleShape2D_57qmd")
+position = Vector2(8.000001, 10.000001)
+shape = SubResource("CircleShape2D_10d0o")
 debug_color = Color(0.89684427, 0, 0.3093503, 0.41960785)
 
 [node name="StateMachine" type="Node" parent="." unique_id=1416348991 node_paths=PackedStringArray("initial_state")]
@@ -133,6 +274,9 @@ script = ExtResource("9_7dddd")
 dash_distance = 150.0
 metadata/_custom_type_script = "uid://v1najhost2v"
 
+[node name="LungeSFX" type="AudioStreamPlayer" parent="StateMachine/LungerDash" unique_id=651353165]
+stream = ExtResource("13_2o6rj")
+
 [node name="LungerRecover" type="Node" parent="StateMachine" unique_id=353855079]
 script = ExtResource("12_2520f")
 metadata/_custom_type_script = "uid://v1najhost2v"
@@ -141,15 +285,25 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 script = ExtResource("13_hiuwt")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
-[node name="Turret" type="Node2D" parent="." unique_id=310534396]
+[node name="Gun" type="Node2D" parent="." unique_id=1167090206]
+script = ExtResource("18_ki8mq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gun" unique_id=1539047564]
+texture_filter = 1
+position = Vector2(4, 2)
+sprite_frames = SubResource("SpriteFrames_57qmd")
+animation = &"idle"
+
+[node name="Turret" type="Node2D" parent="Gun" unique_id=310534396]
 position = Vector2(-9.536743e-07, -9.536743e-07)
 script = ExtResource("14_oo625")
 projectile_scene = ExtResource("12_m7fxu")
 burst_count = 5
 metadata/_custom_type_script = "uid://bco4t8p1j7xmc"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Turret" unique_id=505925636]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_yf5fn")
+[node name="FiringGunSFX" type="AudioStreamPlayer" parent="Gun/Turret" unique_id=9481212]
+stream = SubResource("AudioStreamRandomizer_g4v7s")
+volume_db = 1.0
+pitch_scale = 0.75
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
