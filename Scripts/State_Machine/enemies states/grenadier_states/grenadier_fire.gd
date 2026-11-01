@@ -30,5 +30,6 @@ func physics_update(delta: float) -> void:
 
 	cooldown -= delta
 	if cooldown <= 0.0:
+		$GrenadeLaunch.play()
 		enemy.throw_grenade()
 		cooldown = throw_interval

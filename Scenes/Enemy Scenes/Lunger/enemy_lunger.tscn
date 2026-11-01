@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://cpuksw8tpv4yj" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_windup.gd" id="11_dbuxv"]
 [ext_resource type="Script" uid="uid://cxx3nq1ca04q5" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_dash.gd" id="12_p0by7"]
 [ext_resource type="Script" uid="uid://bbja6m2qna0ig" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_recover.gd" id="13_vg3vn"]
+[ext_resource type="AudioStream" uid="uid://dq66jo07srlmf" path="res://Assets/something_evil_assets/sound effects/lunge.wav" id="15_dky3w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6v10p"]
 atlas = ExtResource("2_6v10p")
@@ -234,6 +235,10 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 [node name="LungerDash" type="Node" parent="StateMachine" unique_id=1969370070]
 script = ExtResource("12_p0by7")
 metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="LungeSFX" type="AudioStreamPlayer" parent="StateMachine/LungerDash" unique_id=86062627]
+stream = ExtResource("15_dky3w")
+pitch_scale = 1.75
 
 [node name="LungerRecover" type="Node" parent="StateMachine" unique_id=1878103491]
 script = ExtResource("13_vg3vn")

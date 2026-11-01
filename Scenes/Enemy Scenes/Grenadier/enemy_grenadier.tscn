@@ -9,7 +9,31 @@
 [ext_resource type="Script" uid="uid://dy0l2xviqnjni" path="res://Scripts/State_Machine/enemies states/grenadier_states/grenadier_idle.gd" id="7_nntqs"]
 [ext_resource type="Script" uid="uid://dcxqloaodgbuw" path="res://Scripts/State_Machine/enemies states/grenadier_states/grenadier_reposition.gd" id="8_d14hq"]
 [ext_resource type="Script" uid="uid://d2uoq54ejdnnt" path="res://Scripts/State_Machine/enemies states/grenadier_states/grenadier_fire.gd" id="9_02at7"]
+[ext_resource type="AudioStream" uid="uid://dd1whkkjwpdvm" path="res://Assets/something_evil_assets/sound effects/explosion (2).wav" id="9_h4snk"]
 [ext_resource type="Script" uid="uid://6rpshjxtyli5" path="res://Scripts/State_Machine/enemies states/grenadier_states/grenadier_fall.gd" id="10_3akrr"]
+[ext_resource type="Script" uid="uid://cdeesjx1jp87o" path="res://Scripts/face_player.gd" id="10_gr8wd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2d8f"]
+size = Vector2(16.5, 24.25)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jyajp"]
+radius = 5.0
+height = 24.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4snk"]
+atlas = ExtResource("3_xuf2b")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4snk")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lmq2u"]
 atlas = ExtResource("3_xuf2b")
@@ -113,25 +137,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2d8f"]
-size = Vector2(16.5, 24.25)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jyajp"]
-radius = 5.0
-height = 24.0
-
 [node name="Enemy Grenadier" type="CharacterBody2D" unique_id=1599663498 node_paths=PackedStringArray("health")]
 collision_layer = 2
 script = ExtResource("1_jm4kl")
 health = NodePath("HealthComponent")
 grenade_scene = ExtResource("2_jm4kl")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1870108406]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_jo3tk")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.8802855
 
 [node name="HealthComponent" type="Node" parent="." unique_id=423890900]
 script = ExtResource("4_o836l")
@@ -171,8 +181,29 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 script = ExtResource("9_02at7")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
+[node name="GrenadeLaunch" type="AudioStreamPlayer2D" parent="StateMachine/GrenadierFire" unique_id=1001822322]
+stream = ExtResource("9_h4snk")
+volume_db = -1.0
+pitch_scale = 0.75
+panning_strength = 0.25
+
 [node name="GrenadierFall" type="Node" parent="StateMachine" unique_id=161210251]
 script = ExtResource("10_3akrr")
 metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="Gun" type="Node2D" parent="." unique_id=542617053]
+script = ExtResource("10_gr8wd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gun" unique_id=1568043518]
+texture_filter = 1
+position = Vector2(3, -3)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1870108406]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_jo3tk")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.8802855
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
