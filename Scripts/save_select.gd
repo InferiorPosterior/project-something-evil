@@ -2,6 +2,12 @@
 # One scene used for both New Game and Load Game.
 # The main menu sets SaveSelect.pending_mode before opening this scene.
 # there is no real saving yet. Everything marked PLACEHOLDER is where the save system plugs in later.
+
+# UI ONLY. To finish the save system:
+# 1. _get_slot_data(): read the real save file for each slot
+# 2. _on_confirm_pressed(): create (NEW) or load (LOAD) the save
+
+
 class_name SaveSelect extends Control
 
 enum Mode { NEW, LOAD }
@@ -14,8 +20,7 @@ const DIFFICULTY_INFO: Array[String] = [
 	"The intended experience.",
 	"For players who want a challenge.",
 ]
-# Shows one fake save in Slot 1 so you can preview the Load Game screen. Set to false when real saves exist.
-const PREVIEW_FAKE_SAVE: bool = true
+
 
 # SET BY THE MAIN MENU BEFORE CHANGING TO THIS SCENE
 static var pending_mode: Mode = Mode.NEW
@@ -68,8 +73,6 @@ func _ready() -> void:
 
 # PLACEHOLDER: replace with real save file reading. Return {} when the slot is empty.
 func _get_slot_data(slot: int) -> Dictionary:
-	if PREVIEW_FAKE_SAVE and slot == 0:
-		return {"name": "Test Save", "difficulty": 1, "level": "Level 1"}
 	return {}
 
 func _refresh_slots() -> void:

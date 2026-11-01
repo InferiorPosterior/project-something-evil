@@ -1,9 +1,9 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dgjrf357xrrld"]
 
-[ext_resource type="Script" path="res://Scripts/save_select.gd" id="1_save"]
-[ext_resource type="FontFile" path="res://Fonts/BebasNeue-Regular.ttf" id="2_bebas"]
+[ext_resource type="Script" uid="uid://bxrnkfdas46eu" path="res://Scripts/save_select.gd" id="1_save"]
+[ext_resource type="FontFile" uid="uid://du3wbjmohuixm" path="res://Fonts/BebasNeue-Regular.ttf" id="2_bebas"]
 
-[node name="SaveSelect" type="Control"]
+[node name="SaveSelect" type="Control" unique_id=1194801006]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_save")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=450326820]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.21176471, 0.19607843, 0.21176471, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=986858662]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,11 +33,11 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 80
 theme_override_constants/margin_bottom = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1389385831]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1632940424]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.94509804, 0.21568628, 0.22745098, 1)
@@ -46,27 +46,27 @@ theme_override_font_sizes/font_size = 72
 text = "NEW GAME"
 horizontal_alignment = 1
 
-[node name="Columns" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Columns" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1023049333]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 48
 
-[node name="SlotsColumn" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Columns"]
+[node name="SlotsColumn" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Columns" unique_id=526302034]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 12
 
-[node name="SlotsHeader" type="Label" parent="MarginContainer/VBoxContainer/Columns/SlotsColumn"]
+[node name="SlotsHeader" type="Label" parent="MarginContainer/VBoxContainer/Columns/SlotsColumn" unique_id=798851446]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "SAVE FILES"
 
-[node name="SlotsBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Columns/SlotsColumn"]
+[node name="SlotsBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Columns/SlotsColumn" unique_id=1533553527]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Slot1Button" type="Button" parent="MarginContainer/VBoxContainer/Columns/SlotsColumn/SlotsBox"]
+[node name="Slot1Button" type="Button" parent="MarginContainer/VBoxContainer/Columns/SlotsColumn/SlotsBox" unique_id=364689044]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -74,7 +74,7 @@ toggle_mode = true
 text = "SLOT 1"
 alignment = 0
 
-[node name="Slot2Button" type="Button" parent="MarginContainer/VBoxContainer/Columns/SlotsColumn/SlotsBox"]
+[node name="Slot2Button" type="Button" parent="MarginContainer/VBoxContainer/Columns/SlotsColumn/SlotsBox" unique_id=34150502]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -82,7 +82,7 @@ toggle_mode = true
 text = "SLOT 2"
 alignment = 0
 
-[node name="Slot3Button" type="Button" parent="MarginContainer/VBoxContainer/Columns/SlotsColumn/SlotsBox"]
+[node name="Slot3Button" type="Button" parent="MarginContainer/VBoxContainer/Columns/SlotsColumn/SlotsBox" unique_id=888321204]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -90,18 +90,18 @@ toggle_mode = true
 text = "SLOT 3"
 alignment = 0
 
-[node name="NewGameOptions" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Columns"]
+[node name="NewGameOptions" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Columns" unique_id=1971975420]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 12
 
-[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/Columns/NewGameOptions"]
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/Columns/NewGameOptions" unique_id=230803782]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "SAVE NAME"
 
-[node name="NameEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/Columns/NewGameOptions"]
+[node name="NameEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/Columns/NewGameOptions" unique_id=1056488124]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -109,17 +109,17 @@ theme_override_font_sizes/font_size = 20
 placeholder_text = "Select a slot first"
 max_length = 20
 
-[node name="DifficultyLabel" type="Label" parent="MarginContainer/VBoxContainer/Columns/NewGameOptions"]
+[node name="DifficultyLabel" type="Label" parent="MarginContainer/VBoxContainer/Columns/NewGameOptions" unique_id=1678279522]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "DIFFICULTY"
 
-[node name="DifficultyBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Columns/NewGameOptions"]
+[node name="DifficultyBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Columns/NewGameOptions" unique_id=1083880094]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="EasyButton" type="Button" parent="MarginContainer/VBoxContainer/Columns/NewGameOptions/DifficultyBox"]
+[node name="EasyButton" type="Button" parent="MarginContainer/VBoxContainer/Columns/NewGameOptions/DifficultyBox" unique_id=941102083]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -127,7 +127,7 @@ theme_override_font_sizes/font_size = 20
 toggle_mode = true
 text = "EASY"
 
-[node name="NormalButton" type="Button" parent="MarginContainer/VBoxContainer/Columns/NewGameOptions/DifficultyBox"]
+[node name="NormalButton" type="Button" parent="MarginContainer/VBoxContainer/Columns/NewGameOptions/DifficultyBox" unique_id=595307000]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -135,7 +135,7 @@ theme_override_font_sizes/font_size = 20
 toggle_mode = true
 text = "NORMAL"
 
-[node name="HardButton" type="Button" parent="MarginContainer/VBoxContainer/Columns/NewGameOptions/DifficultyBox"]
+[node name="HardButton" type="Button" parent="MarginContainer/VBoxContainer/Columns/NewGameOptions/DifficultyBox" unique_id=861603088]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -143,27 +143,27 @@ theme_override_font_sizes/font_size = 20
 toggle_mode = true
 text = "HARD"
 
-[node name="DifficultyInfo" type="Label" parent="MarginContainer/VBoxContainer/Columns/NewGameOptions"]
+[node name="DifficultyInfo" type="Label" parent="MarginContainer/VBoxContainer/Columns/NewGameOptions" unique_id=573621983]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "A relaxed run."
 
-[node name="BottomRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="BottomRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=335162915]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/BottomRow"]
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/BottomRow" unique_id=1948762043]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(180, 56)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "BACK"
 
-[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/BottomRow"]
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/BottomRow" unique_id=1566948209]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer/BottomRow"]
+[node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer/BottomRow" unique_id=1554947267]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(180, 56)
 layout_mode = 2
