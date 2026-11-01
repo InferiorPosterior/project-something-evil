@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://03d3kqymh6dx"]
+
+[ext_resource type="Script" uid="uid://v0iqx35ti2ph" path="res://event_area.gd" id="1_8c6d0"]
+
+[node name="Event Area" type="Area2D" unique_id=802347559]
+script = ExtResource("1_8c6d0")

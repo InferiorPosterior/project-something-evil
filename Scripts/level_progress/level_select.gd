@@ -3,6 +3,7 @@ extends Control
 
 var opened_from_pause: bool = false
 
+@export var level1: PackedScene
 
 func _ready():
 	#This lets the level select to work while the game is paused.
@@ -28,7 +29,7 @@ func update_level_buttons():
 
 func _on_level1_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes/stage_1_prelude_to_evil.tscn")
+	get_tree().change_scene_to_packed(level1)
 
 
 func _on_level2_pressed():

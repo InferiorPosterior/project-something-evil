@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://5ilkvk7ga1ba"]
+
+[ext_resource type="Script" uid="uid://d1xh8t1ol3loo" path="res://Scenes/Enemy Scenes/Grenadier/enemy_grenadier.gd" id="1_jm4kl"]
+[ext_resource type="PackedScene" uid="uid://eapqponxnen6" path="res://Scenes/Projectiles & Hazards/Grenade/grenade.tscn" id="2_jm4kl"]
+[ext_resource type="Texture2D" uid="uid://b7ddx64hys10x" path="res://Assets/something_evil_assets/sprites/grenadier.png" id="3_xuf2b"]
+[ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="4_o836l"]
+[ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="5_ahg5e"]
+[ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="6_mowij"]
+[ext_resource type="Script" uid="uid://dy0l2xviqnjni" path="res://Scripts/State_Machine/enemies states/grenadier_states/grenadier_idle.gd" id="7_nntqs"]
+[ext_resource type="Script" uid="uid://dcxqloaodgbuw" path="res://Scripts/State_Machine/enemies states/grenadier_states/grenadier_reposition.gd" id="8_d14hq"]
+[ext_resource type="Script" uid="uid://d2uoq54ejdnnt" path="res://Scripts/State_Machine/enemies states/grenadier_states/grenadier_fire.gd" id="9_02at7"]
+[ext_resource type="Script" uid="uid://6rpshjxtyli5" path="res://Scripts/State_Machine/enemies states/grenadier_states/grenadier_fall.gd" id="10_3akrr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmq2u"]
+atlas = ExtResource("3_xuf2b")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0g8i"]
+atlas = ExtResource("3_xuf2b")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c37w"]
+atlas = ExtResource("3_xuf2b")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ie6qr"]
+atlas = ExtResource("3_xuf2b")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abeos"]
+atlas = ExtResource("3_xuf2b")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmu5g"]
+atlas = ExtResource("3_xuf2b")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln0vy"]
+atlas = ExtResource("3_xuf2b")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4q5x"]
+atlas = ExtResource("3_xuf2b")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuf2b"]
+atlas = ExtResource("3_xuf2b")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds1v5"]
+atlas = ExtResource("3_xuf2b")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyh6b"]
+atlas = ExtResource("3_xuf2b")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3evtm"]
+atlas = ExtResource("3_xuf2b")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jo3tk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmq2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0g8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c37w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ie6qr")
+}],
+"loop": 1,
+"name": &"chase",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abeos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmu5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln0vy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4q5x")
+}],
+"loop": 1,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuf2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ds1v5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyh6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3evtm")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2d8f"]
+size = Vector2(16.5, 24.25)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jyajp"]
+radius = 5.0
+height = 24.0
+
+[node name="Enemy Grenadier" type="CharacterBody2D" unique_id=1599663498 node_paths=PackedStringArray("health")]
+collision_layer = 2
+script = ExtResource("1_jm4kl")
+health = NodePath("HealthComponent")
+grenade_scene = ExtResource("2_jm4kl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1870108406]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_jo3tk")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.8802855
+
+[node name="HealthComponent" type="Node" parent="." unique_id=423890900]
+script = ExtResource("4_o836l")
+max_health = 500
+metadata/_custom_type_script = "uid://ngsma3hy4ktw"
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=236454442 node_paths=PackedStringArray("health")]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("5_ahg5e")
+health = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://bxvhy0cwrfk4k"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1501168733]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_r2d8f")
+debug_color = Color(1.1070073e-06, 0.63253874, 0.45384026, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1458673826]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_jyajp")
+
+[node name="StateMachine" type="Node" parent="." unique_id=64040392 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_mowij")
+initial_state = NodePath("GrenadierIdle")
+metadata/_custom_type_script = "uid://cb8uqkistmuev"
+
+[node name="GrenadierIdle" type="Node" parent="StateMachine" unique_id=309932761]
+script = ExtResource("7_nntqs")
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="GrenadierReposition" type="Node" parent="StateMachine" unique_id=306890898]
+script = ExtResource("8_d14hq")
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="GrenadierFire" type="Node" parent="StateMachine" unique_id=979958133]
+script = ExtResource("9_02at7")
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="GrenadierFall" type="Node" parent="StateMachine" unique_id=161210251]
+script = ExtResource("10_3akrr")
+metadata/_custom_type_script = "uid://v1najhost2v"
+
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]

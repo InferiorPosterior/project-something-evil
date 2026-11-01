@@ -2,6 +2,9 @@ class_name GrenadierIdle extends State
 
 @onready var enemy: Grenadier = get_parent().get_parent()
 
+func enter_state():
+	enemy.get_node("AnimatedSprite2D").play("idle")
+	
 func physics_update(delta: float) -> void:
 	enemy.apply_gravity(delta)
 	enemy.velocity.x = 0

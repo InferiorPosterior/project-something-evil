@@ -5,6 +5,9 @@ class_name GrenadierReposition extends State
 
 @onready var enemy: Grenadier = get_parent().get_parent()
 
+func enter_state():
+	enemy.get_node("AnimatedSprite2D").play("chase")
+
 func physics_update(delta: float) -> void:
 	enemy.apply_gravity(delta)
 
