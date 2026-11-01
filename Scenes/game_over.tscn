@@ -1,45 +1,97 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://fjnx4hsvp70v"]
 
-[ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_gameover"]
+[ext_resource type="Script" uid="uid://b03p0lpjyowvg" path="res://Scripts/game_over.gd" id="1_gameover"]
+[ext_resource type="FontFile" uid="uid://du3wbjmohuixm" path="res://Fonts/BebasNeue-Regular.ttf" id="2_8fo1c"]
 
-[node name="GameOver" type="CanvasLayer"]
+[node name="GameOver" type="CanvasLayer" unique_id=474399343]
 process_mode = 3
 layer = 100
 script = ExtResource("1_gameover")
 
-[node name="Dim" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=1050798898]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.7)
+color = Color(0.21176471, 0.19607843, 0.21176471, 0.73333335)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2137500469]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=853328788]
+custom_minimum_size = Vector2(420, 200)
 layout_mode = 2
-theme_override_constants/separation = 12
 
-[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "GAME OVER"
+[node name="Control" type="Control" parent="CenterContainer/Panel" unique_id=1904269858]
+anchors_preset = 0
+
+[node name="Title2" type="Label" parent="CenterContainer/Panel/Control" unique_id=627717347]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 362.0
+offset_right = 345.0
+offset_bottom = 422.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_8fo1c")
+theme_override_font_sizes/font_size = 49
+text = "PROJECT:"
+horizontal_alignment = 2
+
+[node name="Title3" type="Label" parent="CenterContainer/Panel/Control" unique_id=1354683633]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 332.0
+offset_right = 772.0
+offset_bottom = 435.0
+theme_override_colors/font_color = Color(0.94509804, 0.21568628, 0.22745098, 1)
+theme_override_fonts/font = ExtResource("2_8fo1c")
+theme_override_font_sizes/font_size = 85
+text = "SOMETHING EVIL"
 horizontal_alignment = 1
 
-[node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="RestartButton" type="Button" parent="CenterContainer/Panel/Control" unique_id=2072582333]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 48)
-layout_mode = 2
+layout_mode = 0
+offset_left = 4.0
+offset_top = 33.0
+offset_right = 414.0
+offset_bottom = 81.0
 text = "Restart"
 
-[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="CenterContainer/Panel/Control" unique_id=2126770272]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 48)
-layout_mode = 2
+layout_mode = 0
+offset_left = 5.0
+offset_top = 123.0
+offset_right = 416.0
+offset_bottom = 171.0
 text = "Main Menu"
+
+[node name="Message" type="Label" parent="CenterContainer/Panel/Control" unique_id=602997738]
+layout_mode = 0
+offset_left = -362.0
+offset_top = -63.0
+offset_right = 781.0
+offset_bottom = 9.0
+theme_override_colors/font_color = Color(0.94509804, 0.21568628, 0.22745098, 1)
+theme_override_fonts/font = ExtResource("2_8fo1c")
+theme_override_font_sizes/font_size = 60
+text = "EVIL  HAS  TAKEN  YOU "
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="CenterContainer/Panel/Control" unique_id=799749196]
+layout_mode = 0
+offset_left = -362.0
+offset_top = -207.0
+offset_right = 782.0
+offset_bottom = -97.0
+theme_override_font_sizes/font_size = 80
+text = "GAME OVER"
+horizontal_alignment = 1
