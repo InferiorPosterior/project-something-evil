@@ -7,14 +7,17 @@ func _ready() -> void:
 	%MainMenuButton.pressed.connect(_on_main_menu_pressed)
 	%RestartButton.grab_focus()
 
+
 func _input(event: InputEvent) -> void:
 	# STOPS ESC FROM OPENING/CLOSING THE PAUSE MENU OVER THE GAME OVER SCREEN
 	if event.is_action_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()
 
+
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
 	get_tree().reload_current_scene() # RELOADS THE LEVEL, PLAYER GETS 3 LIVES AGAIN, ENEMIES COME BACK
+
 
 func _on_main_menu_pressed() -> void:
 	get_tree().paused = false
