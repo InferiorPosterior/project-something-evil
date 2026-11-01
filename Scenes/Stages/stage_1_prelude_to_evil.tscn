@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://bsg18wysnjs8k" path="res://Assets/something_evil_assets/sprites/something_evil_tileset.png" id="1_7wf4l"]
 [ext_resource type="PackedScene" uid="uid://du0gmlf03hrwy" path="res://Scenes/player.tscn" id="2_du3gd"]
-[ext_resource type="PackedScene" uid="uid://uo5061t85jw5" path="res://Scenes/Enemy Scenes/Chaser/enemy_chaser.tscn" id="5_1cl6i"]
-[ext_resource type="PackedScene" uid="uid://yvcb3rtoocwa" path="res://Scenes/Enemy Scenes/Lunger/enemy_lunger.tscn" id="6_km4sp"]
-[ext_resource type="PackedScene" uid="uid://r0f1g28ne38f" path="res://Scenes/Enemy Scenes/Drone/enemy_drone.tscn" id="7_e1fc6"]
-[ext_resource type="PackedScene" uid="uid://5ilkvk7ga1ba" path="res://Scenes/Enemy Scenes/Grenadier/enemy_grenadier.tscn" id="8_n28ci"]
-[ext_resource type="PackedScene" uid="uid://dr0tnjrfrv4q0" path="res://Scenes/Enemy Scenes/Gunner/enemy_gunner.tscn" id="9_83qfv"]
-[ext_resource type="Script" uid="uid://rpk8sa4d7eyx" path="res://Scenes/Projectiles & Hazards/Killzone/killzone.gd" id="12_n28ci"]
+[ext_resource type="PackedScene" uid="uid://uo5061t85jw5" path="res://Scenes/Enemy Scenes/enemy_chaser.tscn" id="5_1cl6i"]
+[ext_resource type="PackedScene" uid="uid://yvcb3rtoocwa" path="res://Scenes/Enemy Scenes/enemy_lunger.tscn" id="6_km4sp"]
+[ext_resource type="PackedScene" uid="uid://dj0s5hm5dgbqu" path="res://Scenes/pause_menu.tscn" id="7_1cl6i"]
+[ext_resource type="PackedScene" uid="uid://3btq8c6h6ayp" path="res://Scenes/lives_hud.tscn" id="8_bw2kh"]
+[ext_resource type="PackedScene" uid="uid://dr0tnjrfrv4q0" path="res://Scenes/Enemy Scenes/enemy_gunner.tscn" id="9_83qfv"]
+[ext_resource type="Script" uid="uid://rpk8sa4d7eyx" path="res://Scripts/Projectiles & Hazards/killzone.gd" id="12_n28ci"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ews4g"]
 texture = ExtResource("1_7wf4l")
@@ -790,8 +790,8 @@ position = Vector2(48, -128)
 [node name="enemy_gunner2" parent="." unique_id=55082310 instance=ExtResource("9_83qfv")]
 position = Vector2(48, -184)
 
-[node name="Enemy Grenadier" parent="." unique_id=1599663498 instance=ExtResource("8_n28ci")]
-position = Vector2(-64, -136)
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=472184787]
 
-[node name="Enemy Drone" parent="." unique_id=408462021 instance=ExtResource("7_e1fc6")]
-position = Vector2(240, -208)
+[node name="PauseMenu" parent="PauseMenu" unique_id=1484971317 instance=ExtResource("7_1cl6i")]
+
+[node name="LivesHUD" parent="." unique_id=1372217612 instance=ExtResource("8_bw2kh")]
