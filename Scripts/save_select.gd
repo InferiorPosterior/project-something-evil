@@ -21,6 +21,8 @@ const DIFFICULTY_INFO: Array[String] = [
 	"For players who want a challenge.",
 ]
 
+# Shows one fake save in Slot 1 so you can preview the Load Game screen. Set to false when real saves exist.
+const PREVIEW_FAKE_SAVE: bool = true
 
 # SET BY THE MAIN MENU BEFORE CHANGING TO THIS SCENE
 static var pending_mode: Mode = Mode.NEW
@@ -71,8 +73,11 @@ func _ready() -> void:
 
 	_refresh_slots()
 
+
 # PLACEHOLDER: replace with real save file reading. Return {} when the slot is empty.
 func _get_slot_data(slot: int) -> Dictionary:
+	if PREVIEW_FAKE_SAVE and slot == 0:
+		return {"name": "Test Save", "difficulty": 1, "level": "Level 1"}
 	return {}
 
 func _refresh_slots() -> void:
@@ -109,7 +114,7 @@ func _on_confirm_pressed() -> void:
 		# TODO: read the save file for this slot here and apply it
 		pass
 	# PLACEHOLDER: always starts level 1 for now
-	get_tree().change_scene_to_file("res://Scenes/stage_1_prelude_to_evil.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Stages/stage_1_prelude_to_evil.tscn")
 
 func _on_back_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
