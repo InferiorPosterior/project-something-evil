@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://db7bqtoh7obyy"]
 
 [ext_resource type="Script" uid="uid://bum6ls2nwri2i" path="res://Scripts/level_progress/level_select.gd" id="1_nkys2"]
+[ext_resource type="PackedScene" uid="uid://b0w28r46qdo1r" path="res://Scenes/Stages/stage_1_prelude_to_evil.tscn" id="2_2sqnl"]
 [ext_resource type="FontFile" uid="uid://du3wbjmohuixm" path="res://Fonts/BebasNeue-Regular.ttf" id="2_lx4vd"]
 
 [node name="LevelSelect" type="Control" unique_id=786398779]
@@ -11,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nkys2")
+level1 = ExtResource("2_2sqnl")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1566773920]
 layout_mode = 1

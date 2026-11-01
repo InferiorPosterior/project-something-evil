@@ -29,8 +29,6 @@ window/stretch/aspect="expand"
 folder_colors={
 "res://Scenes/Enemy Scenes/": "red",
 "res://Scenes/Projectiles & Hazards/": "yellow",
-"res://Scripts/Enemies Scripts/": "red",
-"res://Scripts/Projectiles & Hazards/": "yellow",
 "res://Scripts/State_Machine/enemies states/": "red"
 }
 

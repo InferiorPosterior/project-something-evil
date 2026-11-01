@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://gf0jiqmnkk54"]
+
+[ext_resource type="Texture2D" uid="uid://c2qcol8krdf6o" path="res://Assets/something_evil_assets/sprites/death_effect_big.png" id="1_ybrhp"]
+[ext_resource type="Script" uid="uid://bkl1spiy2u8n0" path="res://Scenes/Effects/death_effect_big.gd" id="2_3pm33"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbppq"]
+atlas = ExtResource("1_ybrhp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d52rm"]
+atlas = ExtResource("1_ybrhp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53e6e"]
+atlas = ExtResource("1_ybrhp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg1s8"]
+atlas = ExtResource("1_ybrhp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpief"]
+atlas = ExtResource("1_ybrhp")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mynmb"]
+atlas = ExtResource("1_ybrhp")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kt3hr"]
+atlas = ExtResource("1_ybrhp")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d106d"]
+atlas = ExtResource("1_ybrhp")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbppq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d52rm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53e6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg1s8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpief")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mynmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kt3hr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d106d")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Death effect big" type="AnimatedSprite2D" unique_id=281617314]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+autoplay = "default"
+frame = 7
+frame_progress = 1.0
+speed_scale = 2.0
+script = ExtResource("2_3pm33")

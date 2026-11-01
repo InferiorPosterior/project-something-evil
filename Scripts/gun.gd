@@ -1,8 +1,7 @@
 # THIS IS THE GUN SCRIPT
 extends Node2D
 
-const PROJECTILE = preload("res://Scenes/Projectiles & Hazards/projectile.tscn")
-
+@export var PROJECTILE: PackedScene
 @export var fire_rate: float = 4.0          # shots per second while holding the button
 
 @onready var muzzle: Marker2D = $Marker2D
