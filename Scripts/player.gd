@@ -6,7 +6,7 @@ class_name Player extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-
+		
 func _ready() -> void:
 	add_to_group("player")
 	# DON'T LET THE SHORT HIT IMMUNITY (0.6s) OVERWRITE THE LONGER RESPAWN IMMUNITY

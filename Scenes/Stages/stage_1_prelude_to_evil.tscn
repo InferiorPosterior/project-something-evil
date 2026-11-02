@@ -8,13 +8,11 @@
 [ext_resource type="Script" uid="uid://dvvudlaa5sc8r" path="res://Scripts/Event Systems/spawn_entity.gd" id="7_5nqvx"]
 [ext_resource type="Script" uid="uid://8ihu87d6e0h7" path="res://Scenes/Stages/multi_action.gd" id="7_gcrey"]
 [ext_resource type="PackedScene" uid="uid://3btq8c6h6ayp" path="res://Scenes/lives_hud.tscn" id="8_bw2kh"]
-[ext_resource type="PackedScene" uid="uid://gf0jiqmnkk54" path="res://Scenes/Effects/death_effect_big.tscn" id="9_vay0u"]
 [ext_resource type="Script" uid="uid://c87b73kgij03d" path="res://Scenes/Stages/wait_for_clear_action.gd" id="10_5nqvx"]
+[ext_resource type="PackedScene" uid="uid://uo5061t85jw5" path="res://Scenes/Enemy Scenes/Chaser/enemy_chaser.tscn" id="11_vay0u"]
 [ext_resource type="Script" uid="uid://rpk8sa4d7eyx" path="res://Scenes/Projectiles & Hazards/Killzone/killzone.gd" id="12_n28ci"]
 [ext_resource type="PackedScene" uid="uid://m5n0v8xvcu2f" path="res://Scenes/Enemy Scenes/Brute/enemy_brute.tscn" id="12_vay0u"]
-[ext_resource type="PackedScene" uid="uid://dr0tnjrfrv4q0" path="res://Scenes/Enemy Scenes/Gunner/enemy_gunner.tscn" id="13_10d0o"]
-[ext_resource type="PackedScene" uid="uid://5ilkvk7ga1ba" path="res://Scenes/Enemy Scenes/Grenadier/enemy_grenadier.tscn" id="14_ejv5g"]
-[ext_resource type="PackedScene" uid="uid://dnjby57ls370h" path="res://Scenes/Enemy Scenes/Turret/enemy_turret.tscn" id="15_qi28d"]
+[ext_resource type="Script" uid="uid://bhvfbplyk6u2e" path="res://Scenes/Stages/camera_anchor.gd" id="13_10d0o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ews4g"]
 texture = ExtResource("1_7wf4l")
@@ -769,12 +767,6 @@ tile_set = SubResource("TileSet_g4v7s")
 [node name="Player" parent="." unique_id=1827159017 instance=ExtResource("2_du3gd")]
 position = Vector2(-328, -208)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1429002595]
-texture_filter = 1
-zoom = Vector2(2, 2)
-position_smoothing_enabled = true
-position_smoothing_speed = 8.0
-
 [node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=338091919]
 texture_filter = 1
 texture = SubResource("GradientTexture2D_g4v7s")
@@ -811,7 +803,6 @@ texture_filter = 1
 position = Vector2(199, -181)
 script = ExtResource("7_5nqvx")
 entity_scene = ExtResource("6_km4sp")
-spawn_effect = ExtResource("9_vay0u")
 metadata/_custom_type_script = "uid://di25810pxoct2"
 
 [node name="Preview" type="Sprite2D" parent="EventArea/MultiAction/Lunger" unique_id=1377608226]
@@ -823,17 +814,23 @@ region_rect = Rect2(0, 0, 32, 32)
 script = ExtResource("10_5nqvx")
 metadata/_custom_type_script = "uid://di25810pxoct2"
 
+[node name="Enemy Chaser" parent="EventArea/MultiAction" unique_id=782089927 instance=ExtResource("11_vay0u")]
+position = Vector2(-77, -21)
+
+[node name="Enemy Chaser2" parent="EventArea/MultiAction" unique_id=568096459 instance=ExtResource("11_vay0u")]
+position = Vector2(-38, -32)
+
+[node name="Enemy Chaser3" parent="EventArea/MultiAction" unique_id=124463419 instance=ExtResource("11_vay0u")]
+position = Vector2(9, -25)
+
 [node name="EnemyBrute" parent="." unique_id=946815017 instance=ExtResource("12_vay0u")]
-position = Vector2(1, -240)
+position = Vector2(-35, -208)
 
-[node name="enemy_gunner" parent="." unique_id=1035780428 instance=ExtResource("13_10d0o")]
-position = Vector2(66, -133)
+[node name="CameraAnchor" type="Node2D" parent="." unique_id=11774862 node_paths=PackedStringArray("target")]
+script = ExtResource("13_10d0o")
+target = NodePath("../Player")
 
-[node name="enemy_gunner2" parent="." unique_id=1479934975 instance=ExtResource("13_10d0o")]
-position = Vector2(-62, -136)
-
-[node name="Enemy Grenadier" parent="." unique_id=1599663498 instance=ExtResource("14_ejv5g")]
-position = Vector2(-92, -133)
-
-[node name="Turret" parent="." unique_id=564088818 instance=ExtResource("15_qi28d")]
-position = Vector2(-141, -221)
+[node name="Camera2D" type="Camera2D" parent="CameraAnchor" unique_id=2078143752]
+zoom = Vector2(2, 2)
+process_callback = 0
+position_smoothing_enabled = true
