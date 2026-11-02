@@ -10,15 +10,17 @@ func _ready():
 	$CenterContainer/Panel/Control/QuitButton.pressed.connect(_on_quit_pressed)
 
 
-# Runs when Start Game is clicked.
+# Runs when New Game is clicked.
 func _on_start_pressed():
-	# Opens the existing game scene.
-	get_tree().change_scene_to_file("res://Scenes/game.tscn")
+	# Opens the save select scene in "new game" mode.
+	SaveSelect.pending_mode = SaveSelect.Mode.NEW
+	get_tree().change_scene_to_file("res://Scenes/save_select.tscn")
 
-#Runs when Select Level is clicked.
+# Runs when Load Game is clicked.
 func _on_level_select_pressed():
-	# Opens the level selection scene.
-	get_tree().change_scene_to_file("res://Scenes/level_select.tscn")
+	# Opens the same save select scene in "load game" mode.
+	SaveSelect.pending_mode = SaveSelect.Mode.LOAD
+	get_tree().change_scene_to_file("res://Scenes/save_select.tscn")
 
 # Runs when Settings is clicked.
 func _on_settings_pressed():

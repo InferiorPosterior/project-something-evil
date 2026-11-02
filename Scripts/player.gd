@@ -2,6 +2,7 @@
 class_name Player extends CharacterBody2D
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hurtbox: HurtboxComponent = $HurtboxComponent
+@onready var lives_component: LivesComponent = $LivesComponent
 
 const HEALTH_UI_SCENE = preload("res://Scenes/health_ui.tscn")
 const POINT_UI_SCENE = preload("res://Scenes/pointUI.tscn")
@@ -10,8 +11,11 @@ const JUMP_VELOCITY = -400.0
 
 func _ready() -> void:
 	add_to_group("player")
-	hurtbox.damage_taken.connect(func(_dmg): health_component.set_temporary_immortality(0.6))
-	health_component.health_depleted.connect(func(): get_tree().reload_current_scene.call_deferred())
+	# DON'T LET THE SHORT HIT IMMUNITY (0.6s) OVERWRITE THE LONGER RESPAWN IMMUNITY
+	hurtbox.damage_taken.connect(func(_dmg):
+		if not lives_component.is_respawn_immune:
+			health_component.set_temporary_immortality(0.6))
+	# DEATH IS NOW HANDLED BY LivesComponent
 
 	var health_ui = HEALTH_UI_SCENE.instantiate()
 	var point_ui = POINT_UI_SCENE.instantiate()

@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://dnjby57ls370h"]
+
+[ext_resource type="Script" uid="uid://bco4t8p1j7xmc" path="res://Scenes/Enemy Scenes/Turret/enemy_turret.gd" id="1_tufdm"]
+[ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/Projectiles & Hazards/Enemy Projectile/enemy_projectile.tscn" id="2_o5v45"]
+[ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_0ukbd"]
+[ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_nc2n5"]
+[ext_resource type="Texture2D" uid="uid://diygbs3y12anr" path="res://Assets/something_evil_assets/sprites/turret.png" id="5_q4c3x"]
+[ext_resource type="Script" uid="uid://cdeesjx1jp87o" path="res://Scripts/face_player.gd" id="6_755n0"]
+[ext_resource type="AudioStream" uid="uid://ctk3el7pe6fri" path="res://Assets/brackeys_platformer_assets/sounds/explosion.wav" id="7_by8hi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_755n0"]
+atlas = ExtResource("5_q4c3x")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_755n0")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_by8hi"]
+atlas = ExtResource("5_q4c3x")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_by8hi")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yf5fn"]
+streams_count = 1
+stream_0/stream = ExtResource("7_by8hi")
+
+[node name="Turret" type="Node2D" unique_id=564088818]
+script = ExtResource("1_tufdm")
+projectile_scene = ExtResource("2_o5v45")
+burst_count = 5
+
+[node name="HealthComponent" type="Node" parent="." unique_id=601867025]
+script = ExtResource("3_0ukbd")
+max_health = 500
+metadata/_custom_type_script = "uid://ngsma3hy4ktw"
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=1551139991 node_paths=PackedStringArray("health")]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("4_nc2n5")
+health = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://bxvhy0cwrfk4k"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1620562354]
+shape = SubResource("CircleShape2D_yf5fn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=147353859]
+texture_filter = 1
+position = Vector2(5, -1)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+
+[node name="Gun" type="Node2D" parent="." unique_id=934317173]
+position = Vector2(0, -1)
+script = ExtResource("6_755n0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gun" unique_id=352312216]
+texture_filter = 1
+position = Vector2(3, 0)
+sprite_frames = SubResource("SpriteFrames_yf5fn")
+
+[node name="FiringGunSFX" type="AudioStreamPlayer" parent="." unique_id=1701078565]
+stream = SubResource("AudioStreamRandomizer_yf5fn")
+volume_db = 0.25
+pitch_scale = 2.0
+
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
