@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://yvcb3rtoocwa"]
 
 [ext_resource type="Script" uid="uid://cmgqsvd3geh3r" path="res://Scenes/Enemy Scenes/Lunger/enemy_lunger.gd" id="1_baq1m"]
-[ext_resource type="PackedScene" uid="uid://gf0jiqmnkk54" path="res://Scenes/Effects/death_effect_big.tscn" id="2_5jueb"]
 [ext_resource type="Texture2D" uid="uid://banm3hbv0kf1y" path="res://Assets/something_evil_assets/sprites/lunger.png" id="2_6v10p"]
+[ext_resource type="Texture2D" uid="uid://c2qcol8krdf6o" path="res://Assets/something_evil_assets/sprites/death_effect_big.png" id="2_npunj"]
+[ext_resource type="AudioStream" uid="uid://benqyx4p7qs3" path="res://Assets/something_evil_assets/sound effects/death_big.wav" id="3_6aayl"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_jbfuy"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_dugn8"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="5_rkj44"]
@@ -15,6 +16,70 @@
 [ext_resource type="Script" uid="uid://cxx3nq1ca04q5" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_dash.gd" id="12_p0by7"]
 [ext_resource type="Script" uid="uid://bbja6m2qna0ig" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_recover.gd" id="13_vg3vn"]
 [ext_resource type="AudioStream" uid="uid://dq66jo07srlmf" path="res://Assets/something_evil_assets/sound effects/lunge.wav" id="15_dky3w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c86kr"]
+atlas = ExtResource("2_npunj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf8on"]
+atlas = ExtResource("2_npunj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u8l2"]
+atlas = ExtResource("2_npunj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uk7w"]
+atlas = ExtResource("2_npunj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sllk1"]
+atlas = ExtResource("2_npunj")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiq1q"]
+atlas = ExtResource("2_npunj")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nte6l"]
+atlas = ExtResource("2_npunj")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv8pf"]
+atlas = ExtResource("2_npunj")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8rll5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c86kr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf8on")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u8l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uk7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sllk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiq1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nte6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sv8pf")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6v10p"]
 atlas = ExtResource("2_6v10p")
@@ -162,7 +227,8 @@ collision_layer = 2
 script = ExtResource("1_baq1m")
 dash_range = 150.0
 health = NodePath("HealthComponent")
-death_effect = ExtResource("2_5jueb")
+death_frames = SubResource("SpriteFrames_8rll5")
+death_sound = ExtResource("3_6aayl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1419899213]
 texture_filter = 1

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ofo44nmqpcdg"]
+
+[ext_resource type="Script" uid="uid://d0pqiel8g01x6" path="res://Scenes/Effects/effect.gd" id="1_n1xrw"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g4v7s"]
+
+[node name="Effect" type="Node2D" unique_id=348529316]
+script = ExtResource("1_n1xrw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=876849495]
+stream = SubResource("AudioStreamRandomizer_g4v7s")
+volume_db = -0.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=590855176]
+texture_filter = 1
+speed_scale = 2.0

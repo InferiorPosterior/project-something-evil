@@ -1,9 +1,14 @@
 class_name Enemy extends CharacterBody2D
 
+@export var death_effect: PackedScene = preload("res://Scenes/Effects/effect.tscn")
+
 @export var health: HealthComponent
 @export var detection_range: float = 300.0
-@export var death_effect: PackedScene                  # drag your death effect scene here, per enemy
-@export var death_effect_offset: Vector2 = Vector2.ZERO   # nudge it if the enemy's origin isn't its centre
+
+@export_group("Death Effect")
+@export var death_frames: SpriteFrames
+@export var death_sound: AudioStream
+@export var death_effect_offset: Vector2 = Vector2.ZERO
 
 var player: Node2D
 
@@ -22,9 +27,13 @@ func distance_to_player() -> float:
 func spawn_death_effect() -> void:
 	if death_effect == null:
 		return
-	var fx := death_effect.instantiate() as Node2D
+	
+	var fx := death_effect.instantiate() as Effect
+	
+	fx.sprite_frames = death_frames
+	fx.sound = death_sound
 	get_tree().current_scene.add_child(fx)
-	fx.global_position = global_position + death_effect_offset   # set after add_child, because global_position needs the node in the tree
+	fx.global_position = global_position + death_effect_offset
 
 func _on_health_component_health_depleted() -> void:
 	spawn_death_effect()

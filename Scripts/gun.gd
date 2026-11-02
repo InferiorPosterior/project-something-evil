@@ -2,32 +2,33 @@
 extends Node2D
 
 @export var PROJECTILE: PackedScene
-@export var fire_rate: float = 4.0          # shots per second while holding the button
+@export var fire_rate: float = 4.0            # shots per second while holding the button
+@export var orbit_radius: float = 8.0         # distance from the pivot to the gun
+@export var pivot_offset: Vector2 = Vector2(0, 4)   # pivot relative to the player (chest height)
 
 @onready var muzzle: Marker2D = $Marker2D
+@onready var player: Node2D = get_parent()
 
 var cooldown_left: float = 0.0
 
 func _process(delta: float) -> void:
-	look_at(get_global_mouse_position())
+	# Orbit: sit on a circle around the pivot, pointing at the cursor
+	var pivot := player.global_position + pivot_offset
+	var dir := (get_global_mouse_position() - pivot).normalized()
+	global_position = pivot + dir * orbit_radius
+	rotation = dir.angle()
+	scale.y = -1.0 if dir.x < 0.0 else 1.0    # keep the gun right-side up when aiming left
 
-	#Keep rotation degrees between 0 and 360, flip sprite when facing opposite direction
-	rotation_degrees = wrap(rotation_degrees, 0, 360)
-	if rotation_degrees > 90 and rotation_degrees < 270:
-		scale.y = -1
-	else:
-		scale.y = 1
-
-	#Count the cooldown down every frame
+	# Count the cooldown down every frame
 	cooldown_left = maxf(cooldown_left - delta, 0.0)
 
 	#Fire while the button is held, as long as the cooldown has finished
 	if Input.is_action_pressed("use_item") and cooldown_left <= 0.0:
-		$AudioStreamPlayer.play()
 		shoot()
 		cooldown_left = 1.0 / fire_rate
 
 func shoot() -> void:
+	$AudioStreamPlayer.play()
 	var projectile_instance = PROJECTILE.instantiate()
 	get_tree().current_scene.add_child(projectile_instance)
 	projectile_instance.global_position = muzzle.global_position
