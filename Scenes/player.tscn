@@ -18,7 +18,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cvnsp")
 }],
-"loop": 1,
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
@@ -46,6 +46,7 @@ position = Vector2(6, 6)
 
 [node name="HealthComponent" type="Node" parent="." unique_id=433678246]
 script = ExtResource("4_vgqql")
+immortality = true
 
 [node name="HurtboxComponent" type="Area2D" parent="." unique_id=622235919 node_paths=PackedStringArray("health")]
 collision_layer = 0

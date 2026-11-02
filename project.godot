@@ -12,12 +12,13 @@ config_version=5
 
 config/name="Project Something Evil"
 run/main_scene="uid://brucys4yioeia"
-config/features=PackedStringArray("4.7", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameProgress="*uid://cs7ykmdc0kt3"
+ScoreManager="*uid://ci82v2ri5vqnw"
 
 [display]
 
