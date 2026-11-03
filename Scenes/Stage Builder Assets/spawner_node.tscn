@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b2so7w2mnpuxy"]
+
+[ext_resource type="Script" uid="uid://dvvudlaa5sc8r" path="res://Scripts/Event Systems/spawn_entity.gd" id="1_ngtsp"]
+[ext_resource type="Script" uid="uid://d0pqiel8g01x6" path="res://Scenes/Effects/effect.gd" id="2_ilfu7"]
+
+[node name="SpawnerNode" type="Node2D" unique_id=802069757]
+script = ExtResource("1_ngtsp")
+
+[node name="Preview" type="Sprite2D" parent="." unique_id=1780576799]
+
+[node name="Effect" type="Node2D" parent="." unique_id=1222550399]
+script = ExtResource("2_ilfu7")
+metadata/_custom_type_script = "uid://d0pqiel8g01x6"
