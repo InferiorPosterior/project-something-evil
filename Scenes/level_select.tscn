@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://db7bqtoh7obyy"]
 
-[ext_resource type="Script" uid="uid://bum6ls2nwri2i" path="res://Scripts/level_progress/level_select.gd" id="1_nkys2"]
+[ext_resource type="Script" uid="uid://bum6ls2nwri2i" path="res://Scripts/level_select.gd" id="1_nkys2"]
 [ext_resource type="PackedScene" uid="uid://b0w28r46qdo1r" path="res://Scenes/Stages/stage_1_prelude_to_evil.tscn" id="2_2sqnl"]
 [ext_resource type="FontFile" uid="uid://du3wbjmohuixm" path="res://Fonts/BebasNeue-Regular.ttf" id="2_lx4vd"]
 

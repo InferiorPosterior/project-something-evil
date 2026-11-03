@@ -3,16 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://bsg18wysnjs8k" path="res://Assets/something_evil_assets/sprites/something_evil_tileset.png" id="1_7wf4l"]
 [ext_resource type="PackedScene" uid="uid://du0gmlf03hrwy" path="res://Scenes/player.tscn" id="2_du3gd"]
 [ext_resource type="Script" uid="uid://v0iqx35ti2ph" path="res://Scripts/Event Systems/event_area.gd" id="6_b45r2"]
-[ext_resource type="PackedScene" uid="uid://yvcb3rtoocwa" path="res://Scenes/Enemy Scenes/Lunger/enemy_lunger.tscn" id="6_km4sp"]
 [ext_resource type="PackedScene" uid="uid://dj0s5hm5dgbqu" path="res://Scenes/pause_menu.tscn" id="7_1cl6i"]
-[ext_resource type="Script" uid="uid://dvvudlaa5sc8r" path="res://Scripts/Event Systems/spawn_entity.gd" id="7_5nqvx"]
-[ext_resource type="Script" uid="uid://8ihu87d6e0h7" path="res://Scenes/Stages/multi_action.gd" id="7_gcrey"]
 [ext_resource type="PackedScene" uid="uid://3btq8c6h6ayp" path="res://Scenes/lives_hud.tscn" id="8_bw2kh"]
-[ext_resource type="Script" uid="uid://c87b73kgij03d" path="res://Scenes/Stages/wait_for_clear_action.gd" id="10_5nqvx"]
-[ext_resource type="PackedScene" uid="uid://uo5061t85jw5" path="res://Scenes/Enemy Scenes/Chaser/enemy_chaser.tscn" id="11_vay0u"]
 [ext_resource type="Script" uid="uid://rpk8sa4d7eyx" path="res://Scenes/Projectiles & Hazards/Killzone/killzone.gd" id="12_n28ci"]
-[ext_resource type="PackedScene" uid="uid://m5n0v8xvcu2f" path="res://Scenes/Enemy Scenes/Brute/enemy_brute.tscn" id="12_vay0u"]
-[ext_resource type="Script" uid="uid://bhvfbplyk6u2e" path="res://Scenes/Stages/camera_anchor.gd" id="13_10d0o"]
+[ext_resource type="Script" uid="uid://bhvfbplyk6u2e" path="res://Scripts/Stage Utilities/camera_anchor.gd" id="13_10d0o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ews4g"]
 texture = ExtResource("1_7wf4l")
@@ -747,9 +741,6 @@ distance = -448.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(133, 135)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gcrey"]
-load_path = "res://.godot/imported/lunger.png-e62aba08df18ed379fcc527c22582e3e.ctex"
-
 [node name="Stage 1 - PRELUDE TO EVIL" type="Node2D" unique_id=70456065]
 
 [node name="Background Layer" type="TileMapLayer" parent="." unique_id=1180819403]
@@ -793,38 +784,6 @@ metadata/_custom_type_script = "uid://v0iqx35ti2ph"
 position = Vector2(169, -183)
 shape = SubResource("RectangleShape2D_g4v7s")
 debug_color = Color(0.6691623, 0.51019174, 0, 0.41960785)
-
-[node name="MultiAction" type="Node2D" parent="EventArea" unique_id=721036586]
-script = ExtResource("7_gcrey")
-metadata/_custom_type_script = "uid://8ihu87d6e0h7"
-
-[node name="Lunger" type="Node2D" parent="EventArea/MultiAction" unique_id=1119300305]
-texture_filter = 1
-position = Vector2(199, -181)
-script = ExtResource("7_5nqvx")
-entity_scene = ExtResource("6_km4sp")
-metadata/_custom_type_script = "uid://di25810pxoct2"
-
-[node name="Preview" type="Sprite2D" parent="EventArea/MultiAction/Lunger" unique_id=1377608226]
-texture = SubResource("CompressedTexture2D_gcrey")
-region_enabled = true
-region_rect = Rect2(0, 0, 32, 32)
-
-[node name="ClearWave1" type="Node2D" parent="EventArea/MultiAction" unique_id=850450415]
-script = ExtResource("10_5nqvx")
-metadata/_custom_type_script = "uid://di25810pxoct2"
-
-[node name="Enemy Chaser" parent="EventArea/MultiAction" unique_id=782089927 instance=ExtResource("11_vay0u")]
-position = Vector2(-77, -21)
-
-[node name="Enemy Chaser2" parent="EventArea/MultiAction" unique_id=568096459 instance=ExtResource("11_vay0u")]
-position = Vector2(-38, -32)
-
-[node name="Enemy Chaser3" parent="EventArea/MultiAction" unique_id=124463419 instance=ExtResource("11_vay0u")]
-position = Vector2(9, -25)
-
-[node name="EnemyBrute" parent="." unique_id=946815017 instance=ExtResource("12_vay0u")]
-position = Vector2(-35, -208)
 
 [node name="CameraAnchor" type="Node2D" parent="." unique_id=11774862 node_paths=PackedStringArray("target")]
 script = ExtResource("13_10d0o")

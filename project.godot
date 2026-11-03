@@ -30,6 +30,7 @@ folder_colors={
 "res://Scenes/": "blue",
 "res://Scenes/Enemy Scenes/": "red",
 "res://Scenes/Projectiles & Hazards/": "yellow",
+"res://Scenes/Stage Builder Assets/": "green",
 "res://Scripts/": "pink",
 "res://Scripts/State_Machine/enemies states/": "red"
 }
