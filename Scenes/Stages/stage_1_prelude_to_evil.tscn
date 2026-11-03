@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://v0iqx35ti2ph" path="res://Scripts/Event Systems/event_area.gd" id="6_b45r2"]
 [ext_resource type="PackedScene" uid="uid://dj0s5hm5dgbqu" path="res://Scenes/pause_menu.tscn" id="7_1cl6i"]
 [ext_resource type="PackedScene" uid="uid://3btq8c6h6ayp" path="res://Scenes/lives_hud.tscn" id="8_bw2kh"]
+[ext_resource type="PackedScene" uid="uid://gws0ml30aft4" path="res://Scenes/fade_in.tscn" id="8_goypx"]
 [ext_resource type="Script" uid="uid://rpk8sa4d7eyx" path="res://Scenes/Projectiles & Hazards/Killzone/killzone.gd" id="12_n28ci"]
 [ext_resource type="Script" uid="uid://bhvfbplyk6u2e" path="res://Scripts/Stage Utilities/camera_anchor.gd" id="13_10d0o"]
 
@@ -791,3 +792,5 @@ target = NodePath("../Player")
 zoom = Vector2(2, 2)
 process_callback = 0
 position_smoothing_enabled = true
+
+[node name="FadeIn" parent="." unique_id=1275480377 instance=ExtResource("8_goypx")]
