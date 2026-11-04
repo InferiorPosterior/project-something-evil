@@ -5,8 +5,16 @@
 [ext_resource type="Script" uid="uid://v0iqx35ti2ph" path="res://Scripts/Event Systems/event_area.gd" id="6_b45r2"]
 [ext_resource type="PackedScene" uid="uid://dj0s5hm5dgbqu" path="res://Scenes/pause_menu.tscn" id="7_1cl6i"]
 [ext_resource type="PackedScene" uid="uid://3btq8c6h6ayp" path="res://Scenes/lives_hud.tscn" id="8_bw2kh"]
+[ext_resource type="PackedScene" uid="uid://uo5061t85jw5" path="res://Scenes/Enemy Scenes/Chaser/enemy_chaser.tscn" id="8_goypx"]
+[ext_resource type="PackedScene" uid="uid://m5n0v8xvcu2f" path="res://Scenes/Enemy Scenes/Brute/enemy_brute.tscn" id="9_b45r2"]
+[ext_resource type="PackedScene" uid="uid://5ilkvk7ga1ba" path="res://Scenes/Enemy Scenes/Grenadier/enemy_grenadier.tscn" id="10_5nqvx"]
+[ext_resource type="PackedScene" uid="uid://dr0tnjrfrv4q0" path="res://Scenes/Enemy Scenes/Gunner/enemy_gunner.tscn" id="11_gcrey"]
+[ext_resource type="PackedScene" uid="uid://yvcb3rtoocwa" path="res://Scenes/Enemy Scenes/Lunger/enemy_lunger.tscn" id="12_ejv5g"]
 [ext_resource type="Script" uid="uid://rpk8sa4d7eyx" path="res://Scenes/Projectiles & Hazards/Killzone/killzone.gd" id="12_n28ci"]
-[ext_resource type="Script" uid="uid://bhvfbplyk6u2e" path="res://Scripts/Stage Utilities/camera_anchor.gd" id="13_10d0o"]
+[ext_resource type="Script" uid="uid://bhvfbplyk6u2e" path="res://Scripts/Utilities/camera_anchor.gd" id="13_10d0o"]
+[ext_resource type="PackedScene" uid="uid://cscll7mr5fxep" path="res://Scenes/Effects/Death Effects/death_effect_big.tscn" id="13_qi28d"]
+[ext_resource type="AudioStream" uid="uid://benqyx4p7qs3" path="res://Assets/something_evil_assets/sound effects/death_big.wav" id="14_uq4bd"]
+[ext_resource type="PackedScene" uid="uid://dnjby57ls370h" path="res://Scenes/Enemy Scenes/Turret/enemy_turret.tscn" id="15_qi28d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ews4g"]
 texture = ExtResource("1_7wf4l")
@@ -769,10 +777,12 @@ script = ExtResource("12_n28ci")
 shape = SubResource("WorldBoundaryShape2D_yf5fn")
 
 [node name="PauseMenu" type="CanvasLayer" parent="." unique_id=472184787]
+visible = false
 
 [node name="PauseMenu" parent="PauseMenu" unique_id=1484971317 instance=ExtResource("7_1cl6i")]
 
 [node name="LivesHUD" parent="." unique_id=1372217612 instance=ExtResource("8_bw2kh")]
+visible = false
 
 [node name="EventArea" type="Area2D" parent="." unique_id=619858124]
 script = ExtResource("6_b45r2")
@@ -784,6 +794,7 @@ shape = SubResource("RectangleShape2D_g4v7s")
 debug_color = Color(0.6691623, 0.51019174, 0, 0.41960785)
 
 [node name="CameraAnchor" type="Node2D" parent="." unique_id=11774862 node_paths=PackedStringArray("target")]
+position = Vector2(-742, -303)
 script = ExtResource("13_10d0o")
 target = NodePath("../Player")
 
@@ -791,3 +802,23 @@ target = NodePath("../Player")
 zoom = Vector2(2, 2)
 process_callback = 0
 position_smoothing_enabled = true
+
+[node name="Enemy Chaser" parent="." unique_id=782089927 instance=ExtResource("8_goypx")]
+position = Vector2(-18, -212)
+
+[node name="EnemyBrute" parent="." unique_id=946815017 instance=ExtResource("9_b45r2")]
+position = Vector2(-92, -209)
+
+[node name="Enemy Grenadier" parent="." unique_id=1599663498 instance=ExtResource("10_5nqvx")]
+position = Vector2(-171, -143)
+
+[node name="enemy_gunner" parent="." unique_id=1035780428 instance=ExtResource("11_gcrey")]
+position = Vector2(-203, -135)
+
+[node name="Lunger" parent="." unique_id=946911435 instance=ExtResource("12_ejv5g")]
+position = Vector2(-179, -185)
+death_effect_scene = ExtResource("13_qi28d")
+death_sound = ExtResource("14_uq4bd")
+
+[node name="Turret" parent="." unique_id=564088818 instance=ExtResource("15_qi28d")]
+position = Vector2(-220, -304)

@@ -1,12 +1,14 @@
 class_name Turret extends Node2D
 
+@export var shoot_sound : AudioStream
+@export var death_effect_scene : PackedScene
+@export var death_sound : AudioStream
+
 @export var projectile_scene: PackedScene      # set once in turret.tscn
 @export var sight_range: float = 280.0
 @export var burst_count: int = 3
 @export var shot_delay: float = 0.15           # seconds between shots in a burst
 @export var burst_cooldown: float = 2.5        # seconds between bursts
-
-@onready var firing_sfx: AudioStreamPlayer = get_node_or_null("FiringGunSFX")
 
 var player: Node2D
 var shots_left: int = 0
@@ -46,14 +48,19 @@ func fire() -> void:
 	if projectile_scene == null:
 		push_warning("Turret: projectile_scene is not assigned")
 		return
+	if shoot_sound:
+		SoundManager.play_sound(shoot_sound, global_position)
 	var bullet = projectile_scene.instantiate()
 	bullet.direction = (player.global_position - global_position).normalized()   # aims at the player's current position
-	
-	if firing_sfx:
-		firing_sfx.play()
 	
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = global_position
 
 func _on_health_component_health_depleted() -> void:
+	if death_effect_scene:
+		var effect = death_effect_scene.instantiate() as Node2D
+		get_tree().current_scene.add_child(effect)
+		effect.global_position = global_position
+	if death_sound:
+		SoundManager.play_sound(death_sound, global_position)
 	queue_free()
