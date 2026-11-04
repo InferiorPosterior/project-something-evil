@@ -9,6 +9,7 @@
 script = ExtResource("1_gw42g")
 entity_scene = ExtResource("2_7wfbr")
 effect_scene = ExtResource("3_skrod")
+reveal_delay = 0.2
 
 [node name="Preview" type="Sprite2D" parent="." unique_id=616256148]
 texture_filter = 1

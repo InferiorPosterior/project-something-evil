@@ -1,5 +1,6 @@
 class_name Effect extends Node2D
 
+@export var spawn_sound : AudioStream
 @export var sprite_frames: SpriteFrames
 @export var animation: StringName = &"default"
 
@@ -16,6 +17,8 @@ func _ready() -> void:
 		sprite.sprite_frames = sprite_frames
 		
 	if sprite.sprite_frames and sprite.sprite_frames.has_animation(animation):
+		if spawn_sound:
+			SoundManager.play_sound(spawn_sound, global_position)
 		sprite.sprite_frames.set_animation_loop(animation, false)
 		sprite.play(animation)
 		await sprite.animation_finished

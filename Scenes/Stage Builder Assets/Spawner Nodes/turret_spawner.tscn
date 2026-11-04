@@ -15,4 +15,4 @@ effect_scene = ExtResource("3_uer6g")
 texture_filter = 1
 texture = ExtResource("4_bqxeo")
 region_enabled = true
-region_rect = Rect2(0, 0, 32, 32)
+region_rect = Rect2(32, 32, 32, 32)
