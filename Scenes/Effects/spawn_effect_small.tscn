@@ -2,42 +2,57 @@
 
 [ext_resource type="Script" uid="uid://b68l8vhwlc11l" path="res://Scenes/Effects/effect.gd" id="1_55w1r"]
 [ext_resource type="Texture2D" uid="uid://cooqwt86f5oih" path="res://Assets/something_evil_assets/sprites/spawn_effect.png" id="2_ix4hf"]
+[ext_resource type="AudioStream" uid="uid://lpuw5jovj0jb" path="res://Assets/something_evil_assets/sound effects/explosion.wav" id="2_qlwc7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qlwc7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_55w1r"]
 atlas = ExtResource("2_ix4hf")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_df4qt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ix4hf"]
 atlas = ExtResource("2_ix4hf")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_28n6u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlwc7"]
 atlas = ExtResource("2_ix4hf")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bg5hc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_df4qt"]
 atlas = ExtResource("2_ix4hf")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ejgvd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_28n6u"]
 atlas = ExtResource("2_ix4hf")
 region = Rect2(64, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t8a2e"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bg5hc"]
 atlas = ExtResource("2_ix4hf")
 region = Rect2(80, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_naknf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejgvd"]
 atlas = ExtResource("2_ix4hf")
 region = Rect2(96, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5vnam"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8a2e"]
 atlas = ExtResource("2_ix4hf")
 region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naknf"]
+atlas = ExtResource("2_ix4hf")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vnam"]
+atlas = ExtResource("2_ix4hf")
+region = Rect2(144, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55w1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ix4hf")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qlwc7")
 }, {
@@ -67,10 +82,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_uiwjs"]
+animations = []
+
 [node name="SpawnEffectSmall" type="Node2D" unique_id=2017330538]
 script = ExtResource("1_55w1r")
+spawn_sound = ExtResource("2_qlwc7")
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=244270890]
 texture_filter = 1
-speed_scale = 2.5
+sprite_frames = SubResource("SpriteFrames_uiwjs")
+animation = &""
+speed_scale = 3.0
