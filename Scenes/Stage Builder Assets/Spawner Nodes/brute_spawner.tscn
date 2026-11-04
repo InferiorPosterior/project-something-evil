@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c41qruepc8iaj"]
+
+[ext_resource type="Script" uid="uid://dvvudlaa5sc8r" path="res://Scripts/Event Systems/spawn_entity.gd" id="1_3d6md"]
+[ext_resource type="PackedScene" uid="uid://m5n0v8xvcu2f" path="res://Scenes/Enemy Scenes/Brute/enemy_brute.tscn" id="2_3d6md"]
+[ext_resource type="PackedScene" uid="uid://poas7nlbj18p" path="res://Scenes/Effects/spawn_effect_small.tscn" id="3_a44fr"]
+[ext_resource type="Texture2D" uid="uid://b0s8wx7kld6dy" path="res://Assets/something_evil_assets/sprites/brute.png" id="4_28l8x"]
+
+[node name="BruteSpawn" type="Node2D" unique_id=2075033335]
+script = ExtResource("1_3d6md")
+entity_scene = ExtResource("2_3d6md")
+effect_scene = ExtResource("3_a44fr")
+
+[node name="Preview" type="Sprite2D" parent="." unique_id=616256148]
+texture_filter = 1
+texture = ExtResource("4_28l8x")
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 48)

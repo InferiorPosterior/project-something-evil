@@ -4,10 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://du0gmlf03hrwy" path="res://Scenes/player.tscn" id="2_du3gd"]
 [ext_resource type="Script" uid="uid://v0iqx35ti2ph" path="res://Scripts/Event Systems/event_area.gd" id="6_b45r2"]
 [ext_resource type="PackedScene" uid="uid://dj0s5hm5dgbqu" path="res://Scenes/pause_menu.tscn" id="7_1cl6i"]
+[ext_resource type="PackedScene" uid="uid://cqo8rqctk6cwb" path="res://Scenes/Stage Builder Assets/Spawner Nodes/chaser_spawner.tscn" id="7_b45r2"]
+[ext_resource type="PackedScene" uid="uid://bv14h0pks0n5w" path="res://Scenes/Stage Builder Assets/Spawner Nodes/lunger_spawner.tscn" id="8_5nqvx"]
 [ext_resource type="PackedScene" uid="uid://3btq8c6h6ayp" path="res://Scenes/lives_hud.tscn" id="8_bw2kh"]
 [ext_resource type="PackedScene" uid="uid://gws0ml30aft4" path="res://Scenes/fade_in.tscn" id="8_goypx"]
+[ext_resource type="PackedScene" uid="uid://c41qruepc8iaj" path="res://Scenes/Stage Builder Assets/Spawner Nodes/brute_spawner.tscn" id="11_ejv5g"]
 [ext_resource type="Script" uid="uid://rpk8sa4d7eyx" path="res://Scenes/Projectiles & Hazards/Killzone/killzone.gd" id="12_n28ci"]
-[ext_resource type="Script" uid="uid://bhvfbplyk6u2e" path="res://Scripts/Stage Utilities/camera_anchor.gd" id="13_10d0o"]
+[ext_resource type="PackedScene" uid="uid://cc0g07lcrmsqk" path="res://Scenes/Stage Builder Assets/Spawner Nodes/drone_spawner.tscn" id="12_qi28d"]
+[ext_resource type="Script" uid="uid://bhvfbplyk6u2e" path="res://Scripts/Utilities/camera_anchor.gd" id="13_10d0o"]
+[ext_resource type="PackedScene" uid="uid://bw83fhmrcwh8k" path="res://Scenes/Stage Builder Assets/Spawner Nodes/turret_spawner.tscn" id="13_qi28d"]
+[ext_resource type="PackedScene" uid="uid://bxqrcaqcyrws0" path="res://Scenes/Stage Builder Assets/Spawner Nodes/grenadier_spawner.tscn" id="13_uq4bd"]
+[ext_resource type="PackedScene" uid="uid://n4o63shwcgnl" path="res://Scenes/Stage Builder Assets/Spawner Nodes/gunner_spawner.tscn" id="14_lnt1k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ews4g"]
 texture = ExtResource("1_7wf4l")
@@ -783,6 +790,27 @@ metadata/_custom_type_script = "uid://v0iqx35ti2ph"
 position = Vector2(169, -183)
 shape = SubResource("RectangleShape2D_g4v7s")
 debug_color = Color(0.6691623, 0.51019174, 0, 0.41960785)
+
+[node name="ChaserSpawn" parent="EventArea" unique_id=2110140589 instance=ExtResource("7_b45r2")]
+position = Vector2(136, -197)
+
+[node name="LungerSpawn" parent="EventArea" unique_id=2075033335 instance=ExtResource("8_5nqvx")]
+position = Vector2(157, -190)
+
+[node name="BruteSpawn" parent="EventArea" unique_id=879152956 instance=ExtResource("11_ejv5g")]
+position = Vector2(201, -224)
+
+[node name="DroneSpawn" parent="EventArea" unique_id=1878136247 instance=ExtResource("12_qi28d")]
+position = Vector2(140, -232)
+
+[node name="GrenadierSpawn" parent="EventArea" unique_id=1058706120 instance=ExtResource("13_uq4bd")]
+position = Vector2(212, -182)
+
+[node name="GunnerSpawn" parent="EventArea" unique_id=2085045361 instance=ExtResource("14_lnt1k")]
+position = Vector2(114, -197)
+
+[node name="GrenadierSpawn2" parent="EventArea" unique_id=1427109696 instance=ExtResource("13_qi28d")]
+position = Vector2(-23, -258)
 
 [node name="CameraAnchor" type="Node2D" parent="." unique_id=11774862 node_paths=PackedStringArray("target")]
 script = ExtResource("13_10d0o")

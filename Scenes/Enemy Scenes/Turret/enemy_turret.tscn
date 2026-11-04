@@ -9,9 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://diygbs3y12anr" path="res://Assets/something_evil_assets/sprites/turret.png" id="5_q4c3x"]
 [ext_resource type="Script" uid="uid://cdeesjx1jp87o" path="res://Scripts/Utilities/face_player.gd" id="6_755n0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
-radius = 8.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_755n0"]
 atlas = ExtResource("5_q4c3x")
 region = Rect2(96, 0, 32, 32)
@@ -26,6 +23,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
+radius = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_by8hi"]
 atlas = ExtResource("5_q4c3x")
@@ -50,6 +50,10 @@ death_sound = ExtResource("2_by8hi")
 projectile_scene = ExtResource("2_o5v45")
 burst_count = 5
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=147353859]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+
 [node name="HealthComponent" type="Node" parent="." unique_id=601867025]
 script = ExtResource("3_0ukbd")
 max_health = 500
@@ -64,11 +68,6 @@ metadata/_custom_type_script = "uid://bxvhy0cwrfk4k"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1620562354]
 shape = SubResource("CircleShape2D_yf5fn")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=147353859]
-texture_filter = 1
-position = Vector2(5, -1)
-sprite_frames = SubResource("SpriteFrames_g4v7s")
 
 [node name="Gun" type="Node2D" parent="." unique_id=934317173]
 position = Vector2(0, -1)
