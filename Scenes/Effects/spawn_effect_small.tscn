@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://poas7nlbj18p"]
+
+[ext_resource type="Script" uid="uid://b68l8vhwlc11l" path="res://Scenes/Effects/effect.gd" id="1_55w1r"]
+[ext_resource type="Texture2D" uid="uid://cooqwt86f5oih" path="res://Assets/something_evil_assets/sprites/spawn_effect.png" id="2_ix4hf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlwc7"]
+atlas = ExtResource("2_ix4hf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df4qt"]
+atlas = ExtResource("2_ix4hf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28n6u"]
+atlas = ExtResource("2_ix4hf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bg5hc"]
+atlas = ExtResource("2_ix4hf")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejgvd"]
+atlas = ExtResource("2_ix4hf")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8a2e"]
+atlas = ExtResource("2_ix4hf")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naknf"]
+atlas = ExtResource("2_ix4hf")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vnam"]
+atlas = ExtResource("2_ix4hf")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlwc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df4qt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28n6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bg5hc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejgvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8a2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naknf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vnam")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SpawnEffectSmall" type="Node2D" unique_id=2017330538]
+script = ExtResource("1_55w1r")
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=244270890]
+texture_filter = 1
+speed_scale = 2.5

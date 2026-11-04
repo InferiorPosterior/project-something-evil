@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cqo8rqctk6cwb"]
+
+[ext_resource type="Script" uid="uid://dvvudlaa5sc8r" path="res://Scripts/Event Systems/spawn_entity.gd" id="1_4hpeq"]
+[ext_resource type="PackedScene" uid="uid://uo5061t85jw5" path="res://Scenes/Enemy Scenes/Chaser/enemy_chaser.tscn" id="2_sro1c"]
+[ext_resource type="PackedScene" uid="uid://poas7nlbj18p" path="res://Scenes/Effects/spawn_effect_small.tscn" id="3_lab72"]
+[ext_resource type="Texture2D" uid="uid://ba1tqma7mkq7" path="res://Assets/something_evil_assets/sprites/chaser.png" id="4_s8tpa"]
+
+[node name="ChaserSpawn" type="Node2D" unique_id=2110140589]
+script = ExtResource("1_4hpeq")
+entity_scene = ExtResource("2_sro1c")
+effect_scene = ExtResource("3_lab72")
+reveal_delay = 0.1
+
+[node name="Preview" type="Sprite2D" parent="." unique_id=1429155418]
+texture_filter = 1
+texture = ExtResource("4_s8tpa")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://be6mkp2uwfv3n"]
+
+[ext_resource type="Script" uid="uid://b68l8vhwlc11l" path="res://Scenes/Effects/effect.gd" id="1_2mk8m"]
+[ext_resource type="Texture2D" uid="uid://diygbs3y12anr" path="res://Assets/something_evil_assets/sprites/turret.png" id="2_c5ybi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tye4l"]
+atlas = ExtResource("2_c5ybi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y18dl"]
+atlas = ExtResource("2_c5ybi")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbju2"]
+atlas = ExtResource("2_c5ybi")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d20kx"]
+atlas = ExtResource("2_c5ybi")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jtwjp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tye4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y18dl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbju2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d20kx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SpawnEffectTurret" type="Node2D" unique_id=1449143755]
+script = ExtResource("1_2mk8m")
+sprite_frames = SubResource("SpriteFrames_jtwjp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=883203872]
+speed_scale = 2.0
