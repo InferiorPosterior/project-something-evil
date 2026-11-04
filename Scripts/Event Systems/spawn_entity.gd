@@ -4,16 +4,16 @@ signal spawned(entity: Node2D)
 signal defeated
 
 @export var entity_scene: PackedScene
-@export var spawn_effect: PackedScene               # optional: a self-freeing effect (portal, smoke, flash)
-@export var reveal_delay: float = 0.5               # the enemy appears this long after the effect starts
-@export var wait_for_spawn: bool = true             # false = the sequence moves on at once (lets several spawn together)
+@export var effect_scene: PackedScene               # Drag Effect.tscn here in the Inspector
+@export var reveal_delay: float = 0.5             
+@export var wait_for_spawn: bool = true             
 
 var entity: Node2D
-var pending: bool = false                           # true between starting the spawn and the enemy appearing
+var pending: bool = false                         
 
 func _ready() -> void:
 	if has_node("Preview"):
-		$Preview.queue_free()        # gone as soon as the game starts; it only exists to guide you in the editor
+		$Preview.queue_free()        
 
 func execute() -> void:
 	if wait_for_spawn:
@@ -21,24 +21,31 @@ func execute() -> void:
 	else:
 		spawn()
 
-# Also callable directly, for example by connecting EventArea.triggered to it in the editor
 func spawn() -> void:
+	if pending:
+		return
+
 	if entity_scene == null:
 		push_warning("%s has no entity_scene" % name)
 		return
 
 	pending = true
-	if spawn_effect:
-		var fx := spawn_effect.instantiate() as Node2D
-		get_tree().current_scene.add_child(fx)
-		fx.global_position = global_position
 
+	# 1. Instantiate and play the effect right at the spawner's position
+	if effect_scene:
+		var effect_instance = effect_scene.instantiate() as Node2D
+		get_tree().current_scene.add_child(effect_instance)
+		effect_instance.global_position = global_position
+
+	# 2. Wait for the reveal delay
 	if reveal_delay > 0.0:
 		await get_tree().create_timer(reveal_delay).timeout
+	
 	pending = false
 	if not is_inside_tree():
-		return                                      # the level was reloaded during the delay
+		return                        
 
+	# 3. Spawn the actual enemy
 	entity = entity_scene.instantiate() as Node2D
 	get_tree().current_scene.add_child(entity)
 	entity.global_position = global_position

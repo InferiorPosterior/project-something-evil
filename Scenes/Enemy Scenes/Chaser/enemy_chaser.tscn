@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b1786qh5xpj1i" path="res://Scenes/Enemy Scenes/Chaser/enemy_chaser.gd" id="1_7r0yd"]
 [ext_resource type="Texture2D" uid="uid://ba1tqma7mkq7" path="res://Assets/something_evil_assets/sprites/chaser.png" id="2_7r0yd"]
-[ext_resource type="Texture2D" uid="uid://yjw87kel23sb" path="res://Assets/something_evil_assets/sprites/death_effect.png" id="2_wj6u7"]
+[ext_resource type="PackedScene" uid="uid://cwpk8w53lk8c1" path="res://Scenes/Effects/Death Effects/death_effect_small.tscn" id="2_wj6u7"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_8xxap"]
 [ext_resource type="AudioStream" uid="uid://cbkj26t700dtu" path="res://Assets/something_evil_assets/sound effects/hit.wav" id="3_ob1hd"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_u7ynu"]
@@ -12,70 +12,6 @@
 [ext_resource type="Script" uid="uid://b2ec20sbyqpj7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_fall.gd" id="8_53gau"]
 [ext_resource type="Script" uid="uid://cil401dbk8im1" path="res://Scripts/State_Machine/enemies states/template_states/enemy_idle.gd" id="9_yhon1"]
 [ext_resource type="Script" uid="uid://4l6b3j53kxw7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_jump.gd" id="10_ic7aa"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_svhab"]
-atlas = ExtResource("2_wj6u7")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u0s1i"]
-atlas = ExtResource("2_wj6u7")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_na67e"]
-atlas = ExtResource("2_wj6u7")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jocnk"]
-atlas = ExtResource("2_wj6u7")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kko84"]
-atlas = ExtResource("2_wj6u7")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u6nrl"]
-atlas = ExtResource("2_wj6u7")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5jne2"]
-atlas = ExtResource("2_wj6u7")
-region = Rect2(96, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qiphv"]
-atlas = ExtResource("2_wj6u7")
-region = Rect2(112, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_tmiy4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_svhab")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u0s1i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_na67e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jocnk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kko84")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u6nrl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5jne2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qiphv")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yf5fn"]
 radius = 4.0
@@ -164,9 +100,9 @@ size = Vector2(8.5, 12.25)
 [node name="Enemy Chaser" type="CharacterBody2D" unique_id=782089927 node_paths=PackedStringArray("health")]
 collision_layer = 2
 script = ExtResource("1_7r0yd")
-health = NodePath("Health")
-death_frames = SubResource("SpriteFrames_tmiy4")
+death_effect_scene = ExtResource("2_wj6u7")
 death_sound = ExtResource("3_ob1hd")
+health = NodePath("Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2102903468]
 position = Vector2(-1, 5)

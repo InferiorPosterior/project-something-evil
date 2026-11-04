@@ -1,6 +1,8 @@
 # THIS IS THE GUN SCRIPT
 extends Node2D
 
+@export var shoot_sound: AudioStream
+
 @export var PROJECTILE: PackedScene
 @export var fire_rate: float = 4.0            # shots per second while holding the button
 @export var orbit_radius: float = 8.0         # distance from the pivot to the gun
@@ -28,7 +30,7 @@ func _process(delta: float) -> void:
 		cooldown_left = 1.0 / fire_rate
 
 func shoot() -> void:
-	$AudioStreamPlayer.play()
+	SoundManager.play_sound(shoot_sound, global_position)
 	var projectile_instance = PROJECTILE.instantiate()
 	get_tree().current_scene.add_child(projectile_instance)
 	projectile_instance.global_position = muzzle.global_position
