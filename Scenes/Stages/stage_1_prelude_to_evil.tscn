@@ -5,9 +5,12 @@
 [ext_resource type="Script" uid="uid://v0iqx35ti2ph" path="res://Scripts/Event Systems/event_area.gd" id="6_b45r2"]
 [ext_resource type="PackedScene" uid="uid://dj0s5hm5dgbqu" path="res://Scenes/pause_menu.tscn" id="7_1cl6i"]
 [ext_resource type="PackedScene" uid="uid://cqo8rqctk6cwb" path="res://Scenes/Stage Builder Assets/Spawner Nodes/chaser_spawner.tscn" id="7_b45r2"]
+[ext_resource type="Script" uid="uid://c4p8md6xtah0a" path="res://Scripts/Event Systems/event_group.gd" id="7_ejv5g"]
+[ext_resource type="PackedScene" uid="uid://bfmk7f042oliv" path="res://Scenes/Stage Builder Assets/door.tscn" id="7_uq4bd"]
 [ext_resource type="Script" uid="uid://c87b73kgij03d" path="res://Scripts/Event Systems/wait_for_clear_action.gd" id="8_5nqvx"]
 [ext_resource type="PackedScene" uid="uid://3btq8c6h6ayp" path="res://Scenes/lives_hud.tscn" id="8_bw2kh"]
 [ext_resource type="PackedScene" uid="uid://gws0ml30aft4" path="res://Scenes/fade_in.tscn" id="8_goypx"]
+[ext_resource type="Script" uid="uid://be0tcaadulpeo" path="res://Scripts/Event Systems/door_action.gd" id="8_lnt1k"]
 [ext_resource type="PackedScene" uid="uid://bv14h0pks0n5w" path="res://Scenes/Stage Builder Assets/Spawner Nodes/lunger_spawner.tscn" id="9_vay0u"]
 [ext_resource type="Script" uid="uid://rpk8sa4d7eyx" path="res://Scenes/Projectiles & Hazards/Killzone/killzone.gd" id="12_n28ci"]
 [ext_resource type="Script" uid="uid://bhvfbplyk6u2e" path="res://Scripts/Utilities/camera_anchor.gd" id="13_10d0o"]
@@ -793,97 +796,182 @@ metadata/_edit_use_anchors_ = true
 
 [node name="LivesHUD" parent="." unique_id=1372217612 instance=ExtResource("8_bw2kh")]
 
-[node name="EventArea" type="Area2D" parent="." unique_id=619858124]
+[node name="Encounter" type="Area2D" parent="." unique_id=619858124]
 script = ExtResource("6_b45r2")
 metadata/_custom_type_script = "uid://v0iqx35ti2ph"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EventArea" unique_id=839321356]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Encounter" unique_id=839321356]
 position = Vector2(-188, -557)
 shape = SubResource("RectangleShape2D_g4v7s")
 debug_color = Color(0.6691623, 0.51019174, 0, 0.41960785)
 
-[node name="ChaserSpawn" parent="EventArea" unique_id=2110140589 instance=ExtResource("7_b45r2")]
-position = Vector2(112, -528)
+[node name="Close entrance" type="Node2D" parent="Encounter" unique_id=588427281 node_paths=PackedStringArray("doors")]
+script = ExtResource("8_lnt1k")
+doors = [NodePath("../Entrance door")]
+metadata/_custom_type_script = "uid://be0tcaadulpeo"
 
-[node name="ChaserSpawn2" parent="EventArea" unique_id=1860345610 instance=ExtResource("7_b45r2")]
-position = Vector2(144, -576)
+[node name="Wave1" type="Node2D" parent="Encounter" unique_id=741472706]
+position = Vector2(-72, -120)
+script = ExtResource("7_ejv5g")
 
-[node name="ChaserSpawn3" parent="EventArea" unique_id=428615097 instance=ExtResource("7_b45r2")]
-position = Vector2(164, -535)
+[node name="ChaserSpawn" parent="Encounter/Wave1" unique_id=2110140589 instance=ExtResource("7_b45r2")]
+position = Vector2(248, -456)
 
-[node name="ChaserSpawn4" parent="EventArea" unique_id=450290613 instance=ExtResource("7_b45r2")]
-position = Vector2(104, -592)
+[node name="ChaserSpawn2" parent="Encounter/Wave1" unique_id=1342615218 instance=ExtResource("7_b45r2")]
+position = Vector2(280, -464)
 
-[node name="ChaserSpawn5" parent="EventArea" unique_id=244899211 instance=ExtResource("7_b45r2")]
-position = Vector2(88, -544)
+[node name="ChaserSpawn3" parent="Encounter/Wave1" unique_id=2014377217 instance=ExtResource("7_b45r2")]
+position = Vector2(304, -440)
 
-[node name="ChaserSpawn6" parent="EventArea" unique_id=1594144149 instance=ExtResource("7_b45r2")]
-position = Vector2(72, -576)
+[node name="ChaserSpawn4" parent="Encounter/Wave1" unique_id=1944913361 instance=ExtResource("7_b45r2")]
+position = Vector2(280, -432)
 
-[node name="ChaserSpawn7" parent="EventArea" unique_id=1411524283 instance=ExtResource("7_b45r2")]
-position = Vector2(181, -576)
+[node name="ChaserSpawn5" parent="Encounter/Wave1" unique_id=1571922652 instance=ExtResource("7_b45r2")]
+position = Vector2(224, -448)
 
-[node name="ChaserSpawn8" parent="EventArea" unique_id=1632501830 instance=ExtResource("7_b45r2")]
-position = Vector2(136, -544)
+[node name="ChaserSpawn12" parent="Encounter/Wave1" unique_id=314545666 instance=ExtResource("7_b45r2")]
+position = Vector2(248, -424)
 
-[node name="ChaserSpawn9" parent="EventArea" unique_id=379504734 instance=ExtResource("7_b45r2")]
-position = Vector2(104, -568)
+[node name="ChaserSpawn10" parent="Encounter/Wave1" unique_id=1557348924 instance=ExtResource("7_b45r2")]
+position = Vector2(224, -408)
 
-[node name="ChaserSpawn10" parent="EventArea" unique_id=892578549 instance=ExtResource("7_b45r2")]
-position = Vector2(40, -544)
+[node name="ChaserSpawn11" parent="Encounter/Wave1" unique_id=1653155264 instance=ExtResource("7_b45r2")]
+position = Vector2(200, -416)
 
-[node name="ChaserSpawn11" parent="EventArea" unique_id=2009501069 instance=ExtResource("7_b45r2")]
-position = Vector2(32, -576)
+[node name="ChaserSpawn6" parent="Encounter/Wave1" unique_id=886297738 instance=ExtResource("7_b45r2")]
+position = Vector2(208, -472)
 
-[node name="ChaserSpawn12" parent="EventArea" unique_id=1194856314 instance=ExtResource("7_b45r2")]
-position = Vector2(192, -560)
+[node name="ChaserSpawn9" parent="Encounter/Wave1" unique_id=2105525240 instance=ExtResource("7_b45r2")]
+position = Vector2(216, -432)
 
-[node name="Wave Clear" type="Node2D" parent="EventArea" unique_id=1835692872]
+[node name="ChaserSpawn7" parent="Encounter/Wave1" unique_id=1072365803 instance=ExtResource("7_b45r2")]
+position = Vector2(168, -448)
+
+[node name="ChaserSpawn8" parent="Encounter/Wave1" unique_id=1750241145 instance=ExtResource("7_b45r2")]
+position = Vector2(160, -416)
+
+[node name="ChaserSpawn13" parent="Encounter/Wave1" unique_id=724994524 instance=ExtResource("7_b45r2")]
+position = Vector2(184, -432)
+
+[node name="ChaserSpawn14" parent="Encounter/Wave1" unique_id=1229758998 instance=ExtResource("7_b45r2")]
+position = Vector2(192, -456)
+
+[node name="ChaserSpawn15" parent="Encounter/Wave1" unique_id=1429358958 instance=ExtResource("7_b45r2")]
+position = Vector2(264, -408)
+
+[node name="ChaserSpawn16" parent="Encounter/Wave1" unique_id=1655353369 instance=ExtResource("7_b45r2")]
+position = Vector2(264, -440)
+
+[node name="ChaserSpawn17" parent="Encounter/Wave1" unique_id=1733957194 instance=ExtResource("7_b45r2")]
+position = Vector2(304, -464)
+
+[node name="WaitForClearAction" type="Node2D" parent="Encounter/Wave1" unique_id=1401530237]
+position = Vector2(72, 120)
 script = ExtResource("8_5nqvx")
-metadata/_custom_type_script = "uid://di25810pxoct2"
+metadata/_custom_type_script = "uid://c87b73kgij03d"
 
-[node name="ChaserSpawn13" parent="EventArea" unique_id=469156340 instance=ExtResource("7_b45r2")]
-position = Vector2(-336, -536)
+[node name="Wave2" type="Node2D" parent="Encounter" unique_id=478963053]
+script = ExtResource("7_ejv5g")
+metadata/_custom_type_script = "uid://c4p8md6xtah0a"
 
-[node name="ChaserSpawn14" parent="EventArea" unique_id=626347301 instance=ExtResource("7_b45r2")]
-position = Vector2(-320, -568)
+[node name="ChaserSpawn" parent="Encounter/Wave2" unique_id=1354047018 instance=ExtResource("7_b45r2")]
+position = Vector2(-336, -568)
 
-[node name="ChaserSpawn15" parent="EventArea" unique_id=1327839860 instance=ExtResource("7_b45r2")]
-position = Vector2(-312, -528)
+[node name="ChaserSpawn2" parent="Encounter/Wave2" unique_id=1345486240 instance=ExtResource("7_b45r2")]
+position = Vector2(-336, -544)
 
-[node name="ChaserSpawn16" parent="EventArea" unique_id=1777965958 instance=ExtResource("7_b45r2")]
-position = Vector2(-296, -560)
+[node name="ChaserSpawn3" parent="Encounter/Wave2" unique_id=1141360263 instance=ExtResource("7_b45r2")]
+position = Vector2(-328, -592)
 
-[node name="ChaserSpawn17" parent="EventArea" unique_id=1402835753 instance=ExtResource("7_b45r2")]
-position = Vector2(-288, -536)
+[node name="ChaserSpawn4" parent="Encounter/Wave2" unique_id=305706781 instance=ExtResource("7_b45r2")]
+position = Vector2(-320, -560)
 
-[node name="ChaserSpawn18" parent="EventArea" unique_id=1224573608 instance=ExtResource("7_b45r2")]
-position = Vector2(-264, -528)
+[node name="ChaserSpawn5" parent="Encounter/Wave2" unique_id=160546971 instance=ExtResource("7_b45r2")]
+position = Vector2(-304, -536)
 
-[node name="ChaserSpawn19" parent="EventArea" unique_id=724608810 instance=ExtResource("7_b45r2")]
-position = Vector2(-280, -584)
-
-[node name="ChaserSpawn20" parent="EventArea" unique_id=1363975098 instance=ExtResource("7_b45r2")]
-position = Vector2(-328, -584)
-
-[node name="ChaserSpawn21" parent="EventArea" unique_id=1207430822 instance=ExtResource("7_b45r2")]
-position = Vector2(-272, -560)
-
-[node name="ChaserSpawn22" parent="EventArea" unique_id=503032443 instance=ExtResource("7_b45r2")]
+[node name="ChaserSpawn6" parent="Encounter/Wave2" unique_id=1895898175 instance=ExtResource("7_b45r2")]
 position = Vector2(-304, -584)
 
-[node name="Wave Clear2" type="Node2D" parent="EventArea" unique_id=973804556]
+[node name="ChaserSpawn7" parent="Encounter/Wave2" unique_id=8107951 instance=ExtResource("7_b45r2")]
+position = Vector2(-288, -560)
+
+[node name="ChaserSpawn8" parent="Encounter/Wave2" unique_id=1689291689 instance=ExtResource("7_b45r2")]
+position = Vector2(-280, -536)
+
+[node name="ChaserSpawn9" parent="Encounter/Wave2" unique_id=1366127750 instance=ExtResource("7_b45r2")]
+position = Vector2(-280, -584)
+
+[node name="ChaserSpawn10" parent="Encounter/Wave2" unique_id=1366287664 instance=ExtResource("7_b45r2")]
+position = Vector2(-264, -552)
+
+[node name="ChaserSpawn11" parent="Encounter/Wave2" unique_id=1391998899 instance=ExtResource("7_b45r2")]
+position = Vector2(-248, -528)
+
+[node name="ChaserSpawn12" parent="Encounter/Wave2" unique_id=413825576 instance=ExtResource("7_b45r2")]
+position = Vector2(-248, -584)
+
+[node name="ChaserSpawn13" parent="Encounter/Wave2" unique_id=297102780 instance=ExtResource("7_b45r2")]
+position = Vector2(-240, -560)
+
+[node name="ChaserSpawn14" parent="Encounter/Wave2" unique_id=1142637005 instance=ExtResource("7_b45r2")]
+position = Vector2(-224, -528)
+
+[node name="ChaserSpawn15" parent="Encounter/Wave2" unique_id=253607481 instance=ExtResource("7_b45r2")]
+position = Vector2(-224, -584)
+
+[node name="ChaserSpawn16" parent="Encounter/Wave2" unique_id=1214629323 instance=ExtResource("7_b45r2")]
+position = Vector2(-216, -568)
+
+[node name="ChaserSpawn17" parent="Encounter/Wave2" unique_id=1587094149 instance=ExtResource("7_b45r2")]
+position = Vector2(-208, -536)
+
+[node name="ChaserSpawn18" parent="Encounter/Wave2" unique_id=1568661583 instance=ExtResource("7_b45r2")]
+position = Vector2(-200, -584)
+
+[node name="ChaserSpawn19" parent="Encounter/Wave2" unique_id=1865140136 instance=ExtResource("7_b45r2")]
+position = Vector2(-200, -560)
+
+[node name="ChaserSpawn20" parent="Encounter/Wave2" unique_id=1942978555 instance=ExtResource("7_b45r2")]
+position = Vector2(-184, -536)
+
+[node name="WaitForClearAction2" type="Node2D" parent="Encounter/Wave2" unique_id=1021169505]
 script = ExtResource("8_5nqvx")
-metadata/_custom_type_script = "uid://di25810pxoct2"
+metadata/_custom_type_script = "uid://c87b73kgij03d"
 
-[node name="LungerSpawn" parent="EventArea" unique_id=2075033335 instance=ExtResource("9_vay0u")]
-position = Vector2(-312, -544)
+[node name="Wave 3" type="Node2D" parent="Encounter" unique_id=2108190967]
+script = ExtResource("7_ejv5g")
+metadata/_custom_type_script = "uid://c4p8md6xtah0a"
 
-[node name="GunnerSpawn" parent="EventArea" unique_id=420408586 instance=ExtResource("14_lnt1k")]
-position = Vector2(192, -528)
+[node name="ChaserSpawn" parent="Encounter/Wave 3" unique_id=40449516 instance=ExtResource("7_b45r2")]
+position = Vector2(-280, -536)
 
-[node name="GunnerSpawn2" parent="EventArea" unique_id=1124465748 instance=ExtResource("14_lnt1k")]
-position = Vector2(232, -536)
+[node name="ChaserSpawn2" parent="Encounter/Wave 3" unique_id=1140631061 instance=ExtResource("7_b45r2")]
+position = Vector2(-304, -552)
+
+[node name="LungerSpawn" parent="Encounter/Wave 3" unique_id=2075033335 instance=ExtResource("9_vay0u")]
+position = Vector2(-320, -536)
+
+[node name="GunnerSpawn" parent="Encounter/Wave 3" unique_id=826909283 instance=ExtResource("14_lnt1k")]
+position = Vector2(128, -552)
+
+[node name="GunnerSpawn2" parent="Encounter/Wave 3" unique_id=1212845483 instance=ExtResource("14_lnt1k")]
+position = Vector2(216, -544)
+
+[node name="GunnerSpawn3" parent="Encounter/Wave 3" unique_id=304766713 instance=ExtResource("14_lnt1k")]
+position = Vector2(176, -560)
+
+[node name="Entrance door" parent="Encounter" unique_id=1560095299 instance=ExtResource("7_uq4bd")]
+position = Vector2(-368, -536)
+
+[node name="Exit door" parent="Encounter" unique_id=615722042 instance=ExtResource("7_uq4bd")]
+position = Vector2(272, -536)
+start_closed = true
+
+[node name="Open exit" type="Node2D" parent="Encounter" unique_id=1742555502 node_paths=PackedStringArray("doors")]
+script = ExtResource("8_lnt1k")
+doors = [NodePath("../Exit door")]
+close = false
+metadata/_custom_type_script = "uid://be0tcaadulpeo"
 
 [node name="CameraAnchor" type="Node2D" parent="." unique_id=11774862 node_paths=PackedStringArray("target")]
 script = ExtResource("13_10d0o")

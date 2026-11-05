@@ -103,6 +103,7 @@ script = ExtResource("1_7r0yd")
 death_effect_scene = ExtResource("2_wj6u7")
 death_sound = ExtResource("3_ob1hd")
 health = NodePath("Health")
+detection_range = 500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2102903468]
 position = Vector2(-1, 5)

@@ -292,6 +292,7 @@ position = Vector2(-9.536743e-07, -9.536743e-07)
 script = ExtResource("14_oo625")
 shoot_sound = ExtResource("19_xsdfh")
 projectile_scene = ExtResource("12_m7fxu")
+sight_range = 500.0
 burst_count = 5
 metadata/_custom_type_script = "uid://bco4t8p1j7xmc"
 

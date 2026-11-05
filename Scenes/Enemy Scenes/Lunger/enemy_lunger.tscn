@@ -165,6 +165,7 @@ dash_range = 150.0
 death_effect_scene = ExtResource("2_npunj")
 death_sound = ExtResource("3_6aayl")
 health = NodePath("HealthComponent")
+detection_range = 500.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1419899213]
 texture_filter = 1

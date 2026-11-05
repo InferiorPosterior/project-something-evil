@@ -146,6 +146,7 @@ death_sound = ExtResource("9_h4snk")
 death_effect_scene = ExtResource("4_8dou2")
 health = NodePath("HealthComponent")
 grenade_scene = ExtResource("2_jm4kl")
+detection_range = 500.0
 
 [node name="HealthComponent" type="Node" parent="." unique_id=423890900]
 script = ExtResource("4_o836l")

@@ -132,6 +132,7 @@ shoot_exit_range = 170.0
 death_effect_scene = ExtResource("3_xb1tm")
 death_sound = ExtResource("4_wgsfu")
 health = NodePath("HealthComponent")
+detection_range = 500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1603164321]
 shape = SubResource("CapsuleShape2D_g4v7s")
