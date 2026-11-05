@@ -11,12 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://bv14h0pks0n5w" path="res://Scenes/Stage Builder Assets/Spawner Nodes/lunger_spawner.tscn" id="9_vay0u"]
 [ext_resource type="Script" uid="uid://rpk8sa4d7eyx" path="res://Scenes/Projectiles & Hazards/Killzone/killzone.gd" id="12_n28ci"]
 [ext_resource type="Script" uid="uid://bhvfbplyk6u2e" path="res://Scripts/Utilities/camera_anchor.gd" id="13_10d0o"]
+[ext_resource type="Script" uid="uid://bpjxt8fwj5oan" path="res://Scripts/Event Systems/level_end_action.gd" id="13_ejv5g"]
+[ext_resource type="PackedScene" uid="uid://mudw0p55nt1e" path="res://Scenes/stage_end_screen.tscn" id="14_ejv5g"]
 [ext_resource type="PackedScene" uid="uid://n4o63shwcgnl" path="res://Scenes/Stage Builder Assets/Spawner Nodes/gunner_spawner.tscn" id="14_lnt1k"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_b45r2"]
 tile_data = PackedInt32Array(0, 786432, 13, 65536, 786432, 14, 1, 851968, 13, 65537, 851968, 14)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ews4g"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ejv5g"]
 texture = ExtResource("1_7wf4l")
 0:0/0 = 0
 1:0/0 = 0
@@ -252,13 +254,13 @@ texture = ExtResource("1_7wf4l")
 8:15/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_yf5fn"]
-sources/0 = SubResource("TileSetAtlasSource_ews4g")
+sources/0 = SubResource("TileSetAtlasSource_ejv5g")
 pattern_0 = SubResource("TileMapPattern_b45r2")
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_goypx"]
 tile_data = PackedInt32Array(0, 524288, 4, 65536, 524288, 5, 1, 589824, 4, 65537, 589824, 5)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wmeic"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qi28d"]
 texture = ExtResource("1_7wf4l")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -735,14 +737,14 @@ texture = ExtResource("1_7wf4l")
 
 [sub_resource type="TileSet" id="TileSet_g4v7s"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_wmeic")
+sources/0 = SubResource("TileSetAtlasSource_qi28d")
 pattern_0 = SubResource("TileMapPattern_goypx")
 
-[sub_resource type="Gradient" id="Gradient_f2ftp"]
+[sub_resource type="Gradient" id="Gradient_uq4bd"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_g4v7s"]
-gradient = SubResource("Gradient_f2ftp")
+gradient = SubResource("Gradient_uq4bd")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.2, 0.2)
@@ -753,6 +755,9 @@ distance = -448.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(133, 135)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(58, 58)
 
 [node name="Stage 1 - PRELUDE TO EVIL" type="Node2D" unique_id=70456065]
 
@@ -784,6 +789,7 @@ shape = SubResource("WorldBoundaryShape2D_yf5fn")
 [node name="PauseMenu" type="CanvasLayer" parent="." unique_id=472184787]
 
 [node name="PauseMenu" parent="PauseMenu" unique_id=1484971317 instance=ExtResource("7_1cl6i")]
+metadata/_edit_use_anchors_ = true
 
 [node name="LivesHUD" parent="." unique_id=1372217612 instance=ExtResource("8_bw2kh")]
 
@@ -889,3 +895,18 @@ process_callback = 0
 position_smoothing_enabled = true
 
 [node name="FadeIn" parent="." unique_id=1275480377 instance=ExtResource("8_goypx")]
+
+[node name="EventArea2" type="Area2D" parent="." unique_id=900592759]
+script = ExtResource("6_b45r2")
+metadata/_custom_type_script = "uid://v0iqx35ti2ph"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EventArea2" unique_id=40756963]
+position = Vector2(296, -536)
+shape = SubResource("RectangleShape2D_yf5fn")
+debug_color = Color(0.5388686, 0.5683242, 0, 0.41960785)
+
+[node name="LevelEndAction" type="Node2D" parent="EventArea2" unique_id=1299148937]
+script = ExtResource("13_ejv5g")
+end_screen = ExtResource("14_ejv5g")
+next_scene = "uid://dmbso2ivyu0n0"
+metadata/_custom_type_script = "uid://bpjxt8fwj5oan"
