@@ -82,7 +82,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_scc0c")
 }],
-"loop": 1,
+"loop": true,
 "name": &"chase",
 "speed": 5.0
 }, {
@@ -93,7 +93,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a8vjv")
 }],
-"loop": 1,
+"loop": true,
 "name": &"fall",
 "speed": 5.0
 }, {
@@ -110,7 +110,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xj7i7")
 }],
-"loop": 1,
+"loop": true,
 "name": &"idle",
 "speed": 5.0
 }]
@@ -125,7 +125,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xb1tm")
 }],
-"loop": 1,
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
@@ -137,6 +137,7 @@ projectile_scene = ExtResource("2_cmo3a")
 shoot_exit_range = 170.0
 health = NodePath("HealthComponent")
 death_effect = ExtResource("3_gdmyk")
+enemy_score_type = "Gunner"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1603164321]
 shape = SubResource("CapsuleShape2D_g4v7s")

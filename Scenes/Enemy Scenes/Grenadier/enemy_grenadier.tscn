@@ -30,7 +30,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h4snk")
 }],
-"loop": 1,
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
@@ -98,7 +98,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ie6qr")
 }],
-"loop": 1,
+"loop": true,
 "name": &"chase",
 "speed": 5.0
 }, {
@@ -115,7 +115,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y4q5x")
 }],
-"loop": 1,
+"loop": true,
 "name": &"fall",
 "speed": 5.0
 }, {
@@ -132,7 +132,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3evtm")
 }],
-"loop": 1,
+"loop": true,
 "name": &"idle",
 "speed": 5.0
 }]
@@ -140,8 +140,9 @@ animations = [{
 [node name="Enemy Grenadier" type="CharacterBody2D" unique_id=1599663498 node_paths=PackedStringArray("health")]
 collision_layer = 2
 script = ExtResource("1_jm4kl")
-health = NodePath("HealthComponent")
 grenade_scene = ExtResource("2_jm4kl")
+health = NodePath("HealthComponent")
+enemy_score_type = "Grenadier"
 
 [node name="HealthComponent" type="Node" parent="." unique_id=423890900]
 script = ExtResource("4_o836l")

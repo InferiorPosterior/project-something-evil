@@ -99,7 +99,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nt4di")
 }],
-"loop": 1,
+"loop": true,
 "name": &"chase",
 "speed": 5.0
 }, {
@@ -110,7 +110,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fy637")
 }],
-"loop": 1,
+"loop": true,
 "name": &"dash",
 "speed": 6.0
 }, {
@@ -121,7 +121,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0phsx")
 }],
-"loop": 1,
+"loop": true,
 "name": &"fall",
 "speed": 6.0
 }, {
@@ -138,7 +138,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kylsx")
 }],
-"loop": 1,
+"loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -149,7 +149,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o8y8n")
 }],
-"loop": 1,
+"loop": true,
 "name": &"recover",
 "speed": 5.0
 }, {
@@ -160,7 +160,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qqdia")
 }],
-"loop": 1,
+"loop": true,
 "name": &"windup",
 "speed": 6.0
 }]
@@ -184,7 +184,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mn4xd")
 }],
-"loop": 1,
+"loop": true,
 "name": &"idle",
 "speed": 5.0
 }]
@@ -201,6 +201,7 @@ collision_layer = 2
 script = ExtResource("1_oo625")
 health = NodePath("HealthComponent")
 death_effect = ExtResource("2_1svrq")
+enemy_score_type = "Brute"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1768781975]
 texture_filter = 1

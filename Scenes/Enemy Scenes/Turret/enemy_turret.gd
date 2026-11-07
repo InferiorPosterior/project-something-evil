@@ -6,6 +6,20 @@ class_name Turret extends Node2D
 @export var shot_delay: float = 0.15           # seconds between shots in a burst
 @export var burst_cooldown: float = 2.5        # seconds between bursts
 
+@export var health: HealthComponent
+
+@export_enum(
+	"Chaser",
+	"Gunner",
+	"Grenadier",
+	"Drone",
+	"Lunger",
+	"Turret",
+	"Brute",
+	"Boss"
+)
+var enemy_score_type: String = "Turret"
+
 @onready var firing_sfx: AudioStreamPlayer = get_node_or_null("FiringGunSFX")
 
 var player: Node2D
@@ -15,6 +29,16 @@ var cooldown_left: float = 1.0
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
+
+	if health == null:
+		health = get_node_or_null("HealthComponent") as HealthComponent
+
+	if health == null:
+		push_error("Turret: HealthComponent not found!")
+		return
+
+	if not health.health_depleted.is_connected(_on_health_component_health_depleted):
+		health.health_depleted.connect(_on_health_component_health_depleted)
 
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(player):
@@ -56,4 +80,7 @@ func fire() -> void:
 	bullet.global_position = global_position
 
 func _on_health_component_health_depleted() -> void:
+	print("TURRET KILLED: ", enemy_score_type)
+
+	ScoreManager.add_enemy_points(enemy_score_type)
 	queue_free()

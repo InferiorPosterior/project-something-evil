@@ -87,7 +87,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_08cts")
 }],
-"loop": 1,
+"loop": true,
 "name": &"chase",
 "speed": 12.0
 }, {
@@ -98,7 +98,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xoi62")
 }],
-"loop": 1,
+"loop": true,
 "name": &"dash",
 "speed": 5.0
 }, {
@@ -109,7 +109,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6giy3")
 }],
-"loop": 1,
+"loop": true,
 "name": &"fall",
 "speed": 5.0
 }, {
@@ -120,7 +120,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_apaxw")
 }],
-"loop": 1,
+"loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -131,7 +131,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uhdte")
 }],
-"loop": 1,
+"loop": true,
 "name": &"recover",
 "speed": 5.0
 }, {
@@ -142,7 +142,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0reuu")
 }],
-"loop": 1,
+"loop": true,
 "name": &"windup",
 "speed": 12.0
 }]
@@ -163,6 +163,7 @@ script = ExtResource("1_baq1m")
 dash_range = 150.0
 health = NodePath("HealthComponent")
 death_effect = ExtResource("2_5jueb")
+enemy_score_type = "Lunger"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1419899213]
 texture_filter = 1
