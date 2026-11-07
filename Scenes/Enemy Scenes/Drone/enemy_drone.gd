@@ -39,3 +39,12 @@ func explode() -> void:
 
 func _on_health_component_health_depleted() -> void:
 	explode.call_deferred()
+
+
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+func _on_hurtbox_component_damage_taken(damage: int) -> void:
+	sprite.self_modulate = Color(20,20,20)
+	await  get_tree().create_timer(0.1).timeout
+	
+	if is_instance_valid(sprite):
+		sprite.self_modulate = Color.WHITE

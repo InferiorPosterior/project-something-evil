@@ -76,6 +76,7 @@ debug_color = Color(0.9900984, 0, 0.28812593, 0.41960785)
 
 [node name="HealthComponent" type="Node" parent="." unique_id=2140040102]
 script = ExtResource("4_avakj")
+max_health = 200
 metadata/_custom_type_script = "uid://ngsma3hy4ktw"
 
 [node name="HurtboxComponent" type="Area2D" parent="." unique_id=1219125648 node_paths=PackedStringArray("health")]
@@ -107,3 +108,4 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 shape = SubResource("CircleShape2D_71eii")
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[connection signal="damage_taken" from="HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]

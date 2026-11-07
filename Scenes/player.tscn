@@ -203,3 +203,5 @@ game_over_scene = ExtResource("7_tx1dd")
 
 [node name="Gun" parent="." unique_id=1830969750 instance=ExtResource("3_6t5aa")]
 position = Vector2(9, 0)
+
+[connection signal="damage_taken" from="HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]

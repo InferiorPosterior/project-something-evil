@@ -207,3 +207,4 @@ autoplay = "idle"
 frame_progress = 0.8802855
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[connection signal="damage_taken" from="HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]

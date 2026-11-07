@@ -171,7 +171,7 @@ detection_range = 500.0
 texture_filter = 1
 position = Vector2(1, -2)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
-animation = &"windup"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1945430260]
@@ -232,7 +232,6 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="LungerWindup" type="Node" parent="StateMachine" unique_id=481589887]
 script = ExtResource("11_dbuxv")
-windup_time = null
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="LungerDash" type="Node" parent="StateMachine" unique_id=1969370070]
@@ -245,3 +244,4 @@ script = ExtResource("13_vg3vn")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[connection signal="damage_taken" from="HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]
