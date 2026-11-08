@@ -65,5 +65,6 @@ script = ExtResource("1_2mk8m")
 sprite_frames = SubResource("SpriteFrames_jtwjp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=883203872]
+modulate = Color(1.838965, 1.838965, 1.838965, 1)
 texture_filter = 1
 speed_scale = 2.0

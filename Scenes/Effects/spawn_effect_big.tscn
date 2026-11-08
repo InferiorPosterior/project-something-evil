@@ -83,6 +83,7 @@ animations = [{
 }]
 
 [node name="SpawnEffectBig" type="Node2D" unique_id=1570043474]
+modulate = Color(1.838965, 1.838965, 1.838965, 1)
 script = ExtResource("1_7l0v0")
 spawn_sound = ExtResource("2_ajpje")
 sprite_frames = SubResource("SpriteFrames_nm8wb")

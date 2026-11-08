@@ -97,8 +97,19 @@ size = Vector2(12, 16.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_km4sp"]
 size = Vector2(8.5, 12.25)
 
+[sub_resource type="Gradient" id="Gradient_yf5fn"]
+offsets = PackedFloat32Array(0.18811882, 0.6633663)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4v7s"]
+gradient = SubResource("Gradient_yf5fn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
 [node name="Enemy Chaser" type="CharacterBody2D" unique_id=782089927 node_paths=PackedStringArray("health")]
 collision_layer = 2
+collision_mask = 33
 script = ExtResource("1_7r0yd")
 death_effect_scene = ExtResource("2_wj6u7")
 death_sound = ExtResource("3_ob1hd")
@@ -165,6 +176,10 @@ metadata/_custom_type_script = "uid://bvtclq823uv2e"
 position = Vector2(-1, 6.125)
 shape = SubResource("RectangleShape2D_km4sp")
 debug_color = Color(0.9947129, 0, 0.22507519, 0.41960785)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=183995406]
+color = Color(1, 0.04000002, 0.04000002, 1)
+texture = SubResource("GradientTexture2D_g4v7s")
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_component_health_depleted"]
 [connection signal="damage_taken" from="Hurtbox" to="." method="_on_hurtbox_damage_taken"]

@@ -164,6 +164,7 @@ height = 18.0
 size = Vector2(7.875, 15.5)
 
 [node name="Player" type="CharacterBody2D" unique_id=1827159017]
+collision_mask = 33
 script = ExtResource("2_vgqql")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=752946249]

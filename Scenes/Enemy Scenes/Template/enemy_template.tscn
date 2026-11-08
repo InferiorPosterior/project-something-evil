@@ -34,6 +34,7 @@ height = 14.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1675068042 node_paths=PackedStringArray("health")]
 collision_layer = 2
+collision_mask = 33
 script = ExtResource("1_dnotq")
 health = NodePath("HealthComponent")
 

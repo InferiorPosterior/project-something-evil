@@ -44,6 +44,7 @@ animations = [{
 radius = 3.0
 
 [node name="explosive_bullet" type="Area2D" unique_id=184298170]
+modulate = Color(1.838965, 1.838965, 1.838965, 1)
 script = ExtResource("1_3tfrc")
 explosion_scene = ExtResource("2_sipjd")
 

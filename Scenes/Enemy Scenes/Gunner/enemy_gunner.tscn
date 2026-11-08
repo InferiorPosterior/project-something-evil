@@ -124,8 +124,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_xb1tm"]
+offsets = PackedFloat32Array(0.18811882, 0.6633663)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wgsfu"]
+gradient = SubResource("Gradient_xb1tm")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
 [node name="enemy_gunner" type="CharacterBody2D" unique_id=1035780428 node_paths=PackedStringArray("health")]
 collision_layer = 2
+collision_mask = 33
 script = ExtResource("1_p3jys")
 projectile_scene = ExtResource("2_cmo3a")
 shoot_exit_range = 170.0
@@ -189,6 +200,10 @@ script = ExtResource("12_05epj")
 texture_filter = 1
 position = Vector2(4, 0)
 sprite_frames = SubResource("SpriteFrames_yf5fn")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=776607529]
+color = Color(1, 0.04000002, 0.04000002, 1)
+texture = SubResource("GradientTexture2D_wgsfu")
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
 [connection signal="damage_taken" from="HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]

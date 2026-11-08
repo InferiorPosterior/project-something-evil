@@ -72,6 +72,7 @@ animations = [{
 radius = 25.019993
 
 [node name="Explosion" type="Node2D" unique_id=1567326832]
+modulate = Color(1.838965, 1.838965, 1.838965, 1)
 script = ExtResource("1_l1ndb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1646379408]
