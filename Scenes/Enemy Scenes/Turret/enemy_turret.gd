@@ -18,6 +18,16 @@ var cooldown_left: float = 1.0
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 
+	if health == null:
+		health = get_node_or_null("HealthComponent") as HealthComponent
+
+	if health == null:
+		push_error("Turret: HealthComponent not found!")
+		return
+
+	if not health.health_depleted.is_connected(_on_health_component_health_depleted):
+		health.health_depleted.connect(_on_health_component_health_depleted)
+
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(player):
 		return

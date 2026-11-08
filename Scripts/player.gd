@@ -6,6 +6,8 @@ class_name Player extends CharacterBody2D
 
 const HEALTH_UI_SCENE = preload("res://Scenes/health_ui.tscn")
 const POINT_UI_SCENE = preload("res://Scenes/pointUI.tscn")
+const TIMER_UI_SCENE = preload("res://Scenes/timer_ui.tscn")
+const BOSS_UI_SCENE = preload("res://Scenes/boss_ui.tscn")
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 		
@@ -19,9 +21,16 @@ func _ready() -> void:
 
 	var health_ui = HEALTH_UI_SCENE.instantiate()
 	var point_ui = POINT_UI_SCENE.instantiate()
-
+	var timer_ui = TIMER_UI_SCENE.instantiate()
+	var boss_ui = BOSS_UI_SCENE.instantiate()
+	
+	add_child(timer_ui)
 	add_child(point_ui)
 	add_child(health_ui)
+	add_child(boss_ui)
+	
+	print("--- PLAYER NODE TREE ---")
+	print_tree_pretty()
 
 
 func _physics_process(delta: float) -> void:

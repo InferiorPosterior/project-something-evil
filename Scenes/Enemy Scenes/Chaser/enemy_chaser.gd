@@ -2,7 +2,7 @@
 class_name Chaser extends Enemy
 
 func _ready() -> void:
-	player = get_tree().get_first_node_in_group("player")
+	super._ready()
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():

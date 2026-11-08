@@ -13,7 +13,7 @@ signal health_depleted
 # ==================================================
 # MAX HEALTH
 # ==================================================
-@export var max_health: int = 100:
+@export var max_health: int = 300:
 	set = set_max_health,
 	get = get_max_health
 
@@ -38,8 +38,8 @@ var immortality_timer: Timer = null
 @export_group("Player Difficulty")
 @export var use_player_difficulty: bool = false
 
-@export_enum("Hard:100", "Normal:300", "Easy:500")
-var difficulty_max_health: int = 300
+@export_enum("Hard:200", "Normal:300", "Easy:500")
+var difficulty_max_health: int = 500
 
 
 # ==================================================
@@ -48,18 +48,19 @@ var difficulty_max_health: int = 300
 # ==================================================
 @export_group("Passive Regeneration")
 @export var enable_passive_regen: bool = false
-@export var regen_amount: int = 5
-@export var regen_delay: float = 3.0
+@export var regen_amount: int = 10
+@export var regen_delay: float = 10.0
 @export var regen_interval: float = 1.0
 
 var regen_delay_timer: float = 0.0
 var regen_tick_timer: float = 0.0
+var is_shooting: bool = false
 
 
 # ==================================================
 # CURRENT HEALTH
 # ==================================================
-var current_health: int = 100:
+var current_health: int = 300:
 	set = set_current_health,
 	get = get_current_health
 
@@ -81,6 +82,12 @@ func _ready() -> void:
 # ==================================================
 func _process(delta: float) -> void:
 	if not enable_passive_regen:
+		return
+
+	# Stop passive regeneration while the player is shooting.
+	if is_shooting:
+		regen_delay_timer = 0.0
+		regen_tick_timer = 0.0
 		return
 
 	# Do not regenerate when dead or at full health.
@@ -188,9 +195,11 @@ func set_current_health(value: int) -> void:
 
 	current_health_changed.emit(difference)
 
-	# Notify listeners when health reaches zero.
+# Notify listeners when health reaches zero.
 	if current_health <= 0:
 		health_depleted.emit()
+
+	print("HEALTH SIGNAL EMITTED: ", get_parent().name, " | HP: ", current_health, "/", max_health)
 
 
 func get_current_health() -> int:
@@ -202,16 +211,21 @@ func get_current_health() -> int:
 # Used by both players and enemies.
 # ==================================================
 func take_damage(amount: int) -> void:
+	print("TAKE DAMAGE CALLED: ", amount)
+
 	if amount <= 0:
 		return
 
 	if current_health <= 0 or immortality:
+		print("Damage ignored. Immortality: ", immortality)
 		return
 
-	# Subtract HP through the existing setter.
+	print("Health before damage: ", current_health)
+
 	current_health = current_health - amount
 
-	# Start invincibility frames after a successful hit.
+	print("Health after damage: ", current_health)
+
 	if damage_immortality_duration > 0.0:
 		set_temporary_immortality(
 			damage_immortality_duration

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://buswo7m067kr0"]
+
+[ext_resource type="Script" uid="uid://bcp8sk2qoguy7" path="res://Scenes/boss_ui.gd" id="1_335gi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajy4x"]
+bg_color = Color(0.39748237, 4.5724212e-07, 1.6845763e-07, 1)
+
+[node name="BHealthUI" type="Control" unique_id=2127563295]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 150.0
+grow_horizontal = 2
+
+[node name="BossUI" type="CanvasLayer" parent="." unique_id=606838749]
+script = ExtResource("1_335gi")
+
+[node name="Control" type="Control" parent="BossUI" unique_id=403497609]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BossUI/Control" unique_id=739582493]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 0
+offset_left = 300.0
+offset_top = 75.0
+offset_right = 800.0
+offset_bottom = 120.0
+
+[node name="BossName" type="Label" parent="BossUI/Control/VBoxContainer" unique_id=1751248048]
+layout_mode = 2
+text = "PLACEHOLDER"
+horizontal_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="BossUI/Control/VBoxContainer" unique_id=1204352638]
+custom_minimum_size = Vector2(500, 18)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_ajy4x")
+value = 100.0
+show_percentage = false
