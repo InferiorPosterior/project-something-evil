@@ -7,7 +7,7 @@ var score_label: Label
 func _ready() -> void:
 	print("PointUI loaded")
 
-	score_label = get_node_or_null("CanvasLayer/Control/PanelContainer/ScoreLabel") as Label
+	score_label = get_node_or_null("PanelContainer/ScoreLabel") as Label
 
 	if score_label == null:
 		push_error("PointUI: ScoreLabel not found. Check your scene tree.")
