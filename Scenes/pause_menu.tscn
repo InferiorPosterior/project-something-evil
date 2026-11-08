@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dj0s5hm5dgbqu"]
 
-[ext_resource type="Script" uid="uid://u83sgy0qihkc" path="res://Scripts/pause_menu.gd" id="1_emv3i"]
+[ext_resource type="Script" uid="uid://yadkbeicnd0m" path="res://Scripts/pause_menu.gd" id="1_emv3i"]
 [ext_resource type="FontFile" uid="uid://du3wbjmohuixm" path="res://Fonts/BebasNeue-Regular.ttf" id="2_k0w1u"]
 
 [node name="PauseMenu" type="Control" unique_id=1484971317]
@@ -14,7 +14,6 @@ offset_right = -1.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 script = ExtResource("1_emv3i")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1306926268]
@@ -28,7 +27,6 @@ offset_right = 1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 color = Color(0.21176471, 0.19607843, 0.21176471, 0.73333335)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=220283445]
@@ -40,16 +38,13 @@ offset_left = 2.0
 offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 
 [node name="Panel" type="PanelContainer" parent="CenterContainer" unique_id=1367136749]
 custom_minimum_size = Vector2(420, 320)
 layout_mode = 2
-mouse_filter = 2
 
 [node name="Control" type="Control" parent="CenterContainer/Panel" unique_id=351725839]
 layout_mode = 2
-mouse_filter = 2
 
 [node name="Title" type="Label" parent="CenterContainer/Panel/Control" unique_id=699985751]
 layout_mode = 0

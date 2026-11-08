@@ -1,7 +1,5 @@
 class_name LungerDash extends State
 
-@export var lunge_sound : AudioStream
-
 @export var dash_distance: float = 200.0
 @export var duration: float = 0.35
 @export var ease_power: float = 2.0     # 1 = even slowdown, 2-3 = hard burst then a glide to a stop
@@ -14,9 +12,7 @@ var launch_speed: float = 0.0
 func enter_state() -> void:
 	lunger.get_node("AnimatedSprite2D").play("dash")
 	elapsed = 0.0
-	
-	if lunge_sound:
-		SoundManager.play_sound(lunge_sound, owner.global_position)
+	$LungeSFX.play()
 	# Chosen so the total distance travelled equals dash_distance:
 	# the area under speed = launch_speed * (1 - t)^power over the duration.
 	launch_speed = dash_distance * (ease_power + 1.0) / duration

@@ -58,7 +58,6 @@ collision_layer = 2
 script = ExtResource("1_mliai")
 health = NodePath("HealthComponent")
 explosion_scene = ExtResource("2_mliai")
-detection_range = 500.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=927670717]
 texture_filter = 1

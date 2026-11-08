@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://m5n0v8xvcu2f"]
 
 [ext_resource type="Script" uid="uid://cmgqsvd3geh3r" path="res://Scenes/Enemy Scenes/Lunger/enemy_lunger.gd" id="1_oo625"]
-[ext_resource type="PackedScene" uid="uid://cscll7mr5fxep" path="res://Scenes/Effects/Death Effects/death_effect_big.tscn" id="2_ki8mq"]
+[ext_resource type="PackedScene" uid="uid://gf0jiqmnkk54" path="res://Scenes/Effects/death_effect_big.tscn" id="2_1svrq"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_wuqc8"]
 [ext_resource type="Texture2D" uid="uid://b0s8wx7kld6dy" path="res://Assets/something_evil_assets/sprites/brute.png" id="3_xi0a3"]
-[ext_resource type="AudioStream" uid="uid://dd1whkkjwpdvm" path="res://Assets/something_evil_assets/sound effects/explosion (2).wav" id="3_xsdfh"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_m7fxu"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="5_ky8eb"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_plm84"]
@@ -18,8 +17,8 @@
 [ext_resource type="AudioStream" uid="uid://dq66jo07srlmf" path="res://Assets/something_evil_assets/sound effects/lunge.wav" id="13_2o6rj"]
 [ext_resource type="Script" uid="uid://cpuksw8tpv4yj" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_windup.gd" id="13_hiuwt"]
 [ext_resource type="Script" uid="uid://bco4t8p1j7xmc" path="res://Scenes/Enemy Scenes/Turret/enemy_turret.gd" id="14_oo625"]
-[ext_resource type="Script" uid="uid://cdeesjx1jp87o" path="res://Scripts/Utilities/face_player.gd" id="18_ki8mq"]
-[ext_resource type="AudioStream" uid="uid://cbkj26t700dtu" path="res://Assets/something_evil_assets/sound effects/hit.wav" id="19_xsdfh"]
+[ext_resource type="Script" uid="uid://cdeesjx1jp87o" path="res://Scripts/face_player.gd" id="18_ki8mq"]
+[ext_resource type="AudioStream" uid="uid://ctk3el7pe6fri" path="res://Assets/brackeys_platformer_assets/sounds/explosion.wav" id="19_ki8mq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xi0a3"]
 atlas = ExtResource("3_xi0a3")
@@ -190,12 +189,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g4v7s"]
+random_pitch = 1.122462
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("19_ki8mq")
+stream_0/weight = 10.0
+
 [node name="EnemyBrute" type="CharacterBody2D" unique_id=946815017 node_paths=PackedStringArray("health")]
 collision_layer = 2
 script = ExtResource("1_oo625")
-death_effect_scene = ExtResource("2_ki8mq")
-death_sound = ExtResource("3_xsdfh")
 health = NodePath("HealthComponent")
+death_effect = ExtResource("2_1svrq")
+enemy_score_type = "Brute"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1768781975]
 texture_filter = 1
@@ -266,9 +272,11 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="LungerDash" type="Node" parent="StateMachine" unique_id=103030372]
 script = ExtResource("9_7dddd")
-lunge_sound = ExtResource("13_2o6rj")
 dash_distance = 150.0
 metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="LungeSFX" type="AudioStreamPlayer" parent="StateMachine/LungerDash" unique_id=651353165]
+stream = ExtResource("13_2o6rj")
 
 [node name="LungerRecover" type="Node" parent="StateMachine" unique_id=353855079]
 script = ExtResource("12_2520f")
@@ -290,10 +298,13 @@ animation = &"idle"
 [node name="Turret" type="Node2D" parent="Gun" unique_id=310534396]
 position = Vector2(-9.536743e-07, -9.536743e-07)
 script = ExtResource("14_oo625")
-shoot_sound = ExtResource("19_xsdfh")
 projectile_scene = ExtResource("12_m7fxu")
-sight_range = 500.0
 burst_count = 5
 metadata/_custom_type_script = "uid://bco4t8p1j7xmc"
+
+[node name="FiringGunSFX" type="AudioStreamPlayer" parent="Gun/Turret" unique_id=9481212]
+stream = SubResource("AudioStreamRandomizer_g4v7s")
+volume_db = 1.0
+pitch_scale = 0.75
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]

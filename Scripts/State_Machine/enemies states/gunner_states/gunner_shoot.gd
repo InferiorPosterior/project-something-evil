@@ -1,7 +1,5 @@
 class_name GunnerShoot extends State
 
-@export var shoot_sound : AudioStream
-
 @export var windup: float = 0.4          # delay before the FIRST shot, so you get a moment to react
 @export var fire_interval: float = 1.2   # seconds between shots after that
 
@@ -30,8 +28,6 @@ func physics_update(delta: float) -> void:
 
 	cooldown -= delta
 	if cooldown <= 0.0:
-		if shoot_sound:
-			SoundManager.play_sound(shoot_sound, owner.global_position)
 		fire()
 		cooldown = fire_interval
 
@@ -41,7 +37,9 @@ func fire() -> void:
 	var bullet = enemy.projectile_scene.instantiate()
 	var origin := enemy.global_position + enemy.muzzle_offset
 	bullet.direction = (enemy.player.global_position - origin).normalized()  # aimed at you at the moment of firing
-
+	
+	if firing_sfx:
+		firing_sfx.play()
 	
 	enemy.get_tree().current_scene.add_child(bullet)
 	bullet.global_position = origin

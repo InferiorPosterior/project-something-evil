@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://db7bqtoh7obyy"]
 
-[ext_resource type="Script" uid="uid://bum6ls2nwri2i" path="res://Scripts/level_select.gd" id="1_nkys2"]
+[ext_resource type="Script" uid="uid://bum6ls2nwri2i" path="res://Scripts/level_progress/level_select.gd" id="1_nkys2"]
 [ext_resource type="PackedScene" uid="uid://b0w28r46qdo1r" path="res://Scenes/Stages/stage_1_prelude_to_evil.tscn" id="2_2sqnl"]
 [ext_resource type="FontFile" uid="uid://du3wbjmohuixm" path="res://Fonts/BebasNeue-Regular.ttf" id="2_lx4vd"]
 
@@ -95,6 +95,15 @@ theme_override_font_sizes/font_size = 30
 text = "| LELVEL SELECTION |"
 horizontal_alignment = 1
 
+[node name="Subtitle2" type="Label" parent="Background/CenterContainer/Panel/Control" unique_id=1317328622]
+layout_mode = 0
+offset_top = 211.0
+offset_right = 862.0
+offset_bottom = 255.0
+theme_override_font_sizes/font_size = 20
+text = "|"
+horizontal_alignment = 1
+
 [node name="Level1Button" type="Button" parent="Background/CenterContainer/Panel/Control" unique_id=1022165230]
 layout_mode = 1
 anchors_preset = -1
@@ -107,21 +116,12 @@ text = "LEVEL 1 - PRELUDE TO EVIL"
 
 [node name="Level2Button" type="Button" parent="Background/CenterContainer/Panel/Control" unique_id=1816314806]
 layout_mode = 0
-offset_left = 136.0
-offset_top = 135.0
-offset_right = 736.0
-offset_bottom = 185.0
+offset_left = 132.0
+offset_top = 151.0
+offset_right = 732.0
+offset_bottom = 201.0
 theme_override_font_sizes/font_size = 18
 text = "LEVEL 2 - LOCKED"
-
-[node name="Level3Button" type="Button" parent="Background/CenterContainer/Panel/Control" unique_id=1691353340]
-layout_mode = 0
-offset_left = 135.0
-offset_top = 197.0
-offset_right = 735.0
-offset_bottom = 247.0
-theme_override_font_sizes/font_size = 18
-text = "LEVEL 3 - LOCKED"
 
 [node name="BackButton" type="Button" parent="Background/CenterContainer/Panel/Control" unique_id=957584474]
 layout_mode = 0

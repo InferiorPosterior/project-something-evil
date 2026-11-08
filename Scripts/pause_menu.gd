@@ -18,6 +18,7 @@ func _ready():
 	$CenterContainer/Panel/Control/QuitButton.pressed.connect(_on_quit_pressed)
 
 
+# Checks for keyboard input, such as pressing Escape.
 func _input(event):
 	# Checks whether the player pressed the ui_cancel key (usually Escape).
 	# is_echo() prevents repeated key inputs from holding the key down.

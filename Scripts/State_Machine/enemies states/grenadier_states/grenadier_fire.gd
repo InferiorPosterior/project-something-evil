@@ -1,7 +1,5 @@
 class_name GrenadierThrow extends State
 
-@export var shoot_sound : AudioStream
-
 @export var windup: float = 0.6            # delay before the first throw
 @export var throw_interval: float = 2.5    # seconds between throws
 @export var exit_margin: float = 40.0      # extra room before it gives up the throwing stance
@@ -32,7 +30,6 @@ func physics_update(delta: float) -> void:
 
 	cooldown -= delta
 	if cooldown <= 0.0:
-		if shoot_sound:
-			SoundManager.play_sound(shoot_sound, owner.global_position)
+		$GrenadeLaunch.play()
 		enemy.throw_grenade()
 		cooldown = throw_interval

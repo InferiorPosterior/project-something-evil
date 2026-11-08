@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://d1xh8t1ol3loo" path="res://Scenes/Enemy Scenes/Grenadier/enemy_grenadier.gd" id="1_jm4kl"]
 [ext_resource type="PackedScene" uid="uid://eapqponxnen6" path="res://Scenes/Projectiles & Hazards/Grenade/grenade.tscn" id="2_jm4kl"]
 [ext_resource type="Texture2D" uid="uid://b7ddx64hys10x" path="res://Assets/something_evil_assets/sprites/grenadier.png" id="3_xuf2b"]
-[ext_resource type="PackedScene" uid="uid://cscll7mr5fxep" path="res://Scenes/Effects/Death Effects/death_effect_big.tscn" id="4_8dou2"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="4_o836l"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="5_ahg5e"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="6_mowij"]
@@ -12,8 +11,7 @@
 [ext_resource type="Script" uid="uid://d2uoq54ejdnnt" path="res://Scripts/State_Machine/enemies states/grenadier_states/grenadier_fire.gd" id="9_02at7"]
 [ext_resource type="AudioStream" uid="uid://dd1whkkjwpdvm" path="res://Assets/something_evil_assets/sound effects/explosion (2).wav" id="9_h4snk"]
 [ext_resource type="Script" uid="uid://6rpshjxtyli5" path="res://Scripts/State_Machine/enemies states/grenadier_states/grenadier_fall.gd" id="10_3akrr"]
-[ext_resource type="Script" uid="uid://cdeesjx1jp87o" path="res://Scripts/Utilities/face_player.gd" id="10_gr8wd"]
-[ext_resource type="AudioStream" uid="uid://csqf34lbfmwhh" path="res://Assets/something_evil_assets/sound effects/missileLaunch.wav" id="10_tkfoe"]
+[ext_resource type="Script" uid="uid://cdeesjx1jp87o" path="res://Scripts/face_player.gd" id="10_gr8wd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2d8f"]
 size = Vector2(16.5, 24.25)
@@ -142,11 +140,9 @@ animations = [{
 [node name="Enemy Grenadier" type="CharacterBody2D" unique_id=1599663498 node_paths=PackedStringArray("health")]
 collision_layer = 2
 script = ExtResource("1_jm4kl")
-death_sound = ExtResource("9_h4snk")
-death_effect_scene = ExtResource("4_8dou2")
-health = NodePath("HealthComponent")
 grenade_scene = ExtResource("2_jm4kl")
-detection_range = 500.0
+health = NodePath("HealthComponent")
+enemy_score_type = "Grenadier"
 
 [node name="HealthComponent" type="Node" parent="." unique_id=423890900]
 script = ExtResource("4_o836l")
@@ -184,8 +180,13 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="GrenadierFire" type="Node" parent="StateMachine" unique_id=979958133]
 script = ExtResource("9_02at7")
-shoot_sound = ExtResource("10_tkfoe")
 metadata/_custom_type_script = "uid://v1najhost2v"
+
+[node name="GrenadeLaunch" type="AudioStreamPlayer2D" parent="StateMachine/GrenadierFire" unique_id=1001822322]
+stream = ExtResource("9_h4snk")
+volume_db = -1.0
+pitch_scale = 0.75
+panning_strength = 0.25
 
 [node name="GrenadierFall" type="Node" parent="StateMachine" unique_id=161210251]
 script = ExtResource("10_3akrr")

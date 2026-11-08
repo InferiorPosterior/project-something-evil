@@ -1,13 +1,10 @@
 
-@export var death_sound : AudioStream
-@export var death_effect_scene : PackedScene
+class_name Grenadier extends Enemy
 
-@export var health: HealthComponent
-@export var grenade_scene: PackedScene                 # assign grenade.tscn
-@export var detection_range: float = 400.0             # Idle wakes up inside this
-@export var min_distance: float = 160.0                # backs away if the player is closer than this
-@export var max_distance: float = 240.0                # closes in if the player is farther than this
-@export var throw_offset: Vector2 = Vector2(0, -6)     # where grenades leave the enemy
+@export var grenade_scene: PackedScene
+@export var min_distance: float = 160.0
+@export var max_distance: float = 240.0
+@export var throw_offset: Vector2 = Vector2(0, -6)
 
 
 func _ready() -> void:
@@ -43,12 +40,4 @@ func throw_grenade() -> void:
 	get_tree().current_scene.add_child(grenade)
 	grenade.global_position = origin
 
-func _on_health_component_health_depleted() -> void:
-	if death_effect_scene:
-		var effect = death_effect_scene.instantiate() as Node2D
-		get_tree().current_scene.add_child(effect)
-		effect.global_position = global_position
-	if death_sound:
-		SoundManager.play_sound(death_sound, global_position)
-
-	queue_free()
+	grenade.launch(vel, self)
