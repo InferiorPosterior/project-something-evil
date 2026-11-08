@@ -3,16 +3,16 @@
 [ext_resource type="Script" uid="uid://c458i44of23ti" path="res://Scenes/Enemy Scenes/Gunner/enemy_gunner.gd" id="1_p3jys"]
 [ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/Projectiles & Hazards/Enemy Projectile/enemy_projectile.tscn" id="2_cmo3a"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_cmo3a"]
-[ext_resource type="PackedScene" uid="uid://nr5osifxv4ig" path="res://Scenes/Effects/death_effect.tscn" id="3_gdmyk"]
+[ext_resource type="PackedScene" uid="uid://cwpk8w53lk8c1" path="res://Scenes/Effects/Death Effects/death_effect_small.tscn" id="3_xb1tm"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_sy457"]
+[ext_resource type="AudioStream" uid="uid://cbkj26t700dtu" path="res://Assets/something_evil_assets/sound effects/hit.wav" id="4_wgsfu"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_erlcv"]
 [ext_resource type="Script" uid="uid://cil401dbk8im1" path="res://Scripts/State_Machine/enemies states/template_states/enemy_idle.gd" id="7_4s8nx"]
 [ext_resource type="Script" uid="uid://da21m504xdct1" path="res://Scripts/State_Machine/enemies states/gunner_states/gunner_chase.gd" id="7_cmo3a"]
 [ext_resource type="Script" uid="uid://cftobmjh7y2ja" path="res://Scripts/State_Machine/enemies states/gunner_states/gunner_shoot.gd" id="8_sy457"]
 [ext_resource type="Texture2D" uid="uid://0hhs47g4ushk" path="res://Assets/something_evil_assets/sprites/gunner.png" id="10_4s8nx"]
 [ext_resource type="Script" uid="uid://b2ec20sbyqpj7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_fall.gd" id="10_gdmyk"]
-[ext_resource type="AudioStream" uid="uid://ctk3el7pe6fri" path="res://Assets/brackeys_platformer_assets/sounds/explosion.wav" id="10_xb1tm"]
-[ext_resource type="Script" uid="uid://cdeesjx1jp87o" path="res://Scripts/face_player.gd" id="12_05epj"]
+[ext_resource type="Script" uid="uid://cdeesjx1jp87o" path="res://Scripts/Utilities/face_player.gd" id="12_05epj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
 radius = 4.0
@@ -20,12 +20,6 @@ height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(10, 17.5)
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g4v7s"]
-random_pitch = 1.122462
-streams_count = 1
-stream_0/stream = ExtResource("10_xb1tm")
-stream_0/weight = 10.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4s8nx"]
 atlas = ExtResource("10_4s8nx")
@@ -135,9 +129,10 @@ collision_layer = 2
 script = ExtResource("1_p3jys")
 projectile_scene = ExtResource("2_cmo3a")
 shoot_exit_range = 170.0
+death_effect_scene = ExtResource("3_xb1tm")
+death_sound = ExtResource("4_wgsfu")
 health = NodePath("HealthComponent")
-death_effect = ExtResource("3_gdmyk")
-enemy_score_type = "Gunner"
+detection_range = 500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1603164321]
 shape = SubResource("CapsuleShape2D_g4v7s")
@@ -174,12 +169,8 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="GunnerShoot" type="Node" parent="StateMachine" unique_id=2032878847]
 script = ExtResource("8_sy457")
+shoot_sound = ExtResource("4_wgsfu")
 metadata/_custom_type_script = "uid://v1najhost2v"
-
-[node name="FiringGunSFX" type="AudioStreamPlayer" parent="StateMachine/GunnerShoot" unique_id=669379689]
-stream = SubResource("AudioStreamRandomizer_g4v7s")
-volume_db = -2.0
-pitch_scale = 0.7
 
 [node name="EnemyFall" type="Node" parent="StateMachine" unique_id=854893117]
 script = ExtResource("10_gdmyk")

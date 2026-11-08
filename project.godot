@@ -12,13 +12,14 @@ config_version=5
 
 config/name="Project Something Evil"
 run/main_scene="uid://opptkxr1tbdm"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameProgress="*uid://cs7ykmdc0kt3"
 ScoreManager="*uid://ci82v2ri5vqnw"
+SoundManager="*uid://23dpiraohdis"
 
 [display]
 
@@ -31,6 +32,7 @@ folder_colors={
 "res://Scenes/": "blue",
 "res://Scenes/Enemy Scenes/": "red",
 "res://Scenes/Projectiles & Hazards/": "yellow",
+"res://Scenes/Stage Builder Assets/": "green",
 "res://Scripts/": "pink",
 "res://Scripts/State_Machine/enemies states/": "red"
 }

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://n4o63shwcgnl"]
+
+[ext_resource type="Script" uid="uid://dvvudlaa5sc8r" path="res://Scripts/Event Systems/spawn_entity.gd" id="1_gw42g"]
+[ext_resource type="PackedScene" uid="uid://dr0tnjrfrv4q0" path="res://Scenes/Enemy Scenes/Gunner/enemy_gunner.tscn" id="2_7wfbr"]
+[ext_resource type="Texture2D" uid="uid://0hhs47g4ushk" path="res://Assets/something_evil_assets/sprites/gunner.png" id="2_snkxc"]
+[ext_resource type="PackedScene" uid="uid://poas7nlbj18p" path="res://Scenes/Effects/spawn_effect_small.tscn" id="3_skrod"]
+
+[node name="GunnerSpawn" type="Node2D" unique_id=2075033335]
+script = ExtResource("1_gw42g")
+entity_scene = ExtResource("2_7wfbr")
+effect_scene = ExtResource("3_skrod")
+reveal_delay = 0.2
+
+[node name="Preview" type="Sprite2D" parent="." unique_id=616256148]
+texture_filter = 1
+texture = ExtResource("2_snkxc")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)

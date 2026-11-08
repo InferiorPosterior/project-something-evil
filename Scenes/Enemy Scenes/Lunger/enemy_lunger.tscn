@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://yvcb3rtoocwa"]
 
 [ext_resource type="Script" uid="uid://cmgqsvd3geh3r" path="res://Scenes/Enemy Scenes/Lunger/enemy_lunger.gd" id="1_baq1m"]
-[ext_resource type="PackedScene" uid="uid://gf0jiqmnkk54" path="res://Scenes/Effects/death_effect_big.tscn" id="2_5jueb"]
 [ext_resource type="Texture2D" uid="uid://banm3hbv0kf1y" path="res://Assets/something_evil_assets/sprites/lunger.png" id="2_6v10p"]
+[ext_resource type="PackedScene" uid="uid://cscll7mr5fxep" path="res://Scenes/Effects/Death Effects/death_effect_big.tscn" id="2_npunj"]
+[ext_resource type="AudioStream" uid="uid://dd1whkkjwpdvm" path="res://Assets/something_evil_assets/sound effects/explosion (2).wav" id="3_6aayl"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_jbfuy"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_dugn8"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="5_rkj44"]
@@ -161,9 +162,10 @@ size = Vector2(14.078125, 18)
 collision_layer = 2
 script = ExtResource("1_baq1m")
 dash_range = 150.0
+death_effect_scene = ExtResource("2_npunj")
+death_sound = ExtResource("3_6aayl")
 health = NodePath("HealthComponent")
-death_effect = ExtResource("2_5jueb")
-enemy_score_type = "Lunger"
+detection_range = 500.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1419899213]
 texture_filter = 1
@@ -235,11 +237,8 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="LungerDash" type="Node" parent="StateMachine" unique_id=1969370070]
 script = ExtResource("12_p0by7")
+lunge_sound = ExtResource("15_dky3w")
 metadata/_custom_type_script = "uid://v1najhost2v"
-
-[node name="LungeSFX" type="AudioStreamPlayer" parent="StateMachine/LungerDash" unique_id=86062627]
-stream = ExtResource("15_dky3w")
-pitch_scale = 1.75
 
 [node name="LungerRecover" type="Node" parent="StateMachine" unique_id=1878103491]
 script = ExtResource("13_vg3vn")

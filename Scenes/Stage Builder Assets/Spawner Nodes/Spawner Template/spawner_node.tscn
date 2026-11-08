@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b2so7w2mnpuxy"]
+
+[ext_resource type="Script" uid="uid://dvvudlaa5sc8r" path="res://Scripts/Event Systems/spawn_entity.gd" id="1_ngtsp"]
+[ext_resource type="Texture2D" uid="uid://ba1tqma7mkq7" path="res://Assets/something_evil_assets/sprites/chaser.png" id="2_qx4yd"]
+
+[node name="SpawnerNode" type="Node2D" unique_id=802069757]
+script = ExtResource("1_ngtsp")
+
+[node name="Preview" type="Sprite2D" parent="." unique_id=1780576799]
+texture_filter = 1
+texture = ExtResource("2_qx4yd")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)

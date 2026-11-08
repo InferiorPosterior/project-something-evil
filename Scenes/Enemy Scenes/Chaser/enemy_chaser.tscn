@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b1786qh5xpj1i" path="res://Scenes/Enemy Scenes/Chaser/enemy_chaser.gd" id="1_7r0yd"]
 [ext_resource type="Texture2D" uid="uid://ba1tqma7mkq7" path="res://Assets/something_evil_assets/sprites/chaser.png" id="2_7r0yd"]
-[ext_resource type="PackedScene" uid="uid://nr5osifxv4ig" path="res://Scenes/Effects/death_effect.tscn" id="2_53gau"]
+[ext_resource type="PackedScene" uid="uid://cwpk8w53lk8c1" path="res://Scenes/Effects/Death Effects/death_effect_small.tscn" id="2_wj6u7"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_8xxap"]
+[ext_resource type="AudioStream" uid="uid://cbkj26t700dtu" path="res://Assets/something_evil_assets/sound effects/hit.wav" id="3_ob1hd"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_u7ynu"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="5_10joo"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="6_uivkl"]
@@ -99,8 +100,10 @@ size = Vector2(8.5, 12.25)
 [node name="Enemy Chaser" type="CharacterBody2D" unique_id=782089927 node_paths=PackedStringArray("health")]
 collision_layer = 2
 script = ExtResource("1_7r0yd")
+death_effect_scene = ExtResource("2_wj6u7")
+death_sound = ExtResource("3_ob1hd")
 health = NodePath("Health")
-death_effect = ExtResource("2_53gau")
+detection_range = 500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2102903468]
 position = Vector2(-1, 5)
