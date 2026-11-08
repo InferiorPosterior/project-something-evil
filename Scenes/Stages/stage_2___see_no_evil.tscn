@@ -9,16 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bowvv2w2fkqm2" path="res://Assets/something_evil_assets/sprites/background_skyscrapers.png" id="4_q3m7i"]
 [ext_resource type="Texture2D" uid="uid://cen2ar6a6axcj" path="res://Assets/something_evil_assets/sprites/background_cityscape.png" id="5_6tgec"]
 [ext_resource type="PackedScene" uid="uid://3btq8c6h6ayp" path="res://Scenes/lives_hud.tscn" id="5_q3m7i"]
-[ext_resource type="PackedScene" uid="uid://gws0ml30aft4" path="res://Scenes/fade_in.tscn" id="7_us27w"]
 [ext_resource type="Texture2D" uid="uid://w8j0rnwcahmd" path="res://Assets/something_evil_assets/sprites/background_horizon.png" id="8_87ieb"]
-[ext_resource type="Script" uid="uid://v0iqx35ti2ph" path="res://Scripts/Event Systems/event_area.gd" id="10_gnpko"]
-[ext_resource type="Script" uid="uid://b8fo7mtjsai2h" path="res://checkpoint_action.gd" id="11_pvyu6"]
-[ext_resource type="Script" uid="uid://be0tcaadulpeo" path="res://Scripts/Event Systems/door_action.gd" id="12_7ymod"]
-[ext_resource type="Script" uid="uid://c4p8md6xtah0a" path="res://Scripts/Event Systems/event_group.gd" id="13_2mlkn"]
-[ext_resource type="Script" uid="uid://c87b73kgij03d" path="res://Scripts/Event Systems/wait_for_clear_action.gd" id="15_w1vpc"]
-[ext_resource type="PackedScene" uid="uid://bfmk7f042oliv" path="res://Scenes/Stage Builder Assets/door.tscn" id="18_dr2vf"]
-[ext_resource type="Script" uid="uid://bpjxt8fwj5oan" path="res://Scripts/Event Systems/level_end_action.gd" id="20_h10uj"]
-[ext_resource type="PackedScene" uid="uid://mudw0p55nt1e" path="res://Scenes/stage_end_screen.tscn" id="21_swp03"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_b45r2"]
 tile_data = PackedInt32Array(0, 786432, 13, 65536, 786432, 14, 1, 851968, 13, 65537, 851968, 14)
@@ -1216,12 +1207,6 @@ metadata/_snap_enabled = true
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_31mh6"]
 distance = -448.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oty8j"]
-size = Vector2(133, 135)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_faxlt"]
-size = Vector2(58, 58)
-
 [sub_resource type="Environment" id="Environment_d786x"]
 background_mode = 3
 tonemap_mode = 1
@@ -1330,80 +1315,6 @@ script = ExtResource("3_13dpj")
 shape = SubResource("WorldBoundaryShape2D_31mh6")
 
 [node name="LivesHUD" parent="." unique_id=1372217612 instance=ExtResource("5_q3m7i")]
-
-[node name="Encounter" type="Area2D" parent="." unique_id=1008987393]
-collision_layer = 0
-script = ExtResource("10_gnpko")
-metadata/_custom_type_script = "uid://v0iqx35ti2ph"
-
-[node name="CheckpointAction" type="Node2D" parent="Encounter" unique_id=392696110]
-position = Vector2(-40, -576)
-script = ExtResource("11_pvyu6")
-metadata/_custom_type_script = "uid://b8fo7mtjsai2h"
-
-[node name="Marker2D" type="Marker2D" parent="Encounter/CheckpointAction" unique_id=1024434441]
-gizmo_extents = 44.3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Encounter" unique_id=125447190]
-position = Vector2(-188, -557)
-shape = SubResource("RectangleShape2D_oty8j")
-debug_color = Color(0.6691623, 0.51019174, 0, 0.41960785)
-
-[node name="Close entrance" type="Node2D" parent="Encounter" unique_id=174999390 node_paths=PackedStringArray("doors")]
-script = ExtResource("12_7ymod")
-doors = [NodePath("../Entrance door")]
-metadata/_custom_type_script = "uid://be0tcaadulpeo"
-
-[node name="Wave1" type="Node2D" parent="Encounter" unique_id=829706580]
-position = Vector2(-72, -120)
-script = ExtResource("13_2mlkn")
-
-[node name="WaitForClearAction" type="Node2D" parent="Encounter/Wave1" unique_id=1583863083]
-position = Vector2(72, 120)
-script = ExtResource("15_w1vpc")
-metadata/_custom_type_script = "uid://c87b73kgij03d"
-
-[node name="Wave2" type="Node2D" parent="Encounter" unique_id=1523673026]
-script = ExtResource("13_2mlkn")
-metadata/_custom_type_script = "uid://c4p8md6xtah0a"
-
-[node name="WaitForClearAction2" type="Node2D" parent="Encounter/Wave2" unique_id=1224200772]
-script = ExtResource("15_w1vpc")
-metadata/_custom_type_script = "uid://c87b73kgij03d"
-
-[node name="Wave 3" type="Node2D" parent="Encounter" unique_id=857910712]
-script = ExtResource("13_2mlkn")
-metadata/_custom_type_script = "uid://c4p8md6xtah0a"
-
-[node name="Entrance door" parent="Encounter" unique_id=1560095299 instance=ExtResource("18_dr2vf")]
-position = Vector2(-368, -536)
-
-[node name="Exit door" parent="Encounter" unique_id=101976794 instance=ExtResource("18_dr2vf")]
-position = Vector2(272, -536)
-start_closed = true
-
-[node name="Open exit" type="Node2D" parent="Encounter" unique_id=1907591516 node_paths=PackedStringArray("doors")]
-script = ExtResource("12_7ymod")
-doors = [NodePath("../Exit door")]
-close = false
-metadata/_custom_type_script = "uid://be0tcaadulpeo"
-
-[node name="LevelEnd" type="Area2D" parent="." unique_id=2142736455]
-script = ExtResource("10_gnpko")
-metadata/_custom_type_script = "uid://v0iqx35ti2ph"
-
-[node name="FadeIn" parent="LevelEnd" unique_id=1275480377 instance=ExtResource("7_us27w")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd" unique_id=1346128471]
-position = Vector2(296, -536)
-shape = SubResource("RectangleShape2D_faxlt")
-debug_color = Color(0.5388686, 0.5683242, 0, 0.41960785)
-
-[node name="LevelEndAction" type="Node2D" parent="LevelEnd" unique_id=1081227462]
-script = ExtResource("20_h10uj")
-end_screen = ExtResource("21_swp03")
-next_scene = "uid://dmbso2ivyu0n0"
-metadata/_custom_type_script = "uid://bpjxt8fwj5oan"
 
 [node name="PauseMenu" type="CanvasLayer" parent="." unique_id=1255769964]
 

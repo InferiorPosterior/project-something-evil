@@ -256,7 +256,7 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=880259197]
 color = Color(1, 0.04000002, 0.04000002, 1)
-energy = 1.5
+energy = 0.5
 texture = SubResource("GradientTexture2D_6aayl")
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]

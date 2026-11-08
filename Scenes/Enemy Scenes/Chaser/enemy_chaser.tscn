@@ -179,6 +179,7 @@ debug_color = Color(0.9947129, 0, 0.22507519, 0.41960785)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=183995406]
 color = Color(1, 0.04000002, 0.04000002, 1)
+energy = 0.5
 texture = SubResource("GradientTexture2D_g4v7s")
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_component_health_depleted"]

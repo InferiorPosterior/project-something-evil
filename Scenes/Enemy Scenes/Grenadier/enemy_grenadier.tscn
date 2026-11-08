@@ -219,6 +219,7 @@ frame_progress = 0.8802855
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=857068800]
 color = Color(1, 0.04000002, 0.04000002, 1)
+energy = 0.5
 texture = SubResource("GradientTexture2D_8dou2")
 texture_scale = 1.5
 

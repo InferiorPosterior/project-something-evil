@@ -203,6 +203,7 @@ sprite_frames = SubResource("SpriteFrames_yf5fn")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=776607529]
 color = Color(1, 0.04000002, 0.04000002, 1)
+energy = 0.5
 texture = SubResource("GradientTexture2D_wgsfu")
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
