@@ -33,6 +33,7 @@ size = Vector2(182, 57)
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_g4v7s"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ai82r"]
+load_path = "res://.godot/imported/evil apc hull animated_0.png-053d644f7503c58d6663a59e85414074.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olqna"]
 resource_name = "material_0"
@@ -76,6 +77,7 @@ bind/1/bone = -1
 bind/1/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1875, 0.5625, 4.625)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b5vx5"]
+load_path = "res://.godot/imported/evil apc hull animated_1.png-69e2aee5fe5b36d9e0406525ead42897.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nu3it"]
 resource_name = "material_1"
@@ -174,7 +176,6 @@ _data = {
 collision_layer = 2
 script = ExtResource("1_0fl87")
 health = NodePath("Components/HealthComponent")
-enemy_score_type = "Boss"
 
 [node name="Components" type="Node" parent="." unique_id=923736801]
 

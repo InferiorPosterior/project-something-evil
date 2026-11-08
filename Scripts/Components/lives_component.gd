@@ -7,6 +7,7 @@ class_name LivesComponent extends Node
 signal lives_changed(lives: int)   # use this later for a lives HUD
 signal respawned
 signal game_over
+signal checkpoint_set(position: Vector2)
 
 @export var health: HealthComponent
 @export var max_lives: int = 3
@@ -23,6 +24,9 @@ var _body: CharacterBody2D
 var _last_safe_position: Vector2
 var _dying: bool = false
 var _blink_tween: Tween
+
+var checkpoint_position: Vector2
+var has_checkpoint: bool = false
 
 func _ready() -> void:
 	_body = get_parent() as CharacterBody2D
@@ -50,14 +54,23 @@ func _on_health_depleted() -> void:
 		_trigger_game_over.call_deferred()
 
 func _respawn() -> void:
-	if respawn_at_safe_spot:
+	_dying = false                                       # first line, so nothing below can leave the player stuck as "dying"
+
+	if has_checkpoint:
+		_body.global_position = checkpoint_position      # a checkpoint always wins
+		respawn_at_safe_spot = false
+	elif respawn_at_safe_spot:
 		_body.global_position = _last_safe_position
 		respawn_at_safe_spot = false
 	_body.velocity = Vector2.ZERO
+
+	var camera := get_viewport().get_camera_2d()
+	if camera:
+		camera.reset_smoothing()                         # the camera jumps to the player instead of gliding across the level
+
 	health.current_health = health.max_health
 	health.set_temporary_immortality(respawn_immunity)
 	_start_blink()
-	_dying = false
 	respawned.emit()
 
 func _start_blink() -> void:
@@ -78,12 +91,8 @@ func _trigger_game_over() -> void:
 	if game_over_scene:
 		get_tree().current_scene.add_child(game_over_scene.instantiate())
 	game_over.emit()
-	
-func force_game_over() -> void:
-	if _dying:
-		return
 
-	_dying = true
-	lives = 0
-	lives_changed.emit(lives)
-	_trigger_game_over.call_deferred()
+func set_checkpoint(pos: Vector2) -> void:
+	checkpoint_position = pos
+	has_checkpoint = true
+	checkpoint_set.emit(pos)
