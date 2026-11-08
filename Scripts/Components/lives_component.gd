@@ -78,3 +78,12 @@ func _trigger_game_over() -> void:
 	if game_over_scene:
 		get_tree().current_scene.add_child(game_over_scene.instantiate())
 	game_over.emit()
+	
+func force_game_over() -> void:
+	if _dying:
+		return
+
+	_dying = true
+	lives = 0
+	lives_changed.emit(lives)
+	_trigger_game_over.call_deferred()

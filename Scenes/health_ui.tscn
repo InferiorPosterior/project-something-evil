@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cgxd73myv11ev" path="res://Scenes/health_ui.gd" id="1_fwugr"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwugr"]
+bg_color = Color(0.6924278, 0.1426188, 1.92523e-07, 1)
+
 [node name="Control" type="Control" unique_id=233300827]
 layout_mode = 3
 anchors_preset = 15
@@ -28,5 +31,6 @@ layout_mode = 2
 [node name="HealthBar" type="ProgressBar" parent="HealthUi/MarginContainer/VBoxContainer" unique_id=219996161]
 custom_minimum_size = Vector2(300, 24)
 layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_fwugr")
 value = 100.0
 show_percentage = false
