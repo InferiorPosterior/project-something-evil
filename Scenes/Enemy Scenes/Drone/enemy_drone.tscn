@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="6_6m58r"]
 [ext_resource type="Script" uid="uid://b61om2141170c" path="res://Scripts/State_Machine/enemies states/drone_states/drone_idle.gd" id="7_wnxu5"]
 [ext_resource type="Script" uid="uid://b5n0glidrlnsv" path="res://Scripts/State_Machine/enemies states/drone_states/drone_chase.gd" id="8_cukr8"]
+[ext_resource type="Script" uid="uid://b17031m5sh5e7" path="res://Scripts/Components/death_component.gd" id="9_xfdxx"]
+[ext_resource type="AudioStream" uid="uid://dd1whkkjwpdvm" path="res://Assets/something_evil_assets/sound effects/explosion (2).wav" id="10_7td3r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_buvne"]
 atlas = ExtResource("3_1fjxn")
@@ -123,5 +125,11 @@ energy = 0.5
 texture = SubResource("GradientTexture2D_s5jgq")
 texture_scale = 1.5
 
-[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[node name="Death Component" type="Node" parent="." unique_id=481374708 node_paths=PackedStringArray("health")]
+script = ExtResource("9_xfdxx")
+health = NodePath("../HealthComponent")
+points = 200
+death_effect = ExtResource("2_mliai")
+death_sound = ExtResource("10_7td3r")
+
 [connection signal="damage_taken" from="HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]

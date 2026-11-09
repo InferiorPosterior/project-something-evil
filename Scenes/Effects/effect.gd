@@ -13,12 +13,14 @@ func _ready() -> void:
 		queue_free()
 		return
 
+	# Play the sound immediately upon spawning, independent of animation state
+	if spawn_sound:
+		SoundManager.play_sound(spawn_sound, global_position)
+
 	if sprite_frames:
 		sprite.sprite_frames = sprite_frames
 		
 	if sprite.sprite_frames and sprite.sprite_frames.has_animation(animation):
-		if spawn_sound:
-			SoundManager.play_sound(spawn_sound, global_position)
 		sprite.sprite_frames.set_animation_loop(animation, false)
 		sprite.play(animation)
 		await sprite.animation_finished

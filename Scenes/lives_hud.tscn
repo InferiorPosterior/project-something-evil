@@ -2,16 +2,20 @@
 
 [ext_resource type="Script" uid="uid://b4fpvttxc3qkb" path="res://Scripts/Components/lives_hud.gd" id="1_smuma"]
 
-[node name="LivesHUD" type="CanvasLayer" unique_id=1372217612]
+[node name="LivesHUD" type="Control" unique_id=149907006]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_smuma")
 
 [node name="LivesLabel" type="Label" parent="." unique_id=460428753]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -184.0
-offset_bottom = 36.0
+offset_top = 47.0
+offset_bottom = 83.0
 grow_horizontal = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6

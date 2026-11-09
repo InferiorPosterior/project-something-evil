@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bxk4frxprhpvd"]
+
+[ext_resource type="Script" uid="uid://derub6hio17u8" path="res://Scenes/healthbar.gd" id="1_k4tqu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mncya"]
+bg_color = Color(0.007615909, 0.0683466, 0.11287499, 1)
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_weskp"]
+bg_color = Color(4.6205523e-06, 0.84225905, 0.8006607, 1)
+
+[node name="Control" type="Control" unique_id=1069281682]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="." unique_id=1418534338]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=970399430]
+layout_mode = 0
+offset_right = 190.0
+offset_bottom = 15.0
+theme_override_styles/background = SubResource("StyleBoxFlat_mncya")
+theme_override_styles/fill = SubResource("StyleBoxFlat_weskp")
+value = 100.0
+show_percentage = false
+script = ExtResource("1_k4tqu")
+find_in_group = &"player"

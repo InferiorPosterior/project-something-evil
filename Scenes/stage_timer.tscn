@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cdg4dpa22omb7"]
+
+[ext_resource type="FontFile" uid="uid://u58lg8jovldg" path="res://Assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="1_1nx8r"]
+[ext_resource type="Script" uid="uid://cd7k8ub4e780s" path="res://timer_label.gd" id="1_2h1vi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57qmd"]
+bg_color = Color(0, 0, 0, 0.38431373)
+
+[sub_resource type="Theme" id="Theme_d0u6y"]
+default_base_scale = 1.0
+default_font = ExtResource("1_1nx8r")
+
+[node name="Control" type="Control" unique_id=90696281]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=639848345]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_57qmd")
+metadata/_edit_group_ = true
+
+[node name="TimerLabel" type="Label" parent="." unique_id=1011372336]
+texture_filter = 1
+layout_mode = 0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 24.0
+theme = SubResource("Theme_d0u6y")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_2h1vi")
+limit = 180.0

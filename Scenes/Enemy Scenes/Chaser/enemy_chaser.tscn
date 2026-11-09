@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://b2ec20sbyqpj7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_fall.gd" id="8_53gau"]
 [ext_resource type="Script" uid="uid://cil401dbk8im1" path="res://Scripts/State_Machine/enemies states/template_states/enemy_idle.gd" id="9_yhon1"]
 [ext_resource type="Script" uid="uid://4l6b3j53kxw7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_jump.gd" id="10_ic7aa"]
+[ext_resource type="Script" uid="uid://b17031m5sh5e7" path="res://Scripts/Components/death_component.gd" id="13_ob1hd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yhon1"]
 atlas = ExtResource("2_7r0yd")
@@ -111,8 +112,6 @@ metadata/_snap_enabled = true
 collision_layer = 2
 collision_mask = 33
 script = ExtResource("1_7r0yd")
-death_effect_scene = ExtResource("2_wj6u7")
-death_sound = ExtResource("3_ob1hd")
 health = NodePath("Health")
 detection_range = 500.0
 
@@ -169,7 +168,7 @@ debug_color = Color(0, 0.6312133, 0.4678437, 0.41960785)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("5_10joo")
-damage = 1000
+damage = 100
 metadata/_custom_type_script = "uid://bvtclq823uv2e"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2121415704]
@@ -182,5 +181,10 @@ color = Color(1, 0.04000002, 0.04000002, 1)
 energy = 0.5
 texture = SubResource("GradientTexture2D_g4v7s")
 
-[connection signal="health_depleted" from="Health" to="." method="_on_health_component_health_depleted"]
+[node name="Death" type="Node" parent="." unique_id=1610247091 node_paths=PackedStringArray("health")]
+script = ExtResource("13_ob1hd")
+health = NodePath("../Health")
+death_effect = ExtResource("2_wj6u7")
+death_sound = ExtResource("3_ob1hd")
+
 [connection signal="damage_taken" from="Hurtbox" to="." method="_on_hurtbox_damage_taken"]

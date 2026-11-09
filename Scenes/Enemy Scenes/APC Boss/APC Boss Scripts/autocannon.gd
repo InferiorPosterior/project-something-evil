@@ -1,5 +1,6 @@
 class_name Autocannon extends AmmoWeapon
 
+@export var shoot_sound: AudioStream
 @export var bullet_scene: PackedScene          # apc_bullet.tscn
 @export var bullet_speed: float = 260.0
 @export var spread_degrees: float = 4.0
@@ -13,5 +14,7 @@ func shoot() -> void:
 	var bullet = bullet_scene.instantiate()
 	bullet.direction = Vector2.RIGHT.rotated(angle)
 	bullet.speed = bullet_speed
+	
+	SoundManager.play_sound(shoot_sound, global_position)
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = global_position + Vector2.RIGHT.rotated(global_rotation) * muzzle_distance

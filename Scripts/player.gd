@@ -1,11 +1,13 @@
 #THIS IS PLAYER CHARACTER SCRIPT
 class_name Player extends CharacterBody2D
+
+@export var hurt_sound: AudioStream
+
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hurtbox: HurtboxComponent = $HurtboxComponent
 @onready var lives_component: LivesComponent = $LivesComponent
 
-const HEALTH_UI_SCENE = preload("res://Scenes/health_ui.tscn")
-const POINT_UI_SCENE = preload("res://Scenes/pointUI.tscn")
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 		
@@ -16,12 +18,6 @@ func _ready() -> void:
 		if not lives_component.is_respawn_immune:
 			health_component.set_temporary_immortality(0.6))
 	# DEATH IS NOW HANDLED BY LivesComponent
-
-	var health_ui = HEALTH_UI_SCENE.instantiate()
-	var point_ui = POINT_UI_SCENE.instantiate()
-
-	add_child(point_ui)
-	add_child(health_ui)
 
 
 func _physics_process(delta: float) -> void:
@@ -46,7 +42,10 @@ func _physics_process(delta: float) -> void:
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 func _on_hurtbox_component_damage_taken(damage: int) -> void:
+	SoundManager.play_sound(hurt_sound, global_position)
 	sprite.self_modulate = Color(20,20,20)
+	animation_player.play("damage flash")
+	
 	await  get_tree().create_timer(0.1).timeout
 	
 	if is_instance_valid(sprite):

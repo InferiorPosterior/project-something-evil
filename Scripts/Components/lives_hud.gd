@@ -1,9 +1,7 @@
-# THIS IS LIVES HUD SCRIPT
-# Shows how many lives the player has left. Updates by itself when the player dies.
-extends CanvasLayer
+extends Control # Changed from CanvasLayer
 
 func _ready() -> void:
-	_connect_to_player.call_deferred() # WAIT A FRAME SO THE PLAYER IS READY
+	_connect_to_player.call_deferred()
 
 func _connect_to_player() -> void:
 	var player := get_tree().get_first_node_in_group("player")

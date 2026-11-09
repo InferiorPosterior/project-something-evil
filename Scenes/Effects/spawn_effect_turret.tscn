@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b68l8vhwlc11l" path="res://Scenes/Effects/effect.gd" id="1_2mk8m"]
 [ext_resource type="Texture2D" uid="uid://diygbs3y12anr" path="res://Assets/something_evil_assets/sprites/turret.png" id="2_c5ybi"]
+[ext_resource type="AudioStream" uid="uid://dvv6w4hdglpdi" path="res://Assets/something_evil_assets/sound effects/TurretDeploy.wav" id="2_tye4l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2mk8m"]
 atlas = ExtResource("2_c5ybi")
@@ -62,6 +63,7 @@ animations = [{
 
 [node name="SpawnEffectTurret" type="Node2D" unique_id=1449143755]
 script = ExtResource("1_2mk8m")
+spawn_sound = ExtResource("2_tye4l")
 sprite_frames = SubResource("SpriteFrames_jtwjp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=883203872]

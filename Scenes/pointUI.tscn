@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://itf4bvj38c15"]
 
-[ext_resource type="Script" uid="uid://jodpo5o0fvdk" path="res://Scenes/point_ui.gd" id="1_2tbgy"]
+[ext_resource type="Script" uid="uid://7mm8180akhh3" path="res://Scenes/score_label.gd" id="1_2tbgy"]
+[ext_resource type="FontFile" uid="uid://u58lg8jovldg" path="res://Assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="1_nwkd1"]
+
+[sub_resource type="Theme" id="Theme_q2mug"]
+default_font = ExtResource("1_nwkd1")
 
 [node name="PointUi" type="Control" unique_id=703508723]
 layout_mode = 3
@@ -9,27 +13,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2tbgy")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=412518453]
-layer = 4
-
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=1095228290]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control" unique_id=340163357]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=340163357]
 layout_mode = 1
 offset_left = 20.0
 offset_top = 70.0
-offset_right = 155.0
+offset_right = 256.0
 offset_bottom = 110.0
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer/Control/PanelContainer" unique_id=779022657]
+[node name="ScoreLabel" type="Label" parent="PanelContainer" unique_id=779022657]
+texture_filter = 1
 layout_mode = 2
+theme = SubResource("Theme_q2mug")
 text = "  SCORE : 000000  "
+script = ExtResource("1_2tbgy")

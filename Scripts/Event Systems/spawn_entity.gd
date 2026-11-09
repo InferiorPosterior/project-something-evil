@@ -31,11 +31,13 @@ func spawn() -> void:
 
 	pending = true
 
-	# 1. Instantiate and play the effect right at the spawner's position
+# 1. Instantiate and play the effect right at the spawner's position
 	if effect_scene:
 		var effect_instance = effect_scene.instantiate() as Node2D
 		get_tree().current_scene.add_child(effect_instance)
 		effect_instance.global_position = global_position
+	else:
+		push_warning("%s has no effect_scene assigned!" % name)
 
 	# 2. Wait for the reveal delay
 	if reveal_delay > 0.0:

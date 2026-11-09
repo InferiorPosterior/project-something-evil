@@ -9,8 +9,12 @@ signal respawned
 signal game_over
 signal checkpoint_set(position: Vector2)
 
+@export var death_sound: AudioStream
+@export var respawn_sound: AudioStream
+
 @export var health: HealthComponent
 @export var max_lives: int = 3
+@export var respawn_delay: float = 1.0       # <--- NEW: Delay in seconds before respawning
 @export var respawn_immunity: float = 3.0     # seconds of invincibility after respawning
 @export var blink_interval: float = 0.1       # seconds per blink step
 @export var blink_alpha: float = 0.2          # how transparent the sprite gets while blinking
@@ -46,6 +50,7 @@ func _on_health_depleted() -> void:
 	if _dying: # IGNORE EXTRA DEATHS WHILE ALREADY RESPAWNING
 		return
 	_dying = true
+	SoundManager.play_sound(death_sound, get_parent().get("global_position"))
 	lives -= 1
 	lives_changed.emit(lives)
 	if lives > 0:
@@ -71,6 +76,7 @@ func _respawn() -> void:
 	health.current_health = health.max_health
 	health.set_temporary_immortality(respawn_immunity)
 	_start_blink()
+	SoundManager.play_sound(death_sound, get_parent().get("global_position"))
 	respawned.emit()
 
 func _start_blink() -> void:
