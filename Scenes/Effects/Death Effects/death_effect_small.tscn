@@ -68,6 +68,7 @@ animations = [{
 }]
 
 [node name="DeathEffectSmall" type="Node2D" unique_id=295570746]
+modulate = Color(1.839, 1.839, 1.839, 1)
 script = ExtResource("1_wpuhg")
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 

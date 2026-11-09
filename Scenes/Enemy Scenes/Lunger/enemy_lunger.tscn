@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://cxx3nq1ca04q5" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_dash.gd" id="12_p0by7"]
 [ext_resource type="Script" uid="uid://bbja6m2qna0ig" path="res://Scripts/State_Machine/enemies states/lunger_states/lunger_recover.gd" id="13_vg3vn"]
 [ext_resource type="AudioStream" uid="uid://dq66jo07srlmf" path="res://Assets/something_evil_assets/sound effects/lunge.wav" id="15_dky3w"]
+[ext_resource type="Script" uid="uid://b17031m5sh5e7" path="res://Scripts/Components/death_component.gd" id="17_6aayl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6v10p"]
 atlas = ExtResource("2_6v10p")
@@ -158,12 +159,21 @@ radius = 14.035668
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
 size = Vector2(14.078125, 18)
 
+[sub_resource type="Gradient" id="Gradient_npunj"]
+offsets = PackedFloat32Array(0.18811882, 0.6633663)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6aayl"]
+gradient = SubResource("Gradient_npunj")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
 [node name="Lunger" type="CharacterBody2D" unique_id=946911435 node_paths=PackedStringArray("health")]
 collision_layer = 2
+collision_mask = 33
 script = ExtResource("1_baq1m")
 dash_range = 150.0
-death_effect_scene = ExtResource("2_npunj")
-death_sound = ExtResource("3_6aayl")
 health = NodePath("HealthComponent")
 detection_range = 500.0
 
@@ -171,7 +181,7 @@ detection_range = 500.0
 texture_filter = 1
 position = Vector2(1, -2)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
-animation = &"windup"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1945430260]
@@ -232,7 +242,6 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="LungerWindup" type="Node" parent="StateMachine" unique_id=481589887]
 script = ExtResource("11_dbuxv")
-windup_time = null
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="LungerDash" type="Node" parent="StateMachine" unique_id=1969370070]
@@ -244,4 +253,16 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 script = ExtResource("13_vg3vn")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
-[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=880259197]
+color = Color(1, 0.04000002, 0.04000002, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_6aayl")
+
+[node name="DeathComponent" type="Node" parent="." unique_id=1492955924 node_paths=PackedStringArray("health")]
+script = ExtResource("17_6aayl")
+health = NodePath("../HealthComponent")
+points = 300
+death_effect = ExtResource("2_npunj")
+death_sound = ExtResource("3_6aayl")
+
+[connection signal="damage_taken" from="HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]

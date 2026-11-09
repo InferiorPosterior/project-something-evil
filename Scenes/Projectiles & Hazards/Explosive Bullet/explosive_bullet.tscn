@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c8468g2nla5eb" path="res://Scenes/Projectiles & Hazards/Explosive Bullet/explosive_bullet.gd" id="1_3tfrc"]
 [ext_resource type="PackedScene" uid="uid://0mjg24r87fdm" path="res://Scenes/Projectiles & Hazards/Explosion/explosion.tscn" id="2_sipjd"]
+[ext_resource type="AudioStream" uid="uid://gut4b41bra72" path="res://Assets/something_evil_assets/sound effects/AutocannonImpact.wav" id="2_ulyft"]
 [ext_resource type="Texture2D" uid="uid://dmg5skl6tsooe" path="res://Assets/something_evil_assets/sprites/projectile.png" id="3_c70t0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uksw1"]
@@ -44,7 +45,9 @@ animations = [{
 radius = 3.0
 
 [node name="explosive_bullet" type="Area2D" unique_id=184298170]
+modulate = Color(1.838965, 1.838965, 1.838965, 1)
 script = ExtResource("1_3tfrc")
+explode_sound = ExtResource("2_ulyft")
 explosion_scene = ExtResource("2_sipjd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1696942962]

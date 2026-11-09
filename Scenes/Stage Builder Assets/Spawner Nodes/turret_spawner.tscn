@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dvvudlaa5sc8r" path="res://Scripts/Event Systems/spawn_entity.gd" id="1_bqxeo"]
 [ext_resource type="PackedScene" uid="uid://dnjby57ls370h" path="res://Scenes/Enemy Scenes/Turret/enemy_turret.tscn" id="2_bqxeo"]
+[ext_resource type="AudioStream" uid="uid://dvv6w4hdglpdi" path="res://Assets/something_evil_assets/sound effects/TurretDeploy.wav" id="2_uer6g"]
 [ext_resource type="PackedScene" uid="uid://be6mkp2uwfv3n" path="res://Scenes/Effects/spawn_effect_turret.tscn" id="3_uer6g"]
 [ext_resource type="Texture2D" uid="uid://diygbs3y12anr" path="res://Assets/something_evil_assets/sprites/turret.png" id="4_bqxeo"]
 
 [node name="TurretSpawn" type="Node2D" unique_id=2075033335]
 texture_filter = 1
 script = ExtResource("1_bqxeo")
+spawn_sound = ExtResource("2_uer6g")
 entity_scene = ExtResource("2_bqxeo")
 effect_scene = ExtResource("3_uer6g")
 

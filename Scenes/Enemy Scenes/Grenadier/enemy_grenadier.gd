@@ -1,8 +1,5 @@
 class_name Grenadier extends CharacterBody2D
 
-@export var death_sound : AudioStream
-@export var death_effect_scene : PackedScene
-
 @export var health: HealthComponent
 @export var grenade_scene: PackedScene                 # assign grenade.tscn
 @export var detection_range: float = 400.0             # Idle wakes up inside this
@@ -52,12 +49,10 @@ func throw_grenade() -> void:
 	
 	grenade.launch(vel, self)
 
-func _on_health_component_health_depleted() -> void:
-	if death_effect_scene:
-		var effect = death_effect_scene.instantiate() as Node2D
-		get_tree().current_scene.add_child(effect)
-		effect.global_position = global_position
-	if death_sound:
-		SoundManager.play_sound(death_sound, global_position)
-
-	queue_free()
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+func _on_hurtbox_component_damage_taken(damage: int) -> void:
+	sprite.self_modulate = Color(4.567, 4.567, 4.567, 1.0)
+	await  get_tree().create_timer(0.1).timeout
+	
+	if is_instance_valid(sprite):
+		sprite.self_modulate = Color.WHITE

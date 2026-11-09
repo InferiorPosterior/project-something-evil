@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://k13jaf2ncu3e" path="res://Scenes/Enemy Scenes/APC Boss/APC Boss Scripts/apc_boss.gd" id="1_0fl87"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="1_g6mq4"]
+[ext_resource type="AudioStream" uid="uid://cbkj26t700dtu" path="res://Assets/something_evil_assets/sound effects/hit.wav" id="2_fsduk"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="2_otfy1"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="3_6avjl"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_m8pev"]
@@ -10,15 +11,20 @@
 [ext_resource type="Script" uid="uid://bco4t8p1j7xmc" path="res://Scenes/Enemy Scenes/Turret/enemy_turret.gd" id="9_1hf45"]
 [ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/Projectiles & Hazards/Enemy Projectile/enemy_projectile.tscn" id="10_fwsd2"]
 [ext_resource type="Script" uid="uid://bu318nmfhttbt" path="res://Scenes/Enemy Scenes/APC Boss/APC Boss Scripts/apc_turret.gd" id="11_0fl87"]
+[ext_resource type="AudioStream" uid="uid://c4uj7pi7lhhau" path="res://Assets/something_evil_assets/sound effects/AutocannonShoot.wav" id="11_u4mus"]
 [ext_resource type="Script" uid="uid://b1o2tdp53ap1x" path="res://Scenes/Enemy Scenes/APC Boss/APC Boss Scripts/autocannon.gd" id="12_hs51q"]
 [ext_resource type="Script" uid="uid://bwp4gdkvry6is" path="res://Scenes/Enemy Scenes/APC Boss/APC Boss Scripts/missile_pod.gd" id="13_0fl87"]
 [ext_resource type="PackedScene" uid="uid://bhq3we2aqqr4r" path="res://Scenes/Projectiles & Hazards/Explosive Bullet/explosive_bullet.tscn" id="13_4rn6l"]
+[ext_resource type="AudioStream" uid="uid://c632rjvnppoy3" path="res://Assets/something_evil_assets/sound effects/MissileLaunch2.wav" id="14_u4mus"]
 [ext_resource type="PackedScene" uid="uid://cbw4etvuicd2r" path="res://Scenes/Projectiles & Hazards/Missile/missile.tscn" id="15_4rn6l"]
 [ext_resource type="PackedScene" uid="uid://btifvfwxmt2pc" path="res://Assets/something_evil_assets/EVIL APC!!!/evil apc turret.gltf" id="16_aiiie"]
 [ext_resource type="Script" uid="uid://dtvhj4rhwrgxa" path="res://Scenes/Enemy Scenes/APC Boss/APC Boss Scripts/turret_yaw_3D.gd" id="16_fs8tg"]
 [ext_resource type="PackedScene" uid="uid://dcbhi70lrm6uc" path="res://Assets/something_evil_assets/EVIL APC!!!/evil apc autocannon.gltf" id="17_i5c4k"]
 [ext_resource type="PackedScene" uid="uid://6o20h7desytw" path="res://Assets/something_evil_assets/EVIL APC!!!/evil apc ATGM.gltf" id="18_fs8tg"]
 [ext_resource type="Script" uid="uid://cm2safve8wh2n" path="res://Scenes/Enemy Scenes/APC Boss/APC Boss Scripts/weapon_pitch_3D.gd" id="18_uq3bg"]
+[ext_resource type="Script" uid="uid://b17031m5sh5e7" path="res://Scripts/Components/death_component.gd" id="20_lmmk4"]
+[ext_resource type="PackedScene" uid="uid://cscll7mr5fxep" path="res://Scenes/Effects/Death Effects/death_effect_big.tscn" id="21_ai82r"]
+[ext_resource type="AudioStream" uid="uid://benqyx4p7qs3" path="res://Assets/something_evil_assets/sound effects/death_big.wav" id="22_fsduk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4rn6l"]
 radius = 27.0
@@ -175,36 +181,35 @@ _data = {
 [node name="APC Boss" type="CharacterBody2D" unique_id=309457165 node_paths=PackedStringArray("health")]
 collision_layer = 2
 script = ExtResource("1_0fl87")
-health = NodePath("Components/HealthComponent")
+hurt_sound = ExtResource("2_fsduk")
+health = NodePath("HealthComponent")
 
-[node name="Components" type="Node" parent="." unique_id=923736801]
-
-[node name="HealthComponent" type="Node" parent="Components" unique_id=673880358]
-script = ExtResource("1_g6mq4")
-max_health = 7000
-metadata/_custom_type_script = "uid://ngsma3hy4ktw"
-
-[node name="HurtboxComponent" type="Area2D" parent="Components" unique_id=2002221397 node_paths=PackedStringArray("health")]
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=2002221397 node_paths=PackedStringArray("health")]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("2_otfy1")
 health = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://bxvhy0cwrfk4k"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtboxComponent" unique_id=1144396134]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1144396134]
 position = Vector2(2, -23)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_4rn6l")
 debug_color = Color(0, 0.6437861, 0.2993289, 0.41960785)
 
-[node name="HitboxComponent" type="Area2D" parent="Components" unique_id=965676545]
+[node name="HealthComponent" type="Node" parent="." unique_id=673880358]
+script = ExtResource("1_g6mq4")
+max_health = 7000
+metadata/_custom_type_script = "uid://ngsma3hy4ktw"
+
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=965676545]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("3_6avjl")
 damage = 100
 metadata/_custom_type_script = "uid://bvtclq823uv2e"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HitboxComponent" unique_id=1401890068]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1401890068]
 position = Vector2(4.5, -10.875)
 shape = SubResource("RectangleShape2D_yf5fn")
 debug_color = Color(0.9902335, 0, 0.2865104, 0.41960785)
@@ -238,6 +243,7 @@ missile_pod = NodePath("MissilePod")
 [node name="Autocannon" type="Node2D" parent="APC Turret" unique_id=1846822682]
 position = Vector2(0, -16)
 script = ExtResource("12_hs51q")
+shoot_sound = ExtResource("11_u4mus")
 bullet_scene = ExtResource("13_4rn6l")
 bullet_speed = 500.0
 max_ammo = 10
@@ -247,6 +253,7 @@ aim_turn_speed = 160.0
 [node name="MissilePod" type="Node2D" parent="APC Turret" unique_id=438773991]
 position = Vector2(-15, -31)
 script = ExtResource("13_0fl87")
+launch_sound = ExtResource("14_u4mus")
 missile_scene = ExtResource("15_4rn6l")
 launch_speed = 300.0
 max_ammo = 3
@@ -403,5 +410,12 @@ script = ExtResource("9_1hf45")
 projectile_scene = ExtResource("10_fwsd2")
 burst_cooldown = 2.0
 
-[connection signal="health_depleted" from="Components/HealthComponent" to="." method="_on_health_component_health_depleted"]
-[connection signal="damage_taken" from="Components/HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]
+[node name="DeathComponent" type="Node" parent="." unique_id=525382841 node_paths=PackedStringArray("health")]
+script = ExtResource("20_lmmk4")
+health = NodePath("../HealthComponent")
+points = 2000
+death_effect = ExtResource("21_ai82r")
+death_sound = ExtResource("22_fsduk")
+metadata/_custom_type_script = "uid://b17031m5sh5e7"
+
+[connection signal="damage_taken" from="HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]

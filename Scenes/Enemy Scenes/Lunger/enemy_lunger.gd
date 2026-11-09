@@ -1,7 +1,6 @@
 class_name Lunger extends Enemy
 
 
-@export var sprite: CanvasItem                 # optional, tinted during windup
 @export var dash_range: float = 130.0          # dash starts when the player is closer than this
 @export var dash_cooldown: float = 2.0         # seconds after a dash before the next one is allowed
 

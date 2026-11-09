@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dvv6w4hdglpdi"
+path="res://.godot/imported/TurretDeploy.wav-0c7087a21200e47c498d3a0ab37e23f0.sample"
+
+[deps]
+
+source_file="res://Assets/something_evil_assets/sound effects/TurretDeploy.wav"
+dest_files=["res://.godot/imported/TurretDeploy.wav-0c7087a21200e47c498d3a0ab37e23f0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

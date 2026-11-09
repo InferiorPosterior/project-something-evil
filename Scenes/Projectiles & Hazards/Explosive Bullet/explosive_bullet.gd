@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var explode_sound: AudioStream
 @export var explosion_scene: PackedScene       # a SMALL explosion (see setup)
 @export var lifetime: float = 4.0
 
@@ -21,6 +22,8 @@ func explode() -> void:
 	exploded = true
 	if explosion_scene:
 		var fx := explosion_scene.instantiate()
+		
+		SoundManager.play_sound(explode_sound,global_position)
 		get_tree().current_scene.add_child(fx)
 		fx.global_position = global_position
 	queue_free()

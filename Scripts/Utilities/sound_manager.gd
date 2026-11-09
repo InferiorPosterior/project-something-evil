@@ -5,7 +5,8 @@ func play_sound(stream: AudioStream, pos: Vector2, volume_db: float = 0.0, pitch
 	if stream == null:
 		return
 		
-	var player := AudioStreamPlayer2D.new()
+	# Use non-positional AudioStreamPlayer so it plays at full volume everywhere
+	var player := AudioStreamPlayer.new()
 	player.stream = stream
 	player.volume_db = volume_db
 	
@@ -13,7 +14,6 @@ func play_sound(stream: AudioStream, pos: Vector2, volume_db: float = 0.0, pitch
 		player.pitch_scale = randf_range(1.0 - pitch_variation, 1.0 + pitch_variation)
 		
 	get_tree().current_scene.add_child(player)
-	player.global_position = pos
 	player.play()
 	
 	await player.finished

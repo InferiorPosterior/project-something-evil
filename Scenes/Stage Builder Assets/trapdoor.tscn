@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://boew6cs04ouac"]
+
+[ext_resource type="Script" uid="uid://jlrpdlnqpsq3" path="res://door.gd" id="1_tts0v"]
+[ext_resource type="Texture2D" uid="uid://dpvb034yocah" path="res://Assets/something_evil_assets/sprites/trapdoor.png" id="2_tts0v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_761i0"]
+atlas = ExtResource("2_tts0v")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deufc"]
+atlas = ExtResource("2_tts0v")
+region = Rect2(0, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es7wf"]
+atlas = ExtResource("2_tts0v")
+region = Rect2(64, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j3va"]
+atlas = ExtResource("2_tts0v")
+region = Rect2(128, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3n1k"]
+atlas = ExtResource("2_tts0v")
+region = Rect2(192, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvj8f"]
+atlas = ExtResource("2_tts0v")
+region = Rect2(256, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcvdx"]
+atlas = ExtResource("2_tts0v")
+region = Rect2(320, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m7j3"]
+atlas = ExtResource("2_tts0v")
+region = Rect2(384, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnu21"]
+atlas = ExtResource("2_tts0v")
+region = Rect2(448, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8ig2"]
+atlas = ExtResource("2_tts0v")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tts0v"]
+atlas = ExtResource("2_tts0v")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug7gq"]
+atlas = ExtResource("2_tts0v")
+region = Rect2(64, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vca2s"]
+atlas = ExtResource("2_tts0v")
+region = Rect2(128, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxwwq"]
+atlas = ExtResource("2_tts0v")
+region = Rect2(192, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1u7xc"]
+atlas = ExtResource("2_tts0v")
+region = Rect2(256, 32, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_761i0")
+}],
+"loop": 0,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_deufc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_es7wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j3va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3n1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvj8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcvdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0m7j3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnu21")
+}],
+"loop": 0,
+"name": &"closing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8ig2")
+}],
+"loop": 0,
+"name": &"open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tts0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ug7gq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vca2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxwwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1u7xc")
+}],
+"loop": 0,
+"name": &"opening",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(64, 32)
+
+[node name="Trapdoor" type="StaticBody2D" unique_id=1560095299]
+script = ExtResource("1_tts0v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1792228237]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"opening"
+speed_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1789954094]
+shape = SubResource("RectangleShape2D_g4v7s")

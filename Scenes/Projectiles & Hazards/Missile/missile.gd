@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var explode_sound : AudioStream
 @export var burst_scene: PackedScene           # enemy_projectile.tscn
 @export var explosion_scene: PackedScene       # optional visual and blast
 @export var burst_count: int = 12
@@ -36,6 +37,8 @@ func explode() -> void:
 
 	# Back off slightly so the ring doesn't spawn inside the wall it just hit
 	var origin := global_position - direction * 6.0
+	
+	SoundManager.play_sound(explode_sound, global_position)
 	for i in burst_count:                       # evenly spaced circle
 		var bullet = burst_scene.instantiate()
 		bullet.direction = Vector2.RIGHT.rotated(TAU * i / burst_count)

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://du0gmlf03hrwy"]
 
 [ext_resource type="Texture2D" uid="uid://7ip0vxwr3ot4" path="res://Assets/something_evil_assets/sprites/player.png" id="2_f1ek2"]
+[ext_resource type="AudioStream" uid="uid://cqxhm2prjltix" path="res://Assets/something_evil_assets/sound effects/PlayerHurt.wav" id="2_gymyn"]
 [ext_resource type="Script" uid="uid://vgkx7xsn02pw" path="res://Scripts/player.gd" id="2_vgqql"]
 [ext_resource type="PackedScene" uid="uid://qasj3d6vyqgi" path="res://Scenes/gun/gun.tscn" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://c5prslbbnj85l" path="res://Scripts/State_Machine/player_sprite2D.gd" id="3_8erm5"]
@@ -8,6 +9,10 @@
 [ext_resource type="Script" uid="uid://b2mvrvscdhyc1" path="res://Scripts/Components/lives_component.gd" id="6_f1ek2"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="7_3smsa"]
 [ext_resource type="PackedScene" uid="uid://fjnx4hsvp70v" path="res://Scenes/game_over.tscn" id="7_tx1dd"]
+[ext_resource type="AudioStream" uid="uid://ux146cmwpmgm" path="res://Assets/something_evil_assets/sound effects/PlayerDeath.wav" id="8_ukyrk"]
+[ext_resource type="AudioStream" uid="uid://b8lkmu7dl2u1h" path="res://Assets/something_evil_assets/sound effects/PlayerRespawn.wav" id="9_7dp3o"]
+[ext_resource type="Script" uid="uid://dfjr8uptmcxjo" path="res://Scripts/Components/regen_component.gd" id="9_f1ek2"]
+[ext_resource type="AudioStream" uid="uid://bl88lmw432ya5" path="res://Assets/something_evil_assets/sound effects/RegenHeal.wav" id="11_pu2lt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
 atlas = ExtResource("2_f1ek2")
@@ -163,8 +168,47 @@ height = 18.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tx1dd"]
 size = Vector2(7.875, 15.5)
 
+[sub_resource type="Animation" id="Animation_ukyrk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Damage Flash/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7dp3o"]
+resource_name = "damage flash"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Damage Flash/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.2901961), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h4iuc"]
+_data = {
+&"RESET": SubResource("Animation_ukyrk"),
+&"damage flash": SubResource("Animation_7dp3o")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=1827159017]
+collision_mask = 33
 script = ExtResource("2_vgqql")
+hurt_sound = ExtResource("2_gymyn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=752946249]
 texture_filter = 1
@@ -181,6 +225,7 @@ shape = SubResource("CapsuleShape2D_g4v7s")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=433678246]
 script = ExtResource("4_vgqql")
+max_health = 300
 
 [node name="HurtboxComponent" type="Area2D" parent="." unique_id=622235919 node_paths=PackedStringArray("health")]
 collision_layer = 0
@@ -196,6 +241,8 @@ debug_color = Color(3.706068e-06, 0.6339145, 0.43865934, 0.41960785)
 
 [node name="LivesComponent" type="Node" parent="." unique_id=1928374650 node_paths=PackedStringArray("health")]
 script = ExtResource("6_f1ek2")
+death_sound = ExtResource("8_ukyrk")
+respawn_sound = ExtResource("9_7dp3o")
 health = NodePath("../HealthComponent")
 blink_interval = 0.2
 blink_alpha = 0.0
@@ -203,3 +250,30 @@ game_over_scene = ExtResource("7_tx1dd")
 
 [node name="Gun" parent="." unique_id=1830969750 instance=ExtResource("3_6t5aa")]
 position = Vector2(9, 0)
+
+[node name="RegenComponent" type="Node" parent="." unique_id=856661951 node_paths=PackedStringArray("health")]
+script = ExtResource("9_f1ek2")
+heal_sound = ExtResource("11_pu2lt")
+health = NodePath("../HealthComponent")
+amount = 100
+delay = 2.5
+metadata/_custom_type_script = "uid://dfjr8uptmcxjo"
+
+[node name="Damage Flash" type="CanvasLayer" parent="." unique_id=1459685010]
+
+[node name="ColorRect" type="ColorRect" parent="Damage Flash" unique_id=1354427995]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=122980464]
+libraries/ = SubResource("AnimationLibrary_h4iuc")
+
+[connection signal="damage_taken" from="HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]

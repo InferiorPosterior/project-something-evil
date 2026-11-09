@@ -2,12 +2,85 @@
 
 [ext_resource type="Script" uid="uid://0e0rgbv2ghu5" path="res://Scenes/Projectiles & Hazards/Explosion/explosion.gd" id="1_l1ndb"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="2_l6mky"]
+[ext_resource type="Texture2D" uid="uid://cw3ifmi5twp0l" path="res://Assets/something_evil_assets/sprites/explosion.png" id="3_je7bk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je7bk"]
+atlas = ExtResource("3_je7bk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6fwx"]
+atlas = ExtResource("3_je7bk")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mjyn"]
+atlas = ExtResource("3_je7bk")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmlbm"]
+atlas = ExtResource("3_je7bk")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wpbn"]
+atlas = ExtResource("3_je7bk")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_212d1"]
+atlas = ExtResource("3_je7bk")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stwrl"]
+atlas = ExtResource("3_je7bk")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b36p3"]
+atlas = ExtResource("3_je7bk")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je7bk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6fwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mjyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmlbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wpbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_212d1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stwrl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b36p3")
+}],
+"loop": 0,
+"name": &"explosion",
+"speed": 4.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
-radius = 7.0
+radius = 25.019993
 
 [node name="Explosion" type="Node2D" unique_id=1567326832]
+modulate = Color(1.838965, 1.838965, 1.838965, 1)
 script = ExtResource("1_l1ndb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1646379408]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"explosion"
+autoplay = "explosion"
+speed_scale = 3.0
 
 [node name="HitboxComponent" type="Area2D" parent="." unique_id=749721490]
 collision_layer = 8

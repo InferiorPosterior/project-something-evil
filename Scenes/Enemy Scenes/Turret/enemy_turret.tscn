@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_nc2n5"]
 [ext_resource type="Texture2D" uid="uid://diygbs3y12anr" path="res://Assets/something_evil_assets/sprites/turret.png" id="5_q4c3x"]
 [ext_resource type="Script" uid="uid://cdeesjx1jp87o" path="res://Scripts/Utilities/face_player.gd" id="6_755n0"]
+[ext_resource type="Script" uid="uid://b17031m5sh5e7" path="res://Scripts/Components/death_component.gd" id="9_we0nu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_755n0"]
 atlas = ExtResource("5_q4c3x")
@@ -42,11 +43,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_xdj3p"]
+offsets = PackedFloat32Array(0.18811882, 0.6633663)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_we0nu"]
+gradient = SubResource("Gradient_xdj3p")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
 [node name="Turret" type="Node2D" unique_id=564088818]
 script = ExtResource("1_tufdm")
 shoot_sound = ExtResource("2_by8hi")
-death_effect_scene = ExtResource("3_xdj3p")
-death_sound = ExtResource("2_by8hi")
 projectile_scene = ExtResource("2_o5v45")
 burst_count = 5
 
@@ -78,4 +87,18 @@ texture_filter = 1
 position = Vector2(3, 0)
 sprite_frames = SubResource("SpriteFrames_yf5fn")
 
-[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=157825541]
+color = Color(1, 0.04000002, 0.04000002, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_we0nu")
+texture_scale = 1.5
+
+[node name="DeathComponent" type="Node" parent="." unique_id=401588297 node_paths=PackedStringArray("health")]
+script = ExtResource("9_we0nu")
+health = NodePath("../HealthComponent")
+points = 350
+death_effect = ExtResource("3_xdj3p")
+death_sound = ExtResource("2_by8hi")
+metadata/_custom_type_script = "uid://b17031m5sh5e7"
+
+[connection signal="damage_taken" from="HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]

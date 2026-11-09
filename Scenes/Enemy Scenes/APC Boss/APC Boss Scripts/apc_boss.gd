@@ -1,6 +1,7 @@
 class_name Apc extends Enemy
 
 @export var same_level_tolerance: float = 24.0   # |player.y - apc.y| under this counts as "same level"
+@export var hurt_sound: AudioStream
 
 var facing: float = 1.0
 var ram_cooldown_left: float = 0.0
@@ -22,8 +23,8 @@ func face_player() -> void:
 func is_player_on_same_level() -> bool:
 	return is_instance_valid(player) and absf(player.global_position.y - global_position.y) <= same_level_tolerance
 
-func _on_health_component_health_depleted() -> void:
-	queue_free()
+
 
 func _on_hurtbox_component_damage_taken(damage: int) -> void:
+	SoundManager.play_sound(hurt_sound, global_position)
 	print($HealthComponent.current_health)

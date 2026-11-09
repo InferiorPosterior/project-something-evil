@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://cscll7mr5fxep" path="res://Scenes/Effects/Death Effects/death_effect_big.tscn" id="2_ki8mq"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="3_wuqc8"]
 [ext_resource type="Texture2D" uid="uid://b0s8wx7kld6dy" path="res://Assets/something_evil_assets/sprites/brute.png" id="3_xi0a3"]
-[ext_resource type="AudioStream" uid="uid://dd1whkkjwpdvm" path="res://Assets/something_evil_assets/sound effects/explosion (2).wav" id="3_xsdfh"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="4_m7fxu"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="5_ky8eb"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_plm84"]
@@ -20,6 +19,8 @@
 [ext_resource type="Script" uid="uid://bco4t8p1j7xmc" path="res://Scenes/Enemy Scenes/Turret/enemy_turret.gd" id="14_oo625"]
 [ext_resource type="Script" uid="uid://cdeesjx1jp87o" path="res://Scripts/Utilities/face_player.gd" id="18_ki8mq"]
 [ext_resource type="AudioStream" uid="uid://cbkj26t700dtu" path="res://Assets/something_evil_assets/sound effects/hit.wav" id="19_xsdfh"]
+[ext_resource type="Script" uid="uid://b17031m5sh5e7" path="res://Scripts/Components/death_component.gd" id="21_kylsx"]
+[ext_resource type="AudioStream" uid="uid://benqyx4p7qs3" path="res://Assets/something_evil_assets/sound effects/death_big.wav" id="22_klqxq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xi0a3"]
 atlas = ExtResource("3_xi0a3")
@@ -190,11 +191,20 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_xsdfh"]
+offsets = PackedFloat32Array(0.18811882, 0.6633663)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_urx3c"]
+gradient = SubResource("Gradient_xsdfh")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
 [node name="EnemyBrute" type="CharacterBody2D" unique_id=946815017 node_paths=PackedStringArray("health")]
 collision_layer = 2
+collision_mask = 33
 script = ExtResource("1_oo625")
-death_effect_scene = ExtResource("2_ki8mq")
-death_sound = ExtResource("3_xsdfh")
 health = NodePath("HealthComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1768781975]
@@ -296,4 +306,18 @@ sight_range = 500.0
 burst_count = 5
 metadata/_custom_type_script = "uid://bco4t8p1j7xmc"
 
-[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2134395228]
+color = Color(1, 0.04000002, 0.04000002, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_urx3c")
+texture_scale = 2.0
+
+[node name="DeathComponent" type="Node" parent="." unique_id=1196803916 node_paths=PackedStringArray("health")]
+script = ExtResource("21_kylsx")
+health = NodePath("../HealthComponent")
+points = 500
+death_effect = ExtResource("2_ki8mq")
+death_sound = ExtResource("22_klqxq")
+metadata/_custom_type_script = "uid://b17031m5sh5e7"
+
+[connection signal="damage_taken" from="HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]

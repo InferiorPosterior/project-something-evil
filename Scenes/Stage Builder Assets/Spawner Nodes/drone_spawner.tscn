@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dvvudlaa5sc8r" path="res://Scripts/Event Systems/spawn_entity.gd" id="1_m8dqr"]
 [ext_resource type="PackedScene" uid="uid://r0f1g28ne38f" path="res://Scenes/Enemy Scenes/Drone/enemy_drone.tscn" id="2_m8dqr"]
+[ext_resource type="AudioStream" uid="uid://lpuw5jovj0jb" path="res://Assets/something_evil_assets/sound effects/explosion.wav" id="2_vepjf"]
 [ext_resource type="PackedScene" uid="uid://poas7nlbj18p" path="res://Scenes/Effects/spawn_effect_small.tscn" id="3_o0p6w"]
 [ext_resource type="Texture2D" uid="uid://q04mkqe6r3rv" path="res://Assets/something_evil_assets/sprites/drone.png" id="4_vepjf"]
 
 [node name="DroneSpawn" type="Node2D" unique_id=2075033335]
 script = ExtResource("1_m8dqr")
+spawn_sound = ExtResource("2_vepjf")
 entity_scene = ExtResource("2_m8dqr")
 effect_scene = ExtResource("3_o0p6w")
 

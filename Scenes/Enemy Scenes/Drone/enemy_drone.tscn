@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="6_6m58r"]
 [ext_resource type="Script" uid="uid://b61om2141170c" path="res://Scripts/State_Machine/enemies states/drone_states/drone_idle.gd" id="7_wnxu5"]
 [ext_resource type="Script" uid="uid://b5n0glidrlnsv" path="res://Scripts/State_Machine/enemies states/drone_states/drone_chase.gd" id="8_cukr8"]
+[ext_resource type="Script" uid="uid://b17031m5sh5e7" path="res://Scripts/Components/death_component.gd" id="9_xfdxx"]
+[ext_resource type="AudioStream" uid="uid://dd1whkkjwpdvm" path="res://Assets/something_evil_assets/sound effects/explosion (2).wav" id="10_7td3r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_buvne"]
 atlas = ExtResource("3_1fjxn")
@@ -53,6 +55,16 @@ size = Vector2(30, 12.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_71eii"]
 radius = 8.0
 
+[sub_resource type="Gradient" id="Gradient_yf5fn"]
+offsets = PackedFloat32Array(0.18811882, 0.6633663)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s5jgq"]
+gradient = SubResource("Gradient_yf5fn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
 [node name="Enemy Drone" type="CharacterBody2D" unique_id=408462021 node_paths=PackedStringArray("health")]
 collision_layer = 2
 script = ExtResource("1_mliai")
@@ -76,6 +88,7 @@ debug_color = Color(0.9900984, 0, 0.28812593, 0.41960785)
 
 [node name="HealthComponent" type="Node" parent="." unique_id=2140040102]
 script = ExtResource("4_avakj")
+max_health = 200
 metadata/_custom_type_script = "uid://ngsma3hy4ktw"
 
 [node name="HurtboxComponent" type="Area2D" parent="." unique_id=1219125648 node_paths=PackedStringArray("health")]
@@ -106,4 +119,17 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=392972939]
 shape = SubResource("CircleShape2D_71eii")
 
-[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1219669513]
+color = Color(1, 0.04000002, 0.04000002, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_s5jgq")
+texture_scale = 1.5
+
+[node name="Death Component" type="Node" parent="." unique_id=481374708 node_paths=PackedStringArray("health")]
+script = ExtResource("9_xfdxx")
+health = NodePath("../HealthComponent")
+points = 200
+death_effect = ExtResource("2_mliai")
+death_sound = ExtResource("10_7td3r")
+
+[connection signal="damage_taken" from="HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]

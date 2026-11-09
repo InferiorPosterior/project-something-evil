@@ -1,5 +1,6 @@
 class_name Grenade extends RigidBody2D
 
+@export var explosion_sound: AudioStream 
 @export var explosion_scene: PackedScene     # assign explosion.tscn
 @export var fuse_time: float = 2.5           # seconds it lingers after landing before exploding
 @export var max_lifetime: float = 6.0        # safety net: explodes even if it never lands
@@ -49,6 +50,7 @@ func explode() -> void:
 	exploded = true
 	if explosion_scene:
 		var fx := explosion_scene.instantiate()
+		SoundManager.play_sound(explosion_sound, global_position)
 		get_tree().current_scene.add_child(fx)
 		fx.global_position = global_position
 	queue_free()

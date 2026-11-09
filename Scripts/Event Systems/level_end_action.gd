@@ -6,6 +6,13 @@ class_name LevelEndAction extends EventAction
 @export var delay: float = 1.0                        # a beat between the last enemy dying and the screen appearing
 
 func execute() -> void:
+	var timer := get_tree().get_first_node_in_group("level_timer") as TimerLabel
+	
+	if timer:
+		ScoreManager.complete_level(timer.time_left())    # 10 points per second left
+		timer.stop()
+	
+	
 	if unlock_level_2:
 		GameProgress.unlock_level2()
 

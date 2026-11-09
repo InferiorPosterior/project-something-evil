@@ -12,10 +12,7 @@
 [ext_resource type="Script" uid="uid://b2ec20sbyqpj7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_fall.gd" id="8_53gau"]
 [ext_resource type="Script" uid="uid://cil401dbk8im1" path="res://Scripts/State_Machine/enemies states/template_states/enemy_idle.gd" id="9_yhon1"]
 [ext_resource type="Script" uid="uid://4l6b3j53kxw7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_jump.gd" id="10_ic7aa"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yf5fn"]
-radius = 4.0
-height = 14.0
+[ext_resource type="Script" uid="uid://b17031m5sh5e7" path="res://Scripts/Components/death_component.gd" id="13_ob1hd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yhon1"]
 atlas = ExtResource("2_7r0yd")
@@ -91,19 +88,39 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yf5fn"]
+radius = 4.0
+height = 14.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pvv55"]
 size = Vector2(12, 16.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_km4sp"]
 size = Vector2(8.5, 12.25)
 
+[sub_resource type="Gradient" id="Gradient_yf5fn"]
+offsets = PackedFloat32Array(0.18811882, 0.6633663)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4v7s"]
+gradient = SubResource("Gradient_yf5fn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
 [node name="Enemy Chaser" type="CharacterBody2D" unique_id=782089927 node_paths=PackedStringArray("health")]
 collision_layer = 2
+collision_mask = 33
 script = ExtResource("1_7r0yd")
-death_effect_scene = ExtResource("2_wj6u7")
-death_sound = ExtResource("3_ob1hd")
 health = NodePath("Health")
 detection_range = 500.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1754375138]
+texture_filter = 1
+position = Vector2(1, 4)
+sprite_frames = SubResource("SpriteFrames_ne65n")
+animation = &"chase"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2102903468]
 position = Vector2(-1, 5)
@@ -132,13 +149,6 @@ metadata/_custom_type_script = "uid://v1najhost2v"
 script = ExtResource("8_53gau")
 metadata/_custom_type_script = "uid://v1najhost2v"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1754375138]
-texture_filter = 1
-position = Vector2(1, 4)
-sprite_frames = SubResource("SpriteFrames_ne65n")
-animation = &"chase"
-autoplay = "idle"
-
 [node name="Health" type="Node" parent="." unique_id=1791965054]
 script = ExtResource("3_8xxap")
 metadata/_custom_type_script = "uid://ngsma3hy4ktw"
@@ -158,7 +168,7 @@ debug_color = Color(0, 0.6312133, 0.4678437, 0.41960785)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("5_10joo")
-damage = 1000
+damage = 100
 metadata/_custom_type_script = "uid://bvtclq823uv2e"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2121415704]
@@ -166,4 +176,15 @@ position = Vector2(-1, 6.125)
 shape = SubResource("RectangleShape2D_km4sp")
 debug_color = Color(0.9947129, 0, 0.22507519, 0.41960785)
 
-[connection signal="health_depleted" from="Health" to="." method="_on_health_component_health_depleted"]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=183995406]
+color = Color(1, 0.04000002, 0.04000002, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_g4v7s")
+
+[node name="Death" type="Node" parent="." unique_id=1610247091 node_paths=PackedStringArray("health")]
+script = ExtResource("13_ob1hd")
+health = NodePath("../Health")
+death_effect = ExtResource("2_wj6u7")
+death_sound = ExtResource("3_ob1hd")
+
+[connection signal="damage_taken" from="Hurtbox" to="." method="_on_hurtbox_damage_taken"]

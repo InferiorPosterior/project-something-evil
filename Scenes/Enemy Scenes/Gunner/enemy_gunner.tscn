@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://0hhs47g4ushk" path="res://Assets/something_evil_assets/sprites/gunner.png" id="10_4s8nx"]
 [ext_resource type="Script" uid="uid://b2ec20sbyqpj7" path="res://Scripts/State_Machine/enemies states/template_states/enemy_fall.gd" id="10_gdmyk"]
 [ext_resource type="Script" uid="uid://cdeesjx1jp87o" path="res://Scripts/Utilities/face_player.gd" id="12_05epj"]
+[ext_resource type="Script" uid="uid://b17031m5sh5e7" path="res://Scripts/Components/death_component.gd" id="14_6g25e"]
+[ext_resource type="AudioStream" uid="uid://lpuw5jovj0jb" path="res://Assets/something_evil_assets/sound effects/explosion.wav" id="15_ni7hb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
 radius = 4.0
@@ -124,13 +126,22 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_xb1tm"]
+offsets = PackedFloat32Array(0.18811882, 0.6633663)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wgsfu"]
+gradient = SubResource("Gradient_xb1tm")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
 [node name="enemy_gunner" type="CharacterBody2D" unique_id=1035780428 node_paths=PackedStringArray("health")]
 collision_layer = 2
+collision_mask = 33
 script = ExtResource("1_p3jys")
 projectile_scene = ExtResource("2_cmo3a")
 shoot_exit_range = 170.0
-death_effect_scene = ExtResource("3_xb1tm")
-death_sound = ExtResource("4_wgsfu")
 health = NodePath("HealthComponent")
 detection_range = 500.0
 
@@ -190,4 +201,17 @@ texture_filter = 1
 position = Vector2(4, 0)
 sprite_frames = SubResource("SpriteFrames_yf5fn")
 
-[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=776607529]
+color = Color(1, 0.04000002, 0.04000002, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_wgsfu")
+
+[node name="DeathComponent" type="Node" parent="." unique_id=1675066887 node_paths=PackedStringArray("health")]
+script = ExtResource("14_6g25e")
+health = NodePath("../HealthComponent")
+points = 150
+death_effect = ExtResource("3_xb1tm")
+death_sound = ExtResource("15_ni7hb")
+metadata/_custom_type_script = "uid://b17031m5sh5e7"
+
+[connection signal="damage_taken" from="HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]

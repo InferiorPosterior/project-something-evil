@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bhw65armr1pxp"]
+
+[ext_resource type="PackedScene" uid="uid://3btq8c6h6ayp" path="res://Scenes/lives_hud.tscn" id="1_iori6"]
+[ext_resource type="PackedScene" uid="uid://itf4bvj38c15" path="res://Scenes/pointUI.tscn" id="1_pkmr8"]
+[ext_resource type="PackedScene" uid="uid://bxk4frxprhpvd" path="res://Scenes/healthbar.tscn" id="2_pkmr8"]
+[ext_resource type="FontFile" uid="uid://u58lg8jovldg" path="res://Assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="3_54pr6"]
+[ext_resource type="PackedScene" uid="uid://cdg4dpa22omb7" path="res://Scenes/stage_timer.tscn" id="5_188kt"]
+
+[sub_resource type="Theme" id="Theme_fwb4u"]
+default_font = ExtResource("3_54pr6")
+
+[node name="Player HUD" type="CanvasLayer" unique_id=1295255269]
+
+[node name="PointUi" parent="." unique_id=703508723 instance=ExtResource("1_pkmr8")]
+
+[node name="LivesHUD" parent="." unique_id=1372217612 instance=ExtResource("1_iori6")]
+texture_filter = 1
+offset_left = 1144.0
+offset_top = -16.0
+offset_right = 1144.0
+offset_bottom = -16.0
+theme = SubResource("Theme_fwb4u")
+
+[node name="PlayerHP" parent="." unique_id=1069281682 instance=ExtResource("2_pkmr8")]
+offset_left = 16.0
+offset_top = 40.0
+offset_right = 56.0
+offset_bottom = 80.0
+metadata/_edit_group_ = true
+
+[node name="Control" parent="." unique_id=90696281 instance=ExtResource("5_188kt")]
+offset_left = 512.0
+offset_top = 24.0
+offset_right = 552.0
+offset_bottom = 64.0

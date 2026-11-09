@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c338x3q1xigh5" path="res://Scenes/Projectiles & Hazards/Grenade/grenade.gd" id="1_mnujr"]
 [ext_resource type="PackedScene" uid="uid://0mjg24r87fdm" path="res://Scenes/Projectiles & Hazards/Explosion/explosion.tscn" id="2_bt3y8"]
+[ext_resource type="AudioStream" uid="uid://lpuw5jovj0jb" path="res://Assets/something_evil_assets/sound effects/explosion.wav" id="2_ioud6"]
 [ext_resource type="Texture2D" uid="uid://dmg5skl6tsooe" path="res://Assets/something_evil_assets/sprites/projectile.png" id="3_mnujr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bt3y8"]
@@ -46,6 +47,7 @@ radius = 7.0
 [node name="Grenade" type="RigidBody2D" unique_id=1120318695]
 collision_layer = 0
 script = ExtResource("1_mnujr")
+explosion_sound = ExtResource("2_ioud6")
 explosion_scene = ExtResource("2_bt3y8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=998986221]
