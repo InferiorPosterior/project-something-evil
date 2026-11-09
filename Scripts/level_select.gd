@@ -26,7 +26,7 @@ func update_level_buttons():
 
 	# Level 2
 	if GameProgress.level2_unlocked:
-		level2_button.text = "LEVEL 2 — SEE NO EVIL"
+		level2_button.text = "LEVEL 2 — SOMETHING EVIL WILL HAPPEN"
 		level2_button.disabled = false
 	else:
 		level2_button.text = "LEVEL 2 — LOCKED"
