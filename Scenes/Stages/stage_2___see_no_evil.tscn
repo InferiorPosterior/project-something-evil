@@ -31,6 +31,7 @@
 [ext_resource type="Script" uid="uid://bpjxt8fwj5oan" path="res://Scripts/Event Systems/level_end_action.gd" id="25_w1vpc"]
 [ext_resource type="PackedScene" uid="uid://gws0ml30aft4" path="res://Scenes/fade_in.tscn" id="26_w1vpc"]
 [ext_resource type="PackedScene" uid="uid://mudw0p55nt1e" path="res://Scenes/stage_end_screen.tscn" id="26_wy0jg"]
+[ext_resource type="AudioStream" uid="uid://b3jc8pb112rfh" path="res://Assets/brackeys_platformer_assets/sounds/coin.wav" id="27_swp03"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_b45r2"]
 tile_data = PackedInt32Array(0, 786432, 13, 65536, 786432, 14, 1, 851968, 13, 65537, 851968, 14)
@@ -2050,6 +2051,7 @@ debug_color = Color(0.66677004, 0.51148236, 1.92523e-07, 0.41960785)
 
 [node name="LevelEndAction" type="Node2D" parent="EventArea" unique_id=1865351082]
 script = ExtResource("25_w1vpc")
+sound_effect = ExtResource("27_swp03")
 end_screen = ExtResource("26_wy0jg")
 next_scene = "uid://c40vsthvyvhit"
 unlock_level_2 = false
@@ -2058,7 +2060,7 @@ delay = 0.0
 metadata/_custom_type_script = "uid://bpjxt8fwj5oan"
 
 [node name="Player" parent="." unique_id=1827159017 instance=ExtResource("2_uw4xn")]
-position = Vector2(-1209, -278)
+position = Vector2(-1200, -272)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=252625614]
 texture_filter = 1
@@ -2083,6 +2085,9 @@ color = Color(0.6580323, 0.4545653, 0.59382915, 1)
 
 [node name="Player HUD" parent="." unique_id=1295255269 instance=ExtResource("8_7cei0")]
 
+[node name="TimerLabel" parent="Player HUD/Control" parent_id_path=PackedInt32Array(1295255269, 90696281) index="1" unique_id=1011372336]
+limit = 210.0
+
 [node name="FadeIn" parent="." unique_id=1275480377 instance=ExtResource("26_w1vpc")]
 
 [node name="StageLabel" parent="FadeIn/Overlay/CenterContainer" parent_id_path=PackedInt32Array(1275480377, 1093986123) index="0" unique_id=1458628294]
@@ -2094,4 +2099,6 @@ SOMETHING EVIL WILL HAPPEN"
 [node name="PauseMenu" parent="PauseMenu" unique_id=1484971317 instance=ExtResource("4_ifs1l")]
 metadata/_edit_use_anchors_ = true
 
+[editable path="Player HUD"]
+[editable path="Player HUD/Control"]
 [editable path="FadeIn"]

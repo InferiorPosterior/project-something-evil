@@ -25,7 +25,9 @@
 [ext_resource type="Script" uid="uid://b17031m5sh5e7" path="res://Scripts/Components/death_component.gd" id="20_lmmk4"]
 [ext_resource type="PackedScene" uid="uid://cscll7mr5fxep" path="res://Scenes/Effects/Death Effects/death_effect_big.tscn" id="21_ai82r"]
 [ext_resource type="AudioStream" uid="uid://benqyx4p7qs3" path="res://Assets/something_evil_assets/sound effects/death_big.wav" id="22_fsduk"]
+[ext_resource type="Texture2D" uid="uid://by1jih1iija54" path="res://Assets/something_evil_assets/EVIL APC!!!/evil apc hull animated_0.png" id="23_li5ji"]
 [ext_resource type="PackedScene" uid="uid://dnjby57ls370h" path="res://Scenes/Enemy Scenes/Turret/enemy_turret.tscn" id="24_fsduk"]
+[ext_resource type="Texture2D" uid="uid://bomnygx5paolp" path="res://Assets/something_evil_assets/EVIL APC!!!/wheels.png" id="24_oah4b"]
 [ext_resource type="PackedScene" uid="uid://bv5mkxmn16xum" path="res://Scenes/boss_bar.tscn" id="25_b5vx5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4rn6l"]
@@ -84,6 +86,9 @@ bind/1/name = &"Ram"
 bind/1/bone = -1
 bind/1/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1875, 0.5625, 4.625)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pufj"]
+albedo_texture = ExtResource("23_li5ji")
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b5vx5"]
 load_path = "res://.godot/imported/evil apc hull animated_1.png-69e2aee5fe5b36d9e0406525ead42897.s3tc.ctex"
 
@@ -135,6 +140,9 @@ bind/3/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 0, -1.1875)
 bind/4/name = &"Front_Wheels4"
 bind/4/bone = -1
 bind/4/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 0, -3.1875)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xcqx"]
+albedo_texture = ExtResource("24_oah4b")
 
 [sub_resource type="Animation" id="Animation_ddwrb"]
 resource_name = "Move"
@@ -352,6 +360,7 @@ bones/1/scale = Vector3(1, 1, 1)
 mesh = SubResource("ArrayMesh_uq3bg")
 skin = SubResource("Skin_lmmk4")
 skeleton = NodePath("..")
+surface_material_override/0 = SubResource("StandardMaterial3D_7pufj")
 
 [node name="Wheel" type="Node3D" parent="SubViewportContainer/SubViewport/blockbench_export" unique_id=629377129]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9375, 0.875)
@@ -397,6 +406,7 @@ bones/4/scale = Vector3(1, 1, 1)
 mesh = SubResource("ArrayMesh_ai82r")
 skin = SubResource("Skin_fsduk")
 skeleton = NodePath("..")
+surface_material_override/0 = SubResource("StandardMaterial3D_7xcqx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/blockbench_export" unique_id=1723279301]
 libraries/ = SubResource("AnimationLibrary_b5vx5")

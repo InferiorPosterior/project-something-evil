@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://bxqrcaqcyrws0" path="res://Scenes/Stage Builder Assets/Spawner Nodes/grenadier_spawner.tscn" id="24_f5buk"]
 [ext_resource type="Script" uid="uid://2pw3n8uxmdig" path="res://Scripts/Event Systems/music_cut_action.gd" id="25_mncya"]
 [ext_resource type="PackedScene" uid="uid://bw83fhmrcwh8k" path="res://Scenes/Stage Builder Assets/Spawner Nodes/turret_spawner.tscn" id="25_weskp"]
+[ext_resource type="AudioStream" uid="uid://b3jc8pb112rfh" path="res://Assets/brackeys_platformer_assets/sounds/coin.wav" id="27_xkn6y"]
 [ext_resource type="PackedScene" uid="uid://boew6cs04ouac" path="res://Scenes/Stage Builder Assets/trapdoor.tscn" id="28_dr21n"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_b45r2"]
@@ -2107,6 +2108,7 @@ debug_color = Color(0.5388686, 0.5683242, 0, 0.41960785)
 
 [node name="LevelEndAction" type="Node2D" parent="LevelEnd" unique_id=1299148937]
 script = ExtResource("13_ejv5g")
+sound_effect = ExtResource("27_xkn6y")
 end_screen = ExtResource("14_ejv5g")
 next_scene = "uid://dmbso2ivyu0n0"
 metadata/_custom_type_script = "uid://bpjxt8fwj5oan"
@@ -2187,7 +2189,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." unique_id=1827159017 instance=ExtResource("2_du3gd")]
-position = Vector2(-3829, 81)
+position = Vector2(-3992, 72)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=338091919]
 texture_filter = 1

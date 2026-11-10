@@ -34,6 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://kxp028l5n0gc" path="res://Assets/something_evil_assets/ost and sfx/Fight With The Family.mp3" id="26_8si61"]
 [ext_resource type="Script" uid="uid://bpjxt8fwj5oan" path="res://Scripts/Event Systems/level_end_action.gd" id="27_ehjrb"]
 [ext_resource type="PackedScene" uid="uid://mudw0p55nt1e" path="res://Scenes/stage_end_screen.tscn" id="28_1ksh5"]
+[ext_resource type="AudioStream" uid="uid://b3jc8pb112rfh" path="res://Assets/brackeys_platformer_assets/sounds/coin.wav" id="29_s3vvy"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_b45r2"]
 tile_data = PackedInt32Array(0, 786432, 13, 65536, 786432, 14, 1, 851968, 13, 65537, 851968, 14)
@@ -1734,13 +1735,14 @@ debug_color = Color(0.65941495, 0.5153901, 0, 0.41960785)
 
 [node name="LevelEndAction" type="Node2D" parent="Level End" unique_id=915696256]
 script = ExtResource("27_ehjrb")
+sound_effect = ExtResource("29_s3vvy")
 end_screen = ExtResource("28_1ksh5")
 next_scene = "uid://c3q2oe326f4cf"
 unlock_level_2 = false
 metadata/_custom_type_script = "uid://bpjxt8fwj5oan"
 
 [node name="Player" parent="." unique_id=1827159017 instance=ExtResource("8_34aut")]
-position = Vector2(-1213, -272)
+position = Vector2(-1184, -272)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=252625614]
 texture_filter = 1
@@ -1770,6 +1772,9 @@ color = Color(0.3180198, 0.31801978, 0.31801975, 1)
 
 [node name="Player HUD" parent="." unique_id=1295255269 instance=ExtResource("9_7g2ej")]
 
+[node name="TimerLabel" parent="Player HUD/Control" parent_id_path=PackedInt32Array(1295255269, 90696281) index="1" unique_id=1011372336]
+limit = 210.0
+
 [node name="FadeIn" parent="." unique_id=1275480377 instance=ExtResource("10_vqanc")]
 
 [node name="StageLabel" parent="FadeIn/Overlay/CenterContainer" parent_id_path=PackedInt32Array(1275480377, 1093986123) index="0" unique_id=1458628294]
@@ -1795,4 +1800,6 @@ label_settings = SubResource("LabelSettings_y0lyi")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[editable path="Player HUD"]
+[editable path="Player HUD/Control"]
 [editable path="FadeIn"]
