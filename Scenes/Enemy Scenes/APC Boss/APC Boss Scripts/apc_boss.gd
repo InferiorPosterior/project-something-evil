@@ -1,5 +1,7 @@
 class_name Apc extends Enemy
 
+@export var death_sound: AudioStream
+@export var death_flash: PackedScene      
 @export var same_level_tolerance: float = 24.0   # |player.y - apc.y| under this counts as "same level"
 @export var hurt_sound: AudioStream
 
@@ -28,3 +30,9 @@ func is_player_on_same_level() -> bool:
 func _on_hurtbox_component_damage_taken(damage: int) -> void:
 	SoundManager.play_sound(hurt_sound, global_position)
 	print($HealthComponent.current_health)
+
+
+func _on_health_component_health_depleted() -> void:
+	if death_flash:
+		get_tree().current_scene.add_child(death_flash.instantiate())
+	SoundManager.play_sound(death_sound, null, 5.0)

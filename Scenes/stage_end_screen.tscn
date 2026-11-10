@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://mudw0p55nt1e"]
 
 [ext_resource type="Script" uid="uid://dm0towxd3ibul" path="res://Scripts/stage_end_screen.gd" id="1_x06ik"]
+[ext_resource type="AudioStream" uid="uid://dw1aoe3q0tyk8" path="res://Assets/something_evil_assets/ost and sfx/bClick.ogg" id="2_flg4v"]
 
 [node name="Stage End Screen" type="CanvasLayer" unique_id=1109376040]
 script = ExtResource("1_x06ik")
+sound_effect = ExtResource("2_flg4v")
 
 [node name="Panel" type="Panel" parent="." unique_id=1797778052]
 unique_name_in_owner = true

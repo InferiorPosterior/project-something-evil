@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://vuk5ku6srist"]
+
+[ext_resource type="Script" uid="uid://dvvudlaa5sc8r" path="res://Scripts/Event Systems/spawn_entity.gd" id="1_6f56b"]
+[ext_resource type="PackedScene" uid="uid://cbw4etvuicd2r" path="res://Scenes/Projectiles & Hazards/Missile/missile.tscn" id="2_p1tst"]
+[ext_resource type="PackedScene" uid="uid://poas7nlbj18p" path="res://Scenes/Effects/spawn_effect_small.tscn" id="3_p1tst"]
+[ext_resource type="Texture2D" uid="uid://dmg5skl6tsooe" path="res://Assets/something_evil_assets/sprites/projectile.png" id="4_8srh2"]
+
+[node name="Missile Spawner" type="Node2D" unique_id=802069757]
+script = ExtResource("1_6f56b")
+entity_scene = ExtResource("2_p1tst")
+effect_scene = ExtResource("3_p1tst")
+reveal_delay = 0.2
+
+[node name="Preview" type="Sprite2D" parent="." unique_id=1780576799]
+texture_filter = 1
+texture = ExtResource("4_8srh2")
+region_enabled = true
+region_rect = Rect2(0, 32, 16, 16)

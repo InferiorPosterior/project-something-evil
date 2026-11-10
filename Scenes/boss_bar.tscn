@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bv5mkxmn16xum"]
+
+[ext_resource type="Script" uid="uid://derub6hio17u8" path="res://Scenes/healthbar.gd" id="1_re8hu"]
+[ext_resource type="FontFile" uid="uid://u58lg8jovldg" path="res://Assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="2_x8w44"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mncya"]
+bg_color = Color(0.007615909, 0.0683466, 0.11287499, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+expand_margin_left = 4.0
+expand_margin_top = 6.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5vx5"]
+bg_color = Color(0.95954686, 0, 0.24803248, 1)
+border_width_bottom = 6
+border_color = Color(0.5857968, 0, 0.14881265, 1)
+
+[sub_resource type="Theme" id="Theme_g4v7s"]
+default_font = ExtResource("2_x8w44")
+
+[node name="Boss Bar" type="CanvasLayer" unique_id=1022727504]
+
+[node name="Control" type="Control" parent="." unique_id=1784052462]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 320.0
+offset_top = 56.0
+offset_right = 320.0
+offset_bottom = 56.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="Control" unique_id=970399430]
+texture_filter = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 504.0
+offset_bottom = 64.0
+theme_override_styles/background = SubResource("StyleBoxFlat_mncya")
+theme_override_styles/fill = SubResource("StyleBoxFlat_b5vx5")
+value = 100.0
+show_percentage = false
+script = ExtResource("1_re8hu")
+hide_until_tracked = true
+
+[node name="Label" type="Label" parent="Control/ProgressBar" unique_id=1673120305]
+layout_mode = 0
+offset_left = 168.0
+offset_top = -32.0
+offset_right = 330.0
+offset_bottom = -8.0
+theme = SubResource("Theme_g4v7s")
+theme_override_colors/font_color = Color(0.9912377, 0, 0.24963367, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "THE MAW"

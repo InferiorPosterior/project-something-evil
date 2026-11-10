@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cvac0kyobk8bj"
+path="res://.godot/imported/level1.ogg-223031fbdfaf5521c74b28576c8429ba.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/something_evil_assets/ost and sfx/level1.ogg"
+dest_files=["res://.godot/imported/level1.ogg-223031fbdfaf5521c74b28576c8429ba.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

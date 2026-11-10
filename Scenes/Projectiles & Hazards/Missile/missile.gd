@@ -10,13 +10,14 @@ extends Area2D
 @export var lifetime: float = 6.0
 
 var direction: Vector2 = Vector2.UP            # set by the pod before it's added
-var speed: float = 160.0
+var speed: float = 200.0
 var player: Node2D
 var age: float = 0.0
 var exploded: bool = false
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
+	direction = direction.normalized()         # <--- Ensures vector length is exactly 1
 	rotation = direction.angle()
 	body_entered.connect(func(_body): explode.call_deferred())
 	get_tree().create_timer(lifetime).timeout.connect(explode)

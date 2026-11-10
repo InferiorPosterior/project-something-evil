@@ -1,8 +1,11 @@
-
 extends Control
+
+@export var menu_track: AudioStream
 
 # Runs when the main menu is ready.
 func _ready():
+	SoundManager.play_music(menu_track)
+	
 	# Connects each button to its corresponding function.
 	$CenterContainer/Panel/Control/StartButton.pressed.connect(_on_start_pressed)
 	$CenterContainer/Panel/Control/LevelSelectButton.pressed.connect(_on_level_select_pressed)

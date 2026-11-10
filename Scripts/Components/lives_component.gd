@@ -76,7 +76,7 @@ func _respawn() -> void:
 	health.current_health = health.max_health
 	health.set_temporary_immortality(respawn_immunity)
 	_start_blink()
-	SoundManager.play_sound(death_sound, get_parent().get("global_position"))
+	SoundManager.play_sound(death_sound, null, 0.3)
 	respawned.emit()
 
 func _start_blink() -> void:

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cfhii4fuam7y4"
+path="res://.godot/imported/bossdeath - Copy.ogg-0c1514295530537daa138087dd5cfa9d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/something_evil_assets/ost and sfx/bossdeath - Copy.ogg"
+dest_files=["res://.godot/imported/bossdeath - Copy.ogg-0c1514295530537daa138087dd5cfa9d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

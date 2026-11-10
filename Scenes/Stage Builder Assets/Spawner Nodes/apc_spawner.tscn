@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cf1x53wcyw7sa"]
+
+[ext_resource type="Script" uid="uid://dvvudlaa5sc8r" path="res://Scripts/Event Systems/spawn_entity.gd" id="1_v36ao"]
+[ext_resource type="PackedScene" uid="uid://mmpqitv0reny" path="res://Scenes/Enemy Scenes/APC Boss/apc_boss.tscn" id="2_ruv34"]
+[ext_resource type="PackedScene" uid="uid://poas7nlbj18p" path="res://Scenes/Effects/spawn_effect_small.tscn" id="3_es2uf"]
+[ext_resource type="Texture2D" uid="uid://b0s8wx7kld6dy" path="res://Assets/something_evil_assets/sprites/brute.png" id="4_shk6v"]
+
+[node name="APC Spawner" type="Node2D" unique_id=802069757]
+script = ExtResource("1_v36ao")
+entity_scene = ExtResource("2_ruv34")
+effect_scene = ExtResource("3_es2uf")
+
+[node name="Preview" type="Sprite2D" parent="." unique_id=1780576799]
+texture_filter = 1
+texture = ExtResource("4_shk6v")
+region_enabled = true
+region_rect = Rect2(48, 144, 48, 48)

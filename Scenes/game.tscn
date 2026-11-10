@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://opptkxr1tbdm"]
 
 [ext_resource type="PackedScene" uid="uid://brucys4yioeia" path="res://Scenes/main_menu.tscn" id="1_ebmjs"]
+[ext_resource type="AudioStream" uid="uid://bwndgcx3k7vog" path="res://Assets/something_evil_assets/ost and sfx/Adobe-Express-It is with us - Celestial Bodies Vs Cats (720p).mp3" id="2_qxrlw"]
 
 [node name="Game" type="Node2D" unique_id=1327516912]
 position = Vector2(112, 152)
 
 [node name="MainMenu" parent="." unique_id=346214997 instance=ExtResource("1_ebmjs")]
+menu_track = ExtResource("2_qxrlw")
 metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=972171412]

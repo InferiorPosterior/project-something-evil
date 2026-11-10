@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c6yxxb8jk4aof"
+path="res://.godot/imported/startSound.ogg-771dfae17c24cd9aa88f64895b9c7d20.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/something_evil_assets/ost and sfx/startSound.ogg"
+dest_files=["res://.godot/imported/startSound.ogg-771dfae17c24cd9aa88f64895b9c7d20.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

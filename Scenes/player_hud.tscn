@@ -12,13 +12,17 @@ default_font = ExtResource("3_54pr6")
 [node name="Player HUD" type="CanvasLayer" unique_id=1295255269]
 
 [node name="PointUi" parent="." unique_id=703508723 instance=ExtResource("1_pkmr8")]
+offset_left = -56.0
+offset_top = -16.0
+offset_right = -56.0
+offset_bottom = -16.0
 
 [node name="LivesHUD" parent="." unique_id=1372217612 instance=ExtResource("1_iori6")]
 texture_filter = 1
-offset_left = 1144.0
-offset_top = -16.0
-offset_right = 1144.0
-offset_bottom = -16.0
+offset_left = 1056.0
+offset_top = 16.0
+offset_right = 1056.0
+offset_bottom = 16.0
 theme = SubResource("Theme_fwb4u")
 
 [node name="PlayerHP" parent="." unique_id=1069281682 instance=ExtResource("2_pkmr8")]

@@ -15,7 +15,7 @@ func _ready() -> void:
 
 	# Play the sound immediately upon spawning, independent of animation state
 	if spawn_sound:
-		SoundManager.play_sound(spawn_sound, global_position)
+		SoundManager.play_sound(spawn_sound, null, -3)
 
 	if sprite_frames:
 		sprite.sprite_frames = sprite_frames

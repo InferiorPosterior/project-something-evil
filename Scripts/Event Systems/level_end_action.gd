@@ -3,6 +3,7 @@ class_name LevelEndAction extends EventAction
 @export var end_screen: PackedScene                   # drop stage_end_screen.tscn here
 @export_file("*.tscn") var next_scene: String         # where Continue goes; leave empty to hide the button
 @export var unlock_level_2: bool = true
+@export var unlock_level_3: bool = false
 @export var delay: float = 1.0                        # a beat between the last enemy dying and the screen appearing
 
 func execute() -> void:
@@ -15,6 +16,9 @@ func execute() -> void:
 	
 	if unlock_level_2:
 		GameProgress.unlock_level2()
+		
+	if unlock_level_3:
+		GameProgress.unlock_level3()
 
 	if delay > 0.0:
 		await get_tree().create_timer(delay).timeout

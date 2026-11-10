@@ -1,23 +1,37 @@
 [gd_scene format=3 uid="uid://3btq8c6h6ayp"]
 
 [ext_resource type="Script" uid="uid://b4fpvttxc3qkb" path="res://Scripts/Components/lives_hud.gd" id="1_smuma"]
+[ext_resource type="FontFile" uid="uid://u58lg8jovldg" path="res://Assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="2_27ibm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57qmd"]
+bg_color = Color(0, 0, 0, 0.16470589)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+expand_margin_top = 2.0
+
+[sub_resource type="Theme" id="Theme_g4v7s"]
+default_font = ExtResource("2_27ibm")
 
 [node name="LivesHUD" type="Control" unique_id=149907006]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_smuma")
 
-[node name="LivesLabel" type="Label" parent="." unique_id=460428753]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1322286475]
+layout_mode = 0
+offset_top = 17.0
+offset_right = 88.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_57qmd")
+
+[node name="LivesLabel" type="Label" parent="PanelContainer" unique_id=460428753]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -184.0
-offset_top = 47.0
-offset_bottom = 83.0
-grow_horizontal = 0
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_g4v7s")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 12
 text = "LIVES: 3"

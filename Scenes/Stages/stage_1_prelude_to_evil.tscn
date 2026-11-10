@@ -2,9 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://w8j0rnwcahmd" path="res://Assets/something_evil_assets/sprites/background_horizon.png" id="1_3nioi"]
 [ext_resource type="Texture2D" uid="uid://bsg18wysnjs8k" path="res://Assets/something_evil_assets/sprites/something_evil_tileset.png" id="1_7wf4l"]
+[ext_resource type="Script" uid="uid://b24uc6135b0tq" path="res://Scripts/stage_music.gd" id="1_f5buk"]
 [ext_resource type="PackedScene" uid="uid://du0gmlf03hrwy" path="res://Scenes/player.tscn" id="2_du3gd"]
 [ext_resource type="Texture2D" uid="uid://8e2vrmn0vic3" path="res://Assets/something_evil_assets/sprites/background_distant_cloud.png" id="2_tmiy4"]
+[ext_resource type="AudioStream" uid="uid://cvac0kyobk8bj" path="res://Assets/something_evil_assets/ost and sfx/level1.ogg" id="2_xcjhm"]
 [ext_resource type="Texture2D" uid="uid://cmyymfd2y7cyx" path="res://Assets/something_evil_assets/sprites/background_clouds.png" id="3_hj0xr"]
+[ext_resource type="AudioStream" uid="uid://c6yxxb8jk4aof" path="res://Assets/something_evil_assets/ost and sfx/startSound.ogg" id="3_xcjhm"]
 [ext_resource type="Texture2D" uid="uid://bowvv2w2fkqm2" path="res://Assets/something_evil_assets/sprites/background_skyscrapers.png" id="4_k8jxn"]
 [ext_resource type="Texture2D" uid="uid://cen2ar6a6axcj" path="res://Assets/something_evil_assets/sprites/background_cityscape.png" id="5_1gcf5"]
 [ext_resource type="Script" uid="uid://v0iqx35ti2ph" path="res://Scripts/Event Systems/event_area.gd" id="6_b45r2"]
@@ -26,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://cc0g07lcrmsqk" path="res://Scenes/Stage Builder Assets/Spawner Nodes/drone_spawner.tscn" id="23_dr21n"]
 [ext_resource type="FontFile" uid="uid://eoqgicy463pd" path="res://Assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="23_hj0xr"]
 [ext_resource type="PackedScene" uid="uid://bxqrcaqcyrws0" path="res://Scenes/Stage Builder Assets/Spawner Nodes/grenadier_spawner.tscn" id="24_f5buk"]
+[ext_resource type="Script" uid="uid://2pw3n8uxmdig" path="res://Scripts/Event Systems/music_cut_action.gd" id="25_mncya"]
 [ext_resource type="PackedScene" uid="uid://bw83fhmrcwh8k" path="res://Scenes/Stage Builder Assets/Spawner Nodes/turret_spawner.tscn" id="25_weskp"]
 [ext_resource type="PackedScene" uid="uid://boew6cs04ouac" path="res://Scenes/Stage Builder Assets/trapdoor.tscn" id="28_dr21n"]
 
@@ -38,7 +42,7 @@ tile_data = PackedInt32Array(0, 0, 6, 65536, 0, 7, 131072, 0, 8, 1, 131072, 6, 6
 [sub_resource type="TileMapPattern" id="TileMapPattern_k8jxn"]
 tile_data = PackedInt32Array(0, 720896, 3, 65536, 720896, 4, 131072, 720896, 4, 196608, 720896, 4, 262144, 720896, 4, 327680, 720896, 4, 393216, 720896, 5, 1, 786432, 3, 65537, 786432, 4, 131073, 786432, 4, 196609, 786432, 4, 262145, 786432, 4, 327681, 786432, 4, 393217, 786432, 5, 2, 786432, 3, 65538, 786432, 4, 131074, 786432, 4, 196610, 786432, 4, 262146, 786432, 4, 327682, 786432, 4, 393218, 786432, 5, 3, 851968, 3, 65539, 851968, 4, 131075, 851968, 4, 196611, 851968, 4, 262147, 851968, 4, 327683, 851968, 4, 393219, 851968, 5)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tmiy4"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mncya"]
 texture = ExtResource("1_7wf4l")
 0:0/0 = 0
 1:0/0 = 0
@@ -274,7 +278,7 @@ texture = ExtResource("1_7wf4l")
 8:15/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_yf5fn"]
-sources/0 = SubResource("TileSetAtlasSource_tmiy4")
+sources/0 = SubResource("TileSetAtlasSource_mncya")
 pattern_0 = SubResource("TileMapPattern_b45r2")
 pattern_1 = SubResource("TileMapPattern_hj0xr")
 pattern_2 = SubResource("TileMapPattern_k8jxn")
@@ -573,7 +577,7 @@ polygon = PackedVector2Array(-8, -6, 8, -6, 8, 6, -8, 6)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_q02wo"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, -4, -8, -4)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hj0xr"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xkn6y"]
 texture = ExtResource("1_7wf4l")
 0:0/0 = 0
 0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_tmiy4")
@@ -1238,7 +1242,7 @@ occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 physics_layer_1/collision_layer = 32
 physics_layer_1/collision_mask = 0
-sources/0 = SubResource("TileSetAtlasSource_hj0xr")
+sources/0 = SubResource("TileSetAtlasSource_xkn6y")
 pattern_0 = SubResource("TileMapPattern_goypx")
 pattern_1 = SubResource("TileMapPattern_tmiy4")
 pattern_2 = SubResource("TileMapPattern_1gcf5")
@@ -1281,11 +1285,11 @@ default_font = ExtResource("23_hj0xr")
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
 
-[sub_resource type="Gradient" id="Gradient_k8jxn"]
+[sub_resource type="Gradient" id="Gradient_r2oun"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_g4v7s"]
-gradient = SubResource("Gradient_k8jxn")
+gradient = SubResource("Gradient_r2oun")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.2, 0.2)
@@ -1299,6 +1303,9 @@ glow_bloom = 0.2
 fog_enabled = true
 
 [node name="Stage 1 - PRELUDE TO EVIL" type="Node2D" unique_id=70456065]
+script = ExtResource("1_f5buk")
+level_music = ExtResource("2_xcjhm")
+start_sound = ExtResource("3_xcjhm")
 
 [node name="Parallax Background" type="Node2D" parent="." unique_id=576210044]
 
@@ -2048,6 +2055,10 @@ metadata/_custom_type_script = "uid://c87b73kgij03d"
 script = ExtResource("7_ejv5g")
 metadata/_custom_type_script = "uid://c4p8md6xtah0a"
 
+[node name="Citadel Exit" parent="Citadel Finale/Wave Finale" unique_id=1386176168 instance=ExtResource("28_dr21n")]
+position = Vector2(8, -408)
+start_closed = true
+
 [node name="TurretSpawn" parent="Citadel Finale/Wave Finale" unique_id=1333144144 instance=ExtResource("25_weskp")]
 position = Vector2(8, -176)
 
@@ -2068,6 +2079,21 @@ position = Vector2(272, -288)
 
 [node name="DroneSpawn3" parent="Citadel Finale/Wave Finale" unique_id=1142825925 instance=ExtResource("23_dr21n")]
 position = Vector2(-256, -288)
+
+[node name="WaitForClearAction" type="Node2D" parent="Citadel Finale/Wave Finale" unique_id=1792525248]
+script = ExtResource("8_5nqvx")
+metadata/_custom_type_script = "uid://c87b73kgij03d"
+
+[node name="DoorAction" type="Node2D" parent="Citadel Finale/Wave Finale" unique_id=1809495476 node_paths=PackedStringArray("doors")]
+script = ExtResource("8_lnt1k")
+doors = [NodePath("../Citadel Exit")]
+close = false
+metadata/_custom_type_script = "uid://be0tcaadulpeo"
+
+[node name="MusicCutAction" type="Node2D" parent="Citadel Finale/Wave Finale" unique_id=1515732370]
+script = ExtResource("25_mncya")
+sound_effect = ExtResource("3_xcjhm")
+metadata/_custom_type_script = "uid://2pw3n8uxmdig"
 
 [node name="LevelEnd" type="Area2D" parent="." unique_id=900592759]
 position = Vector2(184, -1136)
@@ -2161,7 +2187,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." unique_id=1827159017 instance=ExtResource("2_du3gd")]
-position = Vector2(-3984, 80)
+position = Vector2(392, -1280)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=338091919]
 texture_filter = 1
@@ -2187,7 +2213,7 @@ color = Color(0.8488696, 0.8763843, 0.9195487, 1)
 
 [node name="FadeIn" parent="." unique_id=1275480377 instance=ExtResource("8_goypx")]
 
-[node name="Label" parent="FadeIn/Overlay/CenterContainer" parent_id_path=PackedInt32Array(1275480377, 1093986123) index="0" unique_id=1458628294]
+[node name="StageLabel" parent="FadeIn/Overlay/CenterContainer" parent_id_path=PackedInt32Array(1275480377, 1093986123) index="0" unique_id=1458628294]
 text = "STAGE 1
 PRELUDE TO EVIL"
 

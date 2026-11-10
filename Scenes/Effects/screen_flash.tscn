@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dk48if1ohxmq0"]
+
+[ext_resource type="Script" uid="uid://d0uxhh24vjfr4" path="res://screen_flash.gd" id="1_oot5l"]
+
+[node name="ScreenFlash" type="CanvasLayer" unique_id=1180905883]
+script = ExtResource("1_oot5l")
+color = Color(1, 0, 0, 1)
+fade_time = 3.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1922477513]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

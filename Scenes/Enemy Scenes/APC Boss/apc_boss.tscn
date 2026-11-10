@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://k13jaf2ncu3e" path="res://Scenes/Enemy Scenes/APC Boss/APC Boss Scripts/apc_boss.gd" id="1_0fl87"]
 [ext_resource type="Script" uid="uid://ngsma3hy4ktw" path="res://Scripts/Components/health_component.gd" id="1_g6mq4"]
 [ext_resource type="AudioStream" uid="uid://cbkj26t700dtu" path="res://Assets/something_evil_assets/sound effects/hit.wav" id="2_fsduk"]
+[ext_resource type="AudioStream" uid="uid://cfhii4fuam7y4" path="res://Assets/something_evil_assets/ost and sfx/bossdeath - Copy.ogg" id="2_mv2l1"]
 [ext_resource type="Script" uid="uid://bxvhy0cwrfk4k" path="res://Scripts/Components/hurtbox_component.gd" id="2_otfy1"]
+[ext_resource type="PackedScene" uid="uid://dk48if1ohxmq0" path="res://Scenes/Effects/screen_flash.tscn" id="2_u4mus"]
 [ext_resource type="Script" uid="uid://bvtclq823uv2e" path="res://Scripts/Components/hitbox_component.gd" id="3_6avjl"]
 [ext_resource type="Script" uid="uid://cb8uqkistmuev" path="res://Scripts/State_Machine/state_machine.gd" id="5_m8pev"]
 [ext_resource type="Script" uid="uid://sgptb7btrx7u" path="res://Scripts/State_Machine/enemies states/apc_states/apc_move.gd" id="6_m8pev"]
 [ext_resource type="Script" uid="uid://cp2x0ku2oamdg" path="res://Scripts/State_Machine/enemies states/apc_states/apc_ram.gd" id="7_glyfn"]
-[ext_resource type="Script" uid="uid://bco4t8p1j7xmc" path="res://Scenes/Enemy Scenes/Turret/enemy_turret.gd" id="9_1hf45"]
-[ext_resource type="PackedScene" uid="uid://ojud4fm5r1iq" path="res://Scenes/Projectiles & Hazards/Enemy Projectile/enemy_projectile.tscn" id="10_fwsd2"]
 [ext_resource type="Script" uid="uid://bu318nmfhttbt" path="res://Scenes/Enemy Scenes/APC Boss/APC Boss Scripts/apc_turret.gd" id="11_0fl87"]
 [ext_resource type="AudioStream" uid="uid://c4uj7pi7lhhau" path="res://Assets/something_evil_assets/sound effects/AutocannonShoot.wav" id="11_u4mus"]
 [ext_resource type="Script" uid="uid://b1o2tdp53ap1x" path="res://Scenes/Enemy Scenes/APC Boss/APC Boss Scripts/autocannon.gd" id="12_hs51q"]
@@ -25,6 +25,8 @@
 [ext_resource type="Script" uid="uid://b17031m5sh5e7" path="res://Scripts/Components/death_component.gd" id="20_lmmk4"]
 [ext_resource type="PackedScene" uid="uid://cscll7mr5fxep" path="res://Scenes/Effects/Death Effects/death_effect_big.tscn" id="21_ai82r"]
 [ext_resource type="AudioStream" uid="uid://benqyx4p7qs3" path="res://Assets/something_evil_assets/sound effects/death_big.wav" id="22_fsduk"]
+[ext_resource type="PackedScene" uid="uid://dnjby57ls370h" path="res://Scenes/Enemy Scenes/Turret/enemy_turret.tscn" id="24_fsduk"]
+[ext_resource type="PackedScene" uid="uid://bv5mkxmn16xum" path="res://Scenes/boss_bar.tscn" id="25_b5vx5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4rn6l"]
 radius = 27.0
@@ -181,6 +183,8 @@ _data = {
 [node name="APC Boss" type="CharacterBody2D" unique_id=309457165 node_paths=PackedStringArray("health")]
 collision_layer = 2
 script = ExtResource("1_0fl87")
+death_sound = ExtResource("2_mv2l1")
+death_flash = ExtResource("2_u4mus")
 hurt_sound = ExtResource("2_fsduk")
 health = NodePath("HealthComponent")
 
@@ -199,7 +203,7 @@ debug_color = Color(0, 0.6437861, 0.2993289, 0.41960785)
 
 [node name="HealthComponent" type="Node" parent="." unique_id=673880358]
 script = ExtResource("1_g6mq4")
-max_health = 7000
+max_health = 15000
 metadata/_custom_type_script = "uid://ngsma3hy4ktw"
 
 [node name="HitboxComponent" type="Area2D" parent="." unique_id=965676545]
@@ -221,12 +225,15 @@ metadata/_custom_type_script = "uid://cb8uqkistmuev"
 
 [node name="ApcMove" type="Node" parent="StateMachine" unique_id=1894332031]
 script = ExtResource("6_m8pev")
-max_speed = 250.0
+max_speed = 300.0
+ram_max_distance = 300.0
 metadata/_custom_type_script = "uid://v1najhost2v"
 
 [node name="ApcRam" type="Node" parent="StateMachine" unique_id=1835589118]
 script = ExtResource("7_glyfn")
-ram_speed = 300.0
+windup_time = 0.3
+ram_speed = 500.0
+brake = 200.0
 cooldown = 2.0
 metadata/_custom_type_script = "uid://v1najhost2v"
 
@@ -246,9 +253,8 @@ script = ExtResource("12_hs51q")
 shoot_sound = ExtResource("11_u4mus")
 bullet_scene = ExtResource("13_4rn6l")
 bullet_speed = 500.0
-max_ammo = 10
-fire_interval = 0.3
-aim_turn_speed = 160.0
+fire_interval = 0.25
+aim_turn_speed = 100.0
 
 [node name="MissilePod" type="Node2D" parent="APC Turret" unique_id=438773991]
 position = Vector2(-15, -31)
@@ -256,7 +262,7 @@ script = ExtResource("13_0fl87")
 launch_sound = ExtResource("14_u4mus")
 missile_scene = ExtResource("15_4rn6l")
 launch_speed = 300.0
-max_ammo = 3
+max_ammo = 4
 fire_interval = 0.8
 aim_turn_speed = 300.0
 
@@ -396,20 +402,6 @@ skeleton = NodePath("..")
 libraries/ = SubResource("AnimationLibrary_b5vx5")
 autoplay = &"Move"
 
-[node name="Gunports" type="Node" parent="." unique_id=1108632932]
-
-[node name="Gunport" type="Node2D" parent="." unique_id=535822479]
-position = Vector2(52, -14)
-script = ExtResource("9_1hf45")
-projectile_scene = ExtResource("10_fwsd2")
-burst_cooldown = 2.0
-
-[node name="Gunport2" type="Node2D" parent="." unique_id=98345570]
-position = Vector2(71, -14)
-script = ExtResource("9_1hf45")
-projectile_scene = ExtResource("10_fwsd2")
-burst_cooldown = 2.0
-
 [node name="DeathComponent" type="Node" parent="." unique_id=525382841 node_paths=PackedStringArray("health")]
 script = ExtResource("20_lmmk4")
 health = NodePath("../HealthComponent")
@@ -418,4 +410,23 @@ death_effect = ExtResource("21_ai82r")
 death_sound = ExtResource("22_fsduk")
 metadata/_custom_type_script = "uid://b17031m5sh5e7"
 
+[node name="Turret" parent="." unique_id=564088818 instance=ExtResource("24_fsduk")]
+visible = false
+position = Vector2(23, -35)
+burst_count = 3
+
+[node name="Turret2" parent="." unique_id=1195147297 instance=ExtResource("24_fsduk")]
+visible = false
+position = Vector2(-15, -35)
+burst_count = 3
+
+[node name="Boss Bar" parent="." unique_id=1022727504 instance=ExtResource("25_b5vx5")]
+
+[node name="ProgressBar" parent="Boss Bar/Control" parent_id_path=PackedInt32Array(1022727504, 1784052462) index="0" unique_id=970399430 node_paths=PackedStringArray("health")]
+health = NodePath("../../../HealthComponent")
+
 [connection signal="damage_taken" from="HurtboxComponent" to="." method="_on_hurtbox_component_damage_taken"]
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+
+[editable path="Turret2"]
+[editable path="Boss Bar"]

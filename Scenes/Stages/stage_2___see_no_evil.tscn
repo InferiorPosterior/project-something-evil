@@ -1,9 +1,12 @@
 [gd_scene format=4 uid="uid://dmbso2ivyu0n0"]
 
 [ext_resource type="Texture2D" uid="uid://bsg18wysnjs8k" path="res://Assets/something_evil_assets/sprites/something_evil_tileset.png" id="1_beeer"]
+[ext_resource type="Script" uid="uid://b24uc6135b0tq" path="res://Scripts/stage_music.gd" id="1_wy0jg"]
 [ext_resource type="Texture2D" uid="uid://8e2vrmn0vic3" path="res://Assets/something_evil_assets/sprites/background_distant_cloud.png" id="2_13dpj"]
+[ext_resource type="AudioStream" uid="uid://buhm4uivb38gt" path="res://Assets/something_evil_assets/ost and sfx/level2.ogg" id="2_dr2vf"]
 [ext_resource type="PackedScene" uid="uid://du0gmlf03hrwy" path="res://Scenes/player.tscn" id="2_uw4xn"]
 [ext_resource type="Script" uid="uid://rpk8sa4d7eyx" path="res://Scenes/Projectiles & Hazards/Killzone/killzone.gd" id="3_13dpj"]
+[ext_resource type="AudioStream" uid="uid://c6yxxb8jk4aof" path="res://Assets/something_evil_assets/ost and sfx/startSound.ogg" id="3_h10uj"]
 [ext_resource type="Texture2D" uid="uid://cmyymfd2y7cyx" path="res://Assets/something_evil_assets/sprites/background_clouds.png" id="3_ifs1l"]
 [ext_resource type="PackedScene" uid="uid://dj0s5hm5dgbqu" path="res://Scenes/pause_menu.tscn" id="4_ifs1l"]
 [ext_resource type="Texture2D" uid="uid://bowvv2w2fkqm2" path="res://Assets/something_evil_assets/sprites/background_skyscrapers.png" id="4_q3m7i"]
@@ -24,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://cc0g07lcrmsqk" path="res://Scenes/Stage Builder Assets/Spawner Nodes/drone_spawner.tscn" id="20_tqcic"]
 [ext_resource type="PackedScene" uid="uid://bv14h0pks0n5w" path="res://Scenes/Stage Builder Assets/Spawner Nodes/lunger_spawner.tscn" id="22_gnpko"]
 [ext_resource type="PackedScene" uid="uid://boew6cs04ouac" path="res://Scenes/Stage Builder Assets/trapdoor.tscn" id="23_pvyu6"]
+[ext_resource type="Script" uid="uid://2pw3n8uxmdig" path="res://Scripts/Event Systems/music_cut_action.gd" id="25_h10uj"]
 [ext_resource type="Script" uid="uid://bpjxt8fwj5oan" path="res://Scripts/Event Systems/level_end_action.gd" id="25_w1vpc"]
 [ext_resource type="PackedScene" uid="uid://gws0ml30aft4" path="res://Scenes/fade_in.tscn" id="26_w1vpc"]
 [ext_resource type="PackedScene" uid="uid://mudw0p55nt1e" path="res://Scenes/stage_end_screen.tscn" id="26_wy0jg"]
@@ -1287,6 +1291,9 @@ glow_bloom = 0.2
 fog_enabled = true
 
 [node name="Stage 2 - SEE NO EVIL" type="Node2D" unique_id=275122850]
+script = ExtResource("1_wy0jg")
+level_music = ExtResource("2_dr2vf")
+start_sound = ExtResource("3_h10uj")
 
 [node name="Parallax Background" type="Node2D" parent="." unique_id=731692260]
 
@@ -1958,12 +1965,6 @@ position = Vector2(304, 128)
 script = ExtResource("19_tqcic")
 metadata/_custom_type_script = "uid://c87b73kgij03d"
 
-[node name="DroneSpawn3" parent="Evil Finale/Wave 2" unique_id=1385652923 instance=ExtResource("20_tqcic")]
-position = Vector2(-296, -136)
-
-[node name="DroneSpawn4" parent="Evil Finale/Wave 2" unique_id=552317871 instance=ExtResource("20_tqcic")]
-position = Vector2(-296, -88)
-
 [node name="Wave 3" type="Node2D" parent="Evil Finale" unique_id=84341248]
 script = ExtResource("14_tpd61")
 metadata/_custom_type_script = "uid://c4p8md6xtah0a"
@@ -2032,6 +2033,11 @@ doors = [NodePath("../../Finale Exit")]
 close = false
 metadata/_custom_type_script = "uid://be0tcaadulpeo"
 
+[node name="MusicCutAction" type="Node2D" parent="Evil Finale/Wave 3" unique_id=1234484777]
+script = ExtResource("25_h10uj")
+sound_effect = ExtResource("3_h10uj")
+metadata/_custom_type_script = "uid://2pw3n8uxmdig"
+
 [node name="EventArea" type="Area2D" parent="." unique_id=485848392]
 position = Vector2(2608, 720)
 script = ExtResource("11_6cl8s")
@@ -2046,6 +2052,8 @@ debug_color = Color(0.66677004, 0.51148236, 1.92523e-07, 0.41960785)
 script = ExtResource("25_w1vpc")
 end_screen = ExtResource("26_wy0jg")
 next_scene = "uid://c40vsthvyvhit"
+unlock_level_2 = false
+unlock_level_3 = true
 delay = 0.0
 metadata/_custom_type_script = "uid://bpjxt8fwj5oan"
 
@@ -2077,7 +2085,7 @@ color = Color(0.6580323, 0.4545653, 0.59382915, 1)
 
 [node name="FadeIn" parent="." unique_id=1275480377 instance=ExtResource("26_w1vpc")]
 
-[node name="Label" parent="FadeIn/Overlay/CenterContainer" parent_id_path=PackedInt32Array(1275480377, 1093986123) index="0" unique_id=1458628294]
+[node name="StageLabel" parent="FadeIn/Overlay/CenterContainer" parent_id_path=PackedInt32Array(1275480377, 1093986123) index="0" unique_id=1458628294]
 text = "STAGE 2
 SOMETHING EVIL WILL HAPPEN"
 
