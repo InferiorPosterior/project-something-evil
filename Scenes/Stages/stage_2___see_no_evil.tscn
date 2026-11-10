@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bv14h0pks0n5w" path="res://Scenes/Stage Builder Assets/Spawner Nodes/lunger_spawner.tscn" id="22_gnpko"]
 [ext_resource type="PackedScene" uid="uid://boew6cs04ouac" path="res://Scenes/Stage Builder Assets/trapdoor.tscn" id="23_pvyu6"]
 [ext_resource type="Script" uid="uid://bpjxt8fwj5oan" path="res://Scripts/Event Systems/level_end_action.gd" id="25_w1vpc"]
+[ext_resource type="PackedScene" uid="uid://gws0ml30aft4" path="res://Scenes/fade_in.tscn" id="26_w1vpc"]
 [ext_resource type="PackedScene" uid="uid://mudw0p55nt1e" path="res://Scenes/stage_end_screen.tscn" id="26_wy0jg"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_b45r2"]
@@ -1244,23 +1245,6 @@ pattern_2 = SubResource("TileMapPattern_1gcf5")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_beeer"]
 distance = -448.0
 
-[sub_resource type="Gradient" id="Gradient_k8jxn"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6tgec"]
-gradient = SubResource("Gradient_k8jxn")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.2, 0.2)
-metadata/_snap_enabled = true
-
-[sub_resource type="Environment" id="Environment_us27w"]
-background_mode = 3
-tonemap_mode = 1
-glow_enabled = true
-glow_bloom = 0.2
-fog_enabled = true
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(81, 127.242065)
 
@@ -1284,6 +1268,23 @@ size = Vector2(186, 146)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7numd"]
 size = Vector2(160, 128)
+
+[sub_resource type="Gradient" id="Gradient_k8jxn"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6tgec"]
+gradient = SubResource("Gradient_k8jxn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.2, 0.2)
+metadata/_snap_enabled = true
+
+[sub_resource type="Environment" id="Environment_us27w"]
+background_mode = 3
+tonemap_mode = 1
+glow_enabled = true
+glow_bloom = 0.2
+fog_enabled = true
 
 [node name="Stage 2 - SEE NO EVIL" type="Node2D" unique_id=275122850]
 
@@ -1377,37 +1378,6 @@ script = ExtResource("3_13dpj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=1402439339]
 shape = SubResource("WorldBoundaryShape2D_beeer")
-
-[node name="Player" parent="." unique_id=1827159017 instance=ExtResource("2_uw4xn")]
-position = Vector2(-1209, -278)
-
-[node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=252625614]
-texture_filter = 1
-texture = SubResource("GradientTexture2D_6tgec")
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1855850939]
-zoom = Vector2(2, 2)
-process_callback = 0
-position_smoothing_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1939092715]
-environment = SubResource("Environment_us27w")
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1962083379]
-rotation = -0.4718746
-color = Color(0.8931203, 0.11367238, 0, 1)
-energy = 0.75
-shadow_enabled = true
-
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1327751637]
-color = Color(0.6580323, 0.4545653, 0.59382915, 1)
-
-[node name="Player HUD" parent="." unique_id=1295255269 instance=ExtResource("8_7cei0")]
-
-[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=1673282065]
-
-[node name="PauseMenu" parent="PauseMenu" unique_id=1484971317 instance=ExtResource("4_ifs1l")]
-metadata/_edit_use_anchors_ = true
 
 [node name="BridgeCombat" type="Area2D" parent="." unique_id=114221428]
 position = Vector2(-382, -626)
@@ -2078,3 +2048,42 @@ end_screen = ExtResource("26_wy0jg")
 next_scene = "uid://c40vsthvyvhit"
 delay = 0.0
 metadata/_custom_type_script = "uid://bpjxt8fwj5oan"
+
+[node name="Player" parent="." unique_id=1827159017 instance=ExtResource("2_uw4xn")]
+position = Vector2(-1209, -278)
+
+[node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=252625614]
+texture_filter = 1
+texture = SubResource("GradientTexture2D_6tgec")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1855850939]
+zoom = Vector2(2, 2)
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1939092715]
+environment = SubResource("Environment_us27w")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1962083379]
+rotation = -0.4718746
+color = Color(0.8931203, 0.11367238, 0, 1)
+energy = 0.75
+shadow_enabled = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1327751637]
+color = Color(0.6580323, 0.4545653, 0.59382915, 1)
+
+[node name="Player HUD" parent="." unique_id=1295255269 instance=ExtResource("8_7cei0")]
+
+[node name="FadeIn" parent="." unique_id=1275480377 instance=ExtResource("26_w1vpc")]
+
+[node name="Label" parent="FadeIn/Overlay/CenterContainer" parent_id_path=PackedInt32Array(1275480377, 1093986123) index="0" unique_id=1458628294]
+text = "STAGE 2
+SOMETHING EVIL WILL HAPPEN"
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=1673282065]
+
+[node name="PauseMenu" parent="PauseMenu" unique_id=1484971317 instance=ExtResource("4_ifs1l")]
+metadata/_edit_use_anchors_ = true
+
+[editable path="FadeIn"]

@@ -1,11 +1,20 @@
 [gd_scene format=3 uid="uid://gws0ml30aft4"]
 
 [ext_resource type="Script" uid="uid://cvmi86d3yb3d6" path="res://Scripts/fade_in.gd" id="1_fade"]
+[ext_resource type="FontFile" uid="uid://eoqgicy463pd" path="res://Assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="2_fuj3q"]
+[ext_resource type="FontFile" uid="uid://u58lg8jovldg" path="res://Assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="3_oalcd"]
+
+[sub_resource type="Theme" id="Theme_oalcd"]
+default_font = ExtResource("2_fuj3q")
+
+[sub_resource type="LabelSettings" id="LabelSettings_drw5b"]
 
 [node name="FadeIn" type="CanvasLayer" unique_id=1275480377]
 process_mode = 3
 layer = 200
 script = ExtResource("1_fade")
+pause_duration = 1.0
+fade_time = 3.5
 
 [node name="Overlay" type="ColorRect" parent="." unique_id=2117850991]
 unique_name_in_owner = true
@@ -16,3 +25,25 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Overlay" unique_id=1093986123]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="StageLabel" type="Label" parent="Overlay/CenterContainer" unique_id=1458628294]
+unique_name_in_owner = true
+self_modulate = Color(1.5565991, 1.5565991, 1.5565991, 1)
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_oalcd")
+theme_override_fonts/font = ExtResource("3_oalcd")
+text = "STAGE NAME HERE"
+label_settings = SubResource("LabelSettings_drw5b")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

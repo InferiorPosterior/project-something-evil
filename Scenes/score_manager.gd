@@ -2,6 +2,9 @@ extends Node
 
 signal score_changed(new_score: int)
 
+const HIT_PENALTY: int = 200
+const DEATH_PENALTY: int = 2000
+
 var score: int = 0
 
 func add_points(amount: int) -> void:
@@ -23,3 +26,16 @@ func reset_score() -> void:
 	score = 0
 	score_changed.emit(score)
 	print("Score reset to 0")
+
+func lose_points(amount: int) -> void:
+	if amount <= 0:
+		return
+	score = maxi(score - amount, 0)          # the score never goes below zero
+	score_changed.emit(score)
+
+func on_player_health_changed(diff: int) -> void:
+	if diff < 0:                             # only when health really dropped (heals and respawns are positive)
+		lose_points(HIT_PENALTY)
+
+func on_player_respawned() -> void:
+	lose_points(DEATH_PENALTY)

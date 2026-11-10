@@ -13,11 +13,14 @@ const JUMP_VELOCITY = -400.0
 		
 func _ready() -> void:
 	add_to_group("player")
+	health_component.current_health_changed.connect(ScoreManager.on_player_health_changed)
+	lives_component.respawned.connect(ScoreManager.on_player_respawned)
+	
 	# DON'T LET THE SHORT HIT IMMUNITY (0.6s) OVERWRITE THE LONGER RESPAWN IMMUNITY
 	hurtbox.damage_taken.connect(func(_dmg):
 		if not lives_component.is_respawn_immune:
 			health_component.set_temporary_immortality(0.6))
-	# DEATH IS NOW HANDLED BY LivesComponent
+			
 
 
 func _physics_process(delta: float) -> void:
