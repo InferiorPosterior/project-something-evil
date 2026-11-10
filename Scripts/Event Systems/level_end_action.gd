@@ -1,5 +1,6 @@
 class_name LevelEndAction extends EventAction
 
+@export var sound_effect: AudioStream
 @export var end_screen: PackedScene                   # drop stage_end_screen.tscn here
 @export_file("*.tscn") var next_scene: String         # where Continue goes; leave empty to hide the button
 @export var unlock_level_2: bool = true
@@ -12,7 +13,7 @@ func execute() -> void:
 	if timer:
 		ScoreManager.complete_level(timer.time_left())    # 10 points per second left
 		timer.stop()
-	
+	SoundManager.play_sound(sound_effect, null)
 	
 	if unlock_level_2:
 		GameProgress.unlock_level2()
