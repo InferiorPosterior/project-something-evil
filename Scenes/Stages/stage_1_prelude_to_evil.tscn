@@ -2187,7 +2187,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." unique_id=1827159017 instance=ExtResource("2_du3gd")]
-position = Vector2(392, -1280)
+position = Vector2(-3829, 81)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=338091919]
 texture_filter = 1

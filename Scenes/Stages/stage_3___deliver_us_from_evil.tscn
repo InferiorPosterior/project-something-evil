@@ -1740,7 +1740,7 @@ unlock_level_2 = false
 metadata/_custom_type_script = "uid://bpjxt8fwj5oan"
 
 [node name="Player" parent="." unique_id=1827159017 instance=ExtResource("8_34aut")]
-position = Vector2(3040, -984)
+position = Vector2(-1213, -272)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player" unique_id=252625614]
 texture_filter = 1
