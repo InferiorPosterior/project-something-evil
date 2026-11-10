@@ -1,3 +1,4 @@
+
 extends CanvasLayer
 
 @onready var health_bar: ProgressBar = $MarginContainer/HBoxContainer/VBoxContainer/HealthBar

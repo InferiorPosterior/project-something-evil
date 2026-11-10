@@ -97,6 +97,9 @@ func _trigger_game_over() -> void:
 	if game_over_scene:
 		get_tree().current_scene.add_child(game_over_scene.instantiate())
 	game_over.emit()
+	
+func force_game_over() -> void:
+	_trigger_game_over()
 
 func set_checkpoint(pos: Vector2) -> void:
 	checkpoint_position = pos
