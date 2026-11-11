@@ -6,6 +6,14 @@
 [node name="Game" type="Node2D" unique_id=1327516912]
 position = Vector2(112, 152)
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=674153499]
+offset_left = -623.99994
+offset_top = -359.99997
+offset_right = -583.99994
+offset_bottom = -319.99997
+scale = Vector2(33.334957, 19.523678)
+color = Color(0, 0, 0, 1)
+
 [node name="MainMenu" parent="." unique_id=346214997 instance=ExtResource("1_ebmjs")]
 menu_track = ExtResource("2_qxrlw")
 metadata/_edit_use_anchors_ = true

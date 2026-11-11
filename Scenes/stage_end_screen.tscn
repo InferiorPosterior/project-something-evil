@@ -1,11 +1,22 @@
 [gd_scene format=3 uid="uid://mudw0p55nt1e"]
 
 [ext_resource type="Script" uid="uid://dm0towxd3ibul" path="res://Scripts/stage_end_screen.gd" id="1_x06ik"]
-[ext_resource type="AudioStream" uid="uid://dw1aoe3q0tyk8" path="res://Assets/something_evil_assets/ost and sfx/bClick.ogg" id="2_flg4v"]
+[ext_resource type="FontFile" uid="uid://bt87x0wcc3fs7" path="res://Fonts/Roboto_Mono/static/RobotoMono-Bold.ttf" id="3_vxhul"]
+
+[sub_resource type="Theme" id="Theme_1ehe0"]
+default_font = ExtResource("3_vxhul")
+
+[sub_resource type="Theme" id="Theme_ce3w2"]
+default_font = ExtResource("3_vxhul")
+
+[sub_resource type="Theme" id="Theme_n45e2"]
+default_font = ExtResource("3_vxhul")
+
+[sub_resource type="Theme" id="Theme_opfnp"]
+default_font = ExtResource("3_vxhul")
 
 [node name="Stage End Screen" type="CanvasLayer" unique_id=1109376040]
 script = ExtResource("1_x06ik")
-sound_effect = ExtResource("2_flg4v")
 
 [node name="Panel" type="Panel" parent="." unique_id=1797778052]
 unique_name_in_owner = true
@@ -24,19 +35,24 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="Panel/CenterContainer/VBoxContainer" unique_id=30683269]
 layout_mode = 2
+theme = SubResource("Theme_1ehe0")
+theme_override_font_sizes/font_size = 32
 text = "STAGE COMPLETE"
 
 [node name="NextButton" type="Button" parent="Panel/CenterContainer/VBoxContainer" unique_id=1226126356]
 unique_name_in_owner = true
 layout_mode = 2
+theme = SubResource("Theme_ce3w2")
 text = "NEXT"
 
 [node name="RetryButton" type="Button" parent="Panel/CenterContainer/VBoxContainer" unique_id=718357072]
 unique_name_in_owner = true
 layout_mode = 2
+theme = SubResource("Theme_n45e2")
 text = "RETRY"
 
 [node name="MainMenuButton" type="Button" parent="Panel/CenterContainer/VBoxContainer" unique_id=1152656558]
 unique_name_in_owner = true
 layout_mode = 2
+theme = SubResource("Theme_opfnp")
 text = "MAIN MENU"

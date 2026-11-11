@@ -8,8 +8,18 @@ class_name Player extends CharacterBody2D
 @onready var hurtbox: HurtboxComponent = $HurtboxComponent
 @onready var lives_component: LivesComponent = $LivesComponent
 
+@export_group("Jump")
+@export var jump_velocity: float = -400.0
+@export var coyote_time: float = 0.1
+@export var jump_buffer_time: float = 0.12
+@export var fall_gravity_multiplier: float = 1.6
+@export var apex_gravity_multiplier: float = 0.6
+@export var apex_threshold: float = 40.0
+
+var coyote_left: float = 0.0
+var buffer_left: float = 0.0
+
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
 		
 func _ready() -> void:
 	add_to_group("player")
@@ -22,17 +32,32 @@ func _ready() -> void:
 			health_component.set_temporary_immortality(0.6))
 			
 
-
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	# --- timers ---
+	if is_on_floor():
+		coyote_left = coyote_time
+	else:
+		coyote_left = maxf(coyote_left - delta, 0.0)
+
+	if Input.is_action_just_pressed("jump"):
+		buffer_left = jump_buffer_time
+	else:
+		buffer_left = maxf(buffer_left - delta, 0.0)
+
+	# --- gravity ---
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		var g := get_gravity()
+		if velocity.y > 0.0:
+			g *= fall_gravity_multiplier
+		elif absf(velocity.y) < apex_threshold:
+			g *= apex_gravity_multiplier
+		velocity += g * delta
 
-
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	
+	# --- jump: buffered press + coyote ground ---
+	if buffer_left > 0.0 and coyote_left > 0.0:
+		velocity.y = jump_velocity
+		buffer_left = 0.0
+		coyote_left = 0.0
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
