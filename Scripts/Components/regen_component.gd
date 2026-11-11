@@ -53,5 +53,5 @@ func _process(delta: float) -> void:
 	_tick_left -= delta
 	if _tick_left <= 0.0:
 		_tick_left += interval
-		SoundManager.play_sound(heal_sound,get_parent().get("global_position") )
+		SoundManager.play_sound(heal_sound,null) 
 		health.heal(amount)

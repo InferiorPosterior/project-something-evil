@@ -13,7 +13,7 @@ config_version=5
 config/name="Project Something Evil"
 run/main_scene="uid://opptkxr1tbdm"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://3w8n1uxj56mu"
 
 [autoload]
 
@@ -25,6 +25,8 @@ SoundManager="*uid://23dpiraohdis"
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/icon="res://icon.svg"
+mouse_cursor/macos_native_icon=""
 
 [file_customization]
 

@@ -4,4 +4,4 @@ class_name MusicPlayAction extends EventAction
 # This matches the 'await child.execute()' loop inside your EventArea
 func execute() -> void:
 	SoundManager.stop_music()
-	SoundManager.play_music(music)
+	SoundManager.play_music(music, 5)
