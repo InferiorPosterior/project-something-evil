@@ -20,6 +20,7 @@ config/icon="uid://3w8n1uxj56mu"
 GameProgress="*uid://cs7ykmdc0kt3"
 ScoreManager="*uid://ci82v2ri5vqnw"
 SoundManager="*uid://23dpiraohdis"
+GameSettings="*uid://u74506g2vr5n"
 
 [display]
 

@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://mfo557gkm32t"]
+
+[ext_resource type="Script" uid="uid://blpvsntjvvwth" path="res://Scripts/settings_menu.gd" id="1_set"]
+[ext_resource type="FontFile" uid="uid://du3wbjmohuixm" path="res://Fonts/BebasNeue-Regular.ttf" id="2_font"]
+
+[node name="SettingsMenu" type="Control" unique_id=1770495239]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_set")
+
+[node name="Background" type="ColorRect" parent="." unique_id=101292513]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.21176471, 0.19607843, 0.21176471, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=67578340]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="CenterContainer" unique_id=1354698910]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/Panel" unique_id=117741674]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 32
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/Panel/Margin" unique_id=1464789891]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="Title" type="Label" parent="CenterContainer/Panel/Margin/VBox" unique_id=199745005]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94509804, 0.21568628, 0.22745098, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 72
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="AudioHeading" type="Label" parent="CenterContainer/Panel/Margin/VBox" unique_id=563172431]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 36
+text = "AUDIO"
+
+[node name="MusicRow" type="HBoxContainer" parent="CenterContainer/Panel/Margin/VBox" unique_id=2069168064]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MusicLabel" type="Label" parent="CenterContainer/Panel/Margin/VBox/MusicRow" unique_id=1457534850]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "MUSIC"
+
+[node name="MusicSlider" type="HSlider" parent="CenterContainer/Panel/Margin/VBox/MusicRow" unique_id=1320779542]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+
+[node name="MusicValue" type="Label" parent="CenterContainer/Panel/Margin/VBox/MusicRow" unique_id=1551571401]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "100%"
+horizontal_alignment = 2
+
+[node name="SfxRow" type="HBoxContainer" parent="CenterContainer/Panel/Margin/VBox" unique_id=2086687852]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="SfxLabel" type="Label" parent="CenterContainer/Panel/Margin/VBox/SfxRow" unique_id=2082248148]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "SOUND EFFECTS"
+
+[node name="SfxSlider" type="HSlider" parent="CenterContainer/Panel/Margin/VBox/SfxRow" unique_id=286568483]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+
+[node name="SfxValue" type="Label" parent="CenterContainer/Panel/Margin/VBox/SfxRow" unique_id=1122052276]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "100%"
+horizontal_alignment = 2
+
+[node name="DisplayHeading" type="Label" parent="CenterContainer/Panel/Margin/VBox" unique_id=834786681]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 36
+text = "DISPLAY"
+
+[node name="ModeRow" type="HBoxContainer" parent="CenterContainer/Panel/Margin/VBox" unique_id=11327827]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ModeLabel" type="Label" parent="CenterContainer/Panel/Margin/VBox/ModeRow" unique_id=984274172]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "SCREEN MODE"
+
+[node name="ModeOption" type="OptionButton" parent="CenterContainer/Panel/Margin/VBox/ModeRow" unique_id=35964569]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="BackButton" type="Button" parent="CenterContainer/Panel/Margin/VBox" unique_id=472179121]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "BACK"

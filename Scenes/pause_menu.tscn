@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dj0s5hm5dgbqu"]
 
-[ext_resource type="Script" uid="uid://u83sgy0qihkc" path="res://Scripts/pause_menu.gd" id="1_emv3i"]
+[ext_resource type="Script" uid="uid://dj847p36c0lrn" path="res://Scripts/pause_menu.gd" id="1_emv3i"]
 [ext_resource type="FontFile" uid="uid://du3wbjmohuixm" path="res://Fonts/BebasNeue-Regular.ttf" id="2_k0w1u"]
 
 [node name="PauseMenu" type="Control" unique_id=1484971317]
@@ -43,7 +43,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Panel" type="PanelContainer" parent="CenterContainer" unique_id=1367136749]
-custom_minimum_size = Vector2(420, 320)
+custom_minimum_size = Vector2(420, 376)
 layout_mode = 2
 mouse_filter = 2
 
@@ -118,20 +118,29 @@ offset_bottom = 178.0
 theme_override_font_sizes/font_size = 18
 text = "LEVEL SELECT"
 
-[node name="MainMenuButton" type="Button" parent="CenterContainer/Panel/Control" unique_id=153012988]
+[node name="SettingsButton" type="Button" parent="CenterContainer/Panel/Control" unique_id=506353108]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 200.0
 offset_right = 402.0
 offset_bottom = 234.0
 theme_override_font_sizes/font_size = 18
-text = "MAIN MENU"
+text = "SETTINGS"
 
-[node name="QuitButton" type="Button" parent="CenterContainer/Panel/Control" unique_id=880318247]
+[node name="MainMenuButton" type="Button" parent="CenterContainer/Panel/Control" unique_id=153012988]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 256.0
 offset_right = 402.0
 offset_bottom = 290.0
+theme_override_font_sizes/font_size = 18
+text = "MAIN MENU"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/Panel/Control" unique_id=880318247]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 312.0
+offset_right = 402.0
+offset_bottom = 346.0
 theme_override_font_sizes/font_size = 18
 text = "QUIT"

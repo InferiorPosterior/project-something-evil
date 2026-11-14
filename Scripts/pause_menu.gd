@@ -14,6 +14,7 @@ func _ready():
 	$CenterContainer/Panel/Control/ResumeButton.pressed.connect(_on_resume_pressed)
 	$CenterContainer/Panel/Control/RestartButton.pressed.connect(_on_restart_pressed)
 	$CenterContainer/Panel/Control/LevelSelectButton.pressed.connect(_on_level_select_pressed)
+	$CenterContainer/Panel/Control/SettingsButton.pressed.connect(_on_settings_pressed)
 	$CenterContainer/Panel/Control/MainMenuButton.pressed.connect(_on_main_menu_pressed)
 	$CenterContainer/Panel/Control/QuitButton.pressed.connect(_on_quit_pressed)
 
@@ -65,6 +66,17 @@ func _on_level_select_pressed():
 	level_select.opened_from_pause = true
 
 	get_parent().add_child(level_select)
+	hide()
+
+
+# Runs when the Settings button is clicked.
+func _on_settings_pressed():
+	var settings_scene = load("res://Scenes/settings_menu.tscn")
+	var settings = settings_scene.instantiate()
+
+	settings.opened_from_pause = true
+
+	get_parent().add_child(settings)
 	hide()
 
 

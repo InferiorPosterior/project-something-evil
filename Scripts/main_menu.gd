@@ -27,9 +27,17 @@ func _on_level_select_pressed():
 
 # Runs when Settings is clicked.
 func _on_settings_pressed():
-	# Placeholder until we build the settings menu.
-	print("Settings button unavailable..for now!")
+	# Opens the settings screen on top of the main menu,
+	# so the menu music keeps playing while volume is adjusted.
+	var settings_scene: PackedScene = load("res://Scenes/settings_menu.tscn")
+	var settings = settings_scene.instantiate()
+	add_child(settings)
+	$CenterContainer.hide()  # hide the menu buttons and title behind it
+	settings.tree_exited.connect(_on_settings_closed)
 
+
+func _on_settings_closed():
+	$CenterContainer.show()
 
 # Runs when Quit is clicked.
 func _on_quit_pressed():
